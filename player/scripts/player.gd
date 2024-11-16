@@ -7,6 +7,13 @@ extends CharacterBody2D
 
 var raycast_target : Vector2
 
+@onready var animation_tree: AnimationTree = $AnimationTree
+
+var last_facing_dir := Vector2(0, -1)
+
+@export_category("Audio")
+@export var footstep : AudioStream
+
 func _process(delta: float) -> void:
 	
 	ray_cast.target_position = raycast_target
@@ -34,5 +41,23 @@ func _physics_process(delta: float) -> void:
 		raycast_target = Vector2(x_direction, y_direction) * interact_distance
 	
 	velocity.move_toward(Vector2.ZERO, SPEED)
+	
+	#Animazione
+	var idle = !velocity
+	
+	if !idle:
+		last_facing_dir = velocity.normalized()
+	
+	animation_tree.set("parameters/conditions/idle", idle)
+	animation_tree.set("parameters/conditions/walk", !idle)
+	
+	animation_tree.set("parameters/Walk/blend_position", last_facing_dir)
+	animation_tree.set("parameters/Idle/blend_position", last_facing_dir)
+	
+	#suono passi
+	if velocity.length() != 0:
+		if $Timer.time_left <= 0:
+			AudioSystem.play(footstep) 
+			$Timer.start(0.43)
 
 	move_and_slide()
