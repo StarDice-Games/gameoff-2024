@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=6 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_wow0x"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
+[ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="5_dkjy6"]
 
 [node name="GuardiolaHall" type="Node2D"]
 
@@ -37,3 +38,6 @@ text = "Guardiola"
 position = Vector2(907, 12)
 level_id = "ingresso"
 link_id = "SouthDoor"
+
+[node name="Post-it" parent="." instance=ExtResource("5_dkjy6")]
+position = Vector2(1540, 192)
