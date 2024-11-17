@@ -1,11 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=15 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
+[ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
+[ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="5_t22vn"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_66euh"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_l03ko"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
+
+[sub_resource type="Resource" id="Resource_2vvv8"]
+script = ExtResource("7_xu3vp")
+key = "first_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_5jy0i"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Ho delle task per te.", "Devi mandare via tutte le persone.", "Poi ti ricontatto."])
+character_image = ExtResource("7_l03ko")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_2vvv8")])
+
+[sub_resource type="Resource" id="Resource_ktixw"]
+script = ExtResource("7_xu3vp")
+key = "first_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_x2y3w"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Va bene, boss.", "Lasci fare a me."])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ktixw")])
 
 [node name="GuardiolaHall" type="Node2D"]
+script = ExtResource("1_mwtu7")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
@@ -21,6 +52,11 @@ offset_top = -831.0
 offset_right = 1525.0
 offset_bottom = 859.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
+position = Vector2(1071, 615)
+dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w")])
+act = "act_1"
 
 [node name="LinkSystem" parent="." instance=ExtResource("1_booiy")]
 

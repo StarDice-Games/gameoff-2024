@@ -35,9 +35,6 @@ size = Vector2(183, 165)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oe41x"]
 size = Vector2(181, 164)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vd205"]
-size = Vector2(45, 41)
-
 [node name="TestSimone2" type="Node2D"]
 script = ExtResource("1_84smt")
 test_list_task = Array[ExtResource("2_8alek")]([ExtResource("3_8svp7")])
