@@ -6,13 +6,18 @@ var triggers : Dictionary
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for trigger in keys :
-		update_trigger(trigger, false)
+		triggers[trigger] = false
 
 func update_trigger(key : String, value: bool):
+	if not triggers.has(key):
+		printerr("Trigger ", key, " not present!")
+		return
 	triggers[key] = value
+	EventSystem.trigger_changed.emit(key, value)
 
 func check_trigger(key: String, value: bool) -> bool:
 	if not triggers.has(key):
+		printerr("Trigger ", key, " not present!")
 		return false	
 	return triggers[key] == value
 

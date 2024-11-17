@@ -1,21 +1,30 @@
-[gd_scene load_steps=23 format=3 uid="uid://0itiv1724qfq"]
+[gd_scene load_steps=26 format=3 uid="uid://do2w34vns2kgy"]
 
-[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="1_7tcuf"]
-[ext_resource type="Script" path="res://levels/test_simone/scripts/test_simone.gd" id="1_84smt"]
-[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_8alek"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_0y0rg"]
-[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="3_6efru"]
-[ext_resource type="Resource" uid="uid://b5pkh5857i4ho" path="res://task_system/test/task1.tres" id="3_8svp7"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="4_f3lrh"]
-[ext_resource type="Resource" uid="uid://djuerdxiluinf" path="res://task_system/test/task2.tres" id="4_gq5k0"]
-[ext_resource type="Resource" uid="uid://ddxepx7m1r5b0" path="res://resource/items/Item1.tres" id="4_t13p1"]
-[ext_resource type="Script" path="res://levels/test_simone/scripts/item_test.gd" id="5_0ehfe"]
-[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="5_xrw6t"]
-[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="6_jimtd"]
-[ext_resource type="Script" path="res://levels/test_simone/scripts/pen.gd" id="10_u20iu"]
-[ext_resource type="Resource" uid="uid://b1trqyk37yi0f" path="res://resource/items/pen.tres" id="12_64wco"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="12_isx3d"]
-[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="15_gb4ba"]
+[ext_resource type="Script" path="res://levels/test_simone/scripts/test_simone.gd" id="1_s2r1t"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_f3mc0"]
+[ext_resource type="Resource" uid="uid://b5pkh5857i4ho" path="res://task_system/test/task1.tres" id="3_2j7fd"]
+[ext_resource type="Resource" uid="uid://djuerdxiluinf" path="res://task_system/test/task2.tres" id="4_kca32"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="5_0q3bv"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="6_hhi2x"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="7_2diuj"]
+[ext_resource type="Script" path="res://levels/test_simone/scripts/item_test.gd" id="8_vq6fb"]
+[ext_resource type="Resource" uid="uid://ddxepx7m1r5b0" path="res://resource/items/Item1.tres" id="9_g25vt"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="10_4i7x8"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://credits/Credits/Simone.png" id="11_1ehg2"]
+[ext_resource type="Script" path="res://levels/test_simone/scripts/pen.gd" id="12_qvddb"]
+[ext_resource type="Resource" uid="uid://b1trqyk37yi0f" path="res://resource/items/pen.tres" id="13_0hq8b"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://credits/Credits/Kevin.png" id="14_mf8j4"]
+[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://splash_screen/STAR dice white.png" id="15_xv5e3"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="16_3ei1w"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="17_7njc4"]
+
+[sub_resource type="Resource" id="Resource_uwno5"]
+script = ExtResource("2_f3mc0")
+id = "test_counter"
+description = "Talk to people"
+complete = false
+counter_max = 1
+current_counter = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5k3p"]
 size = Vector2(79, 1655.5)
@@ -38,21 +47,21 @@ size = Vector2(181, 164)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vd205"]
 size = Vector2(45, 41)
 
-[node name="TestSimone2" type="Node2D"]
-script = ExtResource("1_84smt")
-test_list_task = Array[ExtResource("2_8alek")]([ExtResource("3_8svp7")])
-second_list_task = Array[ExtResource("2_8alek")]([ExtResource("4_gq5k0")])
+[node name="TestSimone" type="Node2D"]
+script = ExtResource("1_s2r1t")
+test_list_task = Array[ExtResource("2_f3mc0")]([ExtResource("3_2j7fd"), SubResource("Resource_uwno5")])
+second_list_task = Array[ExtResource("2_f3mc0")]([ExtResource("4_kca32")])
 
-[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_xrw6t")]
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_0q3bv")]
 player_ref = NodePath("../Player")
 
 [node name="SouthEntrance" type="Node2D" parent="LinkSystem"]
 position = Vector2(510, 426)
 
-[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_0y0rg")]
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("6_hhi2x")]
 player_ref = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_7tcuf")]
+[node name="Player" parent="." instance=ExtResource("7_2diuj")]
 unique_name_in_owner = true
 position = Vector2(783, 325)
 
@@ -107,16 +116,16 @@ shape = SubResource("RectangleShape2D_o8t8y")
 debug_color = Color(0.570881, 0.54139, 0.357895, 0.42)
 
 [node name="Mouse" type="StaticBody2D" parent="."]
-position = Vector2(930, -93)
+position = Vector2(118, -489)
 collision_layer = 2
-script = ExtResource("5_0ehfe")
-item = ExtResource("4_t13p1")
+script = ExtResource("8_vq6fb")
+item = ExtResource("9_g25vt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 position = Vector2(4, 2)
 shape = SubResource("RectangleShape2D_2hdp7")
 
-[node name="Interactable" parent="Mouse" instance=ExtResource("6_jimtd")]
+[node name="Interactable" parent="Mouse" instance=ExtResource("10_4i7x8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/Interactable"]
 position = Vector2(4, 1.5)
@@ -124,40 +133,53 @@ shape = SubResource("RectangleShape2D_pdcj2")
 debug_color = Color(0.396506, 0.469582, 1, 0.42)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Mouse"]
-texture = ExtResource("4_f3lrh")
+texture = ExtResource("11_1ehg2")
 
 [node name="Pen" type="StaticBody2D" parent="."]
-position = Vector2(259, -371)
+position = Vector2(-161, -485)
 collision_layer = 2
-script = ExtResource("10_u20iu")
-item = ExtResource("12_64wco")
+script = ExtResource("12_qvddb")
+item = ExtResource("13_0hq8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pen"]
 position = Vector2(3.5, 2.5)
 shape = SubResource("RectangleShape2D_wtkne")
+metadata/_edit_lock_ = true
 
-[node name="Interactable" parent="Pen" instance=ExtResource("6_jimtd")]
+[node name="Interactable" parent="Pen" instance=ExtResource("10_4i7x8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pen/Interactable"]
 position = Vector2(5.5, 3)
 shape = SubResource("RectangleShape2D_oe41x")
 debug_color = Color(0.396506, 0.469582, 1, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Pen"]
 position = Vector2(5.49999, 2)
 scale = Vector2(0.830097, 0.839378)
-texture = ExtResource("12_isx3d")
+texture = ExtResource("14_mf8j4")
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(80, 421)
-texture = ExtResource("3_6efru")
+texture = ExtResource("15_xv5e3")
 
-[node name="Portal" parent="." instance=ExtResource("15_gb4ba")]
+[node name="Portal" parent="." instance=ExtResource("16_3ei1w")]
 position = Vector2(489, 590)
 level_id = "test_samanta"
 link_id = "Link1"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(12.5, 10.5)
+shape = SubResource("RectangleShape2D_vd205")
+debug_color = Color(4.33177e-07, 0.643106, 0.30603, 0.42)
+
+[node name="Npc" parent="." instance=ExtResource("17_7njc4")]
+position = Vector2(567.855, -477.578)
+trigger_id = "talk1"
+
 [connection signal="interacted" from="Mouse/Interactable" to="Mouse" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Pen/Interactable" to="Pen" method="_on_interactable_interacted"]
+
+[editable path="Npc"]

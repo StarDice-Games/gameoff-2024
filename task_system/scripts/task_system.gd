@@ -12,8 +12,11 @@ var all_complete : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventSystem.task_completed.connect(task_completed)
+	EventSystem.task_update.connect(update_task_counter)
+	
 	hide_task_list()
-	pass # Replace with function body.
+	EventSystem.cutscene_started.connect(hide_task_list)
+	EventSystem.cutscene_finished.connect(show_task_list)
 
 func load_tasks(task_list : Array[Task]):
 	
@@ -50,6 +53,19 @@ func task_completed(task_id : String) :
 	#check if all task are complete
 	if check_all_task_completed() :
 		EventSystem.all_task_completed.emit()
+
+func update_task_counter(task_id : String) :
+	if not task_map.has(task_id) :
+		printerr("Task update ", task_id, " not found.")
+		return
+	var task = task_map[task_id]
+	var task_data = task["data"]
+	task_data.current_counter += 1
+	
+	task["ui"].update_counter(task_data)
+	
+	if task_data.current_counter >= task_data.counter_max:
+		EventSystem.task_completed.emit(task_id)
 
 func check_all_task_completed():
 	for key in task_map:

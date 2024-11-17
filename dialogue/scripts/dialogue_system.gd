@@ -53,6 +53,12 @@ func start_dialog(dialog : Array[DialogText]):
 
 func next_dialog():
 	if dialog_index < dialogs.size() - 1:
+		#set all the triggers, for the current one
+		var dialog_triggers = dialogs[dialog_index].triggers
+		if  dialog_triggers != null and dialog_triggers.size() > 0:
+			for trigger in dialog_triggers:
+				TriggersSystem.update_trigger(trigger.key, trigger.value)
+		
 		dialog_index += 1
 		text_index = 0
 		text_label.text = dialogs[dialog_index].dialogue_text[text_index]
@@ -60,6 +66,7 @@ func next_dialog():
 		image_character.texture = dialogs[dialog_index].character_image
 		text_label.visible_characters = 0
 		text_label.visible_ratio = 0
+		
 	else:
 		dialogue_box.hide()
 		started = false

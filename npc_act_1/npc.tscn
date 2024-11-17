@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxjpn016wk5vr"]
+[gd_scene load_steps=11 format=3 uid="uid://cxjpn016wk5vr"]
 
 [ext_resource type="Texture2D" uid="uid://k7vmromfr4wu" path="res://credits/Credits/Michele.png" id="1_53cnf"]
 [ext_resource type="Script" path="res://npc_act_1/scripts/npc.gd" id="1_3641o"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_834sl"]
 [ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://credits/Credits/Simone.png" id="3_jfqf1"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_fh53a"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_ye2d7"]
 
 [sub_resource type="Resource" id="Resource_m13sm"]
@@ -11,12 +12,14 @@ script = ExtResource("2_834sl")
 dialogue_text = Array[String](["Excuse me, but the museum's about to close. Could you please head out?"])
 character_image = ExtResource("3_jfqf1")
 text_name = "Night Guardian"
+triggers = Array[ExtResource("4_fh53a")]([])
 
 [sub_resource type="Resource" id="Resource_5jobv"]
 script = ExtResource("2_834sl")
 dialogue_text = Array[String](["Yep, I'll be out of here in 5 minutes."])
 character_image = ExtResource("1_53cnf")
 text_name = "Visitor"
+triggers = Array[ExtResource("4_fh53a")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
 size = Vector2(230, 228)
