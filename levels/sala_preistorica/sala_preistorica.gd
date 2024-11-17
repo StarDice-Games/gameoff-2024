@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 	pass
 
 func update_counter_talk(key: String, value : bool) -> void:
-	if key == "talk0" and value == true:
+	if key == "talk2" and value == true:
 		EventSystem.task_update.emit("first_tasks")

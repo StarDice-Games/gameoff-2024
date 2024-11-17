@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=14 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
+[ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_y43ya"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
@@ -26,6 +27,7 @@ text_name = "Boss"
 triggers = Array[ExtResource("9_rnho0")]([])
 
 [node name="Corridoio" type="Node2D"]
+script = ExtResource("1_w2gne")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)

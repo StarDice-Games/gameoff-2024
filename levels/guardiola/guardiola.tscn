@@ -5,20 +5,13 @@
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_sp484"]
+[ext_resource type="Resource" uid="uid://bplyxs3ic2kqp" path="res://task_system/test/first_tasks.tres" id="3_dpcsg"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
 [ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="5_t22vn"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_66euh"]
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_l03ko"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
-
-[sub_resource type="Resource" id="Resource_2kod8"]
-script = ExtResource("2_sp484")
-id = "first_tasks"
-description = "notify visitors of the museum's closure"
-complete = true
-counter_max = 4
-current_counter = 0
 
 [sub_resource type="Resource" id="Resource_2vvv8"]
 script = ExtResource("7_xu3vp")
@@ -58,7 +51,7 @@ triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5l3qm")])
 
 [node name="GuardiolaHall" type="Node2D"]
 script = ExtResource("1_mwtu7")
-first_tasks = Array[ExtResource("2_sp484")]([SubResource("Resource_2kod8")])
+first_tasks = Array[ExtResource("2_sp484")]([ExtResource("3_dpcsg")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)

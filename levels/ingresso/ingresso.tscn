@@ -37,7 +37,7 @@ region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 position = Vector2(1248, 611)
 scale = Vector2(0.33, 0.33)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_6piwv"), SubResource("Resource_g2p5k")])
-trigger_id = "talk1"
+trigger_id = "talk0"
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")

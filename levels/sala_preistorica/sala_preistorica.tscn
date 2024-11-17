@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=13 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
+[ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
 [ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="5_jho03"]
@@ -25,6 +26,7 @@ text_name = "Visitor"
 triggers = Array[ExtResource("8_ak5ax")]([])
 
 [node name="SalaPreistorica" type="Node2D"]
+script = ExtResource("1_m84jc")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
@@ -77,6 +79,6 @@ link_id = "North1"
 position = Vector2(979, 688)
 scale = Vector2(0.33, 0.33)
 dialog = Array[ExtResource("6_65n0p")]([SubResource("Resource_k845p"), SubResource("Resource_pmscw")])
-trigger_id = "talk1"
+trigger_id = "talk2"
 
 [editable path="Npc"]

@@ -80,6 +80,6 @@ text = "Sala Arte
 position = Vector2(1114, 625)
 scale = Vector2(0.33, 0.33)
 dialog = Array[ExtResource("7_pbrrj")]([SubResource("Resource_kln5w"), SubResource("Resource_0tmpo")])
-trigger_id = "talk1"
+trigger_id = "talk3"
 
 [editable path="Npc"]
