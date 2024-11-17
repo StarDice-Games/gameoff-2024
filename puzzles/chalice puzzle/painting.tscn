@@ -12,8 +12,8 @@
 [sub_resource type="Resource" id="Resource_5mtew"]
 script = ExtResource("2_ba2bi")
 id = "Chalice"
-description = ""
-complete = false
+description = "Find a chalice"
+complete = true
 
 [sub_resource type="Resource" id="Resource_k5gwa"]
 script = ExtResource("3_7wpa3")
