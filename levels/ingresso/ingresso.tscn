@@ -1,16 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=13 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Texture2D" uid="uid://ntqtfmjeryjh" path="res://resource/assets/placeholder/IMG_1054.jpg" id="1_0jj6l"]
+[ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="2_4lqhc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_rltts"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="6_lts7x"]
+
+[sub_resource type="Resource" id="Resource_6piwv"]
+script = ExtResource("3_fpr8x")
+dialogue_text = Array[String](["Sir, sorry to interrupt your visit, but we are closing. I kindly ask you to leave the museum."])
+character_image = ExtResource("4_rltts")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_twhkk")]([])
+
+[sub_resource type="Resource" id="Resource_g2p5k"]
+script = ExtResource("3_fpr8x")
+dialogue_text = Array[String](["Not a problem. Thanks to have told it to me"])
+character_image = ExtResource("6_lts7x")
+text_name = "Visitor"
+triggers = Array[ExtResource("5_twhkk")]([])
 
 [node name="Ingresso" type="Node2D"]
+script = ExtResource("1_8qsso")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 texture = ExtResource("1_0jj6l")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
+
+[node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
+position = Vector2(1248, 611)
+scale = Vector2(0.33, 0.33)
+dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_6piwv"), SubResource("Resource_g2p5k")])
+trigger_id = "talk1"
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
@@ -68,3 +95,5 @@ offset_right = 912.0
 offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "Ingresso"
+
+[editable path="Npc"]

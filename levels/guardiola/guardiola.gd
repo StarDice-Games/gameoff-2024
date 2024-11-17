@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var first_tasks : Array[Task]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,4 +10,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if TriggersSystem.check_trigger("first_boss_call", true):
+		TaskSystem.load_tasks(first_tasks)

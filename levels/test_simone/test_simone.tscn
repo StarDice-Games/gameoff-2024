@@ -148,7 +148,8 @@ texture = ExtResource("12_isx3d")
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
-position = Vector2(80, 421)
+position = Vector2(2, 334)
+scale = Vector2(0.722222, 0.713028)
 texture = ExtResource("3_6efru")
 
 [node name="Portal" parent="." instance=ExtResource("15_gb4ba")]

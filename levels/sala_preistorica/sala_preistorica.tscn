@@ -1,9 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=12 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="5_jho03"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_65n0p"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_dfso0"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="8_ak5ax"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="9_gvij8"]
+
+[sub_resource type="Resource" id="Resource_k845p"]
+script = ExtResource("6_65n0p")
+dialogue_text = Array[String](["Good evening Sir, we are closing, I need you to leave the museum."])
+character_image = ExtResource("7_dfso0")
+text_name = "Angelo"
+triggers = Array[ExtResource("8_ak5ax")]([])
+
+[sub_resource type="Resource" id="Resource_pmscw"]
+script = ExtResource("6_65n0p")
+dialogue_text = Array[String](["Ok, just give me another 5 minutes."])
+character_image = ExtResource("9_gvij8")
+text_name = "Visitor"
+triggers = Array[ExtResource("8_ak5ax")]([])
 
 [node name="SalaPreistorica" type="Node2D"]
 
@@ -53,3 +72,11 @@ text = "Sala Preistorica/Naturale"
 position = Vector2(1256, 809)
 level_id = "corridoio"
 link_id = "North1"
+
+[node name="Npc" parent="." instance=ExtResource("5_jho03")]
+position = Vector2(979, 688)
+scale = Vector2(0.33, 0.33)
+dialog = Array[ExtResource("6_65n0p")]([SubResource("Resource_k845p"), SubResource("Resource_pmscw")])
+trigger_id = "talk1"
+
+[editable path="Npc"]
