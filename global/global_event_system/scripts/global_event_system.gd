@@ -23,4 +23,4 @@ signal cutscene_started()
 signal cutscene_finished()
 
 #Triggers
-signal trigger_changed(task_id : String, value : bool)
+signal trigger_changed(key : String, value : bool)

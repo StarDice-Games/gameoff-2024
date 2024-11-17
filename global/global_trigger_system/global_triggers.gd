@@ -15,6 +15,13 @@ func update_trigger(key : String, value: bool):
 	triggers[key] = value
 	EventSystem.trigger_changed.emit(key, value)
 
+func toggle_trigger(key : String):
+	if not triggers.has(key):
+		printerr("Trigger ", key, " not present!")
+		return
+	triggers[key] = not triggers[key]
+	EventSystem.trigger_changed.emit(key, triggers[key])
+
 func check_trigger(key: String, value: bool) -> bool:
 	if not triggers.has(key):
 		printerr("Trigger ", key, " not present!")
