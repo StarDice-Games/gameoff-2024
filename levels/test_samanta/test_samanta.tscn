@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://ek7m3nosnsr8"]
+[gd_scene load_steps=8 format=3 uid="uid://ek7m3nosnsr8"]
 
 [ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_m77oh"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_inu6i"]
 [ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles/chalice puzzle/statue.tscn" id="4_7m2vr"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="5_bdooc"]
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles/chalice puzzle/painting.tscn" id="5_maaws"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="6_hqks2"]
 
+[sub_resource type="Resource" id="Resource_8pnwr"]
+script = ExtResource("2_inu6i")
+id = "Chalice"
+description = "Find a chalice"
+complete = false
+
 [node name="TestSamanta" type="Node2D"]
 script = ExtResource("1_m77oh")
+task = Array[ExtResource("2_inu6i")]([SubResource("Resource_8pnwr")])
 
 [node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_bdooc")]
 position = Vector2(918, -29)
@@ -23,21 +31,18 @@ statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3")
 
 [node name="Statue" parent="." instance=ExtResource("4_7m2vr")]
 position = Vector2(-816, 166)
-direction_statue = "Left"
 
 [node name="Statue2" parent="." instance=ExtResource("4_7m2vr")]
 position = Vector2(-554, 174)
-direction_statue = "Front"
 
 [node name="Statue3" parent="." instance=ExtResource("4_7m2vr")]
 position = Vector2(-289, 187)
-direction_statue = "Right"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -658.0
-offset_top = -463.0
-offset_right = -207.0
-offset_bottom = -258.0
+offset_left = -769.0
+offset_top = 305.0
+offset_right = -318.0
+offset_bottom = 510.0
 theme_override_font_sizes/font_size = 60
 text = "STATUES"
 horizontal_alignment = 1
