@@ -9,6 +9,8 @@ extends Node2D
 @onready var interactable = $Interactable
 @onready var label_pick = $Label
 
+var done = false
+
 func _ready() -> void:
 	interactable.hide()
 
@@ -22,17 +24,21 @@ func _process(delta: float) -> void:
 		opened_painting()
 
 func opened_painting():
-	var open
+	var open = true
+	
 	for i in range(0,3):
-		open = statues[i].direction_statue == combination[i]
+		var check = statues[i].direction_statue == combination[i]
+		open = check and open
 		print("position_statue", statues[i].direction_statue)
 		print("combination", combination[i])
+		
 	if open:
 		TriggersSystem.update_trigger("opened_painting", true)
 		
 
 func _on_interactable_player_enter() -> void:
-	label_pick.show()
+	if not done and TriggersSystem.check_trigger("opened_painting", true): 
+		label_pick.show()
 
 
 func _on_interactable_player_exit() -> void:
@@ -40,8 +46,10 @@ func _on_interactable_player_exit() -> void:
 
 
 func _on_interactable_interacted() -> void:
-	InventorySystem.pick_up(item_data)
-	EventSystem.task_completed.emit(task_chalice.id)
-	DialogueSystem.start_dialog(dialog)
-	interactable.hide()
+	if not done and TriggersSystem.check_trigger("opened_painting", true):
+		InventorySystem.pick_up(item_data)
+		EventSystem.task_completed.emit(task_chalice.id)
+		DialogueSystem.start_dialog(dialog)
+		interactable.hide()
+		done = true
 	

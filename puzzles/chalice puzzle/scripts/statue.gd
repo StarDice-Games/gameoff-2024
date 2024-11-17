@@ -16,7 +16,7 @@ func _ready() -> void:
 		sprite_back.hide()
 		sprite_left.hide()
 		sprite_right.hide()
-		position_statue[counter_position]
+		direction_statue = position_statue[counter_position]
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
