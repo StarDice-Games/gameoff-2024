@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=10 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_wow0x"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="5_dkjy6"]
 [ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="6_ico4y"]
+[ext_resource type="Script" path="res://levels/guardiola/scripts/testing_task_magic_book.gd" id="7_hme1q"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="8_xsn22"]
+[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="9_5aa4e"]
 
 [node name="GuardiolaHall" type="Node2D"]
 
@@ -45,3 +48,7 @@ position = Vector2(1540, 192)
 
 [node name="GuardarobaGuardiano" parent="." instance=ExtResource("6_ico4y")]
 position = Vector2(333, 545)
+
+[node name="TestingTaskMagicBook" type="Node2D" parent="."]
+script = ExtResource("7_hme1q")
+task = Array[ExtResource("8_xsn22")]([ExtResource("9_5aa4e")])

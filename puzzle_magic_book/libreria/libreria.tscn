@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://dufkn0f3l1qfb"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/libreria/scripts/libreria.gd" id="1_fouxy"]
+[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="2_vfy3x"]
+[ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="3_s2cr7"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_gnrwr"]
+[ext_resource type="Resource" uid="uid://drf6ioll4woe6" path="res://puzzle_magic_book/dialogs/missing_key.tres" id="5_1su1b"]
+[ext_resource type="Resource" uid="uid://f0gm0n7j0l15" path="res://puzzle_magic_book/dialogs/player_monolog_book.tres" id="6_7yf2r"]
+[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="6_xvvmi"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_gnewj"]
+[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="7_u6wme"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="8_5gc14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
+size = Vector2(61, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
+size = Vector2(61, 66)
+
+[node name="Libreria" type="StaticBody2D"]
+script = ExtResource("1_fouxy")
+magic_book_item = ExtResource("2_vfy3x")
+key_item = ExtResource("3_s2cr7")
+need_code_dialog = Array[ExtResource("4_gnrwr")]([ExtResource("5_1su1b")])
+player_monolog = Array[ExtResource("4_gnrwr")]([ExtResource("6_7yf2r")])
+task_book = ExtResource("7_u6wme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_k1qxw")
+
+[node name="Open" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0.5)
+scale = Vector2(0.328125, 0.401198)
+texture = ExtResource("6_xvvmi")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.300971, 0.34715)
+texture = ExtResource("7_gnewj")
+
+[node name="Interactable" parent="." instance=ExtResource("8_5gc14")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_y8ulm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -61.0
+offset_right = 31.0
+offset_bottom = -38.0
+text = "Interact"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
