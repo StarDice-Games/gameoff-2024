@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1124l3cpps2k"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_ooyay"]
-[ext_resource type="Texture2D" uid="uid://s5npvo36k6s1" path="res://player/images/minidaemon.png" id="2_g5c41"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_r27oj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bppr6"]
 size = Vector2(128, 128)
@@ -15,13 +15,9 @@ motion_mode = 1
 script = ExtResource("1_ooyay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-texture = ExtResource("2_g5c41")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+texture = ExtResource("2_r27oj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_bppr6")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

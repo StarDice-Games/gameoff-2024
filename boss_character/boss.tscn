@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfo4n3iv7fm6v"]
+
+[ext_resource type="Script" path="res://boss_character/script/boss.gd" id="1_3b1qg"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://credits/Credits/Kevin.png" id="1_duwa6"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_kwpmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc4v3"]
+size = Vector2(217, 206)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm60"]
+size = Vector2(251, 243)
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_3b1qg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -68.0
+offset_top = -194.0
+offset_right = 76.0
+offset_bottom = -111.0
+theme_override_font_sizes/font_size = 60
+text = "TALK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="boss" type="Sprite2D" parent="."]
+texture = ExtResource("1_duwa6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_pc4v3")
+
+[node name="Interactable" parent="." instance=ExtResource("3_kwpmc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(1.5, 3.5)
+shape = SubResource("RectangleShape2D_wrm60")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
