@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://btpwdekddbacl"]
+
+[ext_resource type="Script" path="res://puzzles/chalice puzzle/scripts/painting.gd" id="1_h8pmy"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
+[ext_resource type="Texture2D" uid="uid://1ihoqo3wesse" path="res://puzzles/chalice puzzle/images/unnamed (1).png" id="1_v7jrb"]
+
+[sub_resource type="Gradient" id="Gradient_tne00"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5sr3"]
+gradient = SubResource("Gradient_tne00")
+width = 128
+height = 128
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
+size = Vector2(159, 176)
+
+[node name="Painting" type="Node2D"]
+script = ExtResource("1_h8pmy")
+
+[node name="PaintingOpened" type="Sprite2D" parent="."]
+texture = ExtResource("1_v7jrb")
+
+[node name="PaintingClosed" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_h5sr3")
+
+[node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_uipc7")

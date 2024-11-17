@@ -9,13 +9,13 @@ extends Node2D
 var position_statue = ["Front", "Back", "Left", "Right"]
 var counter_position = 0
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#func _ready() -> void:
+	#pass # Replace with function body.
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass
 
 
 
@@ -31,24 +31,27 @@ func _on_interactable_interacted() -> void:
 	counter_position += 1
 	if counter_position >= position_statue.size():
 		counter_position = 0
-	print(position_statue[counter_position])
 	match position_statue[counter_position]: 
 		"Front":
+			direction_statue = "Front"
 			sprite_front.show()
 			sprite_back.hide()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Back":
+			direction_statue = "Back"
 			sprite_front.hide()
 			sprite_back.show()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Left":
+			direction_statue = "Left"
 			sprite_front.hide()
 			sprite_back.hide()
 			sprite_left.show()
 			sprite_right.hide()
 		"Right":
+			direction_statue = "Right"
 			sprite_front.hide()
 			sprite_back.hide()
 			sprite_left.hide()

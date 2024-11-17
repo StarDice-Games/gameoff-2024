@@ -4,4 +4,4 @@
 
 [node name="GlobalTriggers" type="Node"]
 script = ExtResource("1_nvmwc")
-keys = Array[String](["talked", "npc_mattia_talked"])
+keys = Array[String](["talked", "npc_mattia_talked", "opened_painting"])
