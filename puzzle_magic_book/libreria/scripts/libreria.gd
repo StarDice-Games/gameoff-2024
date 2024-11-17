@@ -61,7 +61,7 @@ func _on_interactable_interacted() -> void:
 	else :
 		InventorySystem.pick_up(magic_book_item)
 		picked_up_book = true
-		EventSystem.task_update.emit(task_book.id)
+		EventSystem.task_completed.emit(task_book.id)
 		TriggersSystem.update_trigger(final_trigger, true)
 		DialogueSystem.start_dialog(player_monolog)
 
