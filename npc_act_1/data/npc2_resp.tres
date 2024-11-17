@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="DialogText" load_steps=3 format=3 uid="uid://bfq1ve21ohvwq"]
+[gd_resource type="Resource" script_class="DialogText" load_steps=4 format=3 uid="uid://bfq1ve21ohvwq"]
 
 [ext_resource type="Texture2D" uid="uid://xcwf5re384c8" path="res://credits/Credits/Mattia.png" id="1_6rdlg"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="1_dcuv4"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="3_sx870"]
 
 [resource]
 script = ExtResource("1_dcuv4")
 dialogue_text = Array[String](["Va bene, ho capito"])
 character_image = ExtResource("1_6rdlg")
 text_name = "Mattia"
+triggers = Array[ExtResource("3_sx870")]([])

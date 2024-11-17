@@ -36,10 +36,10 @@ expand_mode = 2
 [node name="Label" type="Label" parent="Panel"]
 custom_minimum_size = Vector2(90, 30)
 layout_mode = 1
-offset_left = 132.0
-offset_top = 27.0
-offset_right = 342.0
-offset_bottom = 77.0
+offset_left = 111.0
+offset_top = 28.0
+offset_right = 321.0
+offset_bottom = 78.0
 text = "Task task very asdf wf asfas dfas df asdfas df a s dfasdfas dfasdf"
 autowrap_mode = 2
 clip_text = true
@@ -55,3 +55,12 @@ offset_right = 8.19501
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Counter" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 42.0
+offset_right = 369.0
+offset_bottom = 65.0
+text = "5/5"
+horizontal_alignment = 1

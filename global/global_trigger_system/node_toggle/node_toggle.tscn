@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://boxt3d6gkh840"]
+
+[ext_resource type="Script" path="res://global/global_trigger_system/node_toggle/scripts/node_toggle.gd" id="1_7tjxl"]
+
+[node name="NodeToggle" type="Node2D"]
+script = ExtResource("1_7tjxl")

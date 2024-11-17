@@ -1,64 +1,130 @@
-[gd_scene load_steps=10 format=3 uid="uid://1dtl451uouxy"]
+[gd_scene load_steps=17 format=3 uid="uid://dmudibg7mo7v5"]
 
-[ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_m77oh"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="4_5pj5m"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="5_bdooc"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="5_dxutt"]
-[ext_resource type="Texture2D" uid="uid://xcwf5re384c8" path="res://levels/credits/Credits/Mattia.png" id="5_puhyt"]
-[ext_resource type="Resource" uid="uid://ckdw6l61shpjf" path="res://npc_act_1/data/npc2_player.tres" id="6_be38s"]
-[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="6_hqks2"]
-[ext_resource type="Resource" uid="uid://bfq1ve21ohvwq" path="res://npc_act_1/data/npc2_resp.tres" id="7_iyyhc"]
+[ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_i2h3o"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="2_lobq4"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_sx5e7"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_upk1u"]
+[ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="4_wldul"]
+[ext_resource type="Texture2D" uid="uid://xcwf5re384c8" path="res://levels/credits/Credits/Mattia.png" id="8_r1lso"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="10_31avi"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="13_6okvm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fd28s"]
-size = Vector2(197, 152)
+[sub_resource type="Resource" id="Resource_5jy0i"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["Ho delle task per te.", "Devi mandare via tutte le persone.", "Poi ti ricontatto."])
+character_image = ExtResource("13_6okvm")
+text_name = "Boss"
+
+[sub_resource type="Resource" id="Resource_x2y3w"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["Va bene, boss.", "Lasci fare a me."])
+character_image = ExtResource("2_sx5e7")
+text_name = "Angelo"
+
+[sub_resource type="Resource" id="Resource_bied4"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["Hai mandato via tutti?", "Bravo. Ora è il momento della tua promozione.", "Ecco le nuove task.", "Buona fortuna."])
+character_image = ExtResource("13_6okvm")
+text_name = "Boss"
+
+[sub_resource type="Resource" id="Resource_7tv5w"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["Ok, Boss"])
+character_image = ExtResource("2_sx5e7")
+text_name = "Angelo"
+
+[sub_resource type="Resource" id="Resource_813v0"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["Polizia."])
+character_image = ExtResource("8_r1lso")
+text_name = "Polizia"
+
+[sub_resource type="Resource" id="Resource_kisut"]
+script = ExtResource("2_upk1u")
+dialogue_text = Array[String](["..."])
+character_image = ExtResource("2_sx5e7")
+text_name = "Angelo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5k3p"]
+size = Vector2(79, 1655.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8t8y"]
+size = Vector2(593, 54)
 
 [node name="TestSamanta" type="Node2D"]
-script = ExtResource("1_m77oh")
+script = ExtResource("1_i2h3o")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 1382.0
-offset_top = 68.0
-offset_right = 1910.0
-offset_bottom = 169.0
-theme_override_font_sizes/font_size = 50
-text = "EXIT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_bdooc")]
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_lobq4")]
+visible = false
 player_ref = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("6_hqks2")]
+[node name="Player" parent="." instance=ExtResource("10_31avi")]
 unique_name_in_owner = true
+position = Vector2(783, 325)
 
-[node name="Npc" parent="." instance=ExtResource("4_5pj5m")]
-position = Vector2(476, 436)
-trigger_id = "talked"
+[node name="Telephone" parent="." instance=ExtResource("4_wldul")]
+position = Vector2(414, 335)
+dialog_1 = Array[ExtResource("2_upk1u")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w")])
+dialog_2 = Array[ExtResource("2_upk1u")]([SubResource("Resource_bied4"), SubResource("Resource_7tv5w")])
+dialog_3 = Array[ExtResource("2_upk1u")]([SubResource("Resource_813v0"), SubResource("Resource_kisut")])
+act = "act_1"
 
-[node name="CollisionShape2D" parent="Npc" index="2"]
-position = Vector2(0, 3)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-364, 341)
+collision_layer = 34
+collision_mask = 17
 
-[node name="Npc2" parent="." instance=ExtResource("4_5pj5m")]
-position = Vector2(1386, 564)
-dialog = Array[ExtResource("5_dxutt")]([ExtResource("6_be38s"), ExtResource("7_iyyhc")])
-trigger_id = "npc_mattia_talked"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-79, -359)
+shape = SubResource("RectangleShape2D_w5k3p")
+debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
 
-[node name="Sprite2D" parent="Npc2" index="1"]
-texture = ExtResource("5_puhyt")
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1369, 326)
+collision_layer = 34
+collision_mask = 17
 
-[node name="CollisionShape2D" parent="Npc2" index="2"]
-position = Vector2(0, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-79, -359)
+shape = SubResource("RectangleShape2D_w5k3p")
+debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1612, 102)
-collision_layer = 4
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-40, 755)
+rotation = 1.57079
+collision_layer = 34
+collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(26.5, 26)
-shape = SubResource("RectangleShape2D_fd28s")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-0.00012207, -462.25)
+shape = SubResource("RectangleShape2D_w5k3p")
+debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(-40, -806)
+rotation = 1.57079
+collision_layer = 34
+collision_mask = 17
 
-[editable path="Npc"]
-[editable path="Npc2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-0.00012207, -462.25)
+shape = SubResource("RectangleShape2D_w5k3p")
+debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
+
+[node name="PlayerWall" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerWall"]
+position = Vector2(-31, -93)
+shape = SubResource("RectangleShape2D_o8t8y")
+debug_color = Color(0.570881, 0.54139, 0.357895, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 31.0
+offset_right = 671.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 50
+text = "TELEPHONE"
+horizontal_alignment = 1
+vertical_alignment = 1
