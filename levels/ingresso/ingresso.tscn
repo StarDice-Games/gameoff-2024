@@ -12,12 +12,22 @@ texture = ExtResource("1_0jj6l")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 
-[node name="LinkSystem" parent="." instance=ExtResource("3_1w6um")]
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
+player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
 position = Vector2(1341, 895)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.769008, 0.954614, 0.43227, 1)
+metadata/_edit_lock_ = true
+
+[node name="ExitDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(1552, 624)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/ExitDoor"]
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.769008, 0.954614, 0.43227, 1)
@@ -45,6 +55,11 @@ link_id = "NorthDoor"
 position = Vector2(321, 556)
 level_id = "corridoio"
 link_id = "EastDoor"
+
+[node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
+position = Vector2(1685, 626)
+level_id = "esterno"
+link_id = "WestDoor"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 441.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b84wg6i277bjj"]
+[gd_scene load_steps=18 format=3 uid="uid://b84wg6i277bjj"]
 
 [ext_resource type="Script" path="res://global/global_level_system/scripts/level_system.gd" id="1_ud8ko"]
 [ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_si5r1"]
@@ -15,7 +15,14 @@
 [ext_resource type="Resource" uid="uid://ddpynhui63sjq" path="res://levels_data/sala_preistorica.tres" id="14_j1q4p"]
 [ext_resource type="Resource" uid="uid://tr6awgmea2cc" path="res://levels_data/sala_sacrificio.tres" id="15_k6ii7"]
 [ext_resource type="Resource" uid="uid://c0lrv1sp0m3ih" path="res://levels_data/ingresso.tres" id="16_3tjnc"]
+[ext_resource type="PackedScene" uid="uid://dtg6inbafw5go" path="res://levels/esterno/esterno.tscn" id="16_8sm8g"]
+
+[sub_resource type="Resource" id="Resource_0wohg"]
+script = ExtResource("2_si5r1")
+name = "esterno"
+description = "Description"
+scene = ExtResource("16_8sm8g")
 
 [node name="LevelSystem" type="Node2D"]
 script = ExtResource("1_ud8ko")
-levels_resources = Array[ExtResource("2_si5r1")]([ExtResource("3_5ipcx"), ExtResource("5_yjcb5"), ExtResource("6_aj6ys"), ExtResource("7_7kd8w"), ExtResource("8_m1mtw"), ExtResource("9_j0err"), ExtResource("10_02omp"), ExtResource("11_byuka"), ExtResource("12_8uaex"), ExtResource("13_18dg3"), ExtResource("14_j1q4p"), ExtResource("15_k6ii7"), ExtResource("16_3tjnc")])
+levels_resources = Array[ExtResource("2_si5r1")]([ExtResource("3_5ipcx"), ExtResource("5_yjcb5"), ExtResource("6_aj6ys"), ExtResource("7_7kd8w"), ExtResource("8_m1mtw"), ExtResource("9_j0err"), ExtResource("10_02omp"), ExtResource("11_byuka"), ExtResource("12_8uaex"), ExtResource("13_18dg3"), ExtResource("14_j1q4p"), ExtResource("15_k6ii7"), ExtResource("16_3tjnc"), SubResource("Resource_0wohg")])

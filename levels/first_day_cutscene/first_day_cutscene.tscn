@@ -1,17 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjdd0k2i2oo77"]
+[gd_scene load_steps=11 format=3 uid="uid://bjdd0k2i2oo77"]
 
 [ext_resource type="Script" path="res://levels/first_day_cutscene/scripts/first_day_cutscene.gd" id="1_5y6nj"]
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="2_8jnbb"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_kd45u"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_eb1w8"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_ta8ak"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_ei10b"]
+
+[sub_resource type="Resource" id="Resource_71uml"]
+script = ExtResource("2_kd45u")
+dialogue_text = Array[String](["Now it’s time to start. Let’s go to work…better not to arrive late the first day."])
+character_image = ExtResource("3_ta8ak")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_ei10b")]([])
+
+[sub_resource type="Animation" id="Animation_v4edi"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qjr35"]
+resource_name = "walk_inside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(981, 714), Vector2(675, 581)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1540a"]
+_data = {
+"RESET": SubResource("Animation_v4edi"),
+"walk_inside": SubResource("Animation_qjr35")
+}
 
 [node name="FirstDayCutscene" type="Node2D"]
 script = ExtResource("1_5y6nj")
+dialog_1 = Array[ExtResource("2_kd45u")]([SubResource("Resource_71uml")])
 
-[node name="Label" type="Label" parent="."]
-offset_left = 469.0
-offset_top = 388.0
-offset_right = 1353.0
-offset_bottom = 557.0
-theme_override_font_sizes/font_size = 60
-text = "BEAUTIFULL First Day CUT SCENE
-PRESS E to move on
-"
-horizontal_alignment = 1
+[node name="IngressoCopia" type="Sprite2D" parent="."]
+position = Vector2(972, 545)
+scale = Vector2(0.305, 0.308)
+texture = ExtResource("2_8jnbb")
+
+[node name="Player" parent="." instance=ExtResource("3_eb1w8")]
+position = Vector2(981, 714)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1540a")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

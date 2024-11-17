@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtg6inbafw5go"]
+
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="1_dw653"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_o3w55"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_x6rer"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="5_8nwid"]
+
+[node name="Esterno" type="Node2D"]
+
+[node name="IngressoCopia" type="Sprite2D" parent="."]
+position = Vector2(972, 545)
+scale = Vector2(0.305, 0.308)
+texture = ExtResource("1_dw653")
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
+player_ref = NodePath("../Player")
+
+[node name="WestDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(767, 586)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.435294, 0.580392, 0.34902, 1)
+metadata/_edit_lock_ = true
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_o3w55")]
+position = Vector2(962, 543)
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_x6rer")]
+unique_name_in_owner = true
+position = Vector2(1010, 696)
+
+[node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
+position = Vector2(667, 575)
+level_id = "ingresso"
+link_id = "Entrance"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 273.0
+offset_right = 912.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 40
+text = "Esterno"
