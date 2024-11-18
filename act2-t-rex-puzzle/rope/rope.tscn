@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://t3cdxwm3ovne"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
+[ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="1_g8klr"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="5_ccab1"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
+
+[sub_resource type="Resource" id="Resource_j4ugp"]
+script = ExtResource("3_lqtwb")
+id = "Rope"
+icon = ExtResource("1_g8klr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ob1"]
+size = Vector2(249, 234)
+
+[sub_resource type="Resource" id="Resource_diarw"]
+script = ExtResource("6_32ndp")
+key = "rope_picked"
+value = false
+
+[node name="Rope" type="Node2D"]
+script = ExtResource("1_cbrfo")
+item = SubResource("Resource_j4ugp")
+
+[node name="RopeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_g8klr")
+
+[node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_i2ob1")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -186.0
+offset_top = -277.0
+offset_right = 201.0
+offset_bottom = -131.0
+theme_override_font_sizes/font_size = 40
+text = "Pick up "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NodeToggle" parent="." instance=ExtResource("5_ccab1")]
+action = 1
+trigger = SubResource("Resource_diarw")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

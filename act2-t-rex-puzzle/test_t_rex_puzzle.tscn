@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3tvfils7qh8c"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/test_t_rex_puzzle.gd" id="1_hcet7"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="1_sy62g"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="2_7ityq"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_xqndx"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_qmyki"]
+[ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="6_loe55"]
+
+[sub_resource type="Resource" id="Resource_fvv24"]
+script = ExtResource("2_xqndx")
+id = "task1"
+description = "prendi il dente"
+complete = false
+counter_max = -1
+current_counter = -1
+
+[node name="TestTrexPuzzle" type="Node2D"]
+script = ExtResource("1_hcet7")
+task_list = Array[ExtResource("2_xqndx")]([SubResource("Resource_fvv24")])
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_7ityq")]
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("3_qmyki")]
+unique_name_in_owner = true
+position = Vector2(1737, 774)
+
+[node name="Rope" parent="." instance=ExtResource("1_sy62g")]
+position = Vector2(222, 959)
+
+[node name="TRexTrigger" parent="." instance=ExtResource("6_loe55")]
+position = Vector2(1253, 701)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1065.0
+offset_top = 455.0
+offset_right = 1388.0
+offset_bottom = 580.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "T-REX"
+horizontal_alignment = 1
+vertical_alignment = 1

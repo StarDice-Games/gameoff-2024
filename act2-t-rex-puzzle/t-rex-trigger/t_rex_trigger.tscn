@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://ymmamvc2fsqp"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_tiscj"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="3_atftb"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="3_b6jtx"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="5_bwi8w"]
+[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="6_sah2i"]
+[ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
+
+[sub_resource type="Resource" id="Resource_ixnau"]
+script = ExtResource("2_tiscj")
+dialogue_text = Array[String](["I need something to pull that tooth out."])
+character_image = ExtResource("3_b6jtx")
+text_name = "Angelo"
+triggers = Array[ExtResource("3_atftb")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72ipg"]
+size = Vector2(218, 211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5ejc"]
+size = Vector2(292, 240)
+
+[node name="TRexTrigger" type="Node2D"]
+script = ExtResource("1_4gv0c")
+dialog = Array[ExtResource("2_tiscj")]([SubResource("Resource_ixnau")])
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Label" type="Label" parent="StaticBody2D"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = -150.0
+offset_right = 117.0
+offset_bottom = -95.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TrexTooth" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("5_bwi8w")
+
+[node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+texture = ExtResource("6_sah2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5, -0.5)
+shape = SubResource("RectangleShape2D_72ipg")
+
+[node name="Interactable" parent="." instance=ExtResource("1_l5sr8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-11, 2)
+shape = SubResource("RectangleShape2D_v5ejc")
+
+[node name="TRexTooth" parent="." instance=ExtResource("8_i8kpf")]
+position = Vector2(213, 61)
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
