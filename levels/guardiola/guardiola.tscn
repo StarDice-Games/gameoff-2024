@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=22 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
@@ -37,17 +37,36 @@ character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ktixw")])
 
-[sub_resource type="Resource" id="Resource_5l3qm"]
-script = ExtResource("7_xu3vp")
-key = "Now I have to go, we’ll talk again later."
-value = false
-
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["You can start looking if someone is still in the museum. We're closing and it’s better to have no one here at night.", "Now I have to go, we’ll talk again later."])
 character_image = ExtResource("7_l03ko")
 text_name = "Boss"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5l3qm")])
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_q70dg"]
+script = ExtResource("7_xu3vp")
+key = "close_museum"
+value = true
+
+[sub_resource type="Resource" id="Resource_pfnfq"]
+script = ExtResource("7_xu3vp")
+key = "second_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_5eku6"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_q70dg"), SubResource("Resource_pfnfq")])
+
+[sub_resource type="Resource" id="Resource_ngl3b"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Chiudi il museo"])
+character_image = ExtResource("7_l03ko")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([])
 
 [node name="GuardiolaHall" type="Node2D"]
 script = ExtResource("1_mwtu7")
@@ -71,6 +90,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
 position = Vector2(1071, 615)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
+dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
 act = "act_1"
 
 [node name="LinkSystem" parent="." instance=ExtResource("1_booiy")]
