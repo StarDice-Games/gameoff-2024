@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_m77oh"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_inu6i"]
-[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/statue.tscn" id="4_7m2vr"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="4_7m2vr"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="5_bdooc"]
-[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/painting.tscn" id="5_maaws"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="5_maaws"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="6_hqks2"]
 
 [sub_resource type="Resource" id="Resource_8pnwr"]
