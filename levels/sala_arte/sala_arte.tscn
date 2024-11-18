@@ -1,15 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=23 format=3 uid="uid://ce2sb814fdfw0"]
 
-[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_bst2j"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_cc2si"]
+[ext_resource type="Texture2D" uid="uid://cakxqpc0ejtu6" path="res://resource/assets/rooms/Sala arte/Stanza.png" id="2_ccb5e"]
+[ext_resource type="Texture2D" uid="uid://b12uv8utlyon8" path="res://resource/assets/rooms/Sala arte/Luci candelabri.png" id="3_t1yt0"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_cd7wf"]
+[ext_resource type="Texture2D" uid="uid://ddmxsif11e3l5" path="res://resource/assets/rooms/Sala arte/Poltrona.png" id="4_ev18k"]
+[ext_resource type="Texture2D" uid="uid://dresh08c2u5go" path="res://resource/assets/rooms/Sala arte/Sedia 1.png" id="5_wprlo"]
 [ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="6_qxfam"]
+[ext_resource type="Texture2D" uid="uid://0yoeqnt17egg" path="res://resource/assets/rooms/Sala arte/Sedia 2.png" id="6_xpd3u"]
+[ext_resource type="Texture2D" uid="uid://qpbrgx820w3p" path="res://resource/assets/rooms/Sala arte/Sedia 3.png" id="7_cnr76"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="7_pbrrj"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="8_hsteu"]
+[ext_resource type="Texture2D" uid="uid://cgek87c06t8dv" path="res://resource/assets/rooms/Sala arte/Stanza_Arte-12(1).png" id="8_njpfj"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_qcg7i"]
+[ext_resource type="Texture2D" uid="uid://bdty7v33jqw1u" path="res://resource/assets/rooms/Sala arte/Quadro.png" id="9_yuw44"]
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="10_3rypy"]
+[ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
+[ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="11_js6pk"]
+[ext_resource type="Texture2D" uid="uid://1lu4h4dawdf5" path="res://resource/assets/rooms/Sala arte/Vaso.png" id="12_hksjq"]
 
 [sub_resource type="Resource" id="Resource_kln5w"]
 script = ExtResource("7_pbrrj")
@@ -28,14 +38,13 @@ triggers = Array[ExtResource("9_qcg7i")]([])
 [node name="SalaArte" type="Node2D"]
 script = ExtResource("1_t0sdk")
 
-[node name="Stanze" type="Sprite2D" parent="."]
+[node name="SpriteStanza" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
 scale = Vector2(0.64, 0.64)
-texture = ExtResource("1_bst2j")
-region_enabled = true
+texture = ExtResource("2_ccb5e")
 region_rect = Rect2(3338.71, 209.254, 2097.76, 1062.95)
 
-[node name="ColorRect" type="ColorRect" parent="Stanze"]
+[node name="ColorRect" type="ColorRect" parent="SpriteStanza"]
 z_index = -1
 anchors_preset = -1
 anchor_right = 0.00810682
@@ -44,7 +53,60 @@ offset_left = -1517.0
 offset_top = -831.0
 offset_right = 1525.0
 offset_bottom = 859.0
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="LuciCandelabri" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(-14.0625, -118.75)
+texture = ExtResource("3_t1yt0")
+
+[node name="Poltrona" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(-70.3125, 378.125)
+texture = ExtResource("4_ev18k")
+region_enabled = true
+region_rect = Rect2(862, 1041, 276, 114)
+
+[node name="Sedia1" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(6.25, -7.8125)
+texture = ExtResource("5_wprlo")
+
+[node name="Sedia2" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(-521.875, 167.188)
+texture = ExtResource("6_xpd3u")
+region_enabled = true
+region_rect = Rect2(483, 847, 76, 148)
+
+[node name="Sedia3" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(706.25, 448.438)
+texture = ExtResource("7_cnr76")
+region_enabled = true
+region_rect = Rect2(1710, 1101, 97, 165)
+
+[node name="StanzaArte-12(1)" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(-15.625, -112.5)
+texture = ExtResource("8_njpfj")
+
+[node name="Quadro" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(-5.25, -4.68738)
+texture = ExtResource("9_yuw44")
+
+[node name="Busto" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(232.813, 125)
+texture = ExtResource("10_xjssa")
+region_enabled = true
+region_rect = Rect2(1236, 757, 78, 195)
+
+[node name="Statua-CassettoAperto" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(498.438, 171.875)
+texture = ExtResource("11_js6pk")
+region_enabled = true
+region_rect = Rect2(1436, 639, 227, 545)
+
+[node name="Vaso" type="Sprite2D" parent="SpriteStanza"]
+position = Vector2(150, 359.375)
+texture = ExtResource("12_hksjq")
+region_enabled = true
+region_rect = Rect2(1158, 996, 101, 175)
 
 [node name="LinkSystem" parent="." instance=ExtResource("1_i1wci")]
 
@@ -67,19 +129,14 @@ position = Vector2(667, 865)
 level_id = "corridoio"
 link_id = "North2"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 432.0
-offset_top = 273.0
-offset_right = 703.0
-offset_bottom = 356.0
-theme_override_font_sizes/font_size = 60
-text = "Sala Arte
-"
-
 [node name="Npc" parent="." instance=ExtResource("6_qxfam")]
 position = Vector2(1114, 625)
 scale = Vector2(0.33, 0.33)
 dialog = Array[ExtResource("7_pbrrj")]([SubResource("Resource_kln5w"), SubResource("Resource_0tmpo")])
 trigger_id = "talk3"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.343338, 0.445565, 0.999296, 0.956863)
 
 [editable path="Npc"]
