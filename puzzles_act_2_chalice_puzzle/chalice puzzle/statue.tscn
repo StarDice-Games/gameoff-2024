@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhy01qy7khi6"]
+
+[ext_resource type="Texture2D" uid="uid://s5npvo36k6s1" path="res://player/images/minidaemon.png" id="1_8o6jp"]
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/scripts/statue.gd" id="1_hwkmv"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_8071q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lifky"]
+size = Vector2(144, 154)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhj60"]
+radius = 117.652
+
+[node name="Statue" type="Node2D"]
+script = ExtResource("1_hwkmv")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -23.0
+offset_top = -113.0
+offset_right = 38.0
+offset_bottom = -90.0
+text = "Interact"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="statue front" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_8o6jp")
+region_enabled = true
+region_rect = Rect2(131.046, 130.363, 29.39, 30.7895)
+
+[node name="statue back" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("1_8o6jp")
+region_enabled = true
+region_rect = Rect2(101, -5, 27, 35)
+
+[node name="statue left" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("1_8o6jp")
+region_enabled = true
+region_rect = Rect2(26, 193, 25, 31)
+
+[node name="statue right" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("1_8o6jp")
+region_enabled = true
+region_rect = Rect2(170, 65, 29, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lifky")
+
+[node name="Interactable" parent="." instance=ExtResource("2_8071q")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_hhj60")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

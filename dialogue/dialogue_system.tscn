@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c84g4refe34fy"]
 
 [ext_resource type="Script" path="res://dialogue/scripts/dialogue_system.gd" id="1_5otb8"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://credits/Credits/Simone.png" id="2_mf8pt"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_mf8pt"]
 
 [node name="DialogueSystem" type="Node2D"]
 script = ExtResource("1_5otb8")

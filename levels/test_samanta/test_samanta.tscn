@@ -1,46 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://1dtl451uouxy"]
+[gd_scene load_steps=8 format=3 uid="uid://ek7m3nosnsr8"]
 
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_skixv"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_sx5e7"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_upk1u"]
-[ext_resource type="PackedScene" uid="uid://dfo4n3iv7fm6v" path="res://boss_character/boss.tscn" id="3_m2nwq"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="5_xaul7"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_0whph"]
-[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="10_31avi"]
+[ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_m77oh"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_inu6i"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/statue.tscn" id="4_7m2vr"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="5_bdooc"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/painting.tscn" id="5_maaws"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="6_hqks2"]
 
-[sub_resource type="Resource" id="Resource_jt6n7"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Hai un altro lavoro da fare. ", "Metti tutti gli oggetti sull'altare."])
-character_image = ExtResource("5_xaul7")
-text_name = "Boss"
-triggers = Array[ExtResource("6_0whph")]([])
-
-[sub_resource type="Resource" id="Resource_8uwd5"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Ricevuto Boss."])
-character_image = ExtResource("2_sx5e7")
-text_name = "Angelo"
-triggers = Array[ExtResource("6_0whph")]([])
+[sub_resource type="Resource" id="Resource_8pnwr"]
+script = ExtResource("2_inu6i")
+id = "Chalice"
+description = "Find a chalice"
+complete = false
+counter_max = -1
+current_counter = -1
 
 [node name="TestSamanta" type="Node2D"]
+script = ExtResource("1_m77oh")
+task = Array[ExtResource("2_inu6i")]([SubResource("Resource_8pnwr")])
 
-[node name="Label" type="Label" parent="."]
-offset_left = -448.0
-offset_top = -165.0
-offset_right = -160.0
-offset_bottom = -78.0
-theme_override_font_sizes/font_size = 40
-text = "BOSS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_skixv")]
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_bdooc")]
+position = Vector2(918, -29)
 player_ref = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("10_31avi")]
+[node name="Player" parent="." instance=ExtResource("6_hqks2")]
 unique_name_in_owner = true
-position = Vector2(451, 363)
+position = Vector2(918, -29)
 
-[node name="Boss" parent="." instance=ExtResource("3_m2nwq")]
-position = Vector2(-290, 144)
-dialog = Array[ExtResource("2_upk1u")]([SubResource("Resource_jt6n7"), SubResource("Resource_8uwd5")])
+[node name="Painting" parent="." node_paths=PackedStringArray("statues") instance=ExtResource("5_maaws")]
+position = Vector2(-642, -111)
+statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3")]
+
+[node name="Statue" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-816, 166)
+
+[node name="Statue2" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-554, 174)
+
+[node name="Statue3" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-289, 187)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -769.0
+offset_top = 305.0
+offset_right = -318.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 60
+text = "STATUES"
+horizontal_alignment = 1
+vertical_alignment = 1
