@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://btpwdekddbacl"]
 
-[ext_resource type="Script" path="res://puzzles/chalice puzzle/scripts/painting.gd" id="1_h8pmy"]
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/scripts/painting.gd" id="1_h8pmy"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
-[ext_resource type="Texture2D" uid="uid://1ihoqo3wesse" path="res://puzzles/chalice puzzle/images/unnamed (1).png" id="1_v7jrb"]
+[ext_resource type="Texture2D" uid="uid://1ihoqo3wesse" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/images/unnamed (1).png" id="1_v7jrb"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_ba2bi"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_ey4hm"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_7wpa3"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhy01qy7khi6"]
 
 [ext_resource type="Texture2D" uid="uid://s5npvo36k6s1" path="res://player/images/minidaemon.png" id="1_8o6jp"]
-[ext_resource type="Script" path="res://puzzles/chalice puzzle/scripts/statue.gd" id="1_hwkmv"]
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice puzzle/scripts/statue.gd" id="1_hwkmv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_8071q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lifky"]
