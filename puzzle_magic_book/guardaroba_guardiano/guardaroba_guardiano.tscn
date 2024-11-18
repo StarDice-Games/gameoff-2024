@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://crs786q6e44hc"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/guardaroba_guardiano/scripts/guardaroba_guardiano.gd" id="1_3qbkv"]
+[ext_resource type="Resource" uid="uid://dj0y6v6u4wbx1" path="res://puzzle_magic_book/post-it-item/data/post-it.tres" id="2_on27d"]
+[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="2_pdqnw"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="3_75s1l"]
+[ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="3_c1jkd"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_rk0ve"]
+[ext_resource type="Resource" uid="uid://qverclhp08hk" path="res://puzzle_magic_book/dialogs/missing_code.tres" id="3_tvdpf"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="4_3cmhb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
+size = Vector2(61, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
+size = Vector2(61, 66)
+
+[node name="GuardarobaGuardiano" type="StaticBody2D"]
+script = ExtResource("1_3qbkv")
+post_it_item = ExtResource("2_on27d")
+key_item = ExtResource("3_c1jkd")
+need_code_dialog = Array[ExtResource("3_rk0ve")]([ExtResource("3_tvdpf")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_k1qxw")
+
+[node name="LockerOpen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0.5)
+scale = Vector2(0.328125, 0.401198)
+texture = ExtResource("2_pdqnw")
+
+[node name="LockerClosed" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(0.300971, 0.34715)
+texture = ExtResource("3_75s1l")
+
+[node name="Interactable" parent="." instance=ExtResource("4_3cmhb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_y8ulm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -61.0
+offset_right = 31.0
+offset_bottom = -38.0
+text = "Interact"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

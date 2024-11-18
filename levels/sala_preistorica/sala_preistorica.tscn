@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=6 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="2_w3ih5"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
+[ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="5_miqde"]
 
 [node name="SalaPreistorica" type="Node2D"]
 
@@ -35,3 +36,6 @@ text = "Sala Preistorica/Naturale"
 position = Vector2(1700, 1146)
 level_id = "corridoio"
 link_id = "North1"
+
+[node name="Libreria" parent="." instance=ExtResource("5_miqde")]
+position = Vector2(1383, 125)
