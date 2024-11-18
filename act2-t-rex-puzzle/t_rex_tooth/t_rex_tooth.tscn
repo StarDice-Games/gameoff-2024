@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqdeu1mk0x22h"]
+[gd_scene load_steps=14 format=3 uid="uid://cqdeu1mk0x22h"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="1_yddot"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="2_30adc"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_r0vbg"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="4_fbaxo"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_pxbun"]
+[ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
 
 [sub_resource type="Resource" id="Resource_8qbi7"]
@@ -32,6 +34,7 @@ value = false
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
 item = SubResource("Resource_8qbi7")
+dialog = Array[ExtResource("4_pxbun")]([ExtResource("5_03qiv")])
 task = SubResource("Resource_s6jlk")
 
 [node name="Tooth" type="Sprite2D" parent="."]

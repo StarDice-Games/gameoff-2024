@@ -1,22 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://ymmamvc2fsqp"]
+[gd_scene load_steps=11 format=3 uid="uid://ymmamvc2fsqp"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_tiscj"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="3_atftb"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="3_b6jtx"]
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="5_bwi8w"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="6_s7f21"]
 [ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="6_sah2i"]
 [ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
-
-[sub_resource type="Resource" id="Resource_ixnau"]
-script = ExtResource("2_tiscj")
-dialogue_text = Array[String](["I need something to pull that tooth out."])
-character_image = ExtResource("3_b6jtx")
-text_name = "Angelo"
-triggers = Array[ExtResource("3_atftb")]([])
 
 [sub_resource type="Resource" id="Resource_m12fb"]
 script = ExtResource("6_s7f21")
@@ -31,7 +21,6 @@ size = Vector2(292, 240)
 
 [node name="TRexTrigger" type="Node2D"]
 script = ExtResource("1_4gv0c")
-dialog = Array[ExtResource("2_tiscj")]([SubResource("Resource_ixnau")])
 item = SubResource("Resource_m12fb")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

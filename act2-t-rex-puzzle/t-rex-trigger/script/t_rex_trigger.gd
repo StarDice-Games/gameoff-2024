@@ -6,6 +6,23 @@ extends Node2D
 @export var item : ItemData
 
 var can_pull = false
+var has_rope = false
+
+func _ready() -> void:
+	has_rope = InventorySystem.check_item(item)
+	EventSystem.picked_up_item.connect(picked_rope)
+	EventSystem.dropped_item.connect(dropped_rope)
+	
+
+func picked_rope(item_id : String):
+	if item_id == item.id:
+		has_rope = true
+		print(item_id)
+		
+func dropped_rope(item_id : String):
+	if item_id == item.id:
+		has_rope = false
+
 func _on_interactable_player_enter() -> void:
 	label_text.show()
 
@@ -14,13 +31,12 @@ func _on_interactable_player_exit() -> void:
 
 func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("rope_picked", true):
-		if not can_pull:
+		if not can_pull and has_rope:
 			t_rex_tooth.hide()
 			t_rex_tooth_rope.show()
 			label_text.text = "Pull"
 			can_pull = true
-			if InventorySystem.check_item(item):
-				InventorySystem.drop_item(item)
+			InventorySystem.drop_item(item)
 		else:
 			can_pull = false
 			t_rex_tooth.show()
