@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ntqtfmjeryjh" path="res://resource/assets/placeholder/IMG_1054.jpg" id="1_0jj6l"]
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="2_4lqhc"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="2_4lqhc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
@@ -35,7 +35,6 @@ region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 
 [node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
 position = Vector2(1248, 611)
-scale = Vector2(0.33, 0.33)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_6piwv"), SubResource("Resource_g2p5k")])
 trigger_id = "talk0"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c84g4refe34fy"]
+[gd_scene load_steps=4 format=3 uid="uid://c84g4refe34fy"]
 
 [ext_resource type="Script" path="res://dialogue/scripts/dialogue_system.gd" id="1_5otb8"]
 [ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_mf8pt"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_wmpg3"]
 
 [node name="DialogueSystem" type="Node2D"]
 script = ExtResource("1_5otb8")
@@ -46,7 +47,8 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_wmpg3")
+theme_override_font_sizes/font_size = 35
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -90,4 +92,6 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_wmpg3")
+theme_override_font_sizes/normal_font_size = 25
 text = "jjjjjjjjjjjjjjjjjjjjjjjj"

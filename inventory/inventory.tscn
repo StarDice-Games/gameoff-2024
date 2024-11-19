@@ -17,11 +17,20 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
-layout_mode = 2
-offset_left = 10.0
-offset_top = 7.0
-offset_right = 516.0
-offset_bottom = 61.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -138.87
+offset_right = 253.0
+offset_bottom = -84.87
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.725, 1.725)
+pivot_offset = Vector2(253, 27)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0

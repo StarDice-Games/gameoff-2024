@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_cd7wf"]
 [ext_resource type="Texture2D" uid="uid://ddmxsif11e3l5" path="res://resource/assets/rooms/Sala arte/Poltrona.png" id="4_ev18k"]
 [ext_resource type="Texture2D" uid="uid://dresh08c2u5go" path="res://resource/assets/rooms/Sala arte/Sedia 1.png" id="5_wprlo"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="6_qxfam"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="6_qxfam"]
 [ext_resource type="Texture2D" uid="uid://0yoeqnt17egg" path="res://resource/assets/rooms/Sala arte/Sedia 2.png" id="6_xpd3u"]
 [ext_resource type="Texture2D" uid="uid://qpbrgx820w3p" path="res://resource/assets/rooms/Sala arte/Sedia 3.png" id="7_cnr76"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="7_pbrrj"]
@@ -47,7 +47,7 @@ region_rect = Rect2(3338.71, 209.254, 2097.76, 1062.95)
 [node name="Background" type="ColorRect" parent="SpriteStanza"]
 z_index = -1
 anchors_preset = -1
-anchor_left = 0.0337644
+anchor_left = 0.0256226
 anchor_top = 0.0147813
 anchor_right = 0.0256226
 anchor_bottom = 0.0366541
@@ -152,5 +152,8 @@ trigger_id = "talk3"
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.343338, 0.445565, 0.999296, 0.956863)
+
+[node name="Npc2" parent="." instance=ExtResource("6_qxfam")]
+position = Vector2(1001, 650)
 
 [editable path="Npc"]

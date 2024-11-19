@@ -3,6 +3,8 @@ extends Node2D
 @export var first_tasks : Array[Task]
 @export var second_tasks : Array[Task]
 
+@export var dialog_player : Array[DialogText]
+
 var second_task_loaded = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,10 +29,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if TriggersSystem.check_trigger("first_boss_call", true):
 		TaskSystem.load_tasks(first_tasks)
+		TriggersSystem.update_trigger("place_npc", true)
 		TriggersSystem.update_trigger("first_boss_call", false)
 	
 	if TriggersSystem.check_trigger("close_museum", true):
 		LevelSystem.load_level("close_museum_cutscene", true)
+		
+	if TriggersSystem.check_trigger("dialog_player", true):
+		DialogueSystem.start_dialog(dialog_player)
+		TriggersSystem.update_trigger("dialog_player", false)
 		
 	if TriggersSystem.check_trigger("second_boss_call", true):
 		TaskSystem.load_tasks(second_tasks)

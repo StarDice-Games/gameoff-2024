@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=32 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
@@ -15,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_l03ko"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
+
+[sub_resource type="Resource" id="Resource_bmfvq"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["teeeeeest"])
+character_image = ExtResource("7_x57c3")
+text_name = "teeesss"
+triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_k2cmd"]
 script = ExtResource("7_xu3vp")
@@ -80,12 +87,17 @@ character_image = ExtResource("7_l03ko")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
 
+[sub_resource type="Resource" id="Resource_5gf7c"]
+script = ExtResource("7_xu3vp")
+key = "dialog_player"
+value = true
+
 [sub_resource type="Resource" id="Resource_i7w26"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Ok, I’ll do it immediately."])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
-triggers = Array[ExtResource("7_xu3vp")]([])
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5gf7c")])
 
 [sub_resource type="Resource" id="Resource_ma26e"]
 script = ExtResource("6_66euh")
@@ -112,6 +124,7 @@ triggers = Array[ExtResource("7_xu3vp")]([])
 script = ExtResource("1_mwtu7")
 first_tasks = Array[ExtResource("2_sp484")]([ExtResource("3_dpcsg")])
 second_tasks = Array[ExtResource("2_sp484")]([ExtResource("4_7anjd"), ExtResource("4_2qtxl"), ExtResource("6_37nh2")])
+dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
@@ -125,16 +138,16 @@ z_index = -1
 anchors_preset = -1
 anchor_left = 0.00952381
 anchor_top = -0.016684
-anchor_right = 0.00952381
-anchor_bottom = 0.0218978
-offset_left = -1517.0
-offset_top = -831.0
-offset_right = 1525.0
-offset_bottom = 859.0
+anchor_right = 4.09784
+anchor_bottom = 3.44108
+offset_left = -3287.56
+offset_top = -2212.13
+offset_right = -245.563
+offset_bottom = -522.125
 metadata/_edit_use_anchors_ = true
 
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
-position = Vector2(1071, 615)
+position = Vector2(1096, 576)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
 dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
 dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])

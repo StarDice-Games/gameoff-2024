@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxrlpr7aaoasy"]
+[gd_scene load_steps=5 format=3 uid="uid://cxrlpr7aaoasy"]
 
 [ext_resource type="Script" path="res://task_system/scripts/task_ui.gd" id="1_4d36u"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://credits/Credits/Simone.png" id="1_okhwx"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="1_okhwx"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="3_7x7mi"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_be845"]
 
 [node name="TaskUi" type="Control"]
 custom_minimum_size = Vector2(200, 100)
@@ -40,6 +41,8 @@ offset_left = 111.0
 offset_top = 28.0
 offset_right = 321.0
 offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("4_be845")
+theme_override_font_sizes/font_size = 18
 text = "Task task very asdf wf asfas dfas df asdfas df a s dfasdfas dfasdf"
 autowrap_mode = 2
 clip_text = true
@@ -62,5 +65,8 @@ offset_left = 329.0
 offset_top = 42.0
 offset_right = 369.0
 offset_bottom = 65.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("4_be845")
+theme_override_font_sizes/font_size = 25
 text = "5/5"
 horizontal_alignment = 1

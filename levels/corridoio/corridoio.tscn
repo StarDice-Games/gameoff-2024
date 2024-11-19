@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=8 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -6,25 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_y43ya"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="6_hegxf"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="7_0t8md"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="8_eodiv"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_rnho0"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="10_ticvr"]
-
-[sub_resource type="Resource" id="Resource_eexpt"]
-script = ExtResource("7_0t8md")
-dialogue_text = Array[String](["Ma’am I need to ask you to leave, we are closing"])
-character_image = ExtResource("8_eodiv")
-text_name = "Angelo"
-triggers = Array[ExtResource("9_rnho0")]([])
-
-[sub_resource type="Resource" id="Resource_s6nxm"]
-script = ExtResource("7_0t8md")
-dialogue_text = Array[String](["Sure, just a second and I will leave"])
-character_image = ExtResource("10_ticvr")
-text_name = "Boss"
-triggers = Array[ExtResource("9_rnho0")]([])
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="7_qi5a4"]
 
 [node name="Corridoio" type="Node2D"]
 script = ExtResource("1_w2gne")
@@ -122,10 +104,6 @@ position = Vector2(333, 589)
 level_id = "sala sacrificio"
 link_id = "East"
 
-[node name="Npc" parent="." instance=ExtResource("6_hegxf")]
-position = Vector2(979, 688)
-scale = Vector2(0.33, 0.33)
-dialog = Array[ExtResource("7_0t8md")]([SubResource("Resource_eexpt"), SubResource("Resource_s6nxm")])
+[node name="Npc" parent="." instance=ExtResource("7_qi5a4")]
+position = Vector2(958, 697)
 trigger_id = "talk1"
-
-[editable path="Npc"]
