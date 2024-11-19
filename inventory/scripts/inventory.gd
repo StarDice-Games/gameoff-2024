@@ -5,12 +5,13 @@ var items_array : Array[ItemData] = []
 @onready var inventory_slot = $CanvasLayer/Control/Panel/HBoxContainer
 
 func _ready() -> void:
-	#hide_inventory()
+	
 	EventSystem.hide_hud.connect(hide_inventory)
 	EventSystem.show_hud.connect(show_inventory)
 	EventSystem.cutscene_started.connect(hide_inventory)
 	EventSystem.cutscene_finished.connect(show_inventory)
-
+	
+	
 func pick_up(data: ItemData):
 	items_array.append(data)
 	var slot = TextureRect.new()
@@ -18,26 +19,41 @@ func pick_up(data: ItemData):
 	#size is a placeholder
 	slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 	inventory_slot.add_child(slot)
-	print(items_array)
 	EventSystem.picked_up_item.emit(data.id)
 	
-#TODO maybe we can change this to not check for the texture
+
 func drop_item(data: ItemData):
-	var item_index = items_array.find(data)
-	if item_index != -1:
-		items_array.remove_at(item_index)
-	print(items_array)
-	var slots = inventory_slot.get_child_count()
-	for slot in range(slots -1, -1, -1):
-		var child = inventory_slot.get_child(slot)
-		if child.texture == data.icon:
-			inventory_slot.remove_child(child)
+	var item_index
+	for i in range(items_array.size()):
+		if items_array[i].id == data.id:
+			item_index = i
+			break
+	items_array.remove_at(item_index)
+	update_ui()
 	EventSystem.dropped_item.emit(data.id)
 
 func check_item(data: ItemData):
+	var res = false
 	for item in items_array:
-		if item == data:
-			return item
+		if item.id == data.id:
+			res = true
+			break
+	return res
+
+func update_ui():
+	inventory_slot.get_children().clear()
+	
+	if inventory_slot.get_child_count() > 0 :
+		for child in inventory_slot.get_children():
+			inventory_slot.remove_child(child)
+			child.queue_free()
+	
+	for item in items_array:
+		var slot = TextureRect.new()
+		slot.texture = item.icon
+		#size is a placeholder
+		slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		inventory_slot.add_child(slot)
 
 func hide_inventory():
 	inventory.hide()
