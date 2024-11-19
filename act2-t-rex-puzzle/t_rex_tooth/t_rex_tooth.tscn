@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqdeu1mk0x22h"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="1_yddot"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_5i2ek"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="2_30adc"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_r0vbg"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="4_fbaxo"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_pxbun"]
+[ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
+
+[sub_resource type="Resource" id="Resource_8qbi7"]
+script = ExtResource("3_r0vbg")
+id = "Tooth"
+icon = ExtResource("2_5i2ek")
+
+[sub_resource type="Resource" id="Resource_s6jlk"]
+script = ExtResource("4_fbaxo")
+id = "task1"
+description = "prendi il dente"
+complete = false
+counter_max = -1
+current_counter = -1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq5mh"]
+size = Vector2(150, 146)
+
+[sub_resource type="Resource" id="Resource_07s85"]
+script = ExtResource("2_30adc")
+key = "pulled_out"
+value = false
+
+[node name="TRexTooth" type="Node2D"]
+script = ExtResource("1_hgy0r")
+item = SubResource("Resource_8qbi7")
+dialog = Array[ExtResource("4_pxbun")]([ExtResource("5_03qiv")])
+task = SubResource("Resource_s6jlk")
+
+[node name="Tooth" type="Sprite2D" parent="."]
+texture = ExtResource("2_5i2ek")
+
+[node name="Interactable" parent="." instance=ExtResource("5_yg3y7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-3, -2)
+shape = SubResource("RectangleShape2D_kq5mh")
+
+[node name="NodeToggle" parent="." instance=ExtResource("1_yddot")]
+trigger = SubResource("Resource_07s85")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -79.0
+offset_top = -154.0
+offset_right = 72.0
+offset_bottom = -77.0
+theme_override_font_sizes/font_size = 30
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

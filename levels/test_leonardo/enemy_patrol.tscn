@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk1y1hf5aynst"]
+
+[ext_resource type="Script" path="res://levels/test_leonardo/EnemyPatrol.gd" id="1_2ckcx"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_bu5jb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
+size = Vector2(101.25, 96.25)
+
+[node name="EnemyPatrol" type="Area2D"]
+position = Vector2(6, 2)
+script = ExtResource("1_2ckcx")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.703125, 0.679688)
+texture = ExtResource("2_bu5jb")
+
+[node name="FieldOfViewLeft" type="Polygon2D" parent="."]
+position = Vector2(1896.73, -17.9142)
+scale = Vector2(-14.2478, 0.728573)
+color = Color(0.027451, 0.0392157, 1, 1)
+polygon = PackedVector2Array(143.723, -42.6667, 143.793, 75.3723, 133.054, 23.2155)
+
+[node name="FieldOfViewRight" type="Polygon2D" parent="."]
+position = Vector2(-2, -2)
+rotation = 3.14159
+color = Color(0.027451, 1, 1, 1)
+polygon = PackedVector2Array(-155, 42.9996, -154, -33.0004, 4.76837e-06, -2)
+
+[node name="FieldOfViewDown" type="Polygon2D" parent="."]
+position = Vector2(2, -2)
+color = Color(0.027451, 1, 0.133333, 1)
+polygon = PackedVector2Array(-51, 121, 38, 120, -1, 3)
+
+[node name="FieldOfViewUp" type="Polygon2D" parent="."]
+color = Color(0.993573, 0.827672, 0.864685, 1)
+polygon = PackedVector2Array(-50, -117, 43, -118, 1, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[connection signal="area_entered" from="." to="." method="_on_EnemyPatrol_area_entered"]

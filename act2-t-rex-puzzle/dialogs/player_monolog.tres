@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogText" load_steps=4 format=3 uid="uid://dq18md17nmpg1"]
+
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="1_uivkk"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_t8quu"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="3_g4bvi"]
+
+[resource]
+script = ExtResource("2_t8quu")
+dialogue_text = Array[String](["This tooth is weird."])
+character_image = ExtResource("1_uivkk")
+text_name = "Angelo"
+triggers = Array[ExtResource("3_g4bvi")]([])

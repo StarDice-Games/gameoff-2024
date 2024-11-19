@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://btpwdekddbacl"]
+
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
+[ext_resource type="Texture2D" uid="uid://1ihoqo3wesse" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/images/unnamed (1).png" id="1_v7jrb"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_ba2bi"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_ey4hm"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_7wpa3"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_rfxo3"]
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="4_52nv2"]
+
+[sub_resource type="Resource" id="Resource_5mtew"]
+script = ExtResource("2_ba2bi")
+id = "Chalice"
+description = "Find a chalice"
+complete = true
+
+[sub_resource type="Resource" id="Resource_k5gwa"]
+script = ExtResource("3_7wpa3")
+dialogue_text = Array[String](["Che ci fa questo calice qui?"])
+character_image = ExtResource("4_52nv2")
+text_name = "Angelo"
+
+[sub_resource type="Resource" id="Resource_0ojl7"]
+script = ExtResource("3_rfxo3")
+id = "Chalice"
+icon = ExtResource("2_ey4hm")
+
+[sub_resource type="Gradient" id="Gradient_tne00"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5sr3"]
+gradient = SubResource("Gradient_tne00")
+width = 128
+height = 128
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
+size = Vector2(159, 176)
+
+[node name="Painting" type="Node2D"]
+script = ExtResource("1_h8pmy")
+task_chalice = SubResource("Resource_5mtew")
+dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k5gwa")])
+item_data = SubResource("Resource_0ojl7")
+
+[node name="PaintingClosed" type="Sprite2D" parent="."]
+texture = ExtResource("1_v7jrb")
+
+[node name="PaintingOpened" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_h5sr3")
+
+[node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_uipc7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -60.0
+offset_top = -143.0
+offset_right = 54.0
+offset_bottom = -101.0
+theme_override_font_sizes/font_size = 30
+text = "PICK UP"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

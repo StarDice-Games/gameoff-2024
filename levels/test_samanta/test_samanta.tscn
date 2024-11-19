@@ -1,148 +1,51 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmudibg7mo7v5"]
+[gd_scene load_steps=8 format=3 uid="uid://ek7m3nosnsr8"]
 
-[ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_i2h3o"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="2_lobq4"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_sx5e7"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_upk1u"]
-[ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="4_wldul"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_vlgdl"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="8_fwc31"]
-[ext_resource type="Texture2D" uid="uid://xcwf5re384c8" path="res://levels/credits/Credits/Mattia.png" id="8_r1lso"]
-[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="10_31avi"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="13_6okvm"]
+[ext_resource type="Script" path="res://levels/test_samanta/scripts/test_samanta.gd" id="1_m77oh"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_inu6i"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="4_7m2vr"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="5_bdooc"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="5_maaws"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="6_hqks2"]
 
-[sub_resource type="Resource" id="Resource_2vvv8"]
-script = ExtResource("7_vlgdl")
-key = "first_boss_call"
-value = true
-
-[sub_resource type="Resource" id="Resource_5jy0i"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Ho delle task per te.", "Devi mandare via tutte le persone.", "Poi ti ricontatto."])
-character_image = ExtResource("13_6okvm")
-text_name = "Boss"
-triggers = Array[ExtResource("7_vlgdl")]([SubResource("Resource_2vvv8")])
-
-[sub_resource type="Resource" id="Resource_ktixw"]
-script = ExtResource("7_vlgdl")
-key = "first_boss_call"
-value = true
-
-[sub_resource type="Resource" id="Resource_x2y3w"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Va bene, boss.", "Lasci fare a me."])
-character_image = ExtResource("8_fwc31")
-text_name = "Angelo"
-triggers = Array[ExtResource("7_vlgdl")]([SubResource("Resource_ktixw")])
-
-[sub_resource type="Resource" id="Resource_bied4"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Hai mandato via tutti?", "Bravo. Ora è il momento della tua promozione.", "Ecco le nuove task.", "Buona fortuna."])
-character_image = ExtResource("13_6okvm")
-text_name = "Boss"
-triggers = Array[ExtResource("7_vlgdl")]([])
-
-[sub_resource type="Resource" id="Resource_7tv5w"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Ok, Boss"])
-character_image = ExtResource("2_sx5e7")
-text_name = "Angelo"
-triggers = Array[ExtResource("7_vlgdl")]([])
-
-[sub_resource type="Resource" id="Resource_813v0"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["Polizia."])
-character_image = ExtResource("8_r1lso")
-text_name = "Polizia"
-triggers = Array[ExtResource("7_vlgdl")]([])
-
-[sub_resource type="Resource" id="Resource_kisut"]
-script = ExtResource("2_upk1u")
-dialogue_text = Array[String](["..."])
-character_image = ExtResource("2_sx5e7")
-text_name = "Angelo"
-triggers = Array[ExtResource("7_vlgdl")]([])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5k3p"]
-size = Vector2(79, 1655.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8t8y"]
-size = Vector2(593, 54)
+[sub_resource type="Resource" id="Resource_8pnwr"]
+script = ExtResource("2_inu6i")
+id = "Chalice"
+description = "Find a chalice"
+complete = false
+counter_max = -1
+current_counter = -1
 
 [node name="TestSamanta" type="Node2D"]
-script = ExtResource("1_i2h3o")
+script = ExtResource("1_m77oh")
+task = Array[ExtResource("2_inu6i")]([SubResource("Resource_8pnwr")])
 
-[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_lobq4")]
-visible = false
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("5_bdooc")]
+position = Vector2(918, -29)
 player_ref = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("10_31avi")]
+[node name="Player" parent="." instance=ExtResource("6_hqks2")]
 unique_name_in_owner = true
-position = Vector2(783, 325)
+position = Vector2(918, -29)
 
-[node name="Telephone" parent="." instance=ExtResource("4_wldul")]
-position = Vector2(414, 335)
-dialog_1 = Array[ExtResource("2_upk1u")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w")])
-dialog_2 = Array[ExtResource("2_upk1u")]([SubResource("Resource_bied4"), SubResource("Resource_7tv5w")])
-dialog_3 = Array[ExtResource("2_upk1u")]([SubResource("Resource_813v0"), SubResource("Resource_kisut")])
-act = "act_1"
+[node name="Painting" parent="." node_paths=PackedStringArray("statues") instance=ExtResource("5_maaws")]
+position = Vector2(-642, -111)
+statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-364, 341)
-collision_layer = 34
-collision_mask = 17
+[node name="Statue" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-816, 166)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-79, -359)
-shape = SubResource("RectangleShape2D_w5k3p")
-debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
+[node name="Statue2" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-554, 174)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(1369, 326)
-collision_layer = 34
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-79, -359)
-shape = SubResource("RectangleShape2D_w5k3p")
-debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-40, 755)
-rotation = 1.57079
-collision_layer = 34
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-0.00012207, -462.25)
-shape = SubResource("RectangleShape2D_w5k3p")
-debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-40, -806)
-rotation = 1.57079
-collision_layer = 34
-collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-0.00012207, -462.25)
-shape = SubResource("RectangleShape2D_w5k3p")
-debug_color = Color(0.787039, 0.275809, 0.826464, 0.42)
-
-[node name="PlayerWall" type="StaticBody2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerWall"]
-position = Vector2(-31, -93)
-shape = SubResource("RectangleShape2D_o8t8y")
-debug_color = Color(0.570881, 0.54139, 0.357895, 0.42)
+[node name="Statue3" parent="." instance=ExtResource("4_7m2vr")]
+position = Vector2(-289, 187)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 208.0
-offset_top = 31.0
-offset_right = 671.0
-offset_bottom = 186.0
-theme_override_font_sizes/font_size = 50
-text = "TELEPHONE"
+offset_left = -769.0
+offset_top = 305.0
+offset_right = -318.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 60
+text = "STATUES"
 horizontal_alignment = 1
 vertical_alignment = 1

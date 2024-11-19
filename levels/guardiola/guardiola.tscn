@@ -186,3 +186,13 @@ text = "Guardiola"
 position = Vector2(850, 438)
 level_id = "ingresso"
 link_id = "SouthDoor"
+
+[node name="Post-it" parent="." instance=ExtResource("5_dkjy6")]
+position = Vector2(1540, 192)
+
+[node name="GuardarobaGuardiano" parent="." instance=ExtResource("6_ico4y")]
+position = Vector2(333, 545)
+
+[node name="TestingTaskMagicBook" type="Node2D" parent="."]
+script = ExtResource("7_hme1q")
+task = Array[ExtResource("8_xsn22")]([ExtResource("9_5aa4e")])

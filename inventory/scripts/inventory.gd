@@ -24,7 +24,9 @@ func pick_up(data: ItemData):
 #TODO maybe we can change this to not check for the texture
 func drop_item(data: ItemData):
 	var item_index = items_array.find(data)
-	items_array.remove_at(item_index)
+	if item_index != -1:
+		items_array.remove_at(item_index)
+	print(items_array)
 	var slots = inventory_slot.get_child_count()
 	for slot in range(slots -1, -1, -1):
 		var child = inventory_slot.get_child(slot)
