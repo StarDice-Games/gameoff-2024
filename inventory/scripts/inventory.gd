@@ -4,9 +4,8 @@ var items_array : Array[ItemData] = []
 @onready var inventory = $CanvasLayer/Control
 @onready var inventory_slot = $CanvasLayer/Control/Panel/HBoxContainer
 
-var index = 0
 func _ready() -> void:
-	#hide_inventory()
+	
 	EventSystem.hide_hud.connect(hide_inventory)
 	EventSystem.show_hud.connect(show_inventory)
 	EventSystem.cutscene_started.connect(hide_inventory)
@@ -22,16 +21,15 @@ func pick_up(data: ItemData):
 	inventory_slot.add_child(slot)
 	EventSystem.picked_up_item.emit(data.id)
 	
-#TODO use a for i in range , on the item_array so we can remove the find and move the remove_at out of the loop
+
 func drop_item(data: ItemData):
-	for i in items_array:
-		if i.id == data.id:
-			var item_index = items_array.find(i)
-			items_array.remove_at(item_index)
+	var item_index
+	for i in range(items_array.size()):
+		if items_array[i].id == data.id:
+			item_index = i
 			break
-	
+	items_array.remove_at(item_index)
 	update_ui()
-	
 	EventSystem.dropped_item.emit(data.id)
 
 func check_item(data: ItemData):
