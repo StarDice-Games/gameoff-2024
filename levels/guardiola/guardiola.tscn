@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=33 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
@@ -18,7 +18,7 @@
 
 [sub_resource type="Resource" id="Resource_bmfvq"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["teeeeeest"])
+dialogue_text = Array[String](["Later!? Maybe he will come for a visit."])
 character_image = ExtResource("7_x57c3")
 text_name = "teeesss"
 triggers = Array[ExtResource("7_xu3vp")]([])
@@ -106,12 +106,17 @@ character_image = ExtResource("7_l03ko")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
+[sub_resource type="Resource" id="Resource_fk41s"]
+script = ExtResource("7_xu3vp")
+key = "doors_locked"
+value = false
+
 [sub_resource type="Resource" id="Resource_2wo27"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
-triggers = Array[ExtResource("7_xu3vp")]([])
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_fk41s")])
 
 [sub_resource type="Resource" id="Resource_2rnl0"]
 script = ExtResource("6_66euh")

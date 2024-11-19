@@ -1,0 +1,178 @@
+[gd_scene load_steps=23 format=3 uid="uid://b43hax8kcwef"]
+
+[ext_resource type="Script" path="res://boss_kev/boss_kev.gd" id="1_inowa"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qes3u"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_0s62d"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="3_thp07"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_a4ro4"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_qhvsw"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_73qr7"]
+[ext_resource type="Texture2D" uid="uid://dtqfm48cw33o3" path="res://resource/assets/npc/npc_1/NPC bimba retro.png" id="8_ke8g7"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="9_5niit"]
+
+[sub_resource type="Resource" id="Resource_cts7d"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Finally you are here."])
+character_image = ExtResource("3_thp07")
+text_name = "Boss"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ixqye"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Yes!? What are you doing here?"])
+character_image = ExtResource("3_0s62d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_5b178"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Please Angelo, put the objects you found on the altar."])
+character_image = ExtResource("3_thp07")
+text_name = "Boss"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_6xilf"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Please Angelo, put the objects you found on the altar."])
+character_image = ExtResource("3_thp07")
+text_name = ""
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ycf8y"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Thanks Angelo, you were useful…more than you know.", " As I told you during the interview, you are the right person to fulfill our purposes…but I was not talking about the museum."])
+character_image = ExtResource("3_thp07")
+text_name = "Boss"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ptd48"]
+script = ExtResource("4_a4ro4")
+key = "boss_exit"
+value = true
+
+[sub_resource type="Resource" id="Resource_dwxef"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["What are you talking about!?"])
+character_image = ExtResource("3_0s62d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptd48")])
+
+[sub_resource type="Resource" id="Resource_apssx"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan. The contract, the night shift, your predecessor and his promotion…everything is connected ", "Now it’s time to call the other cult members. Stay here and don’t move…I’ll be back in a second.", "We will give you your deserved…", " Promotion..."])
+character_image = ExtResource("3_thp07")
+text_name = "Boss"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
+size = Vector2(41, 125)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
+radius = 89.0898
+
+[sub_resource type="Animation" id="Animation_5h4s2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.455, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.455, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_r3v0m"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.48, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 1.96667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.48, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 1.96667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djno7"]
+_data = {
+"RESET": SubResource("Animation_5h4s2"),
+"idle": SubResource("Animation_r3v0m")
+}
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_inowa")
+dialog1 = Array[ExtResource("2_qes3u")]([SubResource("Resource_cts7d"), SubResource("Resource_ixqye"), SubResource("Resource_5b178")])
+dialog2 = Array[ExtResource("2_qes3u")]([SubResource("Resource_6xilf")])
+dialog3 = Array[ExtResource("2_qes3u")]([SubResource("Resource_ycf8y"), SubResource("Resource_dwxef"), SubResource("Resource_apssx")])
+trigger_id = "talk_boss"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -41.0
+offset_top = -122.0
+offset_right = 24.0
+offset_bottom = -80.0
+theme = ExtResource("6_qhvsw")
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_73qr7")
+theme_override_font_sizes/font_size = 30
+text = "Talk E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-11, 62)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("8_ke8g7")
+offset = Vector2(22, -124)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_xmc1t")
+
+[node name="Interactable" parent="." instance=ExtResource("9_5niit")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-8, -1)
+shape = SubResource("CircleShape2D_ngufx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_djno7")
+}
+autoplay = "idle"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

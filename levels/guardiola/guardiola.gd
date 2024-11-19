@@ -8,6 +8,8 @@ extends Node2D
 var second_task_loaded = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	TriggersSystem.update_trigger("doors_locked", true)
+		
 	if TriggersSystem.check_trigger("act_1", false):
 		TriggersSystem.update_trigger("ring", true)
 	

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://qn7dtneyrwg"]
+
+[ext_resource type="Script" path="res://door_lock/door_lock.gd" id="1_2b8he"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_42sbi"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_12bgo"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_3q0w6"]
+
+[sub_resource type="Resource" id="Resource_1fggd"]
+script = ExtResource("2_42sbi")
+dialogue_text = Array[String](["Door locked"])
+character_image = ExtResource("3_12bgo")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_3q0w6")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12ubx"]
+size = Vector2(110, 71)
+
+[node name="DoorLock" type="Area2D"]
+position = Vector2(1358, 533)
+script = ExtResource("1_2b8he")
+dialog = Array[ExtResource("2_42sbi")]([SubResource("Resource_1fggd")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(29, 25.5)
+shape = SubResource("RectangleShape2D_12ubx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(29, 25.5)
+collision_layer = 2
+collision_mask = 17
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+visibility_layer = 31
+position = Vector2(-14, -0.5)
+shape = SubResource("RectangleShape2D_12ubx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
