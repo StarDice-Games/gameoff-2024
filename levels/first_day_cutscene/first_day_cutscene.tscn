@@ -44,11 +44,10 @@ dialog_1 = Array[ExtResource("2_kd45u")]([SubResource("Resource_71uml")])
 
 [node name="IngressoCopia" type="Sprite2D" parent="."]
 position = Vector2(972, 545)
-scale = Vector2(0.305, 0.308)
 texture = ExtResource("2_8jnbb")
 
 [node name="Player" parent="." instance=ExtResource("3_eb1w8")]
-position = Vector2(981, 714)
+position = Vector2(675, 581)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

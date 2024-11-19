@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=17 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_cd7wf"]
 [ext_resource type="Texture2D" uid="uid://ddmxsif11e3l5" path="res://resource/assets/rooms/Sala arte/Poltrona.png" id="4_ev18k"]
 [ext_resource type="Texture2D" uid="uid://dresh08c2u5go" path="res://resource/assets/rooms/Sala arte/Sedia 1.png" id="5_wprlo"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="6_qxfam"]
 [ext_resource type="Texture2D" uid="uid://0yoeqnt17egg" path="res://resource/assets/rooms/Sala arte/Sedia 2.png" id="6_xpd3u"]
 [ext_resource type="Texture2D" uid="uid://qpbrgx820w3p" path="res://resource/assets/rooms/Sala arte/Sedia 3.png" id="7_cnr76"]
 [ext_resource type="Texture2D" uid="uid://cgek87c06t8dv" path="res://resource/assets/rooms/Sala arte/Stanza_Arte-12(1).png" id="8_njpfj"]
@@ -111,10 +110,11 @@ texture = ExtResource("12_hksjq")
 region_enabled = true
 region_rect = Rect2(1158, 996, 101, 175)
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_i1wci")]
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
+player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-position = Vector2(684, 743)
+position = Vector2(533, 839)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
 offset_left = -12.0
@@ -128,17 +128,13 @@ unique_name_in_owner = true
 position = Vector2(628, 773)
 
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(667, 865)
+position = Vector2(510, 967)
 level_id = "corridoio"
 link_id = "North2"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.343338, 0.445565, 0.999296, 0.956863)
-
-[node name="Npc" parent="." instance=ExtResource("6_qxfam")]
-position = Vector2(1054, 707)
-scale = Vector2(0.685, 0.685)
 
 [node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("17_fgpv8")]
 visible = false

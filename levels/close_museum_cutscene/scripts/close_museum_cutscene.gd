@@ -2,6 +2,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	InventorySystem.hide_inventory()
+	TaskSystem.hide_task_list()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

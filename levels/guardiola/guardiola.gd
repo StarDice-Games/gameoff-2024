@@ -20,36 +20,32 @@ func _ready() -> void:
 		TriggersSystem.update_trigger("act_2", true)
 		TriggersSystem.update_trigger("ring", true)
 	
-	if TriggersSystem.check_trigger("act_3", true):
-		TriggersSystem.update_trigger("ring", true)
-	
-	if second_tasks[0].complete and second_tasks[1].complete and second_tasks[2].complete and TriggersSystem.check_trigger("act_4", false):
+	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("second_boss_call", true):
 		TriggersSystem.update_trigger("act_4", true)
 		TriggersSystem.update_trigger("ring", true)
 
-func trigger_update(key, value):
-	if key == "close_museum" and value == true:
-		LevelSystem.load_level("close_museum_cutscene", true)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if TriggersSystem.check_trigger("first_boss_call", true):
+func trigger_update(key, value):	
+	if key == "first_boss_call" and value == true:
 		TaskSystem.load_tasks(first_tasks)
 		TriggersSystem.update_trigger("place_npc", true)
 		TriggersSystem.update_trigger("first_boss_call", false)
-	
-	#if TriggersSystem.check_trigger("close_museum", true):
-		#LevelSystem.load_level("close_museum_cutscene", true)
 		
-	if TriggersSystem.check_trigger("dialog_player", true):
-		DialogueSystem.start_dialog(dialog_player)
-		TriggersSystem.update_trigger("dialog_player", false)
+	if key == "close_museum" and value == true:
+		$CloseMuseumCutscene/AnimationPlayer.play("close_museum")
 		
-	if TriggersSystem.check_trigger("second_boss_call", true):
+	if key == "second_boss_call" and value == true:
 		TaskSystem.load_tasks(second_tasks)
-		TriggersSystem.update_trigger("second_boss_call", false)
-		TriggersSystem.update_trigger("act_3", false)
 		
+	if key == "act_3" and value == true:
+		TriggersSystem.update_trigger("ring", true)
+	
+	if key == "dialog_player" and value == true:
+		DialogueSystem.start_dialog(dialog_player)
+	
+	
+		
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:		
 	if Input.is_action_just_pressed("debug_kev1"):
 		TaskSystem.update_task_counter(first_tasks[0].id)
 		TaskSystem.update_task_counter(first_tasks[0].id)
@@ -62,3 +58,13 @@ func _process(delta: float) -> void:
 		second_tasks[1].complete = true
 		second_tasks[2].complete = true
 	
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	TriggersSystem.update_trigger("close_museum", false)
+	TriggersSystem.update_trigger("act_3", true)
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	InventorySystem.hide_inventory()
+	TaskSystem.hide_task_list()

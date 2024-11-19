@@ -18,6 +18,7 @@ script = ExtResource("1_bv30h")
 
 [node name="Label" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = -88.0
 offset_top = -136.0
 offset_right = 109.0

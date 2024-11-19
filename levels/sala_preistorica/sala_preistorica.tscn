@@ -1,36 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=6 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="5_jho03"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_65n0p"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_dfso0"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="8_ak5ax"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="9_gvij8"]
-
-[sub_resource type="Resource" id="Resource_k845p"]
-script = ExtResource("6_65n0p")
-dialogue_text = Array[String](["Good evening Sir, we are closing, I need you to leave the museum."])
-character_image = ExtResource("7_dfso0")
-text_name = "Angelo"
-triggers = Array[ExtResource("8_ak5ax")]([])
-
-[sub_resource type="Resource" id="Resource_pmscw"]
-script = ExtResource("6_65n0p")
-dialogue_text = Array[String](["Ok, just give me another 5 minutes."])
-character_image = ExtResource("9_gvij8")
-text_name = "Visitor"
-triggers = Array[ExtResource("8_ak5ax")]([])
 
 [node name="SalaPreistorica" type="Node2D"]
 script = ExtResource("1_m84jc")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
-scale = Vector2(0.64, 0.64)
 texture = ExtResource("1_f8vd0")
 region_enabled = true
 region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
@@ -46,10 +26,11 @@ offset_right = 1525.0
 offset_bottom = 859.0
 metadata/_edit_use_anchors_ = true
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_7aig2")]
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
+player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-position = Vector2(1246, 687)
+position = Vector2(1418, 789)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
 offset_left = -16.0
@@ -71,14 +52,6 @@ theme_override_font_sizes/font_size = 60
 text = "Sala Preistorica/Naturale"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1256, 809)
+position = Vector2(1437, 947)
 level_id = "corridoio"
 link_id = "North1"
-
-[node name="Npc" parent="." instance=ExtResource("5_jho03")]
-position = Vector2(979, 688)
-scale = Vector2(0.33, 0.33)
-dialog = Array[ExtResource("6_65n0p")]([SubResource("Resource_k845p"), SubResource("Resource_pmscw")])
-trigger_id = "talk2"
-
-[editable path="Npc"]

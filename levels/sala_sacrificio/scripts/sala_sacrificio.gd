@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	TriggersSystem.update_trigger("doors_locked", true)
-	corridoio.level_id = ""
+	corridoio.level_id = "corridoio"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

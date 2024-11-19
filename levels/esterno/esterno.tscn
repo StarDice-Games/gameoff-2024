@@ -10,14 +10,13 @@
 
 [node name="IngressoCopia" type="Sprite2D" parent="."]
 position = Vector2(972, 545)
-scale = Vector2(0.305, 0.308)
 texture = ExtResource("1_dw653")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(767, 586)
+position = Vector2(394, 779)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -34,7 +33,7 @@ unique_name_in_owner = true
 position = Vector2(1010, 696)
 
 [node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
-position = Vector2(667, 575)
+position = Vector2(279, 698)
 level_id = "ingresso"
 link_id = "Entrance"
 

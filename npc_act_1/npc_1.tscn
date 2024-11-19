@@ -75,10 +75,11 @@ trigger_id = "talk1"
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -41.0
-offset_top = -122.0
-offset_right = 24.0
-offset_bottom = -80.0
+z_index = 1
+offset_left = -30.0
+offset_top = -254.0
+offset_right = 35.0
+offset_bottom = -212.0
 theme = ExtResource("6_hrxqu")
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("6_l7ykb")
