@@ -4,13 +4,15 @@ var items_array : Array[ItemData] = []
 @onready var inventory = $CanvasLayer/Control
 @onready var inventory_slot = $CanvasLayer/Control/Panel/HBoxContainer
 
+var index = 0
 func _ready() -> void:
 	#hide_inventory()
 	EventSystem.hide_hud.connect(hide_inventory)
 	EventSystem.show_hud.connect(show_inventory)
 	EventSystem.cutscene_started.connect(hide_inventory)
 	EventSystem.cutscene_finished.connect(show_inventory)
-
+	
+	
 func pick_up(data: ItemData):
 	items_array.append(data)
 	var slot = TextureRect.new()
@@ -18,16 +20,15 @@ func pick_up(data: ItemData):
 	#size is a placeholder
 	slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 	inventory_slot.add_child(slot)
-	print("pick", data.id)
 	EventSystem.picked_up_item.emit(data.id)
 	
 #TODO maybe we can change this to not check for the texture
 func drop_item(data: ItemData):
-	
+	for i in items_array:
+		if i.id == data.id:
+			var item_index = items_array.find(i)
+			items_array.remove_at(item_index)
 	var slots = inventory_slot.get_child_count()
-	var item_index = items_array.find(data)
-	items_array.pop_at(item_index)
-	print("dropped", data.id)
 	for slot in range(slots -1, -1, -1):
 		var child = inventory_slot.get_child(slot)
 		if child.texture == data.icon:
