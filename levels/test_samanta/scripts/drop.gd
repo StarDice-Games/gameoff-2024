@@ -18,9 +18,8 @@ func picked_up(item_id : String):
 	if item_id == item_sword.id:
 		has_item = true
 
-
 func _on_interactable_interacted() -> void:
-	if not has_item:
+	if not InventorySystem.check_item(item_sword):
 		print("not item", has_item)
 		return
 	else: 

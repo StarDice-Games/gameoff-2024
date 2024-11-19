@@ -25,20 +25,38 @@ func pick_up(data: ItemData):
 #TODO maybe we can change this to not check for the texture
 func drop_item(data: ItemData):
 	for i in items_array:
+		#print("counter:", @counterpos)
 		if i.id == data.id:
 			var item_index = items_array.find(i)
 			items_array.remove_at(item_index)
-	var slots = inventory_slot.get_child_count()
-	for slot in range(slots -1, -1, -1):
-		var child = inventory_slot.get_child(slot)
-		if child.texture == data.icon:
-			inventory_slot.remove_child(child)
+			break
+	
+	update_ui()
+	
 	EventSystem.dropped_item.emit(data.id)
 
 func check_item(data: ItemData):
+	var res = false
 	for item in items_array:
-		if item == data:
-			return item
+		if item.id == data.id:
+			res = true
+			break
+	return res
+
+func update_ui():
+	inventory_slot.get_children().clear()
+	
+	if inventory_slot.get_child_count() > 0 :
+		for child in inventory_slot.get_children():
+			inventory_slot.remove_child(child)
+			child.queue_free()
+	
+	for item in items_array:
+		var slot = TextureRect.new()
+		slot.texture = item.icon
+		#size is a placeholder
+		slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		inventory_slot.add_child(slot)
 
 func hide_inventory():
 	inventory.hide()
