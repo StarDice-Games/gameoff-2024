@@ -22,10 +22,9 @@ func pick_up(data: ItemData):
 	inventory_slot.add_child(slot)
 	EventSystem.picked_up_item.emit(data.id)
 	
-#TODO maybe we can change this to not check for the texture
+#TODO use a for i in range , on the item_array so we can remove the find and move the remove_at out of the loop
 func drop_item(data: ItemData):
 	for i in items_array:
-		#print("counter:", @counterpos)
 		if i.id == data.id:
 			var item_index = items_array.find(i)
 			items_array.remove_at(item_index)
