@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cv4o3lduu6frx"]
+[gd_scene load_steps=22 format=3 uid="uid://cv4o3lduu6frx"]
 
 [ext_resource type="Script" path="res://levels/test_samanta/scripts/item.gd" id="1_2pdas"]
 [ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_4hjt3"]
@@ -18,18 +18,24 @@ script = ExtResource("3_tav7h")
 id = "Item"
 icon = ExtResource("2_d550q")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvjq"]
-size = Vector2(645, 590.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj61o"]
+size = Vector2(135, 117)
 
 [sub_resource type="Resource" id="Resource_0g1v8"]
 script = ExtResource("3_tav7h")
-id = "Item 2"
+id = "Item2"
 icon = ExtResource("2_4hjt3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvjq"]
+size = Vector2(197, 175)
 
 [sub_resource type="Resource" id="Resource_kxpq6"]
 script = ExtResource("3_tav7h")
-id = "Item 3"
+id = "Item3"
 icon = ExtResource("8_5iha4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvph5"]
+size = Vector2(264, 241)
 
 [sub_resource type="Resource" id="Resource_dk0uc"]
 script = ExtResource("3_tav7h")
@@ -45,49 +51,75 @@ size = Vector2(224, 180)
 [node name="TestInventory" type="Node2D"]
 
 [node name="Item" type="Node2D" parent="."]
-position = Vector2(150, 337)
+position = Vector2(927, 712)
 script = ExtResource("1_2pdas")
 item = SubResource("Resource_rjk3v")
 
+[node name="Label" type="Label" parent="Item"]
+offset_left = -81.0
+offset_top = -145.0
+offset_right = 83.0
+offset_bottom = -70.0
+theme_override_font_sizes/font_size = 50
+text = "ITEM 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="Item"]
-position = Vector2(645, 685)
+scale = Vector2(0.168, 0.166)
 texture = ExtResource("2_d550q")
 
 [node name="Interactable" parent="Item" instance=ExtResource("3_j33tq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item/Interactable"]
-position = Vector2(612, 713)
-shape = SubResource("RectangleShape2D_1mvjq")
+shape = SubResource("RectangleShape2D_uj61o")
 
 [node name="Item2" type="Node2D" parent="."]
-position = Vector2(711, -378)
+position = Vector2(1329, 396)
 script = ExtResource("6_goybf")
 item = SubResource("Resource_0g1v8")
 
+[node name="Label" type="Label" parent="Item2"]
+offset_left = -98.0
+offset_top = -208.0
+offset_right = 108.0
+offset_bottom = -113.0
+theme_override_font_sizes/font_size = 50
+text = "ITEM 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="Item2"]
-position = Vector2(645, 685)
 texture = ExtResource("2_4hjt3")
 
 [node name="Interactable" parent="Item2" instance=ExtResource("3_j33tq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Interactable"]
-position = Vector2(612, 713)
 shape = SubResource("RectangleShape2D_1mvjq")
 
 [node name="Item3" type="Node2D" parent="."]
-position = Vector2(-277, -407)
+position = Vector2(542, 506)
 script = ExtResource("7_xtqm3")
 item = SubResource("Resource_kxpq6")
 
+[node name="Label" type="Label" parent="Item3"]
+offset_left = -98.0
+offset_top = -208.0
+offset_right = 108.0
+offset_bottom = -113.0
+theme_override_font_sizes/font_size = 50
+text = "ITEM 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="Item3"]
-position = Vector2(645, 685)
 texture = ExtResource("8_5iha4")
 
 [node name="Interactable" parent="Item3" instance=ExtResource("3_j33tq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Interactable"]
-position = Vector2(612, 713)
-shape = SubResource("RectangleShape2D_1mvjq")
+position = Vector2(-4, 11.5)
+shape = SubResource("RectangleShape2D_pvph5")
 
 [node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("4_a34yt")]
 visible = false
@@ -100,6 +132,17 @@ position = Vector2(1417, 872)
 position = Vector2(1701, 873)
 script = ExtResource("7_s0snv")
 item_sword = SubResource("Resource_dk0uc")
+
+[node name="Label2" type="Label" parent="Drop"]
+visible = false
+offset_left = -121.0
+offset_top = 82.0
+offset_right = 128.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 60
+text = "DROP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Drop"]
 texture = ExtResource("8_gt7pf")
@@ -114,7 +157,18 @@ shape = SubResource("RectangleShape2D_charv")
 position = Vector2(-6, -11)
 shape = SubResource("RectangleShape2D_8yets")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 1504.0
+offset_top = 647.0
+offset_right = 1877.0
+offset_bottom = 770.0
+theme_override_font_sizes/font_size = 60
+text = "DROP ITEM 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="interacted" from="Item/Interactable" to="Item" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Item2/Interactable" to="Item2" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Item3/Interactable" to="Item3" method="_on_interactable_interacted"]
 [connection signal="interacted" from="Drop/Interactable" to="Drop" method="_on_interactable_interacted"]
+[connection signal="player_exit" from="Drop/Interactable" to="Drop" method="_on_interactable_player_exit"]

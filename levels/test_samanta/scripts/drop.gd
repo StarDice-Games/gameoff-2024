@@ -21,8 +21,15 @@ func picked_up(item_id : String):
 func _on_interactable_interacted() -> void:
 	if not InventorySystem.check_item(item_sword):
 		print("not item", has_item)
+		$Label2.show()
+		$Label2.text = "not item"
 		return
 	else: 
 		InventorySystem.drop_item(item_sword)
-		hide()
+		$Label2.show()
+		$Label2.text = "dropped item"
 		drop_item = true
+
+
+func _on_interactable_player_exit() -> void:
+	$Label2.hide()
