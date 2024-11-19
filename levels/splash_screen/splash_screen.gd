@@ -11,4 +11,5 @@ func _process(delta):
 
 func _on_timer_timeout() -> void:
 	TriggersSystem.update_trigger("close_museum", false)
+	TriggersSystem.update_trigger("act_3", true)
 	LevelSystem.load_level("guardiola", true)

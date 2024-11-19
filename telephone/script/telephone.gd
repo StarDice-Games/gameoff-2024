@@ -8,6 +8,7 @@ extends Node2D
 @export var dialog_1 : Array[DialogText]
 @export var dialog_2 : Array[DialogText]
 @export var dialog_3 : Array[DialogText]
+@export var dialog_4 : Array[DialogText]
 @export var act : String
 
 
@@ -46,6 +47,9 @@ func start_dialog():
 		
 	if TriggersSystem.check_trigger("act_3", true):
 		DialogueSystem.start_dialog(dialog_3)
+	
+	if TriggersSystem.check_trigger("act_4", true):
+		DialogueSystem.start_dialog(dialog_4)
 
 
 func _on_timer_timeout() -> void:

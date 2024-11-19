@@ -1,19 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=30 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_sp484"]
-[ext_resource type="Resource" uid="uid://bplyxs3ic2kqp" path="res://task_system/test/first_tasks.tres" id="3_dpcsg"]
+[ext_resource type="Resource" uid="uid://bplyxs3ic2kqp" path="res://task_system/tasks/first_tasks.tres" id="3_dpcsg"]
+[ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="4_2qtxl"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="4_7anjd"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
 [ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="5_t22vn"]
+[ext_resource type="Resource" uid="uid://bwdldv1x4f3mm" path="res://task_system/tasks/magic_book.tres" id="6_37nh2"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_66euh"]
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_l03ko"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
 
-[sub_resource type="Resource" id="Resource_2vvv8"]
+[sub_resource type="Resource" id="Resource_k2cmd"]
 script = ExtResource("7_xu3vp")
 key = "first_boss_call"
 value = true
@@ -23,19 +26,14 @@ script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Good evening Angelo and welcome. I know your shift starts this evening, just make sure you take care of this place.", "Since your predecessor was…was…was promoted, here in the night is a complete mess "])
 character_image = ExtResource("7_l03ko")
 text_name = "Boss"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_2vvv8")])
-
-[sub_resource type="Resource" id="Resource_ktixw"]
-script = ExtResource("7_xu3vp")
-key = "first_boss_call"
-value = true
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
 
 [sub_resource type="Resource" id="Resource_x2y3w"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Thanks for the opportunity sir, I won’t let you down, I promise."])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ktixw")])
+triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
@@ -44,14 +42,9 @@ character_image = ExtResource("7_l03ko")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
-[sub_resource type="Resource" id="Resource_q70dg"]
+[sub_resource type="Resource" id="Resource_vu2f6"]
 script = ExtResource("7_xu3vp")
 key = "close_museum"
-value = true
-
-[sub_resource type="Resource" id="Resource_pfnfq"]
-script = ExtResource("7_xu3vp")
-key = "second_boss_call"
 value = true
 
 [sub_resource type="Resource" id="Resource_5eku6"]
@@ -59,18 +52,66 @@ script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_q70dg"), SubResource("Resource_pfnfq")])
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
 
 [sub_resource type="Resource" id="Resource_ngl3b"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["Chiudi il museo"])
+dialogue_text = Array[String](["Well done Angelo, from the cameras I’ve seen that all the remaining visitors are leaving", " Now you can close the museum."])
 character_image = ExtResource("7_l03ko")
 text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_71bqx"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_5y0n3"]
+script = ExtResource("7_xu3vp")
+key = "second_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_8tlt2"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["It’s me, I need to ask you a favor. As you can see, there is a list of objects I need on your desk. Please find them."])
+character_image = ExtResource("7_l03ko")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
+
+[sub_resource type="Resource" id="Resource_i7w26"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Ok, I’ll do it immediately."])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_ma26e"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Thanks, see you later. "])
+character_image = ExtResource("7_l03ko")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_2wo27"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_2rnl0"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String]([" It’s me again. Please bring the object you pick up to the room xxx. I will wait for you"])
+character_image = ExtResource("7_l03ko")
+text_name = ""
 triggers = Array[ExtResource("7_xu3vp")]([])
 
 [node name="GuardiolaHall" type="Node2D"]
 script = ExtResource("1_mwtu7")
 first_tasks = Array[ExtResource("2_sp484")]([ExtResource("3_dpcsg")])
+second_tasks = Array[ExtResource("2_sp484")]([ExtResource("4_7anjd"), ExtResource("4_2qtxl"), ExtResource("6_37nh2")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
@@ -81,6 +122,11 @@ region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
 z_index = -1
+anchors_preset = -1
+anchor_left = 0.00952381
+anchor_top = -0.016684
+anchor_right = 0.00952381
+anchor_bottom = 0.0218978
 offset_left = -1517.0
 offset_top = -831.0
 offset_right = 1525.0
@@ -91,6 +137,8 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1071, 615)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
 dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
+dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])
+dialog_4 = Array[ExtResource("6_66euh")]([SubResource("Resource_2wo27"), SubResource("Resource_2rnl0")])
 act = "act_1"
 
 [node name="LinkSystem" parent="." instance=ExtResource("1_booiy")]

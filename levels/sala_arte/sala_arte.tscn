@@ -44,65 +44,79 @@ scale = Vector2(0.64, 0.64)
 texture = ExtResource("2_ccb5e")
 region_rect = Rect2(3338.71, 209.254, 2097.76, 1062.95)
 
-[node name="ColorRect" type="ColorRect" parent="SpriteStanza"]
+[node name="Background" type="ColorRect" parent="SpriteStanza"]
 z_index = -1
 anchors_preset = -1
-anchor_right = 0.00810682
-anchor_bottom = 0.0706215
-offset_left = -1517.0
-offset_top = -831.0
-offset_right = 1525.0
-offset_bottom = 859.0
+anchor_left = 0.0337644
+anchor_top = 0.0147813
+anchor_right = 0.0256226
+anchor_bottom = 0.0366541
+offset_left = -1562.5
+offset_top = -865.625
+offset_right = 1479.5
+offset_bottom = 824.375
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="LuciCandelabri" type="Sprite2D" parent="SpriteStanza"]
-position = Vector2(-14.0625, -118.75)
+z_index = 1
+texture_filter = 1
+position = Vector2(9.375, -70.3125)
 texture = ExtResource("3_t1yt0")
 
 [node name="Poltrona" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(-70.3125, 378.125)
 texture = ExtResource("4_ev18k")
 region_enabled = true
 region_rect = Rect2(862, 1041, 276, 114)
 
 [node name="Sedia1" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(6.25, -7.8125)
 texture = ExtResource("5_wprlo")
 
 [node name="Sedia2" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(-521.875, 167.188)
 texture = ExtResource("6_xpd3u")
 region_enabled = true
 region_rect = Rect2(483, 847, 76, 148)
 
 [node name="Sedia3" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(706.25, 448.438)
 texture = ExtResource("7_cnr76")
 region_enabled = true
 region_rect = Rect2(1710, 1101, 97, 165)
 
 [node name="StanzaArte-12(1)" type="Sprite2D" parent="SpriteStanza"]
-position = Vector2(-15.625, -112.5)
+z_index = 1
+texture_filter = 1
+position = Vector2(9.375, -60.9375)
 texture = ExtResource("8_njpfj")
 
 [node name="Quadro" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(-5.25, -4.68738)
 texture = ExtResource("9_yuw44")
 
 [node name="Busto" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(232.813, 125)
 texture = ExtResource("10_xjssa")
 region_enabled = true
 region_rect = Rect2(1236, 757, 78, 195)
 
 [node name="Statua-CassettoAperto" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(498.438, 171.875)
 texture = ExtResource("11_js6pk")
 region_enabled = true
 region_rect = Rect2(1436, 639, 227, 545)
 
 [node name="Vaso" type="Sprite2D" parent="SpriteStanza"]
+texture_filter = 1
 position = Vector2(150, 359.375)
 texture = ExtResource("12_hksjq")
 region_enabled = true
