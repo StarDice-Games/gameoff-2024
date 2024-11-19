@@ -49,24 +49,24 @@ character_image = ExtResource("7_l03ko")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
-[sub_resource type="Resource" id="Resource_vu2f6"]
-script = ExtResource("7_xu3vp")
-key = "close_museum"
-value = true
-
 [sub_resource type="Resource" id="Resource_5eku6"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_vu2f6"]
+script = ExtResource("7_xu3vp")
+key = "close_museum"
+value = true
 
 [sub_resource type="Resource" id="Resource_ngl3b"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Well done Angelo, from the cameras I’ve seen that all the remaining visitors are leaving", " Now you can close the museum."])
 character_image = ExtResource("7_l03ko")
 text_name = "Boss"
-triggers = Array[ExtResource("7_xu3vp")]([])
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
 
 [sub_resource type="Resource" id="Resource_71bqx"]
 script = ExtResource("6_66euh")
