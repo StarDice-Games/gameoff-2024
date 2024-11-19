@@ -39,7 +39,7 @@ dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_6piwv"), SubResour
 trigger_id = "talk0"
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
-player_ref = NodePath("../Player")
+player_ref = NodePath("../Guardiola/Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
 position = Vector2(1341, 895)
@@ -68,14 +68,14 @@ offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("2_amsm6")]
-unique_name_in_owner = true
-position = Vector2(1587, 611)
-
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
 position = Vector2(1367, 1000)
 level_id = "guardiola"
 link_id = "NorthDoor"
+
+[node name="Player" parent="Guardiola" instance=ExtResource("2_amsm6")]
+unique_name_in_owner = true
+position = Vector2(220, -389)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
 position = Vector2(321, 556)

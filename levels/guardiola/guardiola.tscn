@@ -133,7 +133,6 @@ dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
-scale = Vector2(0.64, 0.64)
 texture = ExtResource("1_hm8vv")
 region_enabled = true
 region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
@@ -159,7 +158,8 @@ dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubReso
 dialog_4 = Array[ExtResource("6_66euh")]([SubResource("Resource_2wo27"), SubResource("Resource_2rnl0")])
 act = "act_1"
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_booiy")]
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_booiy")]
+player_ref = NodePath("../Player")
 
 [node name="NorthDoor" type="Node2D" parent="LinkSystem"]
 position = Vector2(835, 563)
@@ -183,6 +183,6 @@ theme_override_font_sizes/font_size = 40
 text = "Guardiola"
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(850, 438)
+position = Vector2(796, 424)
 level_id = "ingresso"
 link_id = "SouthDoor"
