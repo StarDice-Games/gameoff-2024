@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://buyj77nddcaam"]
 
-[ext_resource type="Script" path="res://levels/splash_screen/splash_screen.gd" id="1_4fcpl"]
+[ext_resource type="Script" path="res://levels/close_museum_cutscene/scripts/close_museum_cutscene.gd" id="1_ocxyi"]
 
 [node name="CloseMuseumCutScene" type="Control"]
 z_index = 10
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4fcpl")
+script = ExtResource("1_ocxyi")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
