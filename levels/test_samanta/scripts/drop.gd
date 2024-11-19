@@ -26,10 +26,16 @@ func _on_interactable_interacted() -> void:
 		return
 	else: 
 		InventorySystem.drop_item(item_sword)
-		$Label2.show()
-		$Label2.text = "dropped item"
+		$"../Label".text = "dropped item"
+		$Label.hide()
+		$Interactable.queue_free()
 		drop_item = true
 
 
 func _on_interactable_player_exit() -> void:
 	$Label2.hide()
+	$Label.hide()
+
+
+func _on_interactable_player_enter() -> void:
+	$Label.show()
