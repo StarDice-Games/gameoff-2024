@@ -31,8 +31,7 @@ func _process(delta: float) -> void:
 		return
 	
 	ray_cast.target_position = raycast_target 
-	print("gamepad", ray_cast.target_position)
-	print("keyboard", ray_cast.target_position)
+
 	
 
 	if ray_cast.is_colliding():

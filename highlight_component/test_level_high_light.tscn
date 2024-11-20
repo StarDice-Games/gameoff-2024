@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5udu7ucyu3av"]
+
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="1_c1ftu"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_test.tscn" id="2_2m87h"]
+[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://levels/test_leonardo/new_shader_material.tres" id="2_c7qyy"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_upibb"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_mj7qy"]
+
+[node name="TestLevelHighLight" type="Node2D"]
+
+[node name="Rope" parent="." instance=ExtResource("1_c1ftu")]
+
+[node name="RopeSprite" parent="Rope" index="0"]
+material = ExtResource("2_c7qyy")
+
+[node name="Node2D" parent="Rope" node_paths=PackedStringArray("sprite", "interactable") instance=ExtResource("2_2m87h")]
+collider_size = Vector2(300, 300)
+sprite = NodePath("../RopeSprite")
+interactable = NodePath("../Interactable")
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_upibb")]
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_mj7qy")]
+position = Vector2(664, 195)
+
+[connection signal="player_enter" from="Rope/Interactable" to="Rope/Node2D" method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Rope/Interactable" to="Rope/Node2D" method="_on_interactable_player_exit"]
+
+[editable path="Rope"]
