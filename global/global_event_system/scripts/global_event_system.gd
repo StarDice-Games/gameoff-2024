@@ -8,6 +8,7 @@ signal all_task_completed()
 signal set_volume(bus : String, volume : float)
 signal play_sound(audio_key : String, bus : String)
 signal play_music(audio_key : String)
+signal stop_sound(audio_key : String)
 
 #inventory
 signal picked_up_item(item_id : String)
@@ -24,3 +25,6 @@ signal cutscene_finished()
 
 #Triggers
 signal trigger_changed(key : String, value : bool)
+
+signal ring_phone(audio_id : String)
+signal stop_ring_phone(audio_id : String)
