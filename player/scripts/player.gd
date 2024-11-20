@@ -30,7 +30,10 @@ func _process(delta: float) -> void:
 	if in_cutscene:
 		return
 	
-	ray_cast.target_position = raycast_target
+	ray_cast.target_position = raycast_target 
+	print("gamepad", ray_cast.target_position)
+	print("keyboard", ray_cast.target_position)
+	
 
 	if ray_cast.is_colliding():
 		var area_collider = ray_cast.get_collider()
@@ -59,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	var x_direction := Input.get_axis("left", "right")
 	var y_direction := Input.get_axis("up", "down")
 	
+	
 	if x_direction > 0:
 		direction = GameState.PLAYER_DIR.RIGHT
 	if x_direction < 0:
@@ -83,8 +87,8 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(x_direction, y_direction) * SPEED
 	
 	if x_direction != 0 or y_direction != 0 :
-		raycast_target = Vector2(x_direction, y_direction) * interact_distance
-	
+		raycast_target = Vector2(x_direction, y_direction).normalized() * interact_distance
+		
 	velocity.move_toward(Vector2.ZERO, SPEED)
 
 	move_and_slide()
