@@ -1,4 +1,7 @@
 extends Node2D
+
+@export var audio_sfx = AudioStream
+
 @onready var text_prompt = $Label
 @onready var interactable_statue = $Interactable
 @onready var sprite_front = $"StaticBody2D/statue front"

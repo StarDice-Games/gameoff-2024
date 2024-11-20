@@ -15,6 +15,7 @@ func _on_interactable_player_exit() -> void:
 
 func _on_interactable_interacted() -> void:
 	InventorySystem.pick_up(item)
+	TriggersSystem.update_trigger("tooth_picked", true)
 	TaskSystem.task_completed(task.id)
 	DialogueSystem.start_dialog(dialog)
 	queue_free()

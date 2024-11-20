@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhy01qy7khi6"]
+[gd_scene load_steps=11 format=3 uid="uid://dhy01qy7khi6"]
 
 [ext_resource type="Texture2D" uid="uid://s5npvo36k6s1" path="res://player/images/minidaemon.png" id="1_8o6jp"]
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/statue.gd" id="1_hwkmv"]
+[ext_resource type="AudioStream" uid="uid://dbv4gg21xljrg" path="res://audio/sfx/magic_book/Drag_Statue_02.wav" id="2_2xrir"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_8071q"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="2_w38de"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_63dej"]
@@ -20,6 +21,7 @@ value = false
 
 [node name="Statue" type="Node2D"]
 script = ExtResource("1_hwkmv")
+audio_sfx = ExtResource("2_2xrir")
 
 [node name="Label" type="Label" parent="."]
 visible = false

@@ -32,6 +32,7 @@ func trigger_update(key, value):
 		
 	if key == "close_museum" and value == true:
 		$CloseMuseumCutscene/AnimationPlayer.play("close_museum")
+
 		
 	if key == "second_boss_call" and value == true:
 		TaskSystem.load_tasks(second_tasks)
@@ -63,6 +64,7 @@ func _process(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	TriggersSystem.update_trigger("close_museum", false)
 	TriggersSystem.update_trigger("act_3", true)
+	
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:

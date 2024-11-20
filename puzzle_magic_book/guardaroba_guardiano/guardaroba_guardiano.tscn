@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crs786q6e44hc"]
+[gd_scene load_steps=18 format=3 uid="uid://crs786q6e44hc"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/guardaroba_guardiano/scripts/guardaroba_guardiano.gd" id="1_3qbkv"]
 [ext_resource type="Resource" uid="uid://dj0y6v6u4wbx1" path="res://puzzle_magic_book/post-it-item/data/post-it.tres" id="2_on27d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://qverclhp08hk" path="res://puzzle_magic_book/dialogs/missing_code.tres" id="3_tvdpf"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="4_3cmhb"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_ra7mn"]
+[ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="8_7x1ur"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_6ffum"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_cu0pi"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_v7ll8"]
@@ -38,6 +39,7 @@ key_item = ExtResource("3_c1jkd")
 need_code_dialog = Array[ExtResource("3_rk0ve")]([ExtResource("3_tvdpf")])
 key_collected = Array[ExtResource("3_rk0ve")]([SubResource("Resource_s527r")])
 interact_pickup_text = "Pick up the key"
+audio_sfx = ExtResource("8_7x1ur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

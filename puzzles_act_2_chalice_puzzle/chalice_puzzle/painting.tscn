@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btpwdekddbacl"]
+[gd_scene load_steps=21 format=3 uid="uid://btpwdekddbacl"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_rfxo3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gdyyu"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_apwyo"]
+[ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="8_hscmr"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_16yyu"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_yv5tp"]
 
@@ -62,6 +63,7 @@ task_chalice = SubResource("Resource_5mtew")
 dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k5gwa")])
 open_dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k74jg")])
 item_data = SubResource("Resource_0ojl7")
+audio_sfx = ExtResource("8_hscmr")
 
 [node name="PaintingClosed" type="Sprite2D" parent="."]
 texture = ExtResource("1_v7jrb")

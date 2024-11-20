@@ -4,6 +4,7 @@ extends Node2D
 @onready var t_rex_tooth_rope = $StaticBody2D/TrexToothRope
 @export var dialog : Array[DialogText]
 @export var item : ItemData
+@export var audio_sfx = AudioStream
 
 var can_pull = false
 var has_rope = false
@@ -34,6 +35,7 @@ func _on_interactable_interacted() -> void:
 		if not can_pull and has_rope:
 			t_rex_tooth.hide()
 			t_rex_tooth_rope.show()
+			AudioSystem.play(audio_sfx)
 			label_text.text = "Pull"
 			can_pull = true
 			InventorySystem.drop_item(item)

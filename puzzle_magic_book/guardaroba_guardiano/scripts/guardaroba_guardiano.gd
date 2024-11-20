@@ -7,6 +7,7 @@ extends StaticBody2D
 @export var key_collected : Array[DialogText]
 @export var interact_text : String = "Interact"
 @export var interact_pickup_text : String = "Pick up"
+@export var audio_sfx = AudioStream
 
 @onready var interact_label = $Label
 @onready var open_sprite = $LockerOpen
@@ -52,6 +53,7 @@ func _on_interactable_interacted() -> void:
 		else :
 			open_sprite.show()
 			close_sprite.hide()
+			AudioSystem.play(audio_sfx)
 			InventorySystem.drop_item(post_it_item)
 			TriggersSystem.update_trigger(open_trigger, true)
 			interact_label.text = interact_pickup_text #update the label

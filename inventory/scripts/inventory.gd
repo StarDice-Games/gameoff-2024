@@ -3,6 +3,7 @@ extends Node2D
 var items_array : Array[ItemData] = []
 @onready var inventory = $CanvasLayer/Control
 @onready var inventory_slot = $CanvasLayer/Control/Panel/HBoxContainer
+@export var audio_sfx = AudioStream
 
 func _ready() -> void:
 	
@@ -19,6 +20,7 @@ func pick_up(data: ItemData):
 	#size is a placeholder
 	slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 	inventory_slot.add_child(slot)
+	AudioSystem.play(audio_sfx)
 	EventSystem.picked_up_item.emit(data.id)
 	
 

@@ -5,6 +5,7 @@ extends Node2D
 @export var open_dialog : Array[DialogText]
 @export var item_data : ItemData
 @export var combination = ["Left", "Front", "Right"]
+@export var audio_sfx = AudioStream
 @onready var painting_opened = $PaintingOpened
 @onready var painting_closed = $PaintingClosed
 @onready var interactable = $Interactable
@@ -34,6 +35,7 @@ func opened_painting():
 		print("combination", combination[i])
 		
 	if open:
+		AudioSystem.play(audio_sfx)
 		TriggersSystem.update_trigger("opened_painting", true)
 		DialogueSystem.start_dialog(open_dialog)
 
