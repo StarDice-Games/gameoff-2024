@@ -9,11 +9,10 @@ extends CharacterBody2D
 @onready var prompt_label = $Label
 
 func _ready() -> void:
-	pass
+	EventSystem.trigger_changed.connect(trigger_update)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_kev1"):
-		TriggersSystem.update_trigger("ritual_object_placed", true)
+	pass
 
 func _on_interactable_player_enter() -> void:
 		prompt_label.show()
@@ -30,4 +29,8 @@ func _on_interactable_interacted() -> void:
 		
 	if TriggersSystem.check_trigger("ritual_object_placed", true):
 		DialogueSystem.start_dialog(dialog3)
+
+func trigger_update(key, value):	
+	if key == "boss_exit" and value == true:
+		$CollisionShape2D.queue_free()
 		

@@ -12,9 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="5_t22vn"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_66euh"]
 [ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="6_atd8t"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="7_l03ko"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
+[ext_resource type="Texture2D" uid="uid://bt2v471ydnuv" path="res://resource/assets/enemy/Boss_Face_Obs.png" id="12_e3x06"]
 [ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="16_7xk1d"]
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
 [ext_resource type="AudioStream" uid="uid://b0n8kpjkerh0g" path="res://audio/sfx/various/Lock_Door_01.wav" id="18_is8n0"]
@@ -34,7 +34,7 @@ value = true
 [sub_resource type="Resource" id="Resource_5jy0i"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Good evening Angelo and welcome. I know your shift starts this evening, just make sure you take care of this place.", "Since your predecessor was…was…was promoted, here in the night is a complete mess "])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
 
@@ -48,7 +48,7 @@ triggers = Array[ExtResource("7_xu3vp")]([])
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["You can start looking if someone is still in the museum. We're closing and it’s better to have no one here at night.", "Now I have to go, we’ll talk again later."])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
@@ -67,7 +67,7 @@ value = true
 [sub_resource type="Resource" id="Resource_ngl3b"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Well done Angelo, from the cameras I’ve seen that all the remaining visitors are leaving", " Now you can close the museum."])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
 
@@ -86,7 +86,7 @@ value = true
 [sub_resource type="Resource" id="Resource_8tlt2"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["It’s me, I need to ask you a favor. As you can see, there is a list of objects I need on your desk. Please find them."])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
 
@@ -105,7 +105,7 @@ triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5gf7c")])
 [sub_resource type="Resource" id="Resource_ma26e"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Thanks, see you later. "])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
@@ -129,7 +129,7 @@ value = true
 [sub_resource type="Resource" id="Resource_2rnl0"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String]([" It’s me again. Please bring the object you pick up to the room xxx. I will wait for you"])
-character_image = ExtResource("7_l03ko")
+character_image = ExtResource("12_e3x06")
 text_name = ""
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
 
