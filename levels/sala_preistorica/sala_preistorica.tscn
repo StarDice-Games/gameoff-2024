@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=7 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="6_d7w1y"]
 
 [node name="SalaPreistorica" type="Node2D"]
 script = ExtResource("1_m84jc")
@@ -55,3 +56,6 @@ text = "Sala Preistorica/Naturale"
 position = Vector2(1437, 947)
 level_id = "corridoio"
 link_id = "North1"
+
+[node name="Rope" parent="." instance=ExtResource("6_d7w1y")]
+position = Vector2(963, 781)

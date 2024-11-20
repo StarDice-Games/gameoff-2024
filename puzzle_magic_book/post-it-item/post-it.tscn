@@ -1,21 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm6ydcq6bkfx4"]
+[gd_scene load_steps=13 format=3 uid="uid://dm6ydcq6bkfx4"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/post-it-item/scripts/post_it.gd" id="1_1tpli"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_q6b8c"]
 [ext_resource type="Resource" uid="uid://dj0y6v6u4wbx1" path="res://puzzle_magic_book/post-it-item/data/post-it.tres" id="2_xv4wl"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_gdcps"]
 [ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="3_rm3ma"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_5depl"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_kdpl3"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_pe210"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_lt5kw"]
+
+[sub_resource type="Resource" id="Resource_q7vkj"]
+script = ExtResource("3_gdcps")
+dialogue_text = Array[String](["Oh a post-it with a code. It may help me to open something."])
+character_image = ExtResource("4_5depl")
+text_name = ""
+triggers = Array[ExtResource("5_pe210")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnnpb"]
 size = Vector2(63, 66)
 
+[sub_resource type="Resource" id="Resource_x5ycc"]
+script = ExtResource("5_pe210")
+key = "second_boss_call"
+value = false
+
 [node name="Post-it" type="Node2D"]
 script = ExtResource("1_1tpli")
 item = ExtResource("2_xv4wl")
+dialog = Array[ExtResource("3_gdcps")]([SubResource("Resource_q7vkj")])
 
 [node name="Interactable" parent="." instance=ExtResource("2_q6b8c")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("RectangleShape2D_mnnpb")
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("4_kdpl3")]
+position = Vector2(-4, 0)
+trigger = SubResource("Resource_x5ycc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.500001, 0.499999)
@@ -23,10 +45,13 @@ scale = Vector2(0.167549, 0.146127)
 texture = ExtResource("3_rm3ma")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -52.0
-offset_top = -63.0
-offset_right = 58.0
-offset_bottom = -40.0
+offset_left = -63.0
+offset_top = -85.0
+offset_right = 95.0
+offset_bottom = -50.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_lt5kw")
+theme_override_font_sizes/font_size = 30
 text = "Pick up Post-it"
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

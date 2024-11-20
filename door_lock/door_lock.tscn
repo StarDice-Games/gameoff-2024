@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://qn7dtneyrwg"]
+[gd_scene load_steps=9 format=3 uid="uid://qn7dtneyrwg"]
 
 [ext_resource type="Script" path="res://door_lock/door_lock.gd" id="1_2b8he"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_42sbi"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_12bgo"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_3q0w6"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="5_yfnn8"]
 
 [sub_resource type="Resource" id="Resource_1fggd"]
 script = ExtResource("2_42sbi")
@@ -14,6 +15,11 @@ triggers = Array[ExtResource("4_3q0w6")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12ubx"]
 size = Vector2(110, 71)
+
+[sub_resource type="Resource" id="Resource_wx00u"]
+script = ExtResource("4_3q0w6")
+key = "doors_locked"
+value = false
 
 [node name="DoorLock" type="Area2D"]
 position = Vector2(1358, 533)
@@ -33,5 +39,9 @@ collision_mask = 17
 visibility_layer = 31
 position = Vector2(-14, -0.5)
 shape = SubResource("RectangleShape2D_12ubx")
+
+[node name="NodeToggle" parent="." instance=ExtResource("5_yfnn8")]
+position = Vector2(26, 25)
+trigger = SubResource("Resource_wx00u")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

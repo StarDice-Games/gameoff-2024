@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=16 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Texture2D" uid="uid://ntqtfmjeryjh" path="res://resource/assets/placeholder/IMG_1054.jpg" id="1_0jj6l"]
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_rltts"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="6_lts7x"]
+[ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
+[ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
 
 [sub_resource type="Resource" id="Resource_6piwv"]
 script = ExtResource("3_fpr8x")
@@ -23,6 +25,13 @@ script = ExtResource("3_fpr8x")
 dialogue_text = Array[String](["Not a problem. Thanks to have told it to me"])
 character_image = ExtResource("6_lts7x")
 text_name = "Visitor"
+triggers = Array[ExtResource("5_twhkk")]([])
+
+[sub_resource type="Resource" id="Resource_fn0b3"]
+script = ExtResource("3_fpr8x")
+dialogue_text = Array[String](["I need something to catch it!"])
+character_image = ExtResource("12_4ffme")
+text_name = "Angelo"
 triggers = Array[ExtResource("5_twhkk")]([])
 
 [node name="Ingresso" type="Node2D"]
@@ -94,5 +103,9 @@ offset_right = 912.0
 offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "Ingresso"
+
+[node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
+position = Vector2(964, 632)
+dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
 
 [editable path="Npc"]

@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var post_it_item : ItemData
 @export var key_item : ItemData
 @export var need_code_dialog : Array[DialogText]
+@export var key_collected : Array[DialogText]
 @export var interact_text : String = "Interact"
 @export var interact_pickup_text : String = "Pick up"
 
@@ -57,6 +58,7 @@ func _on_interactable_interacted() -> void:
 			open = true
 	else :
 		InventorySystem.pick_up(key_item)
+		DialogueSystem.start_dialog(key_collected)
 		picked_up_key = true
 
 

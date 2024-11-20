@@ -3,6 +3,7 @@ extends Node2D
 @export var item : ItemData
 @export var picked_up : String = "post-it_picked"
 @onready var label = $Label
+@export var dialog : Array[DialogText]
 
 func _ready() -> void:
 	label.hide()
@@ -14,6 +15,7 @@ func _on_interactable_interacted() -> void:
 	print("player interaction with", name)
 	InventorySystem.pick_up(item)
 	TriggersSystem.update_trigger(picked_up, true)
+	DialogueSystem.start_dialog(dialog)
 	hide()
 	process_mode = ProcessMode.PROCESS_MODE_DISABLED
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=14 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -6,7 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_y43ya"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="7_b7x4l"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="8_cufrl"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="10_esjjd"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
+
+[sub_resource type="Resource" id="Resource_rx33o"]
+script = ExtResource("8_cufrl")
+key = "act_4"
+value = false
 
 [node name="Corridoio" type="Node2D"]
 script = ExtResource("1_w2gne")
@@ -84,6 +94,27 @@ offset_bottom = 356.0
 theme_override_font_sizes/font_size = 60
 text = "Corridoio"
 
+[node name="PuzzleChalice" type="Node2D" parent="."]
+position = Vector2(1530, 450)
+
+[node name="Painting" parent="PuzzleChalice" node_paths=PackedStringArray("statues") instance=ExtResource("11_fnqc4")]
+position = Vector2(-620, -104)
+statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3"), NodePath("../Statue4")]
+task_chalice = ExtResource("7_m5sq3")
+combination = ["Left", "Front", "Right", "Right"]
+
+[node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-1306, 13)
+
+[node name="Statue2" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-810, 12)
+
+[node name="Statue3" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-382, 15)
+
+[node name="Statue4" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(156, -12)
+
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
 position = Vector2(1868, 564)
 level_id = "ingresso"
@@ -103,6 +134,9 @@ link_id = "South"
 position = Vector2(20, 614)
 level_id = "sala sacrificio"
 link_id = "East"
+
+[node name="NodeToggle" parent="SalaSacrificio" instance=ExtResource("7_b7x4l")]
+trigger = SubResource("Resource_rx33o")
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(-20, 575)

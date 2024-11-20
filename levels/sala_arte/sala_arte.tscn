@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cgek87c06t8dv" path="res://resource/assets/rooms/Sala arte/Stanza_Arte-12(1).png" id="8_njpfj"]
 [ext_resource type="Texture2D" uid="uid://bdty7v33jqw1u" path="res://resource/assets/rooms/Sala arte/Quadro.png" id="9_yuw44"]
 [ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
-[ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="11_js6pk"]
 [ext_resource type="Texture2D" uid="uid://1lu4h4dawdf5" path="res://resource/assets/rooms/Sala arte/Vaso.png" id="12_hksjq"]
+[ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="16_1axwy"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
 [node name="SalaArte" type="Node2D"]
@@ -96,13 +96,6 @@ texture = ExtResource("10_xjssa")
 region_enabled = true
 region_rect = Rect2(1236, 757, 78, 195)
 
-[node name="Statua-CassettoAperto" type="Sprite2D" parent="SpriteStanza"]
-texture_filter = 1
-position = Vector2(1420, 579)
-texture = ExtResource("11_js6pk")
-region_enabled = true
-region_rect = Rect2(1436, 639, 227, 545)
-
 [node name="Vaso" type="Sprite2D" parent="SpriteStanza"]
 texture_filter = 1
 position = Vector2(1121, 761)
@@ -140,3 +133,7 @@ color = Color(0.343338, 0.445565, 0.999296, 0.956863)
 visible = false
 position = Vector2(941, 542)
 player_ref = NodePath("../Player")
+
+[node name="Libreria" parent="." instance=ExtResource("16_1axwy")]
+position = Vector2(1423, 578)
+interact_pickup_text = "Pick up the black magic book"

@@ -2,6 +2,7 @@ extends Node2D
 @export var statues : Array[Node2D]
 @export var task_chalice : Task
 @export var dialog : Array[DialogText]
+@export var open_dialog : Array[DialogText]
 @export var item_data : ItemData
 @export var combination = ["Left", "Front", "Right"]
 @onready var painting_opened = $PaintingOpened
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 func opened_painting():
 	var open = true
 	
-	for i in range(0,3):
+	for i in range(0,4):
 		var check = statues[i].direction_statue == combination[i]
 		open = check and open
 		print("position_statue", statues[i].direction_statue)
@@ -34,7 +35,7 @@ func opened_painting():
 		
 	if open:
 		TriggersSystem.update_trigger("opened_painting", true)
-		
+		DialogueSystem.start_dialog(open_dialog)
 
 func _on_interactable_player_enter() -> void:
 	if not done and TriggersSystem.check_trigger("opened_painting", true): 

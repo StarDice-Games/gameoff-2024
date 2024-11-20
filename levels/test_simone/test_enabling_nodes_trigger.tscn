@@ -20,7 +20,6 @@ script = ExtResource("1_lo2hp")
 
 [node name="Npc" parent="." instance=ExtResource("1_gdr6p")]
 position = Vector2(725, 322)
-trigger_id = "talk1"
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1247, 269)
