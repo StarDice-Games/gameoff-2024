@@ -77,7 +77,7 @@ position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(912, 535)
+position = Vector2(916, 528)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 432.0

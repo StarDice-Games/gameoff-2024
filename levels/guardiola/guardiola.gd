@@ -12,8 +12,7 @@ func _ready() -> void:
 	
 	TriggersSystem.update_trigger("doors_locked", true)
 		
-	if TriggersSystem.check_trigger("act_1", false):
-		TriggersSystem.update_trigger("ring", true)
+
 	
 	# Prima chiamata con il boss e task NPC
 	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("act_1", true):
@@ -70,3 +69,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	InventorySystem.hide_inventory()
 	TaskSystem.hide_task_list()
+
+
+func _on_timer_timeout() -> void:
+	if TriggersSystem.check_trigger("act_1", false):
+		TriggersSystem.update_trigger("ring", true)

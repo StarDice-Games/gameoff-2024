@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c84g4refe34fy"]
+[gd_scene load_steps=5 format=3 uid="uid://c84g4refe34fy"]
 
 [ext_resource type="Script" path="res://dialogue/scripts/dialogue_system.gd" id="1_5otb8"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="2_mf8pt"]
+[ext_resource type="Texture2D" uid="uid://b4vxk71lare8m" path="res://resource/assets/UI/dialoghi.png" id="2_pqylc"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_wmpg3"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_5wp76"]
 
 [node name="DialogueSystem" type="Node2D"]
 script = ExtResource("1_5otb8")
 speed_text = 1.0
+metadata/_edit_vertical_guides_ = [610.0, 1304.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,6 +20,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -238.0
+offset_right = 342.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_pqylc")
+
 [node name="DialogueBoxName" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 7
@@ -25,13 +43,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -278.0
-offset_top = -218.0
-offset_right = -112.0
-offset_bottom = -178.0
+offset_left = -202.0
+offset_top = -220.0
+offset_right = -36.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.845758, 0.988427, 0.949368, 1)
+color = Color(0.847059, 0.988235, 0.94902, 0)
 
 [node name="DialogueName" type="Label" parent="CanvasLayer/Control/DialogueBoxName"]
 layout_mode = 1
@@ -40,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -14.0
-offset_right = 41.0
-offset_bottom = 14.0
+offset_left = -81.0
+offset_top = -19.0
+offset_right = 1.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -60,35 +78,37 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -279.0
-offset_top = -176.0
-offset_right = 340.0
-offset_bottom = -56.0
+offset_left = -191.0
+offset_top = -164.0
+offset_right = 312.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.268003, 0.248541, 0.230064, 1)
+color = Color(0.266667, 0.247059, 0.231373, 0)
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/DialogueBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -90.0
-offset_top = -43.0
-offset_right = 41.0
-offset_bottom = 119.0
+offset_left = -125.0
+offset_top = -25.0
+offset_right = -46.0
+offset_bottom = 73.0
 
 [node name="Character" type="TextureRect" parent="CanvasLayer/Control/DialogueBox/Panel"]
 layout_mode = 1
-offset_left = 1.0
-offset_top = 13.0
-offset_right = 131.0
-offset_bottom = 151.0
-texture = ExtResource("2_mf8pt")
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 105.0
+texture = ExtResource("4_5wp76")
 expand_mode = 1
 
 [node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/Control/DialogueBox"]
 layout_mode = 2
-offset_left = 66.0
-offset_right = 619.0
-offset_bottom = 120.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 496.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
