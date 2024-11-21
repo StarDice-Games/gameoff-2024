@@ -30,8 +30,10 @@ func trigger_update(key, value):
 		TriggersSystem.update_trigger("first_boss_call", false)
 		
 	if key == "close_museum" and value == true:
-		$CloseMuseumCutscene/AnimationPlayer.play("close_museum")
-
+		$CloseMuseumCutscene/DelayAnim.start()
+		
+	if key == "guardian_locker_open" and value == true:
+		$OpenGuardarobaCutscene/AnimationPlayer.play("open_guardaroba")
 		
 	if key == "second_boss_call" and value == true:
 		TaskSystem.load_tasks(second_tasks)
@@ -47,6 +49,7 @@ func trigger_update(key, value):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:		
 	if Input.is_action_just_pressed("debug_kev1"):
+		TriggersSystem.update_trigger("second_boss_call", true)
 		TaskSystem.update_task_counter(first_tasks[0].id)
 		TaskSystem.update_task_counter(first_tasks[0].id)
 		TaskSystem.update_task_counter(first_tasks[0].id)
@@ -63,14 +66,25 @@ func _process(delta: float) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	TriggersSystem.update_trigger("close_museum", false)
 	TriggersSystem.update_trigger("act_3", true)
-	
-
-
-func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	InventorySystem.hide_inventory()
-	TaskSystem.hide_task_list()
+	EventSystem.cutscene_finished.emit()
 
 
 func _on_timer_timeout() -> void:
 	if TriggersSystem.check_trigger("act_1", false):
 		TriggersSystem.update_trigger("ring", true)
+
+
+func _on_animation_player_animation_finished_guardaroba(anim_name: StringName) -> void:
+	EventSystem.cutscene_finished.emit()
+
+
+func _on_animation_player_animation_started_guardaroba(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()
+
+
+func _on_delay_anim_timeout() -> void:
+	$CloseMuseumCutscene/AnimationPlayer.play("close_museum")

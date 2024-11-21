@@ -1,11 +1,73 @@
-[gd_scene load_steps=7 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=11 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
-[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="6_d7w1y"]
+[ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
+[ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="7_f24n0"]
+
+[sub_resource type="Animation" id="Animation_lypc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m6ydv"]
+resource_name = "falling_fish"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 3.5, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agkou"]
+_data = {
+"RESET": SubResource("Animation_lypc6"),
+"falling_fish": SubResource("Animation_m6ydv")
+}
 
 [node name="SalaPreistorica" type="Node2D"]
 script = ExtResource("1_m84jc")
@@ -57,5 +119,26 @@ position = Vector2(1437, 947)
 level_id = "corridoio"
 link_id = "North1"
 
-[node name="Rope" parent="." instance=ExtResource("6_d7w1y")]
-position = Vector2(963, 781)
+[node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
+position = Vector2(1461, 59)
+
+[node name="FishCutScene" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FishCutScene"]
+libraries = {
+"": SubResource("AnimationLibrary_agkou")
+}
+
+[node name="ColorRect" type="ColorRect" parent="FishCutScene"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -590.0
+offset_top = -336.0
+offset_right = 2595.0
+offset_bottom = 1506.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene"]
+stream = ExtResource("7_f24n0")
+
+[connection signal="animation_finished" from="FishCutScene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="FishCutScene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

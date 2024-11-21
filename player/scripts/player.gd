@@ -20,7 +20,6 @@ func enter_cutscene():
 	in_cutscene = true
 	ray_cast.enabled = false
 	
-	
 func exit_cutscene():
 	in_cutscene = false
 	ray_cast.enabled = true
@@ -33,7 +32,6 @@ var last_facing_dir := Vector2(0, -1)
 @export var footstep : AudioStream
 
 func _process(delta: float) -> void:
-	
 	if in_cutscene:
 		return
 	

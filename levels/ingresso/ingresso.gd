@@ -13,3 +13,11 @@ func update_counter_talk(key: String, value : bool) -> void:
 	
 	if key == "pulled_out" and value == true:
 		$FallingToothAnim/AnimationPlayer.play("fallling_tooth")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	EventSystem.cutscene_finished.emit()
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()

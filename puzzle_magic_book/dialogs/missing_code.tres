@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ssniu")
-dialogue_text = Array[String]([" I need a code to open this padlock."])
+dialogue_text = Array[String](["I need a code to open this padlock."])
 character_image = ExtResource("1_cxppw")
 text_name = "Angelo"
 triggers = Array[ExtResource("2_uiki0")]([])

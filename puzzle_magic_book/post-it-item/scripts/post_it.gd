@@ -16,7 +16,7 @@ func _on_interactable_interacted() -> void:
 	InventorySystem.pick_up(item)
 	TriggersSystem.update_trigger(picked_up, true)
 	DialogueSystem.start_dialog(dialog)
-	hide()
+	queue_free()
 	process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 

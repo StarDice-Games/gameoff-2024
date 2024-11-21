@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=15 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -10,6 +10,68 @@
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
 [ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="10_esjjd"]
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
+[ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
+
+[sub_resource type="Animation" id="Animation_fg1h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6vtbb"]
+resource_name = "open_painting"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667, 4.56667, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21xjm"]
+_data = {
+"RESET": SubResource("Animation_fg1h2"),
+"open_painting": SubResource("Animation_6vtbb")
+}
 
 [node name="Corridoio" type="Node2D"]
 script = ExtResource("1_w2gne")
@@ -75,6 +137,27 @@ color = Color(0.570505, 1, 0.478134, 1)
 visible = false
 position = Vector2(941, 542)
 
+[node name="OpenPaintingCutscene" type="Node2D" parent="."]
+z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenPaintingCutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_21xjm")
+}
+
+[node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 1
+offset_left = -3764.0
+offset_top = -2134.0
+offset_right = 5817.0
+offset_bottom = 3808.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene"]
+stream = ExtResource("11_tm84c")
+
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
 position = Vector2(916, 528)
@@ -130,3 +213,6 @@ link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(-28, 585)
+
+[connection signal="animation_finished" from="OpenPaintingCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="OpenPaintingCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

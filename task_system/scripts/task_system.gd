@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var task_ui : PackedScene
+@export var sound_sfx: AudioStream
+
 @onready var container = $CanvasLayer/Control/Panel/VBoxContainer
 
 var task_map = {}
@@ -8,6 +10,8 @@ var task_map = {}
 
 var all_complete : bool = false
 @onready var ui = $CanvasLayer/Control
+
+var tab_close = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +21,17 @@ func _ready() -> void:
 	hide_task_list()
 	EventSystem.cutscene_started.connect(hide_task_list)
 	EventSystem.cutscene_finished.connect(show_task_list)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("close_task"):
+		if tab_close:
+			$CanvasLayer/Control/Panel.show()
+			AudioSystem.play(sound_sfx)
+			tab_close = false
+		else:
+			$CanvasLayer/Control/Panel.hide()
+			AudioSystem.play(sound_sfx)
+			tab_close = true
 
 func load_tasks(task_list : Array[Task]):
 	

@@ -14,6 +14,17 @@ func _process(delta: float) -> void:
 func update_counter_talk(key: String, value : bool) -> void:
 	if key == "talk1" and value == true:
 		EventSystem.task_update.emit("first_tasks")
+
+	if key == "opened_painting" and value == true:
+		$OpenPaintingCutscene/AnimationPlayer.play("open_painting")
 		
 func _on_door_lock_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	EventSystem.cutscene_finished.emit()
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()

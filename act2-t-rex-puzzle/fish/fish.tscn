@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqegtq37pd18o"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/fish/scripts/fish.gd" id="1_qedpr"]
+[ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="6_m8ejv"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_kaf1x"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="10_0we5y"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="10_y08tt"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_ncetb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
+size = Vector2(211, 533)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
+size = Vector2(255, 869)
+
+[sub_resource type="Animation" id="Animation_fsy7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-818, -365)]
+}
+
+[sub_resource type="Animation" id="Animation_gsw10"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.73333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-790, -406), Vector2(-692, 741)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ef0ai"]
+_data = {
+"RESET": SubResource("Animation_fsy7i"),
+"fall": SubResource("Animation_gsw10")
+}
+
+[node name="Fish" type="StaticBody2D"]
+script = ExtResource("1_qedpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_k1qxw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("6_m8ejv")
+region_enabled = true
+region_rect = Rect2(1436, 639, 227, 545)
+
+[node name="Interactable" parent="." instance=ExtResource("7_kaf1x")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(6.5, 363.5)
+shape = SubResource("RectangleShape2D_y8ulm")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -44.0
+offset_top = 301.0
+offset_right = 50.0
+offset_bottom = 336.0
+theme = ExtResource("10_y08tt")
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_ncetb")
+theme_override_font_sizes/font_size = 30
+text = "Interact"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Rope")
+libraries = {
+"": SubResource("AnimationLibrary_ef0ai")
+}
+
+[node name="Rope" parent="." instance=ExtResource("10_0we5y")]
+position = Vector2(-818, -365)
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

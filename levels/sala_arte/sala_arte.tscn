@@ -136,4 +136,3 @@ player_ref = NodePath("../Player")
 
 [node name="Libreria" parent="." instance=ExtResource("16_1axwy")]
 position = Vector2(1423, 578)
-interact_pickup_text = "Pick up the black magic book"

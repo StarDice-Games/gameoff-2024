@@ -17,3 +17,4 @@ func _on_interactable_interacted() -> void:
 	InventorySystem.pick_up(item)
 	TriggersSystem.toggle_trigger("rope_picked")
 	DialogueSystem.start_dialog(dialog)
+	queue_free()
