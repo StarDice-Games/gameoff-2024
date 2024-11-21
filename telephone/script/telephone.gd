@@ -11,7 +11,6 @@ extends Node2D
 @export var dialog_4 : Array[DialogText]
 @export var act : String
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if TriggersSystem.check_trigger("ring", true):

@@ -1,16 +1,35 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=22 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
 [ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_y43ya"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_dnq7l"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
+[ext_resource type="Texture2D" uid="uid://1mx5av2ablnb" path="res://resource/assets/enemy/Boss_Face.png" id="3_gsdmn"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_wk1te"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_qul02"]
+[ext_resource type="AudioStream" uid="uid://y73pv85x1hq1" path="res://audio/sfx/various/Alarm_01.wav" id="6_xu4h3"]
 [ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
 [ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="10_esjjd"]
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
 [ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
+
+[sub_resource type="Resource" id="Resource_tep4b"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["HE ESCAPED! FIND HIM!"])
+character_image = ExtResource("3_gsdmn")
+text_name = "Boss"
+triggers = Array[ExtResource("4_wk1te")]([])
+
+[sub_resource type="Resource" id="Resource_327ia"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["It’s better to hide in the dark and ask for help!"])
+character_image = ExtResource("5_qul02")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_wk1te")]([])
 
 [sub_resource type="Animation" id="Animation_fg1h2"]
 length = 0.001
@@ -75,6 +94,8 @@ _data = {
 
 [node name="Corridoio" type="Node2D"]
 script = ExtResource("1_w2gne")
+dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
+alarm_sfx = ExtResource("6_xu4h3")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)

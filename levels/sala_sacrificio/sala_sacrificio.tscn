@@ -1,14 +1,41 @@
-[gd_scene load_steps=13 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=20 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_2ycaj"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="2_slivy"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_ylly3"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_ruv8d"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_6u53w"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_vhabn"]
 [ext_resource type="PackedScene" uid="uid://b43hax8kcwef" path="res://boss_kev/boss_kev.tscn" id="5_jbukh"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_y3iuy"]
 [ext_resource type="PackedScene" uid="uid://0h08en1f6gqc" path="res://altare/altare.tscn" id="8_fh2gt"]
 [ext_resource type="PackedScene" uid="uid://rriaauq8dxpi" path="res://ritual_sign/ritual_sign.tscn" id="9_abqfi"]
+
+[sub_resource type="Resource" id="Resource_3n6nf"]
+script = ExtResource("4_6u53w")
+key = "ritual_sign"
+value = true
+
+[sub_resource type="Resource" id="Resource_82hri"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String]([" It’s absurd, a cult!? It's like the Ku Klux Klan or something.", " I’m not understanding anything, what do they need from me?", "Why do they need these objects? "])
+character_image = ExtResource("3_ruv8d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_3n6nf")])
+
+[sub_resource type="Resource" id="Resource_23jqv"]
+script = ExtResource("4_6u53w")
+key = "stealth"
+value = true
+
+[sub_resource type="Resource" id="Resource_hnpbr"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String](["Wait! The sharpness of the tooth…it’s a knife! And the white star…it’s a pentacle.", " It is sure…I’m in danger now. I need to go away from here."])
+character_image = ExtResource("3_ruv8d")
+text_name = ""
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])
 
 [sub_resource type="Animation" id="Animation_7hb65"]
 length = 0.001
@@ -96,6 +123,8 @@ _data = {
 
 [node name="SalaSacrificio" type="Node2D"]
 script = ExtResource("1_445d4")
+dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
+dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
@@ -150,3 +179,5 @@ position = Vector2(1188, 754)
 
 [node name="RitualSign" parent="." instance=ExtResource("9_abqfi")]
 position = Vector2(910, 757)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

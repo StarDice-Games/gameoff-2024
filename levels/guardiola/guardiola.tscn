@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=52 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
 [ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="17_rhtdm"]
 [ext_resource type="AudioStream" uid="uid://b0n8kpjkerh0g" path="res://audio/sfx/various/Lock_Door_01.wav" id="18_is8n0"]
+[ext_resource type="PackedScene" uid="uid://heowlo4h6fdn" path="res://end_phone/end_phone.tscn" id="20_hvcx5"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="21_nud1n"]
 
 [sub_resource type="Resource" id="Resource_bmfvq"]
 script = ExtResource("6_66euh")
@@ -133,6 +135,11 @@ dialogue_text = Array[String](["It’s me again. Please bring the object you pic
 character_image = ExtResource("12_e3x06")
 text_name = ""
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
+
+[sub_resource type="Resource" id="Resource_6qwgt"]
+script = ExtResource("7_xu3vp")
+key = "boss_exit"
+value = true
 
 [sub_resource type="Animation" id="Animation_eym1a"]
 length = 0.001
@@ -250,10 +257,43 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_0wa4b"]
+resource_name = "end"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sehj2"]
 _data = {
 "RESET": SubResource("Animation_f3441"),
+"end": SubResource("Animation_0wa4b"),
 "open_guardaroba": SubResource("Animation_5t3om")
+}
+
+[sub_resource type="Resource" id="Resource_0nogq"]
+script = ExtResource("7_xu3vp")
+key = "stealth"
+value = false
+
+[sub_resource type="Animation" id="Animation_blnn4"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_egydi"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7xco"]
+_data = {
+"RESET": SubResource("Animation_egydi"),
+"end": SubResource("Animation_blnn4")
 }
 
 [node name="GuardiolaHall" type="Node2D"]
@@ -288,6 +328,9 @@ dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubReso
 dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])
 dialog_4 = Array[ExtResource("6_66euh")]([SubResource("Resource_2wo27"), SubResource("Resource_2rnl0")])
 act = "act_1"
+
+[node name="NodeToggle" parent="Telephone" instance=ExtResource("21_nud1n")]
+trigger = SubResource("Resource_6qwgt")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_booiy")]
 player_ref = NodePath("../Player")
@@ -353,11 +396,6 @@ one_shot = true
 
 [node name="OpenGuardarobaCutscene" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene"]
-libraries = {
-"": SubResource("AnimationLibrary_sehj2")
-}
-
 [node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene"]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
@@ -370,8 +408,33 @@ color = Color(0, 0, 0, 1)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene"]
 stream = ExtResource("17_rhtdm")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_sehj2")
+}
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
+position = Vector2(1096, 576)
+
+[node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
+trigger = SubResource("Resource_0nogq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EndPhone"]
+libraries = {
+"": SubResource("AnimationLibrary_g7xco")
+}
+
+[node name="ColorRect" type="ColorRect" parent="EndPhone"]
+offset_left = -1194.0
+offset_top = -693.0
+offset_right = 947.0
+offset_bottom = 625.0
+color = Color(0, 0, 0, 0)
+
+[node name="DelayEndCut" type="Timer" parent="EndPhone"]
 
 [connection signal="animation_finished" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
@@ -379,3 +442,6 @@ autostart = true
 [connection signal="animation_finished" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished_guardaroba"]
 [connection signal="animation_started" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started_guardaroba"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="EndPhone/AnimationPlayer" to="." method="_on_animation_player_animation_finished_end"]
+[connection signal="animation_started" from="EndPhone/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="EndPhone/DelayEndCut" to="." method="_on_delay_end_cut_timeout"]

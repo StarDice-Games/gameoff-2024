@@ -40,7 +40,7 @@ triggers = Array[ExtResource("4_a4ro4")]([])
 
 [sub_resource type="Resource" id="Resource_ycf8y"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Thanks Angelo, you were useful…more than you know.", " As I told you during the interview, you are the right person to fulfill our purposes…but I was not talking about the museum."])
+dialogue_text = Array[String](["Thanks Angelo, you were useful…more than you know.", " As I told you during the interview, you are the right person to fulfill our purposes…", "But I was not talking about the museum."])
 character_image = ExtResource("3_qqduw")
 text_name = "Boss"
 triggers = Array[ExtResource("4_a4ro4")]([])
@@ -59,7 +59,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_apssx"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan. The contract, the night shift, your predecessor and his promotion…everything is connected ", "Now it’s time to call the other cult members. Stay here and don’t move…I’ll be back in a second.", "We will give you your deserved…", " Promotion..."])
+dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…", "Everything is connected...", "Now it’s time to call the other cult members. ", "Stay here and don’t move…I’ll be back in a second.", "We will give you your deserved…", " Promotion..."])
 character_image = ExtResource("3_qqduw")
 text_name = "Boss"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])

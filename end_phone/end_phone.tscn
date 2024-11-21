@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://heowlo4h6fdn"]
+
+[ext_resource type="Script" path="res://end_phone/script/end_phone.gd" id="1_4hsqm"]
+[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="2_0dl11"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_3xu23"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_k4sa5"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_wtfak"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_1uhme"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_uvss2"]
+
+[sub_resource type="Resource" id="Resource_tt4s5"]
+script = ExtResource("4_1uhme")
+key = "end"
+value = true
+
+[sub_resource type="Resource" id="Resource_o4jv2"]
+script = ExtResource("2_3xu23")
+dialogue_text = Array[String](["911, what’s the emergency ? "])
+character_image = ExtResource("3_k4sa5")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_1uhme")]([SubResource("Resource_tt4s5")])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6mib"]
+radius = 129.124
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_434pq"]
+size = Vector2(162, 163)
+
+[node name="EndPhone" type="Node2D"]
+script = ExtResource("1_4hsqm")
+dialog = Array[ExtResource("2_3xu23")]([SubResource("Resource_o4jv2")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0dl11")
+
+[node name="Interactable" parent="." instance=ExtResource("3_wtfak")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_w6mib")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -63.0
+offset_top = -190.0
+offset_right = 80.0
+offset_bottom = -155.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_uvss2")
+theme_override_font_sizes/font_size = 30
+text = "Call
+"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, -3.5)
+shape = SubResource("RectangleShape2D_434pq")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
