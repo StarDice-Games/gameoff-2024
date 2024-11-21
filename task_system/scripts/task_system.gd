@@ -22,15 +22,12 @@ func load_tasks(task_list : Array[Task]):
 	
 	all_complete = false
 	
-	if task_list.size() > 0:
-		show_task_list()
-	
 	if container.get_child_count() > 0 :
 		for child in container.get_children():
 			container.remove_child(child)
 			child.queue_free()
 		task_map.clear()
-	
+	#TODO clone the list ? 
 	for task in task_list:
 		var task_design = task_ui.instantiate()
 		container.add_child(task_design)
@@ -40,6 +37,9 @@ func load_tasks(task_list : Array[Task]):
 			"data" :task,
 			"ui" : task_design
 		}
+	
+	if task_list.size() > 0:
+		show_task_list()
 
 func task_completed(task_id : String) :
 	
@@ -53,6 +53,8 @@ func task_completed(task_id : String) :
 	#check if all task are complete
 	if check_all_task_completed() :
 		EventSystem.all_task_completed.emit()
+		all_complete = true
+		hide_task_list()
 
 func update_task_counter(task_id : String) :
 	if not task_map.has(task_id) :
@@ -74,7 +76,8 @@ func check_all_task_completed():
 	return true
 
 func show_task_list():
-	ui.show()
+	if task_map.size() > 0 and all_complete == false:
+		ui.show()
 
 func hide_task_list():
 	ui.hide()

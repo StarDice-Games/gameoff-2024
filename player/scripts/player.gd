@@ -30,10 +30,7 @@ func _process(delta: float) -> void:
 	if in_cutscene:
 		return
 	
-	ray_cast.target_position = raycast_target 
-	print("gamepad", ray_cast.target_position)
-	print("keyboard", ray_cast.target_position)
-	
+	ray_cast.target_position = raycast_target	
 
 	if ray_cast.is_colliding():
 		var area_collider = ray_cast.get_collider()
