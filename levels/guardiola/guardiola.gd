@@ -91,13 +91,13 @@ func _on_delay_anim_timeout() -> void:
 	$CloseMuseumCutscene/AnimationPlayer.play("close_museum")
 
 
-func _on_animation_player_animation_finished_end(anim_name: StringName) -> void:
+func _on_delay_end_cut_timeout() -> void:
+	$EndPhone/AnimationPlayer2.play("end")
+
+
+func _on_animation_player_2_animation_finished_end(anim_name: StringName) -> void:
 	LevelSystem.load_level("end scene", true)
 
 
-func _on_animation_player_animation_started_end(anim_name: StringName) -> void:
+func _on_animation_player_2_animation_started(anim_name: StringName) -> void:
 	EventSystem.cutscene_started.emit()
-
-
-func _on_delay_end_cut_timeout() -> void:
-	$EndPhone/AnimationPlayer.play("end")

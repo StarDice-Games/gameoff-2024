@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 
 
 func _on_interactable_interacted() -> void:
-	DialogueSystem.start_dialog(dialog)
+	AudioSystem.mute
+	$AnimationPlayer.play("dial")
 
 func _on_interactable_player_enter() -> void:
 	label.show()
@@ -24,3 +25,12 @@ func _on_interactable_player_enter() -> void:
 
 func _on_interactable_player_exit() -> void:
 	label.hide()
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	EventSystem.cutscene_finished.emit()
+	DialogueSystem.start_dialog(dialog)

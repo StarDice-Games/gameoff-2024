@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://heowlo4h6fdn"]
+[gd_scene load_steps=16 format=3 uid="uid://heowlo4h6fdn"]
 
 [ext_resource type="Script" path="res://end_phone/script/end_phone.gd" id="1_4hsqm"]
 [ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="2_0dl11"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_wtfak"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_1uhme"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_uvss2"]
+[ext_resource type="AudioStream" uid="uid://b7j6upbs7mcik" path="res://audio/sfx/phone/Phone_Dial_01.wav" id="8_qsdsk"]
 
 [sub_resource type="Resource" id="Resource_tt4s5"]
 script = ExtResource("4_1uhme")
@@ -25,6 +26,43 @@ radius = 129.124
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_434pq"]
 size = Vector2(162, 163)
+
+[sub_resource type="Animation" id="Animation_6yrt7"]
+resource_name = "dial"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lta2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynd1v"]
+_data = {
+"RESET": SubResource("Animation_lta2m"),
+"dial": SubResource("Animation_6yrt7")
+}
 
 [node name="EndPhone" type="Node2D"]
 script = ExtResource("1_4hsqm")
@@ -59,6 +97,16 @@ collision_mask = 0
 position = Vector2(1, -3.5)
 shape = SubResource("RectangleShape2D_434pq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ynd1v")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qsdsk")
+
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
 [connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -417,12 +417,13 @@ libraries = {
 autostart = true
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
-position = Vector2(1096, 576)
+position = Vector2(1101, 573)
 
 [node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
+position = Vector2(-204, 47)
 trigger = SubResource("Resource_0nogq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EndPhone"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="EndPhone"]
 libraries = {
 "": SubResource("AnimationLibrary_g7xco")
 }
@@ -435,6 +436,7 @@ offset_bottom = 625.0
 color = Color(0, 0, 0, 0)
 
 [node name="DelayEndCut" type="Timer" parent="EndPhone"]
+one_shot = true
 
 [connection signal="animation_finished" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
@@ -442,6 +444,6 @@ color = Color(0, 0, 0, 0)
 [connection signal="animation_finished" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished_guardaroba"]
 [connection signal="animation_started" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started_guardaroba"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="EndPhone/AnimationPlayer" to="." method="_on_animation_player_animation_finished_end"]
-[connection signal="animation_started" from="EndPhone/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="EndPhone/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished_end"]
+[connection signal="animation_started" from="EndPhone/AnimationPlayer2" to="." method="_on_animation_player_2_animation_started"]
 [connection signal="timeout" from="EndPhone/DelayEndCut" to="." method="_on_delay_end_cut_timeout"]
