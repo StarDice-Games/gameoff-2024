@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqdeu1mk0x22h"]
+[gd_scene load_steps=16 format=3 uid="uid://cqdeu1mk0x22h"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="1_yddot"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_pxbun"]
 [ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_wqkuw"]
+[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://highlight_component/new_shader_material.tres" id="11_76eqr"]
 
 [sub_resource type="Resource" id="Resource_8qbi7"]
 script = ExtResource("3_r0vbg")
@@ -59,6 +61,11 @@ theme_override_font_sizes/font_size = 30
 text = "Pick up"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "interactable") instance=ExtResource("10_wqkuw")]
+sprite = NodePath("../Tooth")
+interactable = NodePath("../Interactable")
+shader = ExtResource("11_76eqr")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
