@@ -24,8 +24,13 @@ func _ready() -> void:
 	
 	if open:
 		open_sprite.show()
+		$MagicBook.show()
+		$Interactable.queue_free()
 	else :
 		close_sprite.show()
+		
+	if TriggersSystem.check_trigger("got_magic_book", true):
+		$MagicBook.hide()
 	
 	EventSystem.picked_up_item.connect(postit_picked)
 
@@ -53,6 +58,7 @@ func _on_interactable_interacted() -> void:
 			$MagicBook.show()
 			$Interactable.queue_free()
 			interact_label.hide()
+			InventorySystem.drop_item(key_item)
 
 func _on_interactable_player_enter() -> void:
 	if open :
