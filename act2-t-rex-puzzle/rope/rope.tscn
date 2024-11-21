@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=12 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="1_g8klr"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="5_ccab1"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_6k3ia"]
+[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://highlight_component/new_shader_material.tres" id="8_vmi3q"]
 
 [sub_resource type="Resource" id="Resource_j4ugp"]
 script = ExtResource("3_lqtwb")
@@ -47,6 +49,11 @@ vertical_alignment = 1
 [node name="NodeToggle" parent="." instance=ExtResource("5_ccab1")]
 action = 1
 trigger = SubResource("Resource_diarw")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "interactable") instance=ExtResource("7_6k3ia")]
+sprite = NodePath("../RopeSprite")
+interactable = NodePath("../Interactable")
+shader = ExtResource("8_vmi3q")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
