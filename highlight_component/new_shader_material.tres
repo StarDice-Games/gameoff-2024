@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8nsf6sr6vqbg"]
 
-[ext_resource type="Shader" path="res://levels/test_leonardo/object_highlight.gdshader" id="1_ctfs8"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="1_ctfs8"]
 
 [resource]
 shader = ExtResource("1_ctfs8")

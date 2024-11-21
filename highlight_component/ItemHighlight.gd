@@ -5,6 +5,7 @@ extends Node2D
 @export var collider_size: Vector2 = Vector2(100, 100)           # Default collider size
 @export var sprite : Sprite2D
 @export var interactable : Interactable
+ 
 @onready var shader_material = sprite.material
 @onready var collision_shape = interactable.get_node("CollisionShape2D")
 
