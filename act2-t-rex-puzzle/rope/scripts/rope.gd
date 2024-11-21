@@ -4,6 +4,9 @@ extends Node2D
 @onready var label_interact = $Label
 @export var dialog : Array[DialogText]
 
+func _ready() -> void:
+	if TriggersSystem.check_trigger("rope_picked", true):
+		queue_free()
 
 func _on_interactable_player_enter() -> void:
 	label_interact.show()

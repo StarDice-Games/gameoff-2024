@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=12 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="1_g8klr"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_qcshn"]
-[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="5_ccab1"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oefkw"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="5_rqc4c"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
@@ -25,11 +24,6 @@ triggers = Array[ExtResource("6_32ndp")]([])
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ob1"]
 size = Vector2(249, 234)
 
-[sub_resource type="Resource" id="Resource_44r6e"]
-script = ExtResource("6_32ndp")
-key = "second_boss_call"
-value = false
-
 [node name="Rope" type="Node2D"]
 script = ExtResource("1_cbrfo")
 item = SubResource("Resource_j4ugp")
@@ -43,9 +37,6 @@ texture = ExtResource("1_g8klr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_i2ob1")
-
-[node name="NodeToggle" parent="Interactable" instance=ExtResource("5_ccab1")]
-trigger = SubResource("Resource_44r6e")
 
 [node name="Label" type="Label" parent="."]
 visible = false

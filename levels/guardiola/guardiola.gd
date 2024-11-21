@@ -11,8 +11,6 @@ func _ready() -> void:
 	EventSystem.trigger_changed.connect(trigger_update)
 	
 	TriggersSystem.update_trigger("doors_locked", true)
-		
-
 	
 	# Prima chiamata con il boss e task NPC
 	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("act_1", true):
