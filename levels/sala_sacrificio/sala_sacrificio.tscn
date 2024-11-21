@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=13 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_vhabn"]
 [ext_resource type="PackedScene" uid="uid://b43hax8kcwef" path="res://boss_kev/boss_kev.tscn" id="5_jbukh"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_y3iuy"]
+[ext_resource type="PackedScene" uid="uid://0h08en1f6gqc" path="res://altare/altare.tscn" id="8_fh2gt"]
+[ext_resource type="PackedScene" uid="uid://rriaauq8dxpi" path="res://ritual_sign/ritual_sign.tscn" id="9_abqfi"]
 
 [sub_resource type="Animation" id="Animation_7hb65"]
 length = 0.001
@@ -142,3 +144,9 @@ position = Vector2(1551, 565)
 libraries = {
 "": SubResource("AnimationLibrary_sqlul")
 }
+
+[node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
+position = Vector2(1188, 754)
+
+[node name="RitualSign" parent="." instance=ExtResource("9_abqfi")]
+position = Vector2(910, 757)
