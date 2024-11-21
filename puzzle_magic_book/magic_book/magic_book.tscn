@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdsfmqfnh3l25"]
+[gd_scene load_steps=8 format=3 uid="uid://bdsfmqfnh3l25"]
 
-[ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_yuvh2"]
+[ext_resource type="Script" path="res://puzzle_magic_book/magic_book/scripts/magic_book.gd" id="1_wt5bb"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_2g4xo"]
-[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="2_cnfls"]
 [ext_resource type="Resource" uid="uid://f0gm0n7j0l15" path="res://puzzle_magic_book/dialogs/player_monolog_book.tres" id="4_6gw1u"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_rh0rr"]
-[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="5_tbsil"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_is7y2"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="10_kutoa"]
 
@@ -13,10 +11,8 @@
 size = Vector2(150, 146)
 
 [node name="MagicBook" type="Node2D"]
-script = ExtResource("1_yuvh2")
-item = ExtResource("2_cnfls")
+script = ExtResource("1_wt5bb")
 dialog = Array[ExtResource("4_rh0rr")]([ExtResource("4_6gw1u")])
-task = ExtResource("5_tbsil")
 
 [node name="MagicBook" type="Sprite2D" parent="."]
 texture = ExtResource("2_2g4xo")
