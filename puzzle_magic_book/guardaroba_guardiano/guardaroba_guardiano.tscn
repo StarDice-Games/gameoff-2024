@@ -18,7 +18,7 @@
 script = ExtResource("3_rk0ve")
 dialogue_text = Array[String](["What’s this!? A key!?", "It is better to keep it, it may open something useful.", "It seems that this locker was my predecessor's.", "For sure it is!", "Is this a journal? It is plenty of plans and projects for the future…", " But everything is interrupted the day before the promotion. Why? ", "And why he left it here…so strange."])
 character_image = ExtResource("6_ra7mn")
-text_name = ""
+text_name = "Angelo"
 triggers = Array[ExtResource("10_cu0pi")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]

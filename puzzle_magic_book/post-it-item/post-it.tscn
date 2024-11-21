@@ -14,7 +14,7 @@
 script = ExtResource("3_gdcps")
 dialogue_text = Array[String](["Oh a post-it with a code. It may help me to open something."])
 character_image = ExtResource("4_5depl")
-text_name = ""
+text_name = "Angelo"
 triggers = Array[ExtResource("5_pe210")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnnpb"]

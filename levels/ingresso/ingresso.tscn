@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=20 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Texture2D" uid="uid://ntqtfmjeryjh" path="res://resource/assets/placeholder/IMG_1054.jpg" id="1_0jj6l"]
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
@@ -7,27 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_rltts"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="6_lts7x"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
+[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="13_gbs7j"]
 [ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
-
-[sub_resource type="Resource" id="Resource_6piwv"]
-script = ExtResource("3_fpr8x")
-dialogue_text = Array[String](["Sir, sorry to interrupt your visit, but we are closing. I kindly ask you to leave the museum."])
-character_image = ExtResource("4_rltts")
-text_name = "Angelo"
-triggers = Array[ExtResource("5_twhkk")]([])
-
-[sub_resource type="Resource" id="Resource_g2p5k"]
-script = ExtResource("3_fpr8x")
-dialogue_text = Array[String](["Not a problem. Thanks to have told it to me"])
-character_image = ExtResource("6_lts7x")
-text_name = "Visitor"
-triggers = Array[ExtResource("5_twhkk")]([])
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="14_cyxse"]
 
 [sub_resource type="Resource" id="Resource_fn0b3"]
 script = ExtResource("3_fpr8x")
@@ -121,6 +107,11 @@ _data = {
 "fallling_tooth": SubResource("Animation_vm4dc")
 }
 
+[sub_resource type="Resource" id="Resource_57rqa"]
+script = ExtResource("5_twhkk")
+key = "end"
+value = true
+
 [node name="Ingresso" type="Node2D"]
 script = ExtResource("1_8qsso")
 
@@ -128,11 +119,6 @@ script = ExtResource("1_8qsso")
 texture = ExtResource("1_0jj6l")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
-
-[node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
-position = Vector2(1248, 611)
-dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_6piwv"), SubResource("Resource_g2p5k")])
-trigger_id = "talk0"
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
@@ -195,6 +181,10 @@ text = "Ingresso"
 position = Vector2(964, 632)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
 
+[node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
+position = Vector2(1371, 704)
+scale = Vector2(0.7, 0.7)
+
 [node name="FallingToothAnim" type="Node2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingToothAnim"]
@@ -214,7 +204,11 @@ stream = ExtResource("13_q6wsf")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="FallingToothAnim"]
 stream = ExtResource("14_8gly2")
 
+[node name="DoorLock" parent="." instance=ExtResource("13_gbs7j")]
+position = Vector2(245, 528)
+
+[node name="NodeToggle2" parent="DoorLock" instance=ExtResource("14_cyxse")]
+trigger = SubResource("Resource_57rqa")
+
 [connection signal="animation_finished" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
-
-[editable path="Npc"]

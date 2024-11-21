@@ -15,11 +15,12 @@ func _process(delta: float) -> void:
 		$AnimationPlayer.play("walk_inside")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	LevelSystem.load_level("guardiola", true)
+	LevelSystem.load_level("ingresso", true)
 
 func _on_timer_timeout() -> void:
 	DialogueSystem.start_dialog(dialog_1)
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()
 	$AnimationPlayer2.play("walk")

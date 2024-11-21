@@ -133,7 +133,7 @@ value = true
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["It’s me again. Please bring the object you pick up to the room xxx.", "Please find them."])
 character_image = ExtResource("12_e3x06")
-text_name = ""
+text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
 
 [sub_resource type="Resource" id="Resource_6qwgt"]
@@ -417,7 +417,7 @@ libraries = {
 autostart = true
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
-position = Vector2(1101, 573)
+position = Vector2(1097, 577)
 
 [node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
 position = Vector2(-204, 47)

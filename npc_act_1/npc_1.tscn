@@ -71,7 +71,7 @@ collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_rl6wn")
 dialog = Array[ExtResource("2_151ff")]([SubResource("Resource_m13sm"), SubResource("Resource_5jobv")])
-trigger_id = "talk1"
+trigger_id = "talk0"
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -89,18 +89,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 70)
+position = Vector2(1, 0)
 texture = ExtResource("6_0jbmi")
 offset = Vector2(22, -124)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 1.5)
+position = Vector2(1, -61)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("7_ul2wj")]
+position = Vector2(5, -83)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-8, -1)
+position = Vector2(-5, 0)
 shape = SubResource("CircleShape2D_ngufx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
