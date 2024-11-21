@@ -35,7 +35,7 @@ func opened_painting():
 		
 	if open:
 		TriggersSystem.update_trigger("opened_painting", true)
-		DialogueSystem.start_dialog(open_dialog)
+		$Timer.start()
 
 func _on_interactable_player_enter() -> void:
 	if not done and TriggersSystem.check_trigger("opened_painting", true): 
@@ -50,7 +50,10 @@ func _on_interactable_interacted() -> void:
 	if not done and TriggersSystem.check_trigger("opened_painting", true):
 		InventorySystem.pick_up(item_data)
 		EventSystem.task_completed.emit(task_chalice.id)
+		TriggersSystem.toggle_trigger("chalice_picked")
 		DialogueSystem.start_dialog(dialog)
 		interactable.hide()
 		done = true
-	
+
+func _on_timer_timeout() -> void:
+	DialogueSystem.start_dialog(open_dialog)

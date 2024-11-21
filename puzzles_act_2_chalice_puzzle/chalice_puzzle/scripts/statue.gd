@@ -15,17 +15,25 @@ var position_statue = ["Front", "Back", "Left", "Right"]
 var counter_position = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		sprite_front.show()
-		sprite_back.hide()
-		sprite_left.hide()
-		sprite_right.hide()
-		direction_statue = position_statue[counter_position]
+	EventSystem.trigger_changed.connect(trigger_update)
+	
+	sprite_front.show()
+	sprite_back.hide()
+	sprite_left.hide()
+	sprite_right.hide()
+	direction_statue = position_statue[counter_position]
+	
+	if TriggersSystem.check_trigger("opened_painting", true):
+			$Interactable.queue_free()
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass
 
-
+func trigger_update(key, value):	
+	if key == "opened_painting" and value == true:
+		interactable_statue.queue_free()
+		text_prompt.hide()
 
 func _on_interactable_player_enter() -> void:
 	text_prompt.show()

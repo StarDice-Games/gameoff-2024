@@ -137,27 +137,6 @@ color = Color(0.570505, 1, 0.478134, 1)
 visible = false
 position = Vector2(941, 542)
 
-[node name="OpenPaintingCutscene" type="Node2D" parent="."]
-z_index = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenPaintingCutscene"]
-libraries = {
-"": SubResource("AnimationLibrary_21xjm")
-}
-
-[node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene"]
-modulate = Color(1, 1, 1, 0)
-top_level = true
-z_index = 1
-offset_left = -3764.0
-offset_top = -2134.0
-offset_right = 5817.0
-offset_bottom = 3808.0
-color = Color(0, 0, 0, 1)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene"]
-stream = ExtResource("11_tm84c")
-
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
 position = Vector2(916, 528)
@@ -213,6 +192,27 @@ link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(-28, 585)
+
+[node name="OpenPaintingCutscene" type="Node2D" parent="."]
+z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenPaintingCutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_21xjm")
+}
+
+[node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 1
+offset_left = -3764.0
+offset_top = -2134.0
+offset_right = 5817.0
+offset_bottom = 3808.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene"]
+stream = ExtResource("11_tm84c")
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="OpenPaintingCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
