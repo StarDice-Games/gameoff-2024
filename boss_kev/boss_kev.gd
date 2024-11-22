@@ -33,4 +33,5 @@ func _on_interactable_interacted() -> void:
 func trigger_update(key, value):	
 	if key == "boss_exit" and value == true:
 		$CollisionShape2D.queue_free()
+		$AnimationPlayer.play("walk")
 		
