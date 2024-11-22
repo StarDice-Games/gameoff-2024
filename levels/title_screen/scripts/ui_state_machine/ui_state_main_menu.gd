@@ -27,9 +27,8 @@ func _on_exit_pressed():
 
 
 func _on_new_game_pressed() -> void:
-	LevelSystem.load_level("esterno", true)
+	TriggersSystem.toggle_trigger("not_in_title")
 	EventSystem.cutscene_started.emit()
-	EventSystem.show_hud.emit()
 
 func _on_load_game_pressed():
 	pass

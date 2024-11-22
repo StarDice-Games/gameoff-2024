@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=16 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="1_dw653"]
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_un5ie"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_x6rer"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="5_8nwid"]
+[ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="10_qkaiu"]
 
 [sub_resource type="Resource" id="Resource_vfy75"]
 script = ExtResource("4_un5ie")
@@ -22,7 +23,93 @@ character_image = ExtResource("3_q1ygh")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_un5ie")]([SubResource("Resource_vfy75")])
 
+[sub_resource type="Animation" id="Animation_ti7s3"]
+resource_name = "hide_title"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TitleScreen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TitleScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.46667, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.275, 0.275), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_irevx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TitleScreen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TitleScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.275, 0.275)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]
+_data = {
+"RESET": SubResource("Animation_irevx"),
+"hide_title": SubResource("Animation_ti7s3")
+}
+
 [node name="Esterno" type="Node2D"]
+scale = Vector2(0.275, 0.275)
 script = ExtResource("1_ll6ia")
 dialog_1 = Array[ExtResource("2_qv2lt")]([SubResource("Resource_pevej")])
 
@@ -48,7 +135,7 @@ player_ref = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_x6rer")]
 unique_name_in_owner = true
-position = Vector2(1010, 696)
+position = Vector2(1029.09, 1010.91)
 
 [node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
 position = Vector2(157, 520)
@@ -62,3 +149,14 @@ offset_right = 912.0
 offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "Esterno"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("10_qkaiu")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2wrdi")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

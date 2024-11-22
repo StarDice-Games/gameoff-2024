@@ -26,7 +26,7 @@ func exit_cutscene():
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-var last_facing_dir := Vector2(0, -1)
+var last_facing_dir := Vector2(0, 1)
 
 @export_category("Audio")
 @export var footstep : AudioStream
@@ -89,15 +89,9 @@ func _physics_process(delta: float) -> void:
 	#change_player_sprite()
 	
 	#if x_direction != 0 or y_direction != 0:
-	velocity = Vector2(x_direction, y_direction) * SPEED
-	
-	if x_direction != 0 or y_direction != 0 :
-		raycast_target = Vector2(x_direction, y_direction) * interact_distance
-	
-	velocity.move_toward(Vector2.ZERO, SPEED)
 	
 	#Animazione
-	var idle = !velocity
+	var idle = !velocity.normalized()
 	
 	if !idle:
 		last_facing_dir = velocity.normalized()
@@ -113,6 +107,13 @@ func _physics_process(delta: float) -> void:
 		if $Timer.time_left <= 0:
 			AudioSystem.play(footstep) 
 			$Timer.start()
+	
+	velocity = Vector2(x_direction, y_direction) * SPEED
+	
+	if x_direction != 0 or y_direction != 0 :
+		raycast_target = Vector2(x_direction, y_direction) * interact_distance
+	
+	velocity.move_toward(Vector2.ZERO, SPEED)
 
 	move_and_slide()
 

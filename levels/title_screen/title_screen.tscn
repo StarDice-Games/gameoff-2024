@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn66sogio8l8v"]
+[gd_scene load_steps=8 format=3 uid="uid://bn66sogio8l8v"]
 
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_settings.gd" id="2_ovesd"]
-[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="3_dw6kr"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_n3ecd"]
 [ext_resource type="PackedScene" uid="uid://r6wtux0ghoss" path="res://settings_screen/volume_slider.tscn" id="4_nqphs"]
 [ext_resource type="Texture2D" uid="uid://bea0mm6limq8u" path="res://resource/assets/UI/title.png" id="5_mybly"]
@@ -61,17 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="StateMenu/MainMenu/MainPanel"]
-layout_mode = 0
-offset_left = 95.0
-offset_top = 189.0
-offset_right = 2015.0
-offset_bottom = 1300.0
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_dw6kr")
-expand_mode = 3
+color = Color(0, 0, 0, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/MainMenu/MainPanel"]
 layout_mode = 1
