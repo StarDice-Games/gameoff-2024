@@ -13,12 +13,11 @@ func _process(delta: float) -> void:
 
 func trigger_update(key, value):	
 	if key == "boss_exit" and value == true:
-		$AnimationPlayer.play("boss_walk")
+		if $DelayAnim:
+			$DelayAnim.start()
 	
 	if key == "stealth" and value == true:
 		DialogueSystem.start_dialog(dialog2)
-	
-	if key == "stealth" and value == true:
 		TriggersSystem.update_trigger("doors_locked", false)
 		
 	
@@ -28,3 +27,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	EventSystem.cutscene_started.emit()
+
+func _on_delay_anim_timeout() -> void:
+	$AnimationPlayer.play("boss_walk")
+	$DelayAnim.queue_free()
