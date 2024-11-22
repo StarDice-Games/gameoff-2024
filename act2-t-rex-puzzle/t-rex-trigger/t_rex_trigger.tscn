@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
 [ext_resource type="AudioStream" uid="uid://5gml5kqrh8jb" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.wav" id="4_4xn2y"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_a0hdr"]
-[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="5_bwi8w"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
+[ext_resource type="Texture2D" uid="uid://bt4k2qtcn6w88" path="res://resource/assets/rooms/Hall/T Rex con dente.PNG" id="6_0csu5"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="6_s7f21"]
 [ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="6_sah2i"]
 [ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
+[ext_resource type="Texture2D" uid="uid://cwjw2v42jf885" path="res://resource/assets/rooms/Hall/T Rex senza dente.PNG" id="8_ns415"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="8_w17g1"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_v0kll"]
 
@@ -17,11 +18,8 @@ script = ExtResource("6_s7f21")
 id = "Rope"
 icon = ExtResource("5_x8aad")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_72ipg"]
-size = Vector2(218, 211)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5ejc"]
-size = Vector2(292, 240)
+size = Vector2(178, 265)
 
 [sub_resource type="Resource" id="Resource_74vpo"]
 script = ExtResource("9_v0kll")
@@ -37,15 +35,38 @@ audio_sfx = ExtResource("4_4xn2y")
 collision_layer = 2
 collision_mask = 2
 
+[node name="TrexToothSprite" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("6_0csu5")
+region_enabled = true
+region_rect = Rect2(520, 489, 809, 501)
+
+[node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+texture = ExtResource("6_sah2i")
+
+[node name="TrexToothSpriteWo" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+texture = ExtResource("8_ns415")
+region_enabled = true
+region_rect = Rect2(520, 489, 809, 501)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(4.5, 109)
+polygon = PackedVector2Array(378.5, 117, -131.5, 107, -382.5, 118, -380.5, 23, -360.5, 15, -272.5, -204, -248.5, -188, -1.5, -156, 346.5, -184)
+
+[node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
+visible = false
+position = Vector2(275, 193)
+
 [node name="Label" type="Label" parent="StaticBody2D"]
 visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -118.0
-offset_top = -150.0
-offset_right = 117.0
-offset_bottom = -95.0
+offset_left = 255.0
+offset_top = -101.0
+offset_right = 490.0
+offset_bottom = -46.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("4_a0hdr")
@@ -54,25 +75,10 @@ text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TrexToothSprite" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("5_bwi8w")
-
-[node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
-visible = false
-texture = ExtResource("6_sah2i")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-5, -0.5)
-shape = SubResource("RectangleShape2D_72ipg")
-
-[node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
-visible = false
-position = Vector2(213, 61)
-
 [node name="Interactable" parent="." instance=ExtResource("1_l5sr8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-11, 2)
+position = Vector2(391, 106.5)
 shape = SubResource("RectangleShape2D_v5ejc")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("8_w17g1")]

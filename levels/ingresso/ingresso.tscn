@@ -1,12 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=24 format=3 uid="uid://dxa6tkkfq7b3q"]
 
-[ext_resource type="Texture2D" uid="uid://ntqtfmjeryjh" path="res://resource/assets/placeholder/IMG_1054.jpg" id="1_0jj6l"]
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="2_4lqhc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
+[ext_resource type="Texture2D" uid="uid://b8cvs5u71frtf" path="res://resource/assets/rooms/Hall/Hall.PNG" id="2_vknqs"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
+[ext_resource type="Texture2D" uid="uid://cymjl2gktmopr" path="res://resource/assets/rooms/Hall/Tavolino_frontale.PNG" id="3_4dm2q"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
+[ext_resource type="Texture2D" uid="uid://di1yv5h4pedof" path="res://resource/assets/rooms/Hall/Tavolino laterale.PNG" id="4_quxsq"]
+[ext_resource type="Texture2D" uid="uid://bo3efbd0hfy2l" path="res://resource/assets/rooms/Hall/Biglietteria.PNG" id="5_mma0m"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
@@ -14,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="14_cyxse"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
 
 [sub_resource type="Resource" id="Resource_fn0b3"]
 script = ExtResource("3_fpr8x")
@@ -71,10 +75,10 @@ tracks/0/path = NodePath("FallingToothAnim/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 5.36667, 5.93333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5.36667, 5.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -115,10 +119,33 @@ value = true
 [node name="Ingresso" type="Node2D"]
 script = ExtResource("1_8qsso")
 
-[node name="Stanze" type="Sprite2D" parent="."]
-texture = ExtResource("1_0jj6l")
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -959.0
+offset_top = -545.0
+offset_right = 2791.0
+offset_bottom = 1810.0
+color = Color(0, 0, 0, 1)
+
+[node name="Stanza" type="Sprite2D" parent="."]
+texture = ExtResource("2_vknqs")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
+
+[node name="TavolinoFrontale" type="Sprite2D" parent="Stanza"]
+position = Vector2(409, 244)
+texture = ExtResource("3_4dm2q")
+region_enabled = true
+region_rect = Rect2(583, 395, 265, 178)
+
+[node name="TavolinoLaterale" type="Sprite2D" parent="Stanza"]
+position = Vector2(1899, 901)
+texture = ExtResource("4_quxsq")
+region_enabled = true
+region_rect = Rect2(2166, 1039, 79, 202)
+
+[node name="Biglietteria" type="Sprite2D" parent="Stanza"]
+position = Vector2(961, 538)
+texture = ExtResource("5_mma0m")
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
@@ -128,7 +155,7 @@ position = Vector2(1587, 611)
 player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1341, 895)
+position = Vector2(1124, 928)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
 offset_right = 40.0
@@ -137,7 +164,7 @@ color = Color(0.769008, 0.954614, 0.43227, 1)
 metadata/_edit_lock_ = true
 
 [node name="ExitDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1552, 624)
+position = Vector2(1551, 584)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/ExitDoor"]
 offset_right = 40.0
@@ -146,7 +173,7 @@ color = Color(0.769008, 0.954614, 0.43227, 1)
 metadata/_edit_lock_ = true
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(387, 573)
+position = Vector2(163, 492)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -155,17 +182,17 @@ color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1367, 1000)
+position = Vector2(1143, 1040)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(321, 556)
+position = Vector2(56, 468)
 level_id = "corridoio"
 link_id = "EastDoor"
 
 [node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1685, 626)
+position = Vector2(1816, 562)
 level_id = "esterno"
 link_id = "WestDoor"
 
@@ -178,7 +205,7 @@ theme_override_font_sizes/font_size = 40
 text = "Ingresso"
 
 [node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
-position = Vector2(964, 632)
+position = Vector2(618, 501)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
 
 [node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
@@ -194,8 +221,10 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="FallingToothAnim"]
-offset_right = 1968.0
-offset_bottom = 1104.0
+offset_left = -959.0
+offset_top = -545.0
+offset_right = 2791.0
+offset_bottom = 1810.0
 color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FallingToothAnim"]
@@ -209,6 +238,9 @@ position = Vector2(245, 528)
 
 [node name="NodeToggle2" parent="DoorLock" instance=ExtResource("14_cyxse")]
 trigger = SubResource("Resource_57rqa")
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("19_f21q0")]
+player_ref = NodePath("../Player")
 
 [connection signal="animation_finished" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
