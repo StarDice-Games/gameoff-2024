@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://r6wtux0ghoss"]
+[gd_scene load_steps=3 format=3 uid="uid://r6wtux0ghoss"]
 
 [ext_resource type="Script" path="res://settings_screen/scripts/volume_slider.gd" id="1_jnp1e"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="2_ws5vb"]
 
 [node name="MasterVolume" type="Control"]
 auto_translate_mode = 1
@@ -22,19 +23,24 @@ audio_channel = "Master"
 [node name="Label" type="Label" parent="."]
 auto_translate_mode = 1
 layout_mode = 0
-offset_left = -201.0
-offset_top = -145.0
-offset_right = -83.0
-offset_bottom = -122.0
-text = "Master Volume"
+offset_left = -355.0
+offset_top = -168.0
+offset_right = -81.0
+offset_bottom = -110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ws5vb")
+theme_override_font_sizes/font_size = 50
+text = "SFX Volume"
 
 [node name="HSlider" type="HSlider" parent="."]
 auto_translate_mode = 1
 layout_mode = 0
-offset_left = -67.0
-offset_top = -141.0
-offset_right = 282.0
-offset_bottom = -125.0
+offset_left = -3.0
+offset_top = -150.0
+offset_right = 346.0
+offset_bottom = -114.0
 min_value = -60.0
 max_value = 0.0
 tick_count = 10
