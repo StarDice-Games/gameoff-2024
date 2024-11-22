@@ -29,7 +29,7 @@ func exit_cutscene():
 	if TriggersSystem.check_trigger("allarm_ends", true):
 		TriggersSystem.update_trigger("allarm_ends", false)
 		TransictionScene.fade_out()
-		LevelSystem.load_level(LevelSystem.current_level, true)
+		LevelSystem.reload_current_level()
 
 func _process(delta: float) -> void:
 	

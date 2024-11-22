@@ -23,3 +23,10 @@ func load_level(key: String, transition: bool = false) -> void:
 	else:
 		printerr("LevelSystem Error level not found.")
 	pass
+
+func reload_current_level():
+	if current_level != null and not current_level.is_empty():
+		load_level(current_level)
+	else:
+		get_tree().reload_current_scene()
+	TransictionScene.fade_in()
