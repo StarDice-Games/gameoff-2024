@@ -5,11 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://5gml5kqrh8jb" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.wav" id="4_4xn2y"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_a0hdr"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
-[ext_resource type="Texture2D" uid="uid://bt4k2qtcn6w88" path="res://resource/assets/rooms/Hall/T Rex con dente.PNG" id="6_0csu5"]
+[ext_resource type="Texture2D" uid="uid://bfpwahn54x8a5" path="res://resource/assets/rooms/Hall/corda con dente.png" id="5_y87wl"]
+[ext_resource type="Texture2D" uid="uid://c0gtv7rvctfe2" path="res://resource/assets/rooms/Hall/trex sopra.png" id="6_3qbpc"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="6_s7f21"]
-[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="6_sah2i"]
+[ext_resource type="Texture2D" uid="uid://blx4twhxb5g78" path="res://resource/assets/rooms/Hall/dente.png" id="7_jsqly"]
 [ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
-[ext_resource type="Texture2D" uid="uid://cwjw2v42jf885" path="res://resource/assets/rooms/Hall/T Rex senza dente.PNG" id="8_ns415"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="8_w17g1"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_v0kll"]
 
@@ -35,28 +35,28 @@ audio_sfx = ExtResource("4_4xn2y")
 collision_layer = 2
 collision_mask = 2
 
-[node name="TrexToothSprite" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("6_0csu5")
-region_enabled = true
-region_rect = Rect2(520, 489, 809, 501)
-
 [node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
 visible = false
-texture = ExtResource("6_sah2i")
+position = Vector2(436, 113)
+texture = ExtResource("5_y87wl")
 
-[node name="TrexToothSpriteWo" type="Sprite2D" parent="StaticBody2D"]
-visible = false
-texture = ExtResource("8_ns415")
-region_enabled = true
+[node name="TrexToothSprite" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("6_3qbpc")
 region_rect = Rect2(520, 489, 809, 501)
+
+[node name="Dente" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(439, -47)
+texture = ExtResource("7_jsqly")
+
+[node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
+visible = false
+position = Vector2(550, 263)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(4.5, 109)
 polygon = PackedVector2Array(378.5, 117, -131.5, 107, -382.5, 118, -380.5, 23, -360.5, 15, -272.5, -204, -248.5, -188, -1.5, -156, 346.5, -184)
-
-[node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
-visible = false
-position = Vector2(275, 193)
+disabled = true
 
 [node name="Label" type="Label" parent="StaticBody2D"]
 visible = false

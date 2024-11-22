@@ -1,8 +1,7 @@
 extends Node2D
 @onready var label_text = $StaticBody2D/Label
-@onready var t_rex_tooth = $StaticBody2D/TrexToothSprite
+@onready var t_rex_tooth = $StaticBody2D/Dente
 @onready var t_rex_tooth_rope = $StaticBody2D/TrexToothRope
-@onready var trex_tooth_sprite_wo: Sprite2D = $StaticBody2D/TrexToothSpriteWo
 
 @export var dialog : Array[DialogText]
 @export var item : ItemData
@@ -55,7 +54,6 @@ func _on_interactable_interacted() -> void:
 		else:
 			can_pull = false
 			t_rex_tooth_rope.hide()
-			trex_tooth_sprite_wo.show()
 			TriggersSystem.toggle_trigger("pulled_out")
 			$Interactable.queue_free()
 			label_text.hide()
