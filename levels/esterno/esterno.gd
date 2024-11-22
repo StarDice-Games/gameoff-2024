@@ -6,6 +6,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	TriggersSystem.update_trigger("doors_locked", true)
+	
 	if TriggersSystem.check_trigger("start", false):
 		DialogueSystem.start_dialog(dialog_1)
 

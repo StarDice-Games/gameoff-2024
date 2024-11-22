@@ -217,7 +217,7 @@ level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(-28, 585)
+position = Vector2(-24, 565)
 
 [node name="OpenPaintingCutscene" type="Node2D" parent="."]
 z_index = 1
