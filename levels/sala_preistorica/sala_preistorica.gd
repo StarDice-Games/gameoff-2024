@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var animation_player: AnimationPlayer = $FishCutScene/CanvasLayer/AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
@@ -13,7 +15,7 @@ func update_counter_talk(key: String, value : bool) -> void:
 		EventSystem.task_update.emit("first_tasks")
 	
 	if key == "rope_taken" and value == true:
-		$FishCutScene/AnimationPlayer.play("falling_fish")
+		animation_player.play("falling_fish")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

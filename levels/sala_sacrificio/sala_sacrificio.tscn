@@ -167,12 +167,7 @@ link_id = "WestDoor"
 position = Vector2(922, 675)
 
 [node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
-position = Vector2(1551, 565)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_sqlul")
-}
+position = Vector2(1542, 476)
 
 [node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
 position = Vector2(1188, 754)
@@ -180,4 +175,10 @@ position = Vector2(1188, 754)
 [node name="RitualSign" parent="." instance=ExtResource("9_abqfi")]
 position = Vector2(910, 757)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sqlul")
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

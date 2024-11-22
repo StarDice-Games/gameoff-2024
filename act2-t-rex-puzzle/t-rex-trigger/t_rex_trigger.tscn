@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ymmamvc2fsqp"]
+[gd_scene load_steps=17 format=3 uid="uid://ymmamvc2fsqp"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="8_w17g1"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_v0kll"]
+[ext_resource type="Texture2D" uid="uid://bvc237scomqyo" path="res://resource/assets/rooms/Hall/trex sotto.png" id="13_ocfy1"]
 
 [sub_resource type="Resource" id="Resource_m12fb"]
 script = ExtResource("6_s7f21")
@@ -32,8 +33,8 @@ item = SubResource("Resource_m12fb")
 audio_sfx = ExtResource("4_4xn2y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 64
+collision_mask = 0
 
 [node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
 visible = false
@@ -55,8 +56,7 @@ position = Vector2(550, 263)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(4.5, 109)
-polygon = PackedVector2Array(378.5, 117, -131.5, 107, -382.5, 118, -380.5, 23, -360.5, 15, -272.5, -204, -248.5, -188, -1.5, -156, 346.5, -184)
-disabled = true
+polygon = PackedVector2Array(446.5, 255, -531.5, 258, -531.5, 197, -403.5, -71, -376.5, -94, 427.5, -75, 464.5, 206)
 
 [node name="Label" type="Label" parent="StaticBody2D"]
 visible = false
@@ -83,6 +83,12 @@ shape = SubResource("RectangleShape2D_v5ejc")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("8_w17g1")]
 trigger = SubResource("Resource_74vpo")
+
+[node name="TrexSotto" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-1, 203)
+texture = ExtResource("13_ocfy1")
+offset = Vector2(-34, 86)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

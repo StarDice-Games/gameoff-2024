@@ -3,13 +3,16 @@ extends Node2D
 @export var dialog_escape : Array[DialogText]
 @export var alarm_sfx : AudioStream
 
+@onready var animation_player: AnimationPlayer = $OpenPaintingCutscene/CanvasLayer/AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
-	if TriggersSystem.check_trigger("stealth", true):
+	if TriggersSystem.check_trigger("stealth", true) and TriggersSystem.check_trigger("alarm_started", false):
 		DialogueSystem.start_dialog(dialog_escape)
 		TriggersSystem.update_trigger("doors_locked", true)
+		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +24,7 @@ func update_counter_talk(key: String, value : bool) -> void:
 		EventSystem.task_update.emit("first_tasks")
 
 	if key == "opened_painting" and value == true:
-		$OpenPaintingCutscene/AnimationPlayer.play("open_painting")
+		animation_player.play("open_painting")
 		
 func _on_door_lock_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.

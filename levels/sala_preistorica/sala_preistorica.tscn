@@ -21,7 +21,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +33,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -61,7 +61,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +73,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -164,12 +164,15 @@ trigger = SubResource("Resource_hx5ly")
 
 [node name="FishCutScene" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FishCutScene"]
+[node name="CanvasLayer" type="CanvasLayer" parent="FishCutScene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FishCutScene/CanvasLayer"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_agkou")
 }
 
-[node name="ColorRect" type="ColorRect" parent="FishCutScene"]
+[node name="ColorRect" type="ColorRect" parent="FishCutScene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 offset_left = -590.0
 offset_top = -336.0
@@ -177,8 +180,8 @@ offset_right = 2595.0
 offset_bottom = 1506.0
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene/CanvasLayer"]
 stream = ExtResource("7_f24n0")
 
-[connection signal="animation_finished" from="FishCutScene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="FishCutScene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

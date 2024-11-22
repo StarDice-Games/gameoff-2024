@@ -14,10 +14,10 @@ text_name = "Angelo"
 triggers = Array[ExtResource("4_ppv2w")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12ubx"]
-size = Vector2(103, 71)
+size = Vector2(103, 316)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y17gx"]
-size = Vector2(77, 71)
+size = Vector2(77, 317)
 
 [sub_resource type="Resource" id="Resource_wx00u"]
 script = ExtResource("4_ppv2w")
@@ -31,7 +31,7 @@ script = ExtResource("1_3hagi")
 dialog = Array[ExtResource("2_ku3x8")]([SubResource("Resource_1fggd")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(53.5, 25)
+position = Vector2(53.5, 26)
 shape = SubResource("RectangleShape2D_12ubx")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -41,7 +41,7 @@ collision_mask = 17
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 visibility_layer = 31
-position = Vector2(26, -0.5)
+position = Vector2(26, 1)
 shape = SubResource("RectangleShape2D_y17gx")
 
 [node name="NodeToggle" parent="." instance=ExtResource("5_as0rg")]

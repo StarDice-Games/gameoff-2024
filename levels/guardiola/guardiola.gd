@@ -1,5 +1,9 @@
 extends Node2D
 
+@onready var anim_close_museum: AnimationPlayer = $CloseMuseumCutscene/CanvasLayer/AnimationPlayer
+@onready var anim_open_guardaroba: AnimationPlayer = $OpenGuardarobaCutscene/CanvasLayer/AnimationPlayer
+@onready var anima_end: AnimationPlayer = $EndPhone/CanvasLayer/AnimationPlayer2
+
 @export var first_tasks : Array[Task]
 @export var second_tasks : Array[Task]
 
@@ -28,10 +32,10 @@ func trigger_update(key, value):
 		TriggersSystem.update_trigger("first_boss_call", false)
 		
 	if key == "close_museum" and value == true:
-		$CloseMuseumCutscene/DelayAnim.start()
+		anim_close_museum.play("close_museum")
 		
 	if key == "guardian_locker_open" and value == true:
-		$OpenGuardarobaCutscene/AnimationPlayer.play("open_guardaroba")
+		anim_open_guardaroba.play("open_guardaroba")
 		
 	if key == "second_boss_call" and value == true:
 		TaskSystem.load_tasks(second_tasks)
@@ -88,11 +92,11 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 
 func _on_delay_anim_timeout() -> void:
-	$CloseMuseumCutscene/AnimationPlayer.play("close_museum")
+	anim_close_museum.play("close_museum")
 
 
 func _on_delay_end_cut_timeout() -> void:
-	$EndPhone/AnimationPlayer2.play("end")
+	anima_end.play("end")
 
 
 func _on_animation_player_2_animation_finished_end(anim_name: StringName) -> void:

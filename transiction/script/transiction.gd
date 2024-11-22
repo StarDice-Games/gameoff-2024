@@ -16,6 +16,7 @@ func fade_in() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	hide()
+	
 	if anim_name == "fade_in":
 		EventSystem.transition_fade_in_end.emit()
 	elif anim_name == "fade_out":
@@ -23,4 +24,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	EventSystem.cutscene_started.emit()
+	AudioSystem.mute = true
+	$Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	AudioSystem.mute = false

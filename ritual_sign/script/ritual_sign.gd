@@ -20,3 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	TriggersSystem.toggle_trigger("stealth")
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	EventSystem.cutscene_started.emit()

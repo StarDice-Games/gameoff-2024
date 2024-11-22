@@ -56,17 +56,6 @@ offset_bottom = 344.0
 localize_numeral_system = false
 theme_override_constants/separation = -4
 
-[node name="TaskUi" parent="CanvasLayer/Control/Panel/VBoxContainer" instance=ExtResource("2_pmb02")]
-layout_mode = 2
-
-[node name="TaskUi2" parent="CanvasLayer/Control/Panel/VBoxContainer" instance=ExtResource("2_pmb02")]
-layout_direction = 1
-layout_mode = 2
-
-[node name="TaskUi3" parent="CanvasLayer/Control/Panel/VBoxContainer" instance=ExtResource("2_pmb02")]
-layout_direction = 1
-layout_mode = 2
-
 [node name="Panel2" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15

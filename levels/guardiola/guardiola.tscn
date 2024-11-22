@@ -57,7 +57,7 @@ triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_5eku6"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling ?"])
+dialogue_text = Array[String](["Gatehouse of the Museum Servivit, who is calling ?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([])
@@ -76,7 +76,7 @@ triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
 
 [sub_resource type="Resource" id="Resource_71bqx"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling ?"])
+dialogue_text = Array[String](["Gatehouse of theMuseum Servivit, who is calling ?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([])
@@ -119,7 +119,7 @@ value = false
 
 [sub_resource type="Resource" id="Resource_2wo27"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["Gatehouse of the xxx Museum, who is calling ?"])
+dialogue_text = Array[String](["Gatehouse of the Museum Servivit, who is calling ?"])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_fk41s")])
@@ -131,7 +131,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_2rnl0"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["It’s me again. Please bring the object you pick up to the room xxx.", "Please find them."])
+dialogue_text = Array[String](["It’s me again. Please bring the object you pick up to the room xxx."])
 character_image = ExtResource("12_e3x06")
 text_name = "Boss"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
@@ -146,7 +146,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -158,7 +158,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -174,7 +174,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,7 +186,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -207,7 +207,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -219,7 +219,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -238,7 +238,7 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -250,7 +250,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -280,7 +280,7 @@ resource_name = "end"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -371,12 +371,19 @@ position = Vector2(-274, -210)
 
 [node name="CloseMuseumCutscene" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CloseMuseumCutscene"]
+[node name="DelayAnim" type="Timer" parent="CloseMuseumCutscene"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CloseMuseumCutscene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloseMuseumCutscene/CanvasLayer"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_rtup7")
 }
 
-[node name="ColorRect" type="ColorRect" parent="CloseMuseumCutscene"]
+[node name="ColorRect" type="ColorRect" parent="CloseMuseumCutscene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 top_level = true
 visibility_layer = 16
@@ -387,16 +394,14 @@ offset_right = 2176.0
 offset_bottom = 1266.0
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CloseMuseumCutscene"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CloseMuseumCutscene/CanvasLayer"]
 stream = ExtResource("18_is8n0")
-
-[node name="DelayAnim" type="Timer" parent="CloseMuseumCutscene"]
-wait_time = 0.2
-one_shot = true
 
 [node name="OpenGuardarobaCutscene" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene"]
+[node name="CanvasLayer" type="CanvasLayer" parent="OpenGuardarobaCutscene"]
+
+[node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 offset_left = -260.0
@@ -405,10 +410,11 @@ offset_right = 2176.0
 offset_bottom = 1266.0
 color = Color(0, 0, 0, 1)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene/CanvasLayer"]
 stream = ExtResource("17_rhtdm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene/CanvasLayer"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_sehj2")
 }
@@ -423,27 +429,30 @@ position = Vector2(1097, 577)
 position = Vector2(-204, 47)
 trigger = SubResource("Resource_0nogq")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="EndPhone"]
+[node name="DelayEndCut" type="Timer" parent="EndPhone"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EndPhone"]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="EndPhone/CanvasLayer"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_g7xco")
 }
 
-[node name="ColorRect" type="ColorRect" parent="EndPhone"]
-offset_left = -1194.0
-offset_top = -693.0
-offset_right = 947.0
-offset_bottom = 625.0
+[node name="ColorRect" type="ColorRect" parent="EndPhone/CanvasLayer"]
+offset_left = -97.0
+offset_top = -116.0
+offset_right = 2044.0
+offset_bottom = 1202.0
 color = Color(0, 0, 0, 0)
 
-[node name="DelayEndCut" type="Timer" parent="EndPhone"]
-one_shot = true
-
-[connection signal="animation_finished" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="CloseMuseumCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
-[connection signal="animation_finished" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished_guardaroba"]
-[connection signal="animation_started" from="OpenGuardarobaCutscene/AnimationPlayer" to="." method="_on_animation_player_animation_started_guardaroba"]
+[connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="OpenGuardarobaCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished_guardaroba"]
+[connection signal="animation_started" from="OpenGuardarobaCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started_guardaroba"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="EndPhone/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished_end"]
-[connection signal="animation_started" from="EndPhone/AnimationPlayer2" to="." method="_on_animation_player_2_animation_started"]
 [connection signal="timeout" from="EndPhone/DelayEndCut" to="." method="_on_delay_end_cut_timeout"]
+[connection signal="animation_finished" from="EndPhone/CanvasLayer/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished_end"]
+[connection signal="animation_started" from="EndPhone/CanvasLayer/AnimationPlayer2" to="." method="_on_animation_player_2_animation_started"]

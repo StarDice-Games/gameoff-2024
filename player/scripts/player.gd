@@ -33,6 +33,8 @@ var last_facing_dir := Vector2(0, -1)
 
 func _process(delta: float) -> void:
 	if in_cutscene:
+		animation_tree.set("parameters/conditions/idle", true)
+		animation_tree.set("parameters/conditions/walk", false)
 		return
 	
 	ray_cast.target_position = raycast_target
@@ -57,6 +59,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 
 	if in_cutscene:
+		animation_tree.set("parameters/conditions/idle", true)
+		animation_tree.set("parameters/conditions/walk", false)
 		return
 
 	# Get the input direction and handle the movement/deceleration.
@@ -108,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() != 0:
 		if $Timer.time_left <= 0:
 			AudioSystem.play(footstep) 
-			$Timer.start(0.43)
+			$Timer.start()
 
 	move_and_slide()
 

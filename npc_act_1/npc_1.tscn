@@ -25,7 +25,7 @@ text_name = "Visitor"
 triggers = Array[ExtResource("4_xttip")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
-size = Vector2(41, 125)
+size = Vector2(61, 37)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
 radius = 89.0898
@@ -67,6 +67,7 @@ _data = {
 }
 
 [node name="Npc" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_rl6wn")
@@ -89,16 +90,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(5, -36.5)
 texture = ExtResource("6_0jbmi")
-offset = Vector2(22, -124)
+offset = Vector2(21, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -61)
+position = Vector2(5.5, 67.5)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("7_ul2wj")]
-position = Vector2(5, -83)
+position = Vector2(8, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-5, 0)
