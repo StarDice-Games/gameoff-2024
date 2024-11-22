@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var SPEED = 300.0
 @export var interact_distance = 100
@@ -24,6 +25,11 @@ func enter_cutscene():
 func exit_cutscene():
 	in_cutscene = false
 	ray_cast.enabled = true
+	#when the dialog of a patrol end, reset the room and trigger of allarm
+	if TriggersSystem.check_trigger("allarm_ends", true):
+		TriggersSystem.update_trigger("allarm_ends", false)
+		TransictionScene.fade_out()
+		LevelSystem.load_level(LevelSystem.current_level, true)
 
 func _process(delta: float) -> void:
 	

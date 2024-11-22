@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr7sec8ntpb4j"]
+[gd_scene load_steps=7 format=3 uid="uid://cr7sec8ntpb4j"]
 
-[ext_resource type="Script" path="res://levels/test_leonardo/PathFollowMovement.gd" id="1_upjjy"]
 [ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="2_colt5"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_jm807"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="3_qr5sd"]
+[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="4_285o0"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_xlmmy"]
 
 [sub_resource type="Curve2D" id="Curve2D_nxkba"]
 _data = {
@@ -22,10 +24,30 @@ curve = SubResource("Curve2D_nxkba")
 position = Vector2(5, 79)
 rotation = 0.00130556
 rotates = false
+cubic_interp = false
 loop = false
-script = ExtResource("1_upjjy")
 
-[node name="EnemyPatrol" parent="Path2D/PathFollow2D" instance=ExtResource("2_colt5")]
+[node name="EnemyPatrol" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("2_colt5")]
+speed = 150
+path = NodePath("..")
+monolog = Array[ExtResource("3_jm807")]([ExtResource("4_285o0")])
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(963, -49)
+scale = Vector2(1.44886, 1.33271)
+curve = SubResource("Curve2D_nxkba")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(5, 79)
+rotation = 0.00130556
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("2_colt5")]
+speed = 150
+path = NodePath("..")
+monolog = Array[ExtResource("3_jm807")]([ExtResource("4_285o0")])
 
 [node name="Checkpoint" parent="." instance=ExtResource("3_qr5sd")]
 position = Vector2(864.785, 59.9407)
@@ -42,3 +64,10 @@ direction = "up"
 [node name="Checkpoint4" parent="." instance=ExtResource("3_qr5sd")]
 position = Vector2(496, 66)
 direction = "up"
+
+[node name="Checkpoint5" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(1238, 55)
+direction = "down"
+
+[node name="Player" parent="." instance=ExtResource("4_xlmmy")]
+position = Vector2(871.639, 531.029)
