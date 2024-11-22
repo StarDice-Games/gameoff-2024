@@ -1,47 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxrlpr7aaoasy"]
+[gd_scene load_steps=8 format=3 uid="uid://cxrlpr7aaoasy"]
 
 [ext_resource type="Script" path="res://task_system/scripts/task_ui.gd" id="1_4d36u"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://credits/Credits/Simone.png" id="1_okhwx"]
-[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="3_7x7mi"]
+[ext_resource type="Texture2D" uid="uid://claa1u4mwx7rg" path="res://resource/assets/UI/visto-cerchietto-uniti.png" id="2_loleq"]
+[ext_resource type="Texture2D" uid="uid://bw7kvqokrikqf" path="res://resource/assets/UI/visto_cerchietto.png" id="3_7m7ji"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_be845"]
+[ext_resource type="AudioStream" uid="uid://f4o1s7rt8qw2" path="res://audio/sfx/UI/Task_Completed_01.wav" id="4_edugh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhhmo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_right = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_kf35e"]
+Panel/styles/panel = SubResource("StyleBoxFlat_dhhmo")
 
 [node name="TaskUi" type="Control"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(73, 73)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 371.0
-offset_bottom = 110.0
+anchor_right = 0.182
+anchor_bottom = 0.068
+offset_right = -0.440033
+offset_bottom = -0.440002
 script = ExtResource("1_4d36u")
-icon_check = ExtResource("1_okhwx")
-icon_uncheck = ExtResource("3_7x7mi")
+icon_check = ExtResource("2_loleq")
+icon_uncheck = ExtResource("3_7m7ji")
+sound_sfx = ExtResource("4_edugh")
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.792157)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_kf35e")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
-offset_left = 18.0
-offset_top = 9.0
-offset_right = 106.0
-offset_bottom = 95.0
-texture = ExtResource("1_okhwx")
-expand_mode = 2
+offset_left = 31.0
+offset_top = 24.0
+offset_right = 67.0
+offset_bottom = 60.0
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("3_7m7ji")
+stretch_mode = 2
 
 [node name="Label" type="Label" parent="Panel"]
 custom_minimum_size = Vector2(90, 30)
 layout_mode = 1
-offset_left = 111.0
-offset_top = 28.0
-offset_right = 321.0
-offset_bottom = 78.0
+offset_left = 81.0
+offset_top = 8.0
+offset_right = 291.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_be845")
+theme_override_font_sizes/font_size = 25
 text = "Task task very asdf wf asfas dfas df asdfas df a s dfasdfas dfasdf"
-autowrap_mode = 2
+vertical_alignment = 1
+autowrap_mode = 1
 clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
@@ -51,16 +69,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -14.0
 offset_top = -5.0
-offset_right = 8.19501
-offset_bottom = 14.0
+offset_right = 8.0
+offset_bottom = -0.0199966
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Counter" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 329.0
-offset_top = 42.0
-offset_right = 369.0
-offset_bottom = 65.0
+offset_left = 292.0
+offset_top = 19.0
+offset_right = 332.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_be845")
+theme_override_font_sizes/font_size = 25
 text = "5/5"
 horizontal_alignment = 1

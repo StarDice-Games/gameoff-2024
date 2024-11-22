@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://clwjhcvtij55p"]
 
 [ext_resource type="Script" path="res://levels/test_samanta/scripts/other_level.gd" id="1_bmie6"]
-[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://splash_screen/STAR dice white.png" id="1_cjw30"]
+[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="1_cjw30"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_340v0"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_byuaf"]
 

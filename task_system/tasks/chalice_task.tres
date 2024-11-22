@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://bc6w8xsyxpufe"]
+
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="1_kal4g"]
+
+[resource]
+script = ExtResource("1_kal4g")
+id = "chalice"
+description = "Get the sacred chalice "
+complete = false
+counter_max = -1
+current_counter = -1

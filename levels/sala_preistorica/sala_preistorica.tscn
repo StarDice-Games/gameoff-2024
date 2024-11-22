@@ -1,24 +1,138 @@
-[gd_scene load_steps=6 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=15 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="2_w3ih5"]
+[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
+[ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
-[ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="5_miqde"]
+[ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
+[ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="7_f24n0"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="8_alvi4"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_n8j22"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_l6ab1"]
+
+[sub_resource type="Resource" id="Resource_hx5ly"]
+script = ExtResource("10_l6ab1")
+key = "rope_taken"
+value = false
+
+[sub_resource type="Animation" id="Animation_lypc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Rope:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m6ydv"]
+resource_name = "falling_fish"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3.5, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Rope:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agkou"]
+_data = {
+"RESET": SubResource("Animation_lypc6"),
+"falling_fish": SubResource("Animation_m6ydv")
+}
 
 [node name="SalaPreistorica" type="Node2D"]
+script = ExtResource("1_m84jc")
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_7aig2")]
+[node name="Stanze" type="Sprite2D" parent="."]
+position = Vector2(947, 529)
+texture = ExtResource("1_f8vd0")
+region_enabled = true
+region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
+
+[node name="ColorRect" type="ColorRect" parent="Stanze"]
+z_index = -1
+anchors_preset = -1
+anchor_right = 0.00810682
+anchor_bottom = 0.0706215
+offset_left = -1517.0
+offset_top = -831.0
+offset_right = 1525.0
+offset_bottom = 859.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
+player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-position = Vector2(1683, 963)
+position = Vector2(1418, 789)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CameraFollow" parent="." instance=ExtResource("2_w3ih5")]
-position = Vector2(960, 539)
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+color = Color(0.582582, 1, 0.432314, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_x3oc3")]
 unique_name_in_owner = true
@@ -33,9 +147,41 @@ theme_override_font_sizes/font_size = 60
 text = "Sala Preistorica/Naturale"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1700, 1146)
+position = Vector2(1444, 1121)
 level_id = "corridoio"
 link_id = "North1"
 
-[node name="Libreria" parent="." instance=ExtResource("5_miqde")]
-position = Vector2(1383, 125)
+[node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
+position = Vector2(1461, 59)
+
+[node name="Rope" parent="." instance=ExtResource("8_alvi4")]
+visible = false
+position = Vector2(956, 800)
+
+[node name="NodeToggle2" parent="Rope" instance=ExtResource("9_n8j22")]
+position = Vector2(-96.0701, -182.915)
+trigger = SubResource("Resource_hx5ly")
+
+[node name="FishCutScene" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FishCutScene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FishCutScene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_agkou")
+}
+
+[node name="ColorRect" type="ColorRect" parent="FishCutScene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -590.0
+offset_top = -336.0
+offset_right = 2595.0
+offset_bottom = 1506.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene/CanvasLayer"]
+stream = ExtResource("7_f24n0")
+
+[connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

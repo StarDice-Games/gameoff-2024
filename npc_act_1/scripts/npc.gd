@@ -10,13 +10,14 @@ func _ready() -> void:
 		queue_free()
 
 func _on_interactable_player_enter() -> void:
-	prompt_label.show()
+	if TriggersSystem.check_trigger("place_npc", true):
+		prompt_label.show()
 
 func _on_interactable_player_exit() -> void:
 	prompt_label.hide()
 
 func _on_interactable_interacted() -> void:
-	if TriggersSystem.check_trigger(trigger_id, true):
+	if TriggersSystem.check_trigger(trigger_id, true) or TriggersSystem.check_trigger("place_npc", false):
 		return
 	
 	EventSystem.cutscene_started.emit()

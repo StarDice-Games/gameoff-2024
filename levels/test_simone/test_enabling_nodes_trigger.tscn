@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://djiyacmnxxvkn"]
 
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="1_gdr6p"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="1_gdr6p"]
 [ext_resource type="Script" path="res://levels/test_simone/scripts/test_enabling_nodes_trigger.gd" id="1_lo2hp"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="2_8if4d"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="3_ml3gr"]
@@ -20,7 +20,6 @@ script = ExtResource("1_lo2hp")
 
 [node name="Npc" parent="." instance=ExtResource("1_gdr6p")]
 position = Vector2(725, 322)
-trigger_id = "talk1"
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1247, 269)

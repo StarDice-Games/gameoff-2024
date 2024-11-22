@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://levels/credits/Credits/Kevin.png" id="14_mf8j4"]
 [ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="15_xv5e3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="16_3ei1w"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc.tscn" id="17_7njc4"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="17_7njc4"]
 
 [sub_resource type="Resource" id="Resource_uwno5"]
 script = ExtResource("2_f3mc0")

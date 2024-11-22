@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://bwdldv1x4f3mm"]
+
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="1_xibdr"]
+
+[resource]
+script = ExtResource("1_xibdr")
+id = "magic_book"
+description = "take the Magic Book"
+complete = false
+counter_max = -1
+current_counter = -1

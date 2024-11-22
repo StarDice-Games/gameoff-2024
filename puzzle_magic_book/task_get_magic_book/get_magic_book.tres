@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_67ocl")
 id = "get_magic_book"
-description = "get the magic book"
+description = "Get the magic book"
 complete = false
 counter_max = -1
 current_counter = -1

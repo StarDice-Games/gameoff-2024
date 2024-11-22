@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf7a0a6fbohbw"]
+[gd_scene load_steps=9 format=3 uid="uid://bf7a0a6fbohbw"]
 
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="1_0q6q2"]
 [ext_resource type="Script" path="res://telephone/script/telephone.gd" id="1_bv30h"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="2_1lqqx"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_k3lcd"]
 [ext_resource type="AudioStream" uid="uid://cpxcoph3vaasm" path="res://telephone/sound/Phone_Ring.wav" id="4_1ytcf"]
 [ext_resource type="AudioStream" uid="uid://oldodapfa5rw" path="res://telephone/sound/Phone_Answer.wav" id="5_dlb18"]
@@ -17,12 +18,15 @@ script = ExtResource("1_bv30h")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -74.0
-offset_top = -131.0
-offset_right = 67.0
-offset_bottom = -82.0
+z_index = 1
+offset_left = -88.0
+offset_top = -136.0
+offset_right = 109.0
+offset_bottom = -87.0
+theme = ExtResource("2_1lqqx")
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
-text = "INTERACT"
+text = "Pick up the phone"
 horizontal_alignment = 1
 vertical_alignment = 1
 

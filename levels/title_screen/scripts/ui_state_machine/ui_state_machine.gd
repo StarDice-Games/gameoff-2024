@@ -12,6 +12,7 @@ func _ready() -> void:
 	
 	current_state.enter()
 	
+	EventSystem.cutscene_started.emit()
 	#EventSystem.connect("change_ui_state", change_state)
 
 

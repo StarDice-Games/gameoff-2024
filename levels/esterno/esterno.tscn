@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtg6inbafw5go"]
+
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="1_dw653"]
+[ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qv2lt"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_o3w55"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_q1ygh"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_un5ie"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_x6rer"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="5_8nwid"]
+
+[sub_resource type="Resource" id="Resource_vfy75"]
+script = ExtResource("4_un5ie")
+key = "start"
+value = true
+
+[sub_resource type="Resource" id="Resource_pevej"]
+script = ExtResource("2_qv2lt")
+dialogue_text = Array[String](["It’s the right time now, I’m old and will retire soon", "This is the right work at the right time. Now that my nephews are here, I’m closer to them…", "That’s perfect.", "Let’s go to work…better not to arrive late the first day."])
+character_image = ExtResource("3_q1ygh")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_un5ie")]([SubResource("Resource_vfy75")])
+
+[node name="Esterno" type="Node2D"]
+script = ExtResource("1_ll6ia")
+dialog_1 = Array[ExtResource("2_qv2lt")]([SubResource("Resource_pevej")])
+
+[node name="IngressoCopia" type="Sprite2D" parent="."]
+position = Vector2(972, 545)
+texture = ExtResource("1_dw653")
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
+player_ref = NodePath("../Player")
+
+[node name="WestDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(394, 779)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.435294, 0.580392, 0.34902, 1)
+metadata/_edit_lock_ = true
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_o3w55")]
+position = Vector2(962, 543)
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_x6rer")]
+unique_name_in_owner = true
+position = Vector2(1010, 696)
+
+[node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
+position = Vector2(157, 520)
+level_id = "ingresso"
+link_id = "Entrance"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 273.0
+offset_right = 912.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 40
+text = "Esterno"

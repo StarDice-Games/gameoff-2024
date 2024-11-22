@@ -1,21 +1,342 @@
-[gd_scene load_steps=10 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=52 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_wow0x"]
+[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
+[ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_53fam"]
+[ext_resource type="Resource" uid="uid://bplyxs3ic2kqp" path="res://task_system/tasks/first_tasks.tres" id="3_dpcsg"]
+[ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="4_2qtxl"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="4_7anjd"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_c01jj"]
-[ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="5_dkjy6"]
-[ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="6_ico4y"]
-[ext_resource type="Script" path="res://levels/guardiola/scripts/testing_task_magic_book.gd" id="7_hme1q"]
-[ext_resource type="Script" path="res://task_system/data/task.gd" id="8_xsn22"]
-[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="9_5aa4e"]
+[ext_resource type="PackedScene" uid="uid://bf7a0a6fbohbw" path="res://telephone/telephone.tscn" id="5_t22vn"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="6_66euh"]
+[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="6_atd8t"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
+[ext_resource type="Texture2D" uid="uid://bt2v471ydnuv" path="res://resource/assets/enemy/Boss_Face_Obs.png" id="12_e3x06"]
+[ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="16_7xk1d"]
+[ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
+[ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="17_rhtdm"]
+[ext_resource type="AudioStream" uid="uid://b0n8kpjkerh0g" path="res://audio/sfx/various/Lock_Door_01.wav" id="18_is8n0"]
+[ext_resource type="PackedScene" uid="uid://heowlo4h6fdn" path="res://end_phone/end_phone.tscn" id="20_hvcx5"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="21_nud1n"]
+
+[sub_resource type="Resource" id="Resource_bmfvq"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Later!? Maybe he will come for a visit."])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_k2cmd"]
+script = ExtResource("7_xu3vp")
+key = "first_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_5jy0i"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Good evening Angelo and welcome.", "I know your shift starts this evening, just make sure you take care of this place.", "Since your predecessor was…was…was promoted, here in the night is a complete mess."])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
+
+[sub_resource type="Resource" id="Resource_x2y3w"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Thanks for the opportunity sir, I won’t let you down, I promise."])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_uq2jl"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["You can start looking if someone is still in the museum.", "We're closing and it’s better to have no one here at night.", "Now I have to go, we’ll talk again later."])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_5eku6"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of the Museum Servivit, who is calling ?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_vu2f6"]
+script = ExtResource("7_xu3vp")
+key = "close_museum"
+value = true
+
+[sub_resource type="Resource" id="Resource_ngl3b"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Well done Angelo, from the cameras I’ve seen that all the remaining visitors are leaving.", "Now you can close the museum."])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
+
+[sub_resource type="Resource" id="Resource_71bqx"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of theMuseum Servivit, who is calling ?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_5y0n3"]
+script = ExtResource("7_xu3vp")
+key = "second_boss_call"
+value = true
+
+[sub_resource type="Resource" id="Resource_8tlt2"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["It’s me, I need to ask you a favor.", " As you can see, there is a list of objects I need on your desk.", " Please find them."])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
+
+[sub_resource type="Resource" id="Resource_5gf7c"]
+script = ExtResource("7_xu3vp")
+key = "dialog_player"
+value = true
+
+[sub_resource type="Resource" id="Resource_i7w26"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Ok, I’ll do it immediately."])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5gf7c")])
+
+[sub_resource type="Resource" id="Resource_ma26e"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Thanks, see you later. "])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="Resource" id="Resource_fk41s"]
+script = ExtResource("7_xu3vp")
+key = "doors_locked"
+value = false
+
+[sub_resource type="Resource" id="Resource_2wo27"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["Gatehouse of the Museum Servivit, who is calling ?"])
+character_image = ExtResource("7_x57c3")
+text_name = "Angelo"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_fk41s")])
+
+[sub_resource type="Resource" id="Resource_ne5gc"]
+script = ExtResource("7_xu3vp")
+key = "dialog_player"
+value = true
+
+[sub_resource type="Resource" id="Resource_2rnl0"]
+script = ExtResource("6_66euh")
+dialogue_text = Array[String](["It’s me again. Please bring the object you pick up to the room xxx."])
+character_image = ExtResource("12_e3x06")
+text_name = "Boss"
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
+
+[sub_resource type="Resource" id="Resource_6qwgt"]
+script = ExtResource("7_xu3vp")
+key = "boss_exit"
+value = true
+
+[sub_resource type="Animation" id="Animation_eym1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ci7yj"]
+resource_name = "close_museum"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.53333, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtup7"]
+_data = {
+"RESET": SubResource("Animation_eym1a"),
+"close_museum": SubResource("Animation_ci7yj")
+}
+
+[sub_resource type="Animation" id="Animation_f3441"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0wa4b"]
+resource_name = "end"
+
+[sub_resource type="Animation" id="Animation_5t3om"]
+resource_name = "open_guardaroba"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sehj2"]
+_data = {
+"RESET": SubResource("Animation_f3441"),
+"end": SubResource("Animation_0wa4b"),
+"open_guardaroba": SubResource("Animation_5t3om")
+}
+
+[sub_resource type="Resource" id="Resource_0nogq"]
+script = ExtResource("7_xu3vp")
+key = "stealth"
+value = false
+
+[sub_resource type="Animation" id="Animation_egydi"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_blnn4"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7xco"]
+_data = {
+"RESET": SubResource("Animation_egydi"),
+"end": SubResource("Animation_blnn4")
+}
 
 [node name="GuardiolaHall" type="Node2D"]
+script = ExtResource("1_mwtu7")
+first_tasks = Array[ExtResource("2_53fam")]([ExtResource("3_dpcsg")])
+second_tasks = Array[ExtResource("2_53fam")]([ExtResource("4_7anjd"), ExtResource("4_2qtxl"), ExtResource("6_atd8t")])
+dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_booiy")]
+[node name="Stanze" type="Sprite2D" parent="."]
+position = Vector2(947, 529)
+texture = ExtResource("1_hm8vv")
+region_enabled = true
+region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
+
+[node name="ColorRect" type="ColorRect" parent="Stanze"]
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.00952381
+anchor_top = -0.016684
+anchor_right = 4.09784
+anchor_bottom = 3.44108
+offset_left = -3287.56
+offset_top = -2212.13
+offset_right = -245.563
+offset_bottom = -522.125
+metadata/_edit_use_anchors_ = true
+
+[node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
+position = Vector2(1096, 576)
+dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
+dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
+dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])
+dialog_4 = Array[ExtResource("6_66euh")]([SubResource("Resource_2wo27"), SubResource("Resource_2rnl0")])
+act = "act_1"
+
+[node name="NodeToggle" parent="Telephone" instance=ExtResource("21_nud1n")]
+trigger = SubResource("Resource_6qwgt")
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_booiy")]
+player_ref = NodePath("../Player")
 
 [node name="NorthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(881, 105)
+position = Vector2(786, 587)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/NorthDoor"]
 offset_right = 40.0
@@ -23,12 +344,9 @@ offset_bottom = 40.0
 color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
-[node name="CameraFollow" parent="." instance=ExtResource("1_wow0x")]
-position = Vector2(935, 536)
-
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(944, 536)
+position = Vector2(842, 536)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 441.0
@@ -39,16 +357,102 @@ theme_override_font_sizes/font_size = 40
 text = "Guardiola"
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(907, 12)
+position = Vector2(799, 319)
 level_id = "ingresso"
 link_id = "SouthDoor"
 
-[node name="Post-it" parent="." instance=ExtResource("5_dkjy6")]
-position = Vector2(1540, 192)
+[node name="PuzzleGuardaroba" type="Node2D" parent="."]
+position = Vector2(909, 737)
 
-[node name="GuardarobaGuardiano" parent="." instance=ExtResource("6_ico4y")]
-position = Vector2(333, 545)
+[node name="GuardarobaGuardiano" parent="PuzzleGuardaroba" instance=ExtResource("16_7xk1d")]
+position = Vector2(-274, -210)
 
-[node name="TestingTaskMagicBook" type="Node2D" parent="."]
-script = ExtResource("7_hme1q")
-task = Array[ExtResource("8_xsn22")]([ExtResource("9_5aa4e")])
+[node name="Post-it" parent="PuzzleGuardaroba" instance=ExtResource("17_8aj5y")]
+
+[node name="CloseMuseumCutscene" type="Node2D" parent="."]
+
+[node name="DelayAnim" type="Timer" parent="CloseMuseumCutscene"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CloseMuseumCutscene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloseMuseumCutscene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_rtup7")
+}
+
+[node name="ColorRect" type="ColorRect" parent="CloseMuseumCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+visibility_layer = 16
+z_index = 1
+offset_left = -260.0
+offset_top = -75.0
+offset_right = 2176.0
+offset_bottom = 1266.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CloseMuseumCutscene/CanvasLayer"]
+stream = ExtResource("18_is8n0")
+
+[node name="OpenGuardarobaCutscene" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="OpenGuardarobaCutscene"]
+
+[node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -260.0
+offset_top = -75.0
+offset_right = 2176.0
+offset_bottom = 1266.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene/CanvasLayer"]
+stream = ExtResource("17_rhtdm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_sehj2")
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
+position = Vector2(1097, 577)
+
+[node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
+position = Vector2(-204, 47)
+trigger = SubResource("Resource_0nogq")
+
+[node name="DelayEndCut" type="Timer" parent="EndPhone"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EndPhone"]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="EndPhone/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_g7xco")
+}
+
+[node name="ColorRect" type="ColorRect" parent="EndPhone/CanvasLayer"]
+offset_left = -97.0
+offset_top = -116.0
+offset_right = 2044.0
+offset_bottom = 1202.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
+[connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="OpenGuardarobaCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished_guardaroba"]
+[connection signal="animation_started" from="OpenGuardarobaCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started_guardaroba"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EndPhone/DelayEndCut" to="." method="_on_delay_end_cut_timeout"]
+[connection signal="animation_finished" from="EndPhone/CanvasLayer/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished_end"]
+[connection signal="animation_started" from="EndPhone/CanvasLayer/AnimationPlayer2" to="." method="_on_animation_player_2_animation_started"]

@@ -1,17 +1,880 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjdd0k2i2oo77"]
+[gd_scene load_steps=37 format=3 uid="uid://bjdd0k2i2oo77"]
 
 [ext_resource type="Script" path="res://levels/first_day_cutscene/scripts/first_day_cutscene.gd" id="1_5y6nj"]
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="2_8jnbb"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_kd45u"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_ta8ak"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_ei10b"]
+[ext_resource type="Texture2D" uid="uid://csurpb55hoibi" path="res://resource/assets/char-280px/Laterale/Gamba dx_.png" id="6_nma4f"]
+[ext_resource type="Texture2D" uid="uid://dpi1u31trtal3" path="res://resource/assets/char-280px/Laterale/Piega dx.png" id="7_mg1rb"]
+[ext_resource type="Texture2D" uid="uid://7natv44ttlgj" path="res://resource/assets/char-280px/Laterale/Gamba 2 dx_.png" id="8_dnsaf"]
+[ext_resource type="Texture2D" uid="uid://bg3boiu5wp507" path="res://resource/assets/char-280px/Laterale/Gamba sx.png" id="9_3rqh5"]
+[ext_resource type="Texture2D" uid="uid://pot58gyyavyp" path="res://resource/assets/char-280px/Laterale/Piede sx.png" id="10_cpf12"]
+[ext_resource type="Texture2D" uid="uid://cprrwsmbjdeec" path="res://resource/assets/char-280px/Laterale/Gamba 2 sx.png" id="11_yk51m"]
+[ext_resource type="Texture2D" uid="uid://ckjpei75dlqpj" path="res://resource/assets/char-280px/Laterale/Bacino.png" id="12_37v8a"]
+[ext_resource type="Texture2D" uid="uid://bujephhc2nrkh" path="res://resource/assets/char-280px/Laterale/Braccio sx.png" id="13_2ac1w"]
+[ext_resource type="Texture2D" uid="uid://co0v008f2vxv7" path="res://resource/assets/char-280px/Laterale/Torso_.png" id="14_iqvr8"]
+[ext_resource type="Texture2D" uid="uid://hfhoucdfilme" path="res://resource/assets/char-280px/Laterale/Testa.png" id="15_y70gj"]
+[ext_resource type="Texture2D" uid="uid://br38uadsrb2t0" path="res://resource/assets/char-280px/Laterale/bocca chiusa.png" id="16_g6n32"]
+[ext_resource type="Texture2D" uid="uid://hrvdj41iygcu" path="res://resource/assets/char-280px/Laterale/occhi aperti.png" id="17_hyl7p"]
+[ext_resource type="Texture2D" uid="uid://b0l2ohyb1he0k" path="res://resource/assets/char-280px/Laterale/occhio chiusi.png" id="18_h7vq0"]
+[ext_resource type="Texture2D" uid="uid://c8tper0lxxjxv" path="res://resource/assets/char-280px/Laterale/sopraciglio_Sx.png" id="19_grrx4"]
+[ext_resource type="Texture2D" uid="uid://b7uiljsnjg32m" path="res://resource/assets/char-280px/Laterale/Sopraciglio_Dx.png" id="20_n2h6i"]
+[ext_resource type="Texture2D" uid="uid://dsh0e5mvitryo" path="res://resource/assets/char-280px/Laterale/Chiavi.png" id="21_dds02"]
+[ext_resource type="Texture2D" uid="uid://dxg2p14ftvd2m" path="res://resource/assets/char-280px/Laterale/Mano sx.png" id="22_r6hy3"]
+[ext_resource type="Texture2D" uid="uid://do6s3oank3a4l" path="res://resource/assets/char-280px/Laterale/Braccio dx.png" id="23_02dvf"]
+[ext_resource type="Texture2D" uid="uid://dcdw6p17ty7oi" path="res://resource/assets/char-280px/Laterale/Mano dx.png" id="24_itffr"]
+
+[sub_resource type="Resource" id="Resource_71uml"]
+script = ExtResource("2_kd45u")
+dialogue_text = Array[String](["Now it’s time to start. Let’s go to work…better not to arrive late the first day."])
+character_image = ExtResource("3_ta8ak")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_ei10b")]([])
+
+[sub_resource type="Animation" id="Animation_v4edi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1157, 1093)]
+}
+
+[sub_resource type="Animation" id="Animation_qjr35"]
+resource_name = "walk_inside"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1157, 1093), Vector2(304, 667)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1540a"]
+_data = {
+"RESET": SubResource("Animation_v4edi"),
+"walk_inside": SubResource("Animation_qjr35")
+}
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_j2yfm"]
+target_nodepath = NodePath("../IK Targets/Foot_l")
+tip_nodepath = NodePath("Hip/Leg_l/Shin_l/Foot_l")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 4
+joint_data/0/bone2d_node = NodePath("Hip/Leg_l")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 5
+joint_data/1/bone2d_node = NodePath("Hip/Leg_l/Shin_l")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 127.586
+joint_data/1/constraint_angle_max = 6.882
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_2jnan"]
+target_nodepath = NodePath("../IK Targets/Foot_r")
+tip_nodepath = NodePath("Hip/Leg_r/Shin_r/Foot_r")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Hip/Leg_r")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Hip/Leg_r/Shin_r")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 48.589
+joint_data/1/constraint_angle_max = 161.062
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_st1ux"]
+target_nodepath = NodePath("../IK Targets/Hand_r")
+tip_nodepath = NodePath("Hip/Arm_r/Hand_r/Bone2D")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 8
+joint_data/0/bone2d_node = NodePath("Hip/Arm_r")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 9
+joint_data/1/bone2d_node = NodePath("Hip/Arm_r/Hand_r")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = -148.72
+joint_data/1/constraint_angle_max = -86.149
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_sekwv"]
+target_nodepath = NodePath("../IK Targets/Hand_l")
+tip_nodepath = NodePath("Hip/Arm_l/Hand_l/Bone2D")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 11
+joint_data/0/bone2d_node = NodePath("Hip/Arm_l")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 12
+joint_data/1/bone2d_node = NodePath("Hip/Arm_l/Hand_l")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 26.453
+joint_data/1/constraint_angle_max = 150.552
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_aax48"]
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DCCDIK_j2yfm")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_2jnan")
+modifications/2 = SubResource("SkeletonModification2DCCDIK_st1ux")
+modifications/3 = SubResource("SkeletonModification2DCCDIK_sekwv")
+
+[sub_resource type="Animation" id="Animation_xkogn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left/IK Targets/Hand_l:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(40, -0.25, 0, 0.25, 0, 45, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left/IK Targets/Hand_l:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(271, -0.25, 0, 0.25, 0, 271, -0.25, 0, 0.25, 0, 271, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left/IK Targets/Hand_r:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-31, -0.25, 0, 0.25, 0, -39, -0.25, 0, 0.25, 0, -31, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left/IK Targets/Hand_r:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(267, -0.25, 0, 0.25, 0, 264, -0.25, 0, 0.25, 0, 267, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Left/IK Targets/Foot_l:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Left/IK Targets/Foot_l:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(323, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Left/IK Targets/Foot_r:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Left/IK Targets/Foot_r:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(318, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Left/Torso:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(59, -0.25, 0, 0.25, 0, 57, -0.25, 0, 0.25, 0, 59, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Left/Torso:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.0349066, -0.25, 0, 0.25, 0, -0.0349066, -0.25, 0, 0.25, 0, 0.0349066, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.03333, 2)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Left/Skeleton2D/Hip/Leg_r/Shin_r/Foot_r:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.378707, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Left/Skeleton2D/Hip/Arm_l:position:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21.8545, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Left/Skeleton2D/Hip/Arm_l:position:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-58.7144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Left/Torso/Testa/OcchioChiusi:visible")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.733333, 1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Left/Torso/Testa/OcchiAperti:visible")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.733333, 1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Left/Torso/Testa/SopraciglioDx:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.253073, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 1.1, 1.6)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Left/Torso/Testa/SopraciglioSx:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.287979, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 1.1, 1.6)
+}
+
+[sub_resource type="Animation" id="Animation_kqjug"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left/IK Targets/Foot_r:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(63, -0.25, 0, 0.25, 0, -43, -0.25, 0, 0.25, 0, 63, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Left/IK Targets/Foot_r:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(319, -0.25, 0, 0.25, 0, 318, -0.25, 0, 0.25, 0, 319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Left/IK Targets/Foot_l:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-48, -0.25, 0, 0.25, 0, 39, -0.25, 0, 0.25, 0, -48, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Left/IK Targets/Foot_l:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(305, -0.25, 0, 0.25, 0, 306, -0.25, 0, 0.25, 0, 305, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Left/Torso:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 63), Vector2(3, 50), Vector2(3, 63), Vector2(3, 50), Vector2(3, 63)]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Left/IK Targets/Hand_l:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Left/IK Targets/Hand_l:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(274, -0.25, 0, 0.25, 0, 253, -0.25, 0, 0.25, 0, 274, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Left/Skeleton2D/Hip/Arm_l:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(25.8216, -52.2135), Vector2(25.822, -62), Vector2(25.8216, -52.2135), Vector2(25.822, -62), Vector2(25.8216, -52.2135)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Left/Skeleton2D/Hip/Arm_r:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-27.9281, -52.0001), Vector2(-27.928, -62), Vector2(-27.9281, -52.0001), Vector2(-27.928, -62), Vector2(-27.9281, -52.0001)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Left/IK Targets/Hand_r:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, 231), Vector2(-44, 260), Vector2(-20, 231)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Left/Skeleton2D/Hip/Leg_r/Shin_r/Foot_r:rotation")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.352557, 0.242601, 0.668461, 0.242601, 0.352557]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Left/Skeleton2D/Hip/Leg_l/Shin_l/Foot_l:rotation")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.305433, -0.247837, 0.197222, -0.247837, 0.305433]
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Left/Torso:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0523599, -0.25, 0, 0.25, 0, 0.0523599, -0.25, 0, 0.25, 0, -0.0523599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Left:visible")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Left/Torso/Testa/OcchiAperti:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Left/Torso/Testa/OcchioChiusi:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw5k1"]
+_data = {
+"idle": SubResource("Animation_xkogn"),
+"walk": SubResource("Animation_kqjug")
+}
 
 [node name="FirstDayCutscene" type="Node2D"]
 script = ExtResource("1_5y6nj")
+dialog_1 = Array[ExtResource("2_kd45u")]([SubResource("Resource_71uml")])
 
-[node name="Label" type="Label" parent="."]
-offset_left = 469.0
-offset_top = 388.0
-offset_right = 1353.0
-offset_bottom = 557.0
-theme_override_font_sizes/font_size = 60
-text = "BEAUTIFULL First Day CUT SCENE
-PRESS E to move on
-"
-horizontal_alignment = 1
+[node name="IngressoCopia" type="Sprite2D" parent="."]
+position = Vector2(972, 545)
+texture = ExtResource("2_8jnbb")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1540a")
+}
+
+[node name="Left" type="Node2D" parent="."]
+position = Vector2(1157, 1093)
+
+[node name="GambaDx" type="Sprite2D" parent="Left"]
+position = Vector2(-13.8984, 47.4921)
+rotation = -0.795379
+scale = Vector2(1, 1)
+texture = ExtResource("6_nma4f")
+offset = Vector2(-2, 15.9994)
+region_rect = Rect2(200, 377, 44, 66)
+
+[node name="PiedeDx" type="Sprite2D" parent="Left/GambaDx"]
+position = Vector2(-0.763367, 41.1167)
+rotation = 0.179879
+scale = Vector2(0.999768, 0.999768)
+texture = ExtResource("7_mg1rb")
+offset = Vector2(-7.9989, 6.99918)
+region_rect = Rect2(180.872, 461.073, 64.3894, 35.627)
+
+[node name="GambaDx2" type="Sprite2D" parent="Left/GambaDx"]
+position = Vector2(-7.82446, 29.2158)
+rotation = -0.176012
+scale = Vector2(0.999912, 0.999912)
+texture = ExtResource("8_dnsaf")
+offset = Vector2(4.00015, 8.99904)
+region_rect = Rect2(199, 422, 46, 49)
+
+[node name="GambaSx" type="Sprite2D" parent="Left"]
+position = Vector2(9.65698, 54.8)
+rotation = 1.04134
+scale = Vector2(1.00002, 1.00002)
+texture = ExtResource("9_3rqh5")
+offset = Vector2(-1.95477, 11.5259)
+region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)
+
+[node name="PiedeSx" type="Sprite2D" parent="Left/GambaSx"]
+position = Vector2(-5.07056, 36.1838)
+rotation = 0.0800416
+scale = Vector2(0.999778, 0.999778)
+texture = ExtResource("10_cpf12")
+offset = Vector2(6.9259, 5.77921)
+region_rect = Rect2(252.162, 460.501, 52.8584, 37.9171)
+
+[node name="GambaSx2" type="Sprite2D" parent="Left/GambaSx"]
+position = Vector2(2.45728, 21.0768)
+rotation = -0.211432
+scale = Vector2(0.999937, 0.999937)
+texture = ExtResource("11_yk51m")
+offset = Vector2(-0.926331, 10.8792)
+region_enabled = true
+region_rect = Rect2(0, 0, 25, 32)
+
+[node name="Bacino" type="Sprite2D" parent="Left"]
+position = Vector2(3.49103, 50.5)
+texture = ExtResource("12_37v8a")
+offset = Vector2(2, -4)
+region_rect = Rect2(205, 384, 79, 29)
+
+[node name="BraccioDx" type="Sprite2D" parent="Left"]
+position = Vector2(-17.073, 1.46387)
+rotation = -0.0649373
+scale = Vector2(1.00383, 1.00383)
+texture = ExtResource("13_2ac1w")
+offset = Vector2(-12.9984, 16.9973)
+region_rect = Rect2(157, 274, 64, 92)
+
+[node name="Torso" type="Sprite2D" parent="Left"]
+position = Vector2(3, 63)
+rotation = -0.0523599
+texture = ExtResource("14_iqvr8")
+offset = Vector2(1, -36)
+region_rect = Rect2(187, 250, 119, 162)
+
+[node name="Testa" type="Sprite2D" parent="Left/Torso"]
+position = Vector2(-9, -68)
+texture = ExtResource("15_y70gj")
+offset = Vector2(9.8645, -78.0937)
+
+[node name="BoccaChiusa" type="Sprite2D" parent="Left/Torso/Testa"]
+position = Vector2(2, -27)
+texture = ExtResource("16_g6n32")
+
+[node name="OcchiAperti" type="Sprite2D" parent="Left/Torso/Testa"]
+position = Vector2(-4.71411, -69.5804)
+scale = Vector2(1, 1.02633)
+skew = -0.000203133
+texture = ExtResource("17_hyl7p")
+
+[node name="OcchioChiusi" type="Sprite2D" parent="Left/Torso/Testa"]
+visible = false
+position = Vector2(-4.71412, -70.5804)
+texture = ExtResource("18_h7vq0")
+
+[node name="SopraciglioDx" type="Sprite2D" parent="Left/Torso/Testa"]
+position = Vector2(-32, -83)
+skew = -0.00110698
+texture = ExtResource("19_grrx4")
+
+[node name="SopraciglioSx" type="Sprite2D" parent="Left/Torso/Testa"]
+position = Vector2(30, -85)
+skew = -0.00110698
+texture = ExtResource("20_n2h6i")
+
+[node name="Chiavi" type="Sprite2D" parent="Left/Torso"]
+position = Vector2(33, 4)
+rotation = -0.387463
+texture = ExtResource("21_dds02")
+
+[node name="ManoDx" type="Sprite2D" parent="Left"]
+position = Vector2(-42.5204, 53.9025)
+rotation = -1.56452
+scale = Vector2(1.00376, 1.00376)
+texture = ExtResource("22_r6hy3")
+offset = Vector2(5.00055, 17.9997)
+region_rect = Rect2(149, 337, 50, 88)
+
+[node name="BraccioSx" type="Sprite2D" parent="Left"]
+position = Vector2(32.4381, 9.37329)
+rotation = 0.416076
+scale = Vector2(1.00447, 1.00447)
+texture = ExtResource("23_02dvf")
+offset = Vector2(10.9984, 15.9978)
+region_rect = Rect2(250, 268, 87, 101)
+
+[node name="ManoSx" type="Sprite2D" parent="Left"]
+position = Vector2(40.7856, 53.6777)
+rotation = 0.334371
+scale = Vector2(1.00466, 1.00466)
+texture = ExtResource("24_itffr")
+offset = Vector2(-3.99966, 16.9972)
+region_rect = Rect2(287, 340, 46, 82)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Left"]
+position = Vector2(-9, 47)
+rotation = 0.143018
+modification_stack = SubResource("SkeletonModificationStack2D_aax48")
+
+[node name="Hip" type="Bone2D" parent="Left/Skeleton2D"]
+position = Vector2(9.62077, 3.66618)
+rest = Transform2D(1, 0, 0, 1, 9.62077, 3.66618)
+
+[node name="Leg_r" type="Bone2D" parent="Left/Skeleton2D/Hip"]
+position = Vector2(-11.735, 2.70037)
+rotation = -2.20427
+rest = Transform2D(-0.8899, -0.456157, 0.456157, -0.8899, -11.735, 2.70035)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Shin_r" type="Bone2D" parent="Left/Skeleton2D/Hip/Leg_r"]
+position = Vector2(-7.86456, -20.9172)
+rotation = 2.81106
+scale = Vector2(0.999914, 0.999914)
+rest = Transform2D(-0.945789, 0.324517, -0.324517, -0.945789, -7.86456, -20.9172)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Foot_r" type="Bone2D" parent="Left/Skeleton2D/Hip/Leg_r/Shin_r"]
+position = Vector2(11.5519, 19.1316)
+rotation = 0.352557
+scale = Vector2(0.999856, 0.999856)
+rest = Transform2D(0.999901, 0.0140453, -0.0140453, 0.999901, 11.5519, 19.1316)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 139.021
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_r/Shin_r/Foot_r"]
+position = Vector2(-4.43648, -5.76724)
+rotation = -0.40414
+remote_path = NodePath("../../../../../../GambaDx/PiedeDx")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_r/Shin_r"]
+position = Vector2(-0.223742, 2.22365)
+rotation = -0.407474
+remote_path = NodePath("../../../../../GambaDx/GambaDx2")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_r"]
+position = Vector2(0.57282, 5.79777)
+rotation = 2.5796
+remote_path = NodePath("../../../../GambaDx")
+
+[node name="Leg_l" type="Bone2D" parent="Left/Skeleton2D/Hip"]
+position = Vector2(11.735, -2.70004)
+rotation = -0.470429
+scale = Vector2(1.00002, 1.00002)
+rest = Transform2D(0.998114, -0.0616464, 0.0616464, 0.998114, 11.735, -2.70017)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Shin_l" type="Bone2D" parent="Left/Skeleton2D/Hip/Leg_l"]
+position = Vector2(-2.02032, 25.8936)
+rotation = 2.2268
+scale = Vector2(0.999942, 0.999942)
+rest = Transform2D(-0.609915, 0.792392, -0.792392, -0.609915, -2.02032, 25.8937)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Foot_l" type="Bone2D" parent="Left/Skeleton2D/Hip/Leg_l/Shin_l"]
+position = Vector2(13.4505, -20.4447)
+rotation = 0.305433
+scale = Vector2(0.999841, 0.999841)
+rest = Transform2D(1, 0, 0, 1, 13.4505, -20.4447)
+auto_calculate_length_and_angle = false
+length = 12.023
+bone_angle = 23.673
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_l/Shin_l/Foot_l"]
+position = Vector2(4.20837, 14.1255)
+rotation = -2.38761
+remote_path = NodePath("../../../../../../GambaSx/PiedeSx")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_l/Shin_l"]
+position = Vector2(-3.52264, -3.53607)
+rotation = -2.37365
+remote_path = NodePath("../../../../../GambaSx/GambaSx2")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Leg_l"]
+position = Vector2(1.83747, 4.0684)
+rotation = 0.0645772
+remote_path = NodePath("../../../../GambaSx")
+
+[node name="Tronco" type="Bone2D" parent="Left/Skeleton2D/Hip"]
+position = Vector2(-10.6898, -74.2343)
+rest = Transform2D(1, 0, 0, 1, -10.6898, -74.2343)
+auto_calculate_length_and_angle = false
+length = 18.005
+bone_angle = -95.794
+
+[node name="Arm_r" type="Bone2D" parent="Left/Skeleton2D/Hip"]
+position = Vector2(-27.9281, -52.0001)
+rotation = -0.148606
+scale = Vector2(1.00382, 1.00382)
+rest = Transform2D(1.00038, 0.0482928, -0.0482928, 1.00038, -27.9281, -60.6386)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = -44.138
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Hand_r" type="Bone2D" parent="Left/Skeleton2D/Hip/Arm_r"]
+position = Vector2(-19.5841, 47.9229)
+rotation = -1.78861
+scale = Vector2(0.999936, 0.999936)
+rest = Transform2D(-0.665871, -0.745974, 0.745974, -0.665871, -19.584, 47.9224)
+auto_calculate_length_and_angle = false
+length = 48.655
+bone_angle = 75.25
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Arm_r/Hand_r"]
+position = Vector2(-2.20544, -9.2913)
+rotation = 1.03673
+remote_path = NodePath("../../../../../ManoDx")
+
+[node name="Bone2D" type="Bone2D" parent="Left/Skeleton2D/Hip/Arm_r/Hand_r"]
+position = Vector2(-17.3076, 6.40083)
+rest = Transform2D(1, 0, 0, 1, -17.3076, 6.40083)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -209.655
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Arm_r"]
+position = Vector2(3.11881, 4.91251)
+rotation = -0.0593412
+remote_path = NodePath("../../../../BraccioDx")
+
+[node name="Arm_l" type="Bone2D" parent="Left/Skeleton2D/Hip"]
+position = Vector2(25.8216, -52.2135)
+rotation = 0.448909
+scale = Vector2(1.00446, 1.00446)
+rest = Transform2D(0.929603, -0.372041, 0.372041, 0.929603, 9.82656, -65.0649)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Hand_l" type="Bone2D" parent="Left/Skeleton2D/Hip/Arm_l"]
+position = Vector2(29.2099, 38.0381)
+rotation = 0.461692
+scale = Vector2(1.00019, 1.00019)
+rest = Transform2D(0.433074, 0.901568, -0.901568, 0.433074, 29.2099, 38.0381)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Left/Skeleton2D/Hip/Arm_l/Hand_l"]
+position = Vector2(15.3923, 15.6736)
+rest = Transform2D(1, 0, 0, 1, 15.3923, 15.6736)
+auto_calculate_length_and_angle = false
+length = 13.675
+bone_angle = 12.361
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Arm_l/Hand_l"]
+z_index = 1
+position = Vector2(3.56218, -3.49824)
+rotation = -0.7662
+remote_path = NodePath("../../../../../ManoSx")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Left/Skeleton2D/Hip/Arm_l"]
+z_index = 1
+position = Vector2(2.52077, 4.75097)
+rotation = -0.175823
+remote_path = NodePath("../../../../BraccioSx")
+
+[node name="IK Targets" type="Node2D" parent="Left"]
+position = Vector2(-1, -201)
+
+[node name="Foot_l" type="Node2D" parent="Left/IK Targets"]
+position = Vector2(-48, 305)
+
+[node name="Foot_r" type="Node2D" parent="Left/IK Targets"]
+position = Vector2(63, 319)
+
+[node name="Hand_r" type="Node2D" parent="Left/IK Targets"]
+position = Vector2(-20, 231)
+rotation = 0.429388
+
+[node name="Hand_l" type="Node2D" parent="Left/IK Targets"]
+position = Vector2(30, 274)
+rotation = 0.0113075
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uw5k1")
+}
+autoplay = "idle"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

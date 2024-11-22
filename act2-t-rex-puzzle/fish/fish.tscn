@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqegtq37pd18o"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/fish/scripts/fish.gd" id="1_qedpr"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_70ly7"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gik0o"]
+[ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="6_m8ejv"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_kaf1x"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="10_y08tt"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_ncetb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
+size = Vector2(211, 533)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
+size = Vector2(255, 869)
+
+[sub_resource type="Resource" id="Resource_i86oa"]
+script = ExtResource("5_gik0o")
+key = "second_boss_call"
+value = false
+
+[node name="Fish" type="StaticBody2D"]
+script = ExtResource("1_qedpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_k1qxw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("6_m8ejv")
+region_enabled = true
+region_rect = Rect2(1436, 639, 227, 545)
+
+[node name="Interactable" parent="." instance=ExtResource("7_kaf1x")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(6.5, 363.5)
+shape = SubResource("RectangleShape2D_y8ulm")
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("4_70ly7")]
+trigger = SubResource("Resource_i86oa")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -44.0
+offset_top = 301.0
+offset_right = 50.0
+offset_bottom = 336.0
+theme = ExtResource("10_y08tt")
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_ncetb")
+theme_override_font_sizes/font_size = 30
+text = "Interact"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn66sogio8l8v"]
+[gd_scene load_steps=9 format=3 uid="uid://bn66sogio8l8v"]
 
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_settings.gd" id="2_ovesd"]
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="3_dw6kr"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_n3ecd"]
 [ext_resource type="PackedScene" uid="uid://r6wtux0ghoss" path="res://settings_screen/volume_slider.tscn" id="4_nqphs"]
+[ext_resource type="Texture2D" uid="uid://bea0mm6limq8u" path="res://resource/assets/UI/title.png" id="5_mybly"]
+
+[sub_resource type="Theme" id="Theme_4t44a"]
+default_font = ExtResource("4_n3ecd")
+default_font_size = 25
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0.94902, 0.513726)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.564706)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0.52549)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0.564706)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("4_n3ecd")
+Label/colors/font_shadow_color = Color(0.835294, 0.87451, 0, 1)
+Label/constants/shadow_offset_x = 16
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 31
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -42,64 +63,66 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TitleBackground" type="ColorRect" parent="StateMenu/MainMenu/MainPanel"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 120.0
-offset_top = 70.0
-offset_right = 720.0
-offset_bottom = 125.0
-
-[node name="Label" type="Label" parent="StateMenu/MainMenu/MainPanel/TitleBackground"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Hidden Eyes"
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="StateMenu/MainMenu/MainPanel"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 189.0
+offset_right = 2015.0
+offset_bottom = 1300.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_dw6kr")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/MainMenu/MainPanel"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 140.0
-offset_top = 150.0
-offset_right = 520.0
-offset_bottom = 465.0
+offset_left = 1322.0
+offset_top = 462.0
+offset_right = 1504.0
+offset_bottom = 667.0
+theme = SubResource("Theme_4t44a")
 theme_override_constants/separation = 15
 
 [node name="NewGame" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.576471)
+theme_override_colors/font_outline_color = Color(1, 0.951394, 0.591726, 1)
+theme_override_font_sizes/font_size = 40
 text = "New Game"
-flat = true
-alignment = 0
-
-[node name="LoadGame" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Load Game"
 flat = true
 alignment = 0
 
 [node name="Settings" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.576471)
+theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme_override_font_sizes/font_size = 40
 text = "Settings"
 flat = true
 alignment = 0
 
 [node name="Exit" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.321569)
+theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme_override_font_sizes/font_size = 40
 text = "Exit"
 flat = true
 alignment = 0
+
+[node name="TextureRect2" type="TextureRect" parent="StateMenu/MainMenu/MainPanel"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -900.0
+offset_top = 80.0
+offset_right = -99.0
+offset_bottom = 414.0
+grow_horizontal = 0
+pivot_offset = Vector2(801, 0)
+texture = ExtResource("5_mybly")
 
 [node name="Settings" type="Control" parent="StateMenu"]
 layout_mode = 1
@@ -127,10 +150,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -250.0
-offset_top = 25.0
+offset_top = 140.03
 offset_right = 250.0
-offset_bottom = 80.0
+offset_bottom = 253.73
 grow_horizontal = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Label" type="Label" parent="StateMenu/Settings/MainPanel/TitleBackground"]
 layout_mode = 1
@@ -142,45 +166,52 @@ offset_right = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_n3ecd")
+theme_override_font_sizes/font_size = 125
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [node name="Back" type="Button" parent="StateMenu/Settings/MainPanel"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 15.0
-offset_right = 76.0
-offset_bottom = 55.0
-theme_override_font_sizes/font_size = 20
+offset_left = 72.0
+offset_top = 68.0
+offset_right = 184.0
+offset_bottom = 145.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.556863)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_n3ecd")
+theme_override_font_sizes/font_size = 60
 text = "Back"
 flat = true
 
-[node name="MasterVolume" parent="StateMenu/Settings/MainPanel" instance=ExtResource("4_nqphs")]
-layout_mode = 1
-offset_left = -55.0
-offset_top = 39.0
-offset_right = -15.0
-offset_bottom = 79.0
+[node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/Settings/MainPanel"]
+layout_mode = 0
+offset_left = 977.0
+offset_top = 606.0
+offset_right = 1802.0
+offset_bottom = 979.0
+theme_override_constants/separation = 100
 
-[node name="MusicVolume" parent="StateMenu/Settings/MainPanel" instance=ExtResource("4_nqphs")]
-layout_mode = 1
-offset_left = -56.0
-offset_top = 74.0
-offset_right = -16.0
-offset_bottom = 114.0
+[node name="MasterVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+label_name = "Master Volume"
 
-[node name="SfxVolume" parent="StateMenu/Settings/MainPanel" instance=ExtResource("4_nqphs")]
-layout_mode = 1
-offset_left = -56.0
-offset_top = 114.0
-offset_right = -16.0
-offset_bottom = 154.0
+[node name="MusicVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+audio_channel = "Music"
+label_name = "Music Volume"
+
+[node name="SfxVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+audio_channel = "Sfx"
+label_name = "SFX Volume"
 
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_pressed"]
-[connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/LoadGame" to="StateMenu/MainMenu" method="_on_load_game_pressed"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Settings" to="StateMenu/MainMenu" method="_on_settings_pressed"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_pressed"]
 [connection signal="pressed" from="StateMenu/Settings/MainPanel/Back" to="StateMenu/Settings" method="_on_back_pressed"]

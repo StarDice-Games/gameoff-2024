@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://c4dyv7rt43lfb"]
+
+[ext_resource type="PackedScene" uid="uid://dtg6inbafw5go" path="res://levels/esterno/esterno.tscn" id="1_ddldh"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_ec7dl"]
+
+[resource]
+script = ExtResource("2_ec7dl")
+name = "esterno"
+description = "Description"
+scene = ExtResource("1_ddldh")

@@ -1,40 +1,189 @@
-[gd_scene load_steps=6 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=20 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_i4dcl"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_2ycaj"]
+[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="2_slivy"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_ylly3"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_ruv8d"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_6u53w"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_vhabn"]
+[ext_resource type="PackedScene" uid="uid://b43hax8kcwef" path="res://boss_kev/boss_kev.tscn" id="5_jbukh"]
+[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_y3iuy"]
+[ext_resource type="PackedScene" uid="uid://0h08en1f6gqc" path="res://altare/altare.tscn" id="8_fh2gt"]
+[ext_resource type="PackedScene" uid="uid://rriaauq8dxpi" path="res://ritual_sign/ritual_sign.tscn" id="9_abqfi"]
+
+[sub_resource type="Resource" id="Resource_3n6nf"]
+script = ExtResource("4_6u53w")
+key = "ritual_sign"
+value = true
+
+[sub_resource type="Resource" id="Resource_82hri"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String]([" It’s absurd, a cult!? It's like the Ku Klux Klan or something.", " I’m not understanding anything, what do they need from me?", "Why do they need these objects? "])
+character_image = ExtResource("3_ruv8d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_3n6nf")])
+
+[sub_resource type="Resource" id="Resource_23jqv"]
+script = ExtResource("4_6u53w")
+key = "stealth"
+value = true
+
+[sub_resource type="Resource" id="Resource_hnpbr"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String](["Wait! The sharpness of the tooth…it’s a knife! And the white star…it’s a pentacle.", " It is sure…I’m in danger now. I need to go away from here."])
+character_image = ExtResource("3_ruv8d")
+text_name = ""
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])
+
+[sub_resource type="Animation" id="Animation_7hb65"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(922, 675)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s8v40"]
+resource_name = "boss_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(922, 675), Vector2(1576, 662)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqlul"]
+_data = {
+"RESET": SubResource("Animation_7hb65"),
+"boss_walk": SubResource("Animation_s8v40")
+}
 
 [node name="SalaSacrificio" type="Node2D"]
 script = ExtResource("1_445d4")
+dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
+dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_68cts")]
+[node name="Stanze" type="Sprite2D" parent="."]
+position = Vector2(947, 529)
+texture = ExtResource("2_slivy")
+region_enabled = true
+region_rect = Rect2(226.559, 1446.06, 1871.47, 1400.55)
+
+[node name="ColorRect" type="ColorRect" parent="Stanze"]
+z_index = -1
+anchors_preset = -1
+anchor_right = 0.00810682
+anchor_bottom = 0.0706215
+offset_left = -1517.0
+offset_top = -831.0
+offset_right = 1525.0
+offset_bottom = 859.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_68cts")]
+player_ref = NodePath("../Player")
 
 [node name="East" type="Node2D" parent="LinkSystem"]
-position = Vector2(1744, 542)
+position = Vector2(1412, 614)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/East"]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="CameraFollow" parent="." instance=ExtResource("1_i4dcl")]
-position = Vector2(956, 546)
+color = Color(0.580646, 1, 0.440148, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ylly3")]
 unique_name_in_owner = true
-position = Vector2(973, 557)
+position = Vector2(1298, 565)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
-position = Vector2(1921, 568)
+position = Vector2(1706, 562)
 level_id = "corridoio"
 link_id = "WestDoor"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 432.0
-offset_top = 273.0
-offset_right = 703.0
-offset_bottom = 356.0
-theme_override_font_sizes/font_size = 60
-text = "Sala sacrificio 
-Press E for end cutscene"
+[node name="Boss" parent="." instance=ExtResource("5_jbukh")]
+position = Vector2(922, 675)
+
+[node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
+position = Vector2(1542, 476)
+
+[node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
+position = Vector2(1188, 754)
+
+[node name="RitualSign" parent="." instance=ExtResource("9_abqfi")]
+position = Vector2(910, 757)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sqlul")
+}
+
+[node name="DelayAnim" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="DelayAnim" to="." method="_on_delay_anim_timeout"]

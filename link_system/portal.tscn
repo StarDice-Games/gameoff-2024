@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://link_system/scripts/portal.gd" id="1_mn6an"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6dk4"]
+size = Vector2(97, 363)
 
 [node name="Portal" type="Area2D"]
 collision_layer = 64

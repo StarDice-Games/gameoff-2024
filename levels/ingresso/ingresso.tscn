@@ -1,26 +1,133 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=20 format=3 uid="uid://dxa6tkkfq7b3q"]
 
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_qbi31"]
+[ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="2_4lqhc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
+[ext_resource type="Texture2D" uid="uid://b8cvs5u71frtf" path="res://resource/assets/rooms/Hall/Hall.PNG" id="2_vknqs"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
+[ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
+[ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
+[ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
+[ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
+[ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="16_b4hsd"]
+[ext_resource type="Texture2D" uid="uid://cba3khksutltm" path="res://resource/assets/rooms/Hall/porte_hall.png" id="17_eok5r"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
+
+[sub_resource type="Animation" id="Animation_yrndo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingToothAnim/CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingToothAnim/CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FallingToothAnim/CanvasLayer/AudioStreamPlayer2D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vm4dc"]
+resource_name = "fallling_tooth"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingToothAnim/CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.36667, 5.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingToothAnim/CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FallingToothAnim/CanvasLayer/AudioStreamPlayer2D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.03333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8spds"]
+_data = {
+"RESET": SubResource("Animation_yrndo"),
+"fallling_tooth": SubResource("Animation_vm4dc")
+}
+
+[sub_resource type="Resource" id="Resource_fn0b3"]
+script = ExtResource("3_fpr8x")
+dialogue_text = Array[String](["I need something to catch it!"])
+character_image = ExtResource("12_4ffme")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_twhkk")]([])
 
 [node name="Ingresso" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_8qsso")
 
-[node name="LinkSystem" parent="." instance=ExtResource("3_1w6um")]
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -959.0
+offset_top = -545.0
+offset_right = 2791.0
+offset_bottom = 1810.0
+color = Color(0, 0, 0, 1)
 
-[node name="NorthDoor" type="Node2D" parent="LinkSystem"]
-visible = false
-position = Vector2(954, 84)
+[node name="Player" parent="." instance=ExtResource("2_amsm6")]
+unique_name_in_owner = true
+position = Vector2(1180, 456)
 
-[node name="ColorRect" type="ColorRect" parent="LinkSystem/NorthDoor"]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 1, 1, 1)
-metadata/_edit_lock_ = true
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
+player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(977, 887)
+position = Vector2(1124, 928)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
 offset_right = 40.0
@@ -28,8 +135,17 @@ offset_bottom = 40.0
 color = Color(0.769008, 0.954614, 0.43227, 1)
 metadata/_edit_lock_ = true
 
+[node name="ExitDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(1869, 544)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/ExitDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.769008, 0.954614, 0.43227, 1)
+metadata/_edit_lock_ = true
+
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(128, 494)
+position = Vector2(-135, 419)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -37,23 +153,20 @@ offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_qbi31")]
-position = Vector2(962, 543)
-player_ref = NodePath("../Player")
-
-[node name="Player" parent="." instance=ExtResource("2_amsm6")]
-unique_name_in_owner = true
-position = Vector2(991, 549)
-
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(985, 1030)
+position = Vector2(1194, 1311)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(21, 501)
+position = Vector2(-236, 352)
 level_id = "corridoio"
 link_id = "EastDoor"
+
+[node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
+position = Vector2(2124, 415)
+level_id = "esterno"
+link_id = "WestDoor"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 441.0
@@ -62,3 +175,66 @@ offset_right = 912.0
 offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "Ingresso"
+
+[node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
+position = Vector2(1371, 704)
+scale = Vector2(0.7, 0.7)
+
+[node name="FallingToothAnim" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FallingToothAnim"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingToothAnim/CanvasLayer"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_8spds")
+}
+
+[node name="ColorRect" type="ColorRect" parent="FallingToothAnim/CanvasLayer"]
+z_index = 1
+offset_left = -961.0
+offset_top = -586.0
+offset_right = 2789.0
+offset_bottom = 1769.0
+color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FallingToothAnim/CanvasLayer"]
+stream = ExtResource("13_q6wsf")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="FallingToothAnim/CanvasLayer"]
+stream = ExtResource("14_8gly2")
+
+[node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("19_f21q0")]
+player_ref = NodePath("../Player")
+
+[node name="Stanza" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_vknqs")
+offset = Vector2(962, 539)
+region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
+
+[node name="PortaDx" type="Sprite2D" parent="Stanza"]
+y_sort_enabled = true
+position = Vector2(1999, 541)
+texture = ExtResource("17_eok5r")
+offset = Vector2(113, -157.18)
+region_enabled = true
+region_rect = Rect2(2605, 461, 286, 822)
+
+[node name="PortaSx" type="Sprite2D" parent="Stanza"]
+y_sort_enabled = true
+position = Vector2(-146, 535)
+texture = ExtResource("17_eok5r")
+offset = Vector2(-154, -278.18)
+region_enabled = true
+region_rect = Rect2(68, 269, 533, 948)
+
+[node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
+position = Vector2(-208, 316)
+
+[node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
+position = Vector2(549, 311)
+dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
+
+[connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

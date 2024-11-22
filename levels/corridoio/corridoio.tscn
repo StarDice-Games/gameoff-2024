@@ -1,48 +1,171 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=23 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
+[ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
+[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_y43ya"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_dnq7l"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
+[ext_resource type="Texture2D" uid="uid://1mx5av2ablnb" path="res://resource/assets/enemy/Boss_Face.png" id="3_gsdmn"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_wk1te"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_qul02"]
+[ext_resource type="AudioStream" uid="uid://y73pv85x1hq1" path="res://audio/sfx/various/Alarm_01.wav" id="6_xu4h3"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
+[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="10_esjjd"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
+[ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
+
+[sub_resource type="Resource" id="Resource_tep4b"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["HE ESCAPED! FIND HIM!"])
+character_image = ExtResource("3_gsdmn")
+text_name = "Boss"
+triggers = Array[ExtResource("4_wk1te")]([])
+
+[sub_resource type="Resource" id="Resource_g0c14"]
+script = ExtResource("4_wk1te")
+key = "alarm_started"
+value = true
+
+[sub_resource type="Resource" id="Resource_327ia"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["It’s better to hide in the dark and ask for help!"])
+character_image = ExtResource("5_qul02")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_wk1te")]([SubResource("Resource_g0c14")])
+
+[sub_resource type="Animation" id="Animation_fg1h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6vtbb"]
+resource_name = "open_painting"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.56667, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21xjm"]
+_data = {
+"RESET": SubResource("Animation_fg1h2"),
+"open_painting": SubResource("Animation_6vtbb")
+}
 
 [node name="Corridoio" type="Node2D"]
+script = ExtResource("1_w2gne")
+dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
+alarm_sfx = ExtResource("6_xu4h3")
 
-[node name="LinkSystem" parent="." instance=ExtResource("1_fksk1")]
+[node name="Stanze" type="Sprite2D" parent="."]
+position = Vector2(947, 529)
+texture = ExtResource("1_y43ya")
+region_enabled = true
+region_rect = Rect2(2186.73, 1490.61, 2216.14, 1365.98)
+
+[node name="ColorRect" type="ColorRect" parent="Stanze"]
+z_index = -1
+offset_left = -1517.0
+offset_top = -831.0
+offset_right = 1525.0
+offset_bottom = 859.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_fksk1")]
+player_ref = NodePath("../Player")
 
 [node name="EastDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1711, 569)
+position = Vector2(1740, 655)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/EastDoor"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+color = Color(0.352941, 0.952941, 0.439216, 1)
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(99, 551)
+position = Vector2(149, 674)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 23.0
+offset_bottom = 22.0
+color = Color(0.567675, 1, 0.487942, 1)
 
 [node name="North1" type="Node2D" parent="LinkSystem"]
-position = Vector2(378, 60)
+position = Vector2(408, 602)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North1"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 24.0
+offset_bottom = 23.0
+color = Color(0.533841, 1, 0.586211, 1)
 
 [node name="North2" type="Node2D" parent="LinkSystem"]
-position = Vector2(1510, 78)
+position = Vector2(1450, 587)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North2"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 22.0
+offset_bottom = 25.0
+color = Color(0.570505, 1, 0.478134, 1)
 
 [node name="CameraFollow" parent="." instance=ExtResource("1_un85s")]
+visible = false
 position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(912, 535)
+position = Vector2(916, 528)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 432.0
@@ -52,22 +175,73 @@ offset_bottom = 356.0
 theme_override_font_sizes/font_size = 60
 text = "Corridoio"
 
+[node name="PuzzleChalice" type="Node2D" parent="."]
+position = Vector2(1530, 450)
+
+[node name="Painting" parent="PuzzleChalice" node_paths=PackedStringArray("statues") instance=ExtResource("11_fnqc4")]
+position = Vector2(-620, -104)
+statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3"), NodePath("../Statue4")]
+task_chalice = ExtResource("7_m5sq3")
+combination = ["Left", "Front", "Right", "Right"]
+
+[node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-1306, 13)
+
+[node name="Statue2" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-810, 12)
+
+[node name="Statue3" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-382, 15)
+
+[node name="Statue4" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(156, -12)
+
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1864, 566)
+position = Vector2(1923, 498)
 level_id = "ingresso"
 link_id = "WestDoor"
 
 [node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1510, -36)
+position = Vector2(1441, 330)
 level_id = "sala arte"
 link_id = "South"
 
 [node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(390, -40)
+position = Vector2(405, 322)
 level_id = "sala preistorica"
 link_id = "South"
 
 [node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(-18, 572)
+position = Vector2(-73, 536)
 level_id = "sala sacrificio"
 link_id = "East"
+
+[node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
+position = Vector2(-24, 565)
+
+[node name="OpenPaintingCutscene" type="Node2D" parent="."]
+z_index = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="OpenPaintingCutscene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenPaintingCutscene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_21xjm")
+}
+
+[node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 1
+offset_left = -3764.0
+offset_top = -2134.0
+offset_right = 5817.0
+offset_bottom = 3808.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
+stream = ExtResource("11_tm84c")
+
+[connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

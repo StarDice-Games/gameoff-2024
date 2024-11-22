@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://btpwdekddbacl"]
+[gd_scene load_steps=20 format=3 uid="uid://btpwdekddbacl"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
@@ -7,19 +7,32 @@
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_ey4hm"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_7wpa3"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_rfxo3"]
-[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="4_52nv2"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gdyyu"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_apwyo"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_16yyu"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_yv5tp"]
 
 [sub_resource type="Resource" id="Resource_5mtew"]
 script = ExtResource("2_ba2bi")
 id = "Chalice"
 description = "Find a chalice"
 complete = true
+counter_max = -1
+current_counter = -1
 
 [sub_resource type="Resource" id="Resource_k5gwa"]
 script = ExtResource("3_7wpa3")
-dialogue_text = Array[String](["Che ci fa questo calice qui?"])
-character_image = ExtResource("4_52nv2")
+dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!ssd", "Where are people when I make such jokes…"])
+character_image = ExtResource("6_apwyo")
 text_name = "Angelo"
+triggers = Array[ExtResource("5_gdyyu")]([])
+
+[sub_resource type="Resource" id="Resource_k74jg"]
+script = ExtResource("3_7wpa3")
+dialogue_text = Array[String](["I opened something, I will give it a look."])
+character_image = ExtResource("6_apwyo")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_gdyyu")]([])
 
 [sub_resource type="Resource" id="Resource_0ojl7"]
 script = ExtResource("3_rfxo3")
@@ -38,10 +51,16 @@ height = 128
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
 size = Vector2(159, 176)
 
+[sub_resource type="Resource" id="Resource_td2xs"]
+script = ExtResource("5_gdyyu")
+key = "chalice_picked"
+value = true
+
 [node name="Painting" type="Node2D"]
 script = ExtResource("1_h8pmy")
 task_chalice = SubResource("Resource_5mtew")
 dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k5gwa")])
+open_dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k74jg")])
 item_data = SubResource("Resource_0ojl7")
 
 [node name="PaintingClosed" type="Sprite2D" parent="."]
@@ -57,15 +76,26 @@ texture = SubResource("GradientTexture2D_h5sr3")
 position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_uipc7")
 
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("10_16yyu")]
+position = Vector2(-4, 0)
+trigger = SubResource("Resource_td2xs")
+
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -60.0
-offset_top = -143.0
-offset_right = 54.0
-offset_bottom = -101.0
+offset_left = -89.0
+offset_top = -150.0
+offset_right = 115.0
+offset_bottom = -108.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("11_yv5tp")
 theme_override_font_sizes/font_size = 30
-text = "PICK UP"
+text = "Pick up the chalice"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
 [connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
