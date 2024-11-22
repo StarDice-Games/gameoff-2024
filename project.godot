@@ -32,6 +32,10 @@ GameState="*res://global/global_game_state/global_game_state.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[global_group]
+
+Checpoint="enemy checkpoint"
+
 [input]
 
 up={
@@ -84,3 +88,5 @@ debug_trigger={
 2d_physics/layer_5="Camera"
 2d_physics/layer_6="Camera Walls"
 2d_physics/layer_7="Portal"
+2d_physics/layer_8="Checkpoint"
+2d_physics/layer_9="enemy"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr7sec8ntpb4j"]
+
+[ext_resource type="Script" path="res://levels/test_leonardo/PathFollowMovement.gd" id="1_upjjy"]
+[ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="2_colt5"]
+[ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="3_qr5sd"]
+
+[sub_resource type="Curve2D" id="Curve2D_nxkba"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 589.429, 291.136, 0, 0, 0, 0, 450.699, 291.136, 0, 0, 0, 0, 198.777, 288.885)
+}
+point_count = 5
+
+[node name="MainLevel" type="Node2D"]
+position = Vector2(102, 70)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(26, -39)
+scale = Vector2(1.44886, 1.33271)
+curve = SubResource("Curve2D_nxkba")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(5, 79)
+rotation = 0.00130556
+rotates = false
+loop = false
+script = ExtResource("1_upjjy")
+
+[node name="EnemyPatrol" parent="Path2D/PathFollow2D" instance=ExtResource("2_colt5")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(864.785, 59.9407)
+direction = "down"
+
+[node name="Checkpoint2" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(873, 350)
+direction = "left"
+
+[node name="Checkpoint3" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(673, 344)
+direction = "up"
+
+[node name="Checkpoint4" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(496, 66)
+direction = "up"
