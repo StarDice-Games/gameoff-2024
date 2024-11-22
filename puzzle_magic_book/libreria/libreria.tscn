@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dufkn0f3l1qfb"]
+[gd_scene load_steps=15 format=3 uid="uid://dufkn0f3l1qfb"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/libreria/scripts/libreria.gd" id="1_fouxy"]
 [ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="3_s2cr7"]
@@ -13,9 +13,6 @@
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="12_l16se"]
 [ext_resource type="PackedScene" uid="uid://bdsfmqfnh3l25" path="res://puzzle_magic_book/magic_book/magic_book.tscn" id="15_fvp7j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
-size = Vector2(211, 533)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
 size = Vector2(255, 336)
 
@@ -25,22 +22,25 @@ key = "second_boss_call"
 value = false
 
 [node name="Libreria" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_fouxy")
 key_item = ExtResource("3_s2cr7")
 need_code_dialog = Array[ExtResource("4_gnrwr")]([ExtResource("5_1su1b")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, -1.5)
-shape = SubResource("RectangleShape2D_k1qxw")
-
 [node name="Open" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
+position = Vector2(-1, 126)
 texture = ExtResource("8_75wjo")
+offset = Vector2(1, -126)
 region_enabled = true
 region_rect = Rect2(1436, 639, 227, 545)
 
 [node name="Closed" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 126)
 texture = ExtResource("9_ilho5")
+offset = Vector2(0, -126)
 region_enabled = true
 region_rect = Rect2(1436, 639, 227, 545)
 
@@ -69,6 +69,9 @@ text = "Interact"
 [node name="MagicBook" parent="." instance=ExtResource("15_fvp7j")]
 visible = false
 position = Vector2(-35, 206)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-104, 182, -18, 106, 113, 106, 114, 214, 76, 272, -104, 272)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

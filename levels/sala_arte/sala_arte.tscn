@@ -20,91 +20,157 @@
 [node name="SalaArte" type="Node2D"]
 script = ExtResource("1_t0sdk")
 
-[node name="SpriteStanza" type="Sprite2D" parent="."]
-texture = ExtResource("2_ccb5e")
-offset = Vector2(955, 508)
-region_enabled = true
-region_rect = Rect2(93, 311, 1912, 1014)
-
-[node name="Background" type="ColorRect" parent="SpriteStanza"]
+[node name="Background" type="ColorRect" parent="."]
 z_index = -1
 anchors_preset = -1
 anchor_left = 0.0256226
 anchor_top = 0.0147813
 anchor_right = 0.0256226
 anchor_bottom = 0.0366541
-offset_left = -626.99
-offset_top = -388.988
-offset_right = 2415.01
-offset_bottom = 1301.01
+offset_left = -578.0
+offset_top = -374.0
+offset_right = 2464.0
+offset_bottom = 1316.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="LuciCandelabri" type="Sprite2D" parent="SpriteStanza"]
-z_index = 1
-texture_filter = 1
-position = Vector2(941, -86)
-texture = ExtResource("3_t1yt0")
-region_enabled = true
-region_rect = Rect2(902, 304, 272, 79)
+[node name="Environment" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Poltrona" type="Sprite2D" parent="SpriteStanza"]
+[node name="SpriteStanza" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
+texture = ExtResource("2_ccb5e")
+offset = Vector2(955, 508)
+region_enabled = true
+region_rect = Rect2(93, 311, 1912, 1014)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/SpriteStanza"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/SpriteStanza/StaticBody2D"]
+polygon = PackedVector2Array(100, 947, 194, 830, 373, 638, 496, 629, 1000, 620, 1146, 619, 1563, 623, 1585, 668, 1647, 830, 1714, 968, 1636, 961, 1538, 955, 921, 944, 625, 944, 616, 973, 372, 973, 381, 948, 170, 940, 100, 948, 99, 995, 1729, 999, 1721, 843, 1581, 569, 370, 587, 99, 885)
+
+[node name="Poltrona" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(892, 796)
+position = Vector2(891, 753)
 texture = ExtResource("4_ev18k")
+offset = Vector2(1, 43)
 region_enabled = true
 region_rect = Rect2(862, 1041, 276, 114)
 
-[node name="Sedia1" type="Sprite2D" parent="SpriteStanza"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Poltrona"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Poltrona/StaticBody2D"]
+polygon = PackedVector2Array(-135, 31, -134, 54, -124, 103, 90, 105, 130, 62, 135, 33)
+
+[node name="Sedia1" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(183, 834)
+position = Vector2(215, 804)
 texture = ExtResource("5_wprlo")
+offset = Vector2(-32, 30)
 region_enabled = true
 region_rect = Rect2(204, 1079, 97, 165)
 
-[node name="Sedia2" type="Sprite2D" parent="SpriteStanza"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia1"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia1/StaticBody2D"]
+polygon = PackedVector2Array(-29, 14, -14, 14, -1, 21, 11, 36, 16, 72, -10, 109, -57, 107, -84, 105)
+
+[node name="Sedia2" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(421, 604)
+position = Vector2(423, 543)
 texture = ExtResource("6_xpd3u")
+offset = Vector2(-2, 61)
 region_enabled = true
 region_rect = Rect2(483, 847, 76, 148)
 
-[node name="Sedia3" type="Sprite2D" parent="SpriteStanza"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia2"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia2/StaticBody2D"]
+position = Vector2(-1, 60)
+polygon = PackedVector2Array(36, 28, 36, 41, 29, 65, 27, 71, 20, 74, -22, 74, -82, 70, -48, 32, -14, 30)
+
+[node name="Sedia3" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(1656, 851)
+position = Vector2(1656, 801)
 texture = ExtResource("7_cnr76")
+offset = Vector2(0, 50)
 region_enabled = true
 region_rect = Rect2(1710, 1101, 97, 165)
 
-[node name="StanzaArte-12(1)" type="Sprite2D" parent="SpriteStanza"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia3"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia3/StaticBody2D"]
+position = Vector2(522, 117)
+polygon = PackedVector2Array(-559, -76, -570, -60, -573, -24, -547, 16, -495, 15, -490, -41, -527, -85, -546, -84)
+
+[node name="StanzaArte-12(1)" type="Sprite2D" parent="Environment"]
 z_index = 1
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(942, -72)
 texture = ExtResource("8_njpfj")
 region_enabled = true
 region_rect = Rect2(904, 143, 274, 409)
 
-[node name="Quadro" type="Sprite2D" parent="SpriteStanza"]
+[node name="LuciCandelabri" type="Sprite2D" parent="Environment/StanzaArte-12(1)"]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(-1, -14)
+texture = ExtResource("3_t1yt0")
+region_enabled = true
+region_rect = Rect2(902, 304, 272, 79)
+
+[node name="Quadro" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(948, 392)
 texture = ExtResource("9_yuw44")
 
-[node name="Busto" type="Sprite2D" parent="SpriteStanza"]
+[node name="Busto" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
-position = Vector2(1185, 541)
+position = Vector2(1181, 476)
 texture = ExtResource("10_xjssa")
+offset = Vector2(4, 65)
 region_enabled = true
 region_rect = Rect2(1236, 757, 78, 195)
 
-[node name="Vaso" type="Sprite2D" parent="SpriteStanza"]
+[node name="Vaso" type="Sprite2D" parent="Environment"]
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1121, 761)
 texture = ExtResource("12_hksjq")
 region_enabled = true
 region_rect = Rect2(1158, 996, 101, 175)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Vaso"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Vaso/StaticBody2D"]
+polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
+
+[node name="Libreria" parent="Environment" instance=ExtResource("16_1axwy")]
+position = Vector2(1436, 588)
+collision_layer = 4
+
+[node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
+unique_name_in_owner = true
+position = Vector2(1188, 678)
+
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
-player_ref = NodePath("../Player")
+player_ref = NodePath("../Environment/Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
 position = Vector2(533, 839)
@@ -116,12 +182,9 @@ offset_right = 28.0
 offset_bottom = 21.0
 color = Color(0.586297, 1, 0.416665, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_cc2si")]
-unique_name_in_owner = true
-position = Vector2(628, 773)
-
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(494, 1140)
+position = Vector2(491, 996)
+scale = Vector2(2.8359, 0.2)
 level_id = "corridoio"
 link_id = "North2"
 
@@ -132,7 +195,4 @@ color = Color(0.343338, 0.445565, 0.999296, 0.956863)
 [node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("17_fgpv8")]
 visible = false
 position = Vector2(941, 542)
-player_ref = NodePath("../Player")
-
-[node name="Libreria" parent="." instance=ExtResource("16_1axwy")]
-position = Vector2(1423, 578)
+player_ref = NodePath("../Environment/Player")
