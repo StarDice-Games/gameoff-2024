@@ -121,7 +121,7 @@ unique_name_in_owner = true
 position = Vector2(628, 773)
 
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(510, 967)
+position = Vector2(494, 1140)
 level_id = "corridoio"
 link_id = "North2"
 

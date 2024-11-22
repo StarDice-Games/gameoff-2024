@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=21 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="2_4lqhc"]
@@ -11,10 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bvc237scomqyo" path="res://resource/assets/rooms/Hall/trex sotto.png" id="10_ryc0m"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
-[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="13_gbs7j"]
 [ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
-[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="14_cyxse"]
+[ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="16_b4hsd"]
 [ext_resource type="Texture2D" uid="uid://cba3khksutltm" path="res://resource/assets/rooms/Hall/porte_hall.png" id="17_eok5r"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
 
@@ -109,11 +108,6 @@ _data = {
 "RESET": SubResource("Animation_yrndo"),
 "fallling_tooth": SubResource("Animation_vm4dc")
 }
-
-[sub_resource type="Resource" id="Resource_57rqa"]
-script = ExtResource("5_twhkk")
-key = "end"
-value = true
 
 [node name="Ingresso" type="Node2D"]
 y_sort_enabled = true
@@ -217,12 +211,6 @@ stream = ExtResource("13_q6wsf")
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="FallingToothAnim"]
 stream = ExtResource("14_8gly2")
 
-[node name="DoorLock" parent="." instance=ExtResource("13_gbs7j")]
-position = Vector2(-190, 346)
-
-[node name="NodeToggle2" parent="DoorLock" instance=ExtResource("14_cyxse")]
-trigger = SubResource("Resource_57rqa")
-
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("19_f21q0")]
 player_ref = NodePath("../Player")
 
@@ -247,6 +235,9 @@ texture = ExtResource("17_eok5r")
 offset = Vector2(-154, -278.18)
 region_enabled = true
 region_rect = Rect2(68, 269, 533, 948)
+
+[node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
+position = Vector2(-208, 316)
 
 [connection signal="animation_finished" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

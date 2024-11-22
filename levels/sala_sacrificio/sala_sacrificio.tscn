@@ -159,7 +159,7 @@ unique_name_in_owner = true
 position = Vector2(1298, 565)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
-position = Vector2(1601, 596)
+position = Vector2(1706, 562)
 level_id = "corridoio"
 link_id = "WestDoor"
 

@@ -192,22 +192,22 @@ position = Vector2(-382, 15)
 position = Vector2(156, -12)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1868, 564)
+position = Vector2(1923, 498)
 level_id = "ingresso"
 link_id = "WestDoor"
 
 [node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1441, 434)
+position = Vector2(1441, 330)
 level_id = "sala arte"
 link_id = "South"
 
 [node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(401, 439)
+position = Vector2(405, 322)
 level_id = "sala preistorica"
 link_id = "South"
 
 [node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(20, 614)
+position = Vector2(-73, 536)
 level_id = "sala sacrificio"
 link_id = "East"
 

@@ -51,7 +51,7 @@ unique_name_in_owner = true
 position = Vector2(1010, 696)
 
 [node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
-position = Vector2(279, 698)
+position = Vector2(157, 520)
 level_id = "ingresso"
 link_id = "Entrance"
 

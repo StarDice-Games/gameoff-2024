@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if TriggersSystem.check_trigger("stealth", true):
+	if TriggersSystem.check_trigger("doors_locked", true):
 		DialogueSystem.start_dialog(dialog)

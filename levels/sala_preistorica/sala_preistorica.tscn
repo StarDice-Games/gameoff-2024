@@ -147,7 +147,7 @@ theme_override_font_sizes/font_size = 60
 text = "Sala Preistorica/Naturale"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1437, 947)
+position = Vector2(1444, 1121)
 level_id = "corridoio"
 link_id = "North1"
 
