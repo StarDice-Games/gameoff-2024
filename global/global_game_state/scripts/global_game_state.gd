@@ -17,7 +17,8 @@ var last_player_dir : PLAYER_DIR
 
 @onready var timer = $Timer
 
-var audio_id : String
+@export var audio_id : String = "Phone_Ring"
+var playing  = false
 
 func _ready() -> void:
 	EventSystem.ring_phone.connect(ring_global_phone)
@@ -30,14 +31,16 @@ func _ready() -> void:
 		#EventSystem.stop_ring_phone.emit("Phone_Ring")
 
 func ring_global_phone(audio_id : String):
-	timer.start()
-	self.audio_id = audio_id
-	AudioSystem.play_audio_event(audio_id, "Sfx")
+	if not playing :
+		timer.start()
+		#self.audio_id = audio_id
+		AudioSystem.play_audio_event(self.audio_id, "Sfx")
+		playing = true
 
-func stop_ring_phone(audio_id : String):
+func stop_ring_phone():
 	timer.stop()
-	self.audio_id = audio_id
-	AudioSystem.stop_audio_event(audio_id)
+	AudioSystem.stop_audio_event(self.audio_id)
+	playing = false
 
 func _on_timer_timeout() -> void:
 	AudioSystem.play_audio_event(audio_id, "Sfx")

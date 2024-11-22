@@ -89,7 +89,8 @@ func check_all_task_completed():
 	return true
 
 func show_task_list():
-	ui.show()
+	if task_map.size() > 0:
+		ui.show()
 
 func hide_task_list():
 	ui.hide()

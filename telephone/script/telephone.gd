@@ -13,10 +13,16 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventSystem.trigger_changed.connect(trigger_update)
 	if TriggersSystem.check_trigger("ring", true):
-		ring_sound.play()
-	$Timer.start()
+		EventSystem.ring_phone.emit("Phone_Ring")
+		#ring_sound.play()
+	#$Timer.start()
 
+func trigger_update(key, value):
+	if key == "ring" and value == true:
+		EventSystem.ring_phone.emit("Phone_Ring")
+	
 func _on_interactable_player_enter() -> void:
 	if TriggersSystem.check_trigger("ring", true):
 		interact_prompt.show()
@@ -27,7 +33,8 @@ func _on_interactable_player_exit() -> void:
 
 func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("ring", true):
-		ring_sound.stop()
+		EventSystem.stop_ring_phone.emit()
+		#ring_sound.stop()
 		interact_prompt.hide()
 		collision_hide.hide()
 		EventSystem.cutscene_started.emit()
@@ -36,7 +43,8 @@ func _on_interactable_interacted() -> void:
 		start_dialog()
 
 func start_dialog():
-	hang_sound.play()
+	AudioSystem.play_audio_event("Phone_Answer", "Sfx")
+	#hang_sound.play()
 	await get_tree().create_timer(1).timeout
 	if TriggersSystem.check_trigger("act_1", true):
 		DialogueSystem.start_dialog(dialog_1)
@@ -54,6 +62,7 @@ func start_dialog():
 func _on_timer_timeout() -> void:
 	if TriggersSystem.check_trigger("ring", true):
 		$Timer.wait_time = 3.0
+		
 		ring_sound.play()
 		$Timer.start()
 	else:
