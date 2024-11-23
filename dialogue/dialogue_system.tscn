@@ -8,7 +8,7 @@
 [node name="DialogueSystem" type="Node2D"]
 script = ExtResource("1_5otb8")
 speed_text = 1.0
-metadata/_edit_vertical_guides_ = [610.0, 1304.0]
+metadata/_edit_vertical_guides_ = [610.0, 1304.0, 1265.0, 774.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -114,4 +114,23 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_wmpg3")
 theme_override_font_sizes/normal_font_size = 25
-text = "jjjjjjjjjjjjjjjjjjjjjjjj"
+text = "jjjjjjjjjjjjjjjjjjj"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 444.0
+offset_right = 305.0
+offset_bottom = 467.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wmpg3")
+text = "Press E to continue"
+horizontal_alignment = 2
+vertical_alignment = 1
