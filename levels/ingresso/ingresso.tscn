@@ -119,10 +119,6 @@ offset_right = 2791.0
 offset_bottom = 1810.0
 color = Color(0, 0, 0, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_amsm6")]
-unique_name_in_owner = true
-position = Vector2(1180, 456)
-
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
 
@@ -154,17 +150,18 @@ color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1194, 1311)
+position = Vector2(1194, 1176)
+scale = Vector2(2.92001, 0.28)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(-236, 352)
+position = Vector2(-225, 352)
 level_id = "corridoio"
 link_id = "EastDoor"
 
 [node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(2124, 415)
+position = Vector2(2080, 415)
 level_id = "esterno"
 link_id = "WestDoor"
 
@@ -207,13 +204,20 @@ stream = ExtResource("14_8gly2")
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("19_f21q0")]
 player_ref = NodePath("../Player")
 
-[node name="Stanza" type="Sprite2D" parent="."]
+[node name="Stanza" type="Sprite2D" parent="FollowCamera"]
 y_sort_enabled = true
 texture = ExtResource("2_vknqs")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 
-[node name="PortaDx" type="Sprite2D" parent="Stanza"]
+[node name="StaticBody2D" type="StaticBody2D" parent="FollowCamera/Stanza"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FollowCamera/Stanza/StaticBody2D"]
+polygon = PackedVector2Array(1314, 1105, 2111, 1103, 2100, 1053, 2100, 904, 2071, 865, 2029, 870, 1992, 852, 1971, 835, 1956, 811, 1975, 770, 2015, 553, 2035, 267, 1895, 65, 1832, 481, 1756, 441, 1750, 397, 1325, 377, 1282, 166, 1212, 181, 1153, 63, 1149, -196, 972, -187, 967, 69, 611, 86, 534, 199, 49, 207, -78, 407, -89, 123, -210, 246, -159, 599, -351, 937, -438, 1085, 1081, 1107, 1080, 1153, -475, 1131, -239, 223, -79, 68, 58, 160, 517, 154, 598, 31, 943, -219, 1172, -220, 1278, 141, 1789, 206, 1879, 11, 2104, 304, 2098, 811, 2246, 1063, 2231, 1129, 1313, 1151)
+
+[node name="PortaDx" type="Sprite2D" parent="FollowCamera/Stanza"]
+visible = false
 y_sort_enabled = true
 position = Vector2(1999, 541)
 texture = ExtResource("17_eok5r")
@@ -221,7 +225,7 @@ offset = Vector2(113, -157.18)
 region_enabled = true
 region_rect = Rect2(2605, 461, 286, 822)
 
-[node name="PortaSx" type="Sprite2D" parent="Stanza"]
+[node name="PortaSx" type="Sprite2D" parent="FollowCamera/Stanza"]
 y_sort_enabled = true
 position = Vector2(-146, 535)
 texture = ExtResource("17_eok5r")
@@ -235,6 +239,10 @@ position = Vector2(-208, 316)
 [node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
 position = Vector2(549, 311)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
+
+[node name="Player" parent="." instance=ExtResource("2_amsm6")]
+unique_name_in_owner = true
+position = Vector2(1212, 505)
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
