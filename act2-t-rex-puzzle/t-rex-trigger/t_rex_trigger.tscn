@@ -56,7 +56,7 @@ position = Vector2(550, 263)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(4.5, 109)
-polygon = PackedVector2Array(446.5, 255, -531.5, 258, -531.5, 197, -403.5, -71, -376.5, -94, 427.5, -75, 464.5, 206)
+polygon = PackedVector2Array(445.5, 295, -468.5, 300, -495.5, 319, -530.5, 320, -524.5, 195, -453.5, 79, -396.5, -51, -354.5, -67, -2.5, -56, 390.5, -61, 464.5, 206)
 
 [node name="Label" type="Label" parent="StaticBody2D"]
 visible = false
@@ -86,9 +86,9 @@ trigger = SubResource("Resource_74vpo")
 
 [node name="TrexSotto" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-1, 203)
+position = Vector2(0, 199)
 texture = ExtResource("13_ocfy1")
-offset = Vector2(-34, 86)
+offset = Vector2(-35, 90)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

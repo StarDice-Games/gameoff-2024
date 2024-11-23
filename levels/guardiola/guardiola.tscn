@@ -36,9 +36,9 @@ value = true
 
 [sub_resource type="Resource" id="Resource_5jy0i"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["Good evening Angelo and welcome.", "I know your shift starts this evening, just make sure you take care of this place.", "Since your predecessor was…was…was promoted, here in the night is a complete mess."])
+dialogue_text = Array[String](["Good evening Angelo and welcome.", "I know your shift starts this evening, just make sure you take care of this place, ok?", "Since your predecessor was…was promoted, here in the night is a complete mess."])
 character_image = ExtResource("12_e3x06")
-text_name = "Boss"
+text_name = "Museum Director"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
 
 [sub_resource type="Resource" id="Resource_x2y3w"]
@@ -50,9 +50,9 @@ triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["You can start looking if someone is still in the museum.", "We're closing and it’s better to have no one here at night.", "Now I have to go, we’ll talk again later."])
+dialogue_text = Array[String](["You can start checking if someone is still here in the museum.", "We're closing, and it’s better not to have people here at night.", "Now I have to go, we’ll talk again later."])
 character_image = ExtResource("12_e3x06")
-text_name = "Boss"
+text_name = "Museum Director"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_5eku6"]

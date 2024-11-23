@@ -12,14 +12,14 @@
 
 [sub_resource type="Resource" id="Resource_m13sm"]
 script = ExtResource("2_151ff")
-dialogue_text = Array[String](["Sorry to disturb you ma’am, but we are closing. I need to ask you to leave as soon as possible."])
+dialogue_text = Array[String](["Hey kid, we are closing. I have to ask to leave the museum"])
 character_image = ExtResource("3_t4n3s")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_xttip")]([])
 
 [sub_resource type="Resource" id="Resource_5jobv"]
 script = ExtResource("2_151ff")
-dialogue_text = Array[String](["It is clear, I will go in a minute"])
+dialogue_text = Array[String](["Ok mister keeper, I call my mum "])
 character_image = ExtResource("5_4dsow")
 text_name = "Visitor"
 triggers = Array[ExtResource("4_xttip")]([])
