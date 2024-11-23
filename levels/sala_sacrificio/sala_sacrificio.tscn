@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=21 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -115,10 +115,15 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_85l4n"]
+resource_name = "light_change"
+length = 9.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sqlul"]
 _data = {
 "RESET": SubResource("Animation_7hb65"),
-"boss_walk": SubResource("Animation_s8v40")
+"boss_walk": SubResource("Animation_s8v40"),
+"light_change": SubResource("Animation_85l4n")
 }
 
 [node name="SalaSacrificio" type="Node2D"]

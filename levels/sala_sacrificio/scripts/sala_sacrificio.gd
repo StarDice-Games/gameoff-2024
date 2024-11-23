@@ -4,7 +4,6 @@ extends Node2D
 @export var dialog2 : Array[DialogText]
 
 func _ready() -> void:
-	AudioSystem.play_music_event("go2024_phase3_v1")
 	EventSystem.trigger_changed.connect(trigger_update)
 	TriggersSystem.update_trigger("doors_locked", true)
 
