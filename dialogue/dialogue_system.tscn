@@ -60,7 +60,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -81.0
 offset_top = -19.0
-offset_right = 1.0
+offset_right = 161.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -68,7 +68,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_wmpg3")
 theme_override_font_sizes/font_size = 35
 text = "Name"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DialogueBox" type="ColorRect" parent="CanvasLayer/Control"]
