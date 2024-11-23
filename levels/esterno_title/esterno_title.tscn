@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=3 uid="uid://civgdg6ang6q4"]
+
+[ext_resource type="Script" path="res://levels/esterno_title/esterno_title.gd" id="1_2y21b"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_q5avm"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_dhlrp"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_x38vt"]
+[ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="5_f7cbv"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="6_8phnn"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="7_c2a2l"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="8_hk6ts"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="9_526m0"]
+[ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="10_cot7y"]
+
+[sub_resource type="Resource" id="Resource_vfy75"]
+script = ExtResource("4_x38vt")
+key = "start"
+value = true
+
+[sub_resource type="Resource" id="Resource_pevej"]
+script = ExtResource("2_q5avm")
+dialogue_text = Array[String](["It’s the right time now, I’m old and will retire soon", "This is the right work at the right time. Now that my nephews are here, I’m closer to them…", "That’s perfect.", "Let’s go to work…better not to arrive late the first day."])
+character_image = ExtResource("3_dhlrp")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_x38vt")]([SubResource("Resource_vfy75")])
+
+[sub_resource type="Animation" id="Animation_irevx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TitleScreen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TitleScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.275, 0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_ti7s3"]
+resource_name = "hide_title"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TitleScreen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TitleScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.46667, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.275, 0.275), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]
+_data = {
+"RESET": SubResource("Animation_irevx"),
+"hide_title": SubResource("Animation_ti7s3")
+}
+
+[node name="Esterno_Title" type="Node2D"]
+scale = Vector2(0.275, 0.275)
+script = ExtResource("1_2y21b")
+dialog_1 = Array[ExtResource("2_q5avm")]([SubResource("Resource_pevej")])
+
+[node name="IngressoCopia" type="Sprite2D" parent="."]
+position = Vector2(972, 545)
+texture = ExtResource("5_f7cbv")
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("6_8phnn")]
+player_ref = NodePath("../Player")
+
+[node name="WestDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(394, 779)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.435294, 0.580392, 0.34902, 1)
+metadata/_edit_lock_ = true
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("7_c2a2l")]
+position = Vector2(962, 543)
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("8_hk6ts")]
+unique_name_in_owner = true
+position = Vector2(1029.09, 1010.91)
+
+[node name="Entrance" parent="." instance=ExtResource("9_526m0")]
+position = Vector2(157, 520)
+level_id = "ingresso"
+link_id = "ExitDoor"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 273.0
+offset_right = 912.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 40
+text = "Esterno"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("10_cot7y")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2wrdi")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
