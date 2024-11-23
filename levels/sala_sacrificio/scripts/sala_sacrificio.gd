@@ -23,6 +23,7 @@ func trigger_update(key, value):
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	DialogueSystem.start_dialog(dialog1)
+	$Boss.queue_free()
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:

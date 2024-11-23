@@ -14,6 +14,7 @@ func _ready() -> void:
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
+		AudioSystem.play_music_event("go2024_stealth_v1")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

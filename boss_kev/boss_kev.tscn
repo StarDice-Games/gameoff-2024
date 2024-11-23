@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b43hax8kcwef"]
+[gd_scene load_steps=25 format=3 uid="uid://b43hax8kcwef"]
 
 [ext_resource type="Script" path="res://boss_kev/boss_kev.gd" id="1_inowa"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qes3u"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_73qr7"]
 [ext_resource type="Texture2D" uid="uid://debo6fysx4m0h" path="res://resource/assets/enemy/Incappucciato_1.png" id="8_3ydll"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="9_5niit"]
+[ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="10_hutjl"]
 
 [sub_resource type="Resource" id="Resource_cts7d"]
 script = ExtResource("2_qes3u")
@@ -94,6 +95,18 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0.0558505, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_r3v0m"]
 resource_name = "idle"
@@ -125,6 +138,18 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(-0.0523599, -0.25, 0, 0.25, 0, 0.0523599, -0.25, 0, 0.25, 0, -0.0523599, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.433333, 0.833333)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djno7"]
@@ -176,6 +201,9 @@ libraries = {
 "": SubResource("AnimationLibrary_djno7")
 }
 autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hutjl")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
