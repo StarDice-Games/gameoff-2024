@@ -31,8 +31,10 @@ func _on_door_lock_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", 0)
 	EventSystem.cutscene_finished.emit()
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
 	EventSystem.cutscene_started.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://civgdg6ang6q4"]
+[gd_scene load_steps=18 format=3 uid="uid://civgdg6ang6q4"]
 
 [ext_resource type="Script" path="res://levels/esterno_title/esterno_title.gd" id="1_2y21b"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_q5avm"]
@@ -133,6 +133,9 @@ _data = {
 "hide_title": SubResource("Animation_ti7s3")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpik6"]
+size = Vector2(297.727, 551.818)
+
 [node name="Esterno_Title" type="Node2D"]
 scale = Vector2(0.275, 0.275)
 script = ExtResource("1_2y21b")
@@ -188,4 +191,11 @@ libraries = {
 stream = ExtResource("11_nexd5")
 autoplay = true
 
+[node name="MusicStart" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicStart"]
+position = Vector2(83.8636, 509.091)
+shape = SubResource("RectangleShape2D_kpik6")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="MusicStart" to="." method="_on_music_start_body_entered"]

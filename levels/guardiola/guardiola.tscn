@@ -357,7 +357,7 @@ theme_override_font_sizes/font_size = 40
 text = "Guardiola"
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(799, 319)
+position = Vector2(800, 254)
 level_id = "ingresso"
 link_id = "SouthDoor"
 

@@ -69,9 +69,11 @@ func _process(delta: float) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", 0)
 	TriggersSystem.update_trigger("close_museum", false)
 	TriggersSystem.update_trigger("act_3", true)
 	EventSystem.cutscene_finished.emit()
+	AudioSystem.play_music_event("go2024_phase2_v2")
 
 
 func _on_timer_timeout() -> void:
@@ -80,14 +82,17 @@ func _on_timer_timeout() -> void:
 
 
 func _on_animation_player_animation_finished_guardaroba(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", 0)
 	EventSystem.cutscene_finished.emit()
 
 
 func _on_animation_player_animation_started_guardaroba(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
 	EventSystem.cutscene_started.emit()
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 80)
 	EventSystem.cutscene_started.emit()
 
 
