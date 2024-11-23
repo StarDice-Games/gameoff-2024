@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://civgdg6ang6q4"]
+[gd_scene load_steps=17 format=3 uid="uid://civgdg6ang6q4"]
 
 [ext_resource type="Script" path="res://levels/esterno_title/esterno_title.gd" id="1_2y21b"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_q5avm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="8_hk6ts"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="9_526m0"]
 [ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="10_cot7y"]
+[ext_resource type="AudioStream" uid="uid://djnct0palh3v7" path="res://audio/bgmusic/go2024_title_v1.ogg" id="11_nexd5"]
 
 [sub_resource type="Resource" id="Resource_vfy75"]
 script = ExtResource("4_x38vt")
@@ -61,6 +62,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0.275, 0.275)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ti7s3"]
 resource_name = "hide_title"
@@ -100,6 +113,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.275, 0.275), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.03333, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]
@@ -158,5 +183,9 @@ text = "Esterno"
 libraries = {
 "": SubResource("AnimationLibrary_2wrdi")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_nexd5")
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
