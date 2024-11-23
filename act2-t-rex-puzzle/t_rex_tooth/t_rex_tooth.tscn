@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqdeu1mk0x22h"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
-[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_5i2ek"]
+[ext_resource type="Texture2D" uid="uid://y3fcd7ohxebx" path="res://resource/assets/items/dente.png" id="2_3i154"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_r0vbg"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_pxbun"]
 [ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
@@ -12,10 +12,10 @@
 [sub_resource type="Resource" id="Resource_8qbi7"]
 script = ExtResource("3_r0vbg")
 id = "Tooth"
-icon = ExtResource("2_5i2ek")
+icon = ExtResource("2_3i154")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq5mh"]
-size = Vector2(150, 146)
+size = Vector2(150, 197)
 
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
@@ -24,12 +24,12 @@ dialog = Array[ExtResource("4_pxbun")]([ExtResource("5_03qiv")])
 task = ExtResource("6_4m1ev")
 
 [node name="Tooth" type="Sprite2D" parent="."]
-texture = ExtResource("2_5i2ek")
+texture = ExtResource("2_3i154")
 
 [node name="Interactable" parent="." instance=ExtResource("5_yg3y7")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-3, -2)
+position = Vector2(-3, -0.5)
 shape = SubResource("RectangleShape2D_kq5mh")
 
 [node name="Label" type="Label" parent="."]

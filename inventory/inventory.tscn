@@ -19,7 +19,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 offset_left = 50.0
 offset_top = 50.0

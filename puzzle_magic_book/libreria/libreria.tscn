@@ -68,7 +68,7 @@ text = "Interact"
 
 [node name="MagicBook" parent="." instance=ExtResource("15_fvp7j")]
 visible = false
-position = Vector2(-35, 206)
+position = Vector2(-13, 275)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-104, 182, -18, 106, 113, 106, 114, 214, 76, 272, -104, 272)

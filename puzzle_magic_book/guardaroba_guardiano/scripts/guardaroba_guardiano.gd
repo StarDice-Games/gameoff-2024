@@ -28,8 +28,13 @@ func _ready() -> void:
 	
 	if open:
 		open_sprite.show()
+		interact_label.hide()
+		$Interactable.queue_free()
 	else :
 		close_sprite.show()
+	
+	if TriggersSystem.check_trigger("key_picked", false) and open:
+		$Key.show()
 	
 	EventSystem.picked_up_item.connect(postit_picked)
 
@@ -54,18 +59,12 @@ func _on_interactable_interacted() -> void:
 			close_sprite.hide()
 			InventorySystem.drop_item(post_it_item)
 			TriggersSystem.update_trigger(open_trigger, true)
-			interact_label.text = interact_pickup_text #update the label
 			open = true
-	else :
-		InventorySystem.pick_up(key_item)
-		DialogueSystem.start_dialog(key_collected)
-		picked_up_key = true
-
+			interact_label.hide()
+			$Key.show()
+			$Interactable.queue_free()
 
 func _on_interactable_player_enter() -> void:
-	if picked_up_key :
-		return
-	
 	if not open:
 		interact_label.text = interact_text
 	else:

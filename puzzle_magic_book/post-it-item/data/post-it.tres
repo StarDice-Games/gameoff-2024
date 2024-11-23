@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dj0y6v6u4wbx1"]
 
+[ext_resource type="Texture2D" uid="uid://dfvehsx8h8pul" path="res://resource/assets/items/foglietto.png" id="1_oskxw"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="1_r8ryg"]
-[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="1_ymekp"]
 
 [resource]
 script = ExtResource("1_r8ryg")
 id = "post-it"
-icon = ExtResource("1_ymekp")
+icon = ExtResource("1_oskxw")

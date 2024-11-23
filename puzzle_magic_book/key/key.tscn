@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqwdlx6ofhlti"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/key/script/key.gd" id="1_f53d7"]
+[ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="2_xqx52"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_vj5hh"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_1fa4u"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_4pea3"]
+[ext_resource type="Texture2D" uid="uid://bkxhg0vdqqb11" path="res://resource/assets/items/chiave.png" id="6_tqvl7"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_di3gg"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="8_dbbob"]
+
+[sub_resource type="Resource" id="Resource_t6ndw"]
+script = ExtResource("3_vj5hh")
+dialogue_text = Array[String](["What’s this!? A key!?", "It is better to keep it, it may open something useful.", "It seems that this locker was my predecessor's.", "For sure it is!", "Is this a journal? It is plenty of plans and projects for the future…", " But everything is interrupted the day before the promotion. Why? ", "And why he left it here…so strange."])
+character_image = ExtResource("4_1fa4u")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_4pea3")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jobi0"]
+size = Vector2(150, 146)
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_f53d7")
+item = ExtResource("2_xqx52")
+dialog = Array[ExtResource("3_vj5hh")]([SubResource("Resource_t6ndw")])
+
+[node name="Key" type="Sprite2D" parent="."]
+texture = ExtResource("6_tqvl7")
+
+[node name="Interactable" parent="." instance=ExtResource("7_di3gg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-3, -2)
+shape = SubResource("RectangleShape2D_jobi0")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -79.0
+offset_top = -154.0
+offset_right = 72.0
+offset_bottom = -77.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_dbbob")
+theme_override_font_sizes/font_size = 30
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

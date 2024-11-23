@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gdyyu"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_apwyo"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_16yyu"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_yv5tp"]
+[ext_resource type="PackedScene" uid="uid://d0sqgofooexlq" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice.tscn" id="12_prl61"]
 
 [sub_resource type="Resource" id="Resource_5mtew"]
 script = ExtResource("2_ba2bi")
@@ -80,20 +80,13 @@ shape = SubResource("RectangleShape2D_uipc7")
 position = Vector2(-4, 0)
 trigger = SubResource("Resource_td2xs")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -89.0
-offset_top = -150.0
-offset_right = 115.0
-offset_bottom = -108.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("11_yv5tp")
-theme_override_font_sizes/font_size = 30
-text = "Pick up the chalice"
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
+
+[node name="Chalice" parent="." instance=ExtResource("12_prl61")]
+visible = false
+position = Vector2(5, 167)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

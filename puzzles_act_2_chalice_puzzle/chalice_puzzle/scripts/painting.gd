@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 		painting_closed.hide()
 		painting_opened.show()
 		interactable.show()
+		if TriggersSystem.check_trigger("chalice_picked", false):
+			$Chalice.show()
 	else:
 		opened_painting()
 
@@ -35,23 +37,11 @@ func opened_painting():
 		
 	if open:
 		TriggersSystem.update_trigger("opened_painting", true)
+		$Chalice.show()
 		$Timer.start()
-
-func _on_interactable_player_enter() -> void:
-	if not done and TriggersSystem.check_trigger("opened_painting", true): 
-		label_pick.show()
-
-
-func _on_interactable_player_exit() -> void:
-	label_pick.hide()
-
 
 func _on_interactable_interacted() -> void:
 	if not done and TriggersSystem.check_trigger("opened_painting", true):
-		InventorySystem.pick_up(item_data)
-		EventSystem.task_completed.emit(task_chalice.id)
-		TriggersSystem.toggle_trigger("chalice_picked")
-		DialogueSystem.start_dialog(dialog)
 		interactable.hide()
 		done = true
 

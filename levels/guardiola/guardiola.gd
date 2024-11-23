@@ -70,10 +70,11 @@ func _process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	AudioSystem.set_volumes_value("Music", 0)
-	TriggersSystem.update_trigger("close_museum", false)
-	TriggersSystem.update_trigger("act_3", true)
+	#TriggersSystem.update_trigger("close_museum", false)
+	#TriggersSystem.update_trigger("act_3", true)
 	EventSystem.cutscene_finished.emit()
 	AudioSystem.play_music_event("go2024_phase2_v2")
+	LevelSystem.load_level("esterno")
 
 
 func _on_timer_timeout() -> void:

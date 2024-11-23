@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b18l514eqk1k1"]
 
-[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="1_di70b"]
+[ext_resource type="Texture2D" uid="uid://bkxhg0vdqqb11" path="res://resource/assets/items/chiave.png" id="1_loryv"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="1_yxrm6"]
 
 [resource]
 script = ExtResource("1_yxrm6")
 id = "key"
-icon = ExtResource("1_di70b")
+icon = ExtResource("1_loryv")

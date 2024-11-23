@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0sqgofooexlq"]
+
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/chalice.gd" id="2_8ctfc"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_7ulld"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_vwnw6"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oxxmq"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_spr2k"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_0tgel"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="8_i43vx"]
+[ext_resource type="Texture2D" uid="uid://br00dq8u017ox" path="res://resource/assets/items/calice.png" id="8_r1n8a"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="9_isbj8"]
+
+[sub_resource type="Resource" id="Resource_uto1y"]
+script = ExtResource("3_7ulld")
+id = "Chalice"
+icon = ExtResource("8_r1n8a")
+
+[sub_resource type="Resource" id="Resource_keucj"]
+script = ExtResource("4_vwnw6")
+dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!ssd", "Where are people when I make such jokes…"])
+character_image = ExtResource("5_oxxmq")
+text_name = "Angelo"
+triggers = Array[ExtResource("6_spr2k")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnek"]
+size = Vector2(150, 178)
+
+[node name="Chalice" type="Node2D"]
+script = ExtResource("2_8ctfc")
+item = SubResource("Resource_uto1y")
+dialog = Array[ExtResource("4_vwnw6")]([SubResource("Resource_keucj")])
+task = ExtResource("7_0tgel")
+
+[node name="Chalice" type="Sprite2D" parent="."]
+texture = ExtResource("8_r1n8a")
+
+[node name="Interactable" parent="." instance=ExtResource("8_i43vx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-3, -1)
+shape = SubResource("RectangleShape2D_0tnek")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -79.0
+offset_top = -154.0
+offset_right = 72.0
+offset_bottom = -77.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_isbj8")
+theme_override_font_sizes/font_size = 30
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

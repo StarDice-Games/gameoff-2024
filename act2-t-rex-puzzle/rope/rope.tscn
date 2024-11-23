@@ -1,18 +1,18 @@
 [gd_scene load_steps=12 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
-[ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="1_g8klr"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_qcshn"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oefkw"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="5_rqc4c"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
+[ext_resource type="Texture2D" uid="uid://b81nmdn5vf1pu" path="res://resource/assets/items/corda.png" id="7_nqfqw"]
 
 [sub_resource type="Resource" id="Resource_j4ugp"]
 script = ExtResource("3_lqtwb")
 id = "Rope"
-icon = ExtResource("1_g8klr")
+icon = ExtResource("7_nqfqw")
 
 [sub_resource type="Resource" id="Resource_6jpcq"]
 script = ExtResource("4_qcshn")
@@ -22,7 +22,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("6_32ndp")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ob1"]
-size = Vector2(249, 234)
+size = Vector2(190, 170)
 
 [node name="Rope" type="Node2D"]
 script = ExtResource("1_cbrfo")
@@ -30,12 +30,12 @@ item = SubResource("Resource_j4ugp")
 dialog = Array[ExtResource("4_qcshn")]([SubResource("Resource_6jpcq")])
 
 [node name="RopeSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_g8klr")
+texture = ExtResource("7_nqfqw")
 
 [node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(0.5, -4)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_i2ob1")
 
 [node name="Label" type="Label" parent="."]
