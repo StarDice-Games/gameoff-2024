@@ -22,7 +22,7 @@ current_counter = -1
 
 [sub_resource type="Resource" id="Resource_k5gwa"]
 script = ExtResource("3_7wpa3")
-dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!ssd", "Where are people when I make such jokes…"])
+dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!", "Where are people when I make such jokes…"])
 character_image = ExtResource("6_apwyo")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_gdyyu")]([])
