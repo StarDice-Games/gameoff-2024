@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_5depl"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_kdpl3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_pe210"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_lt5kw"]
 [ext_resource type="Texture2D" uid="uid://bb7o5nsbmevad" path="res://resource/assets/rooms/Guardiola/biglietto.png" id="8_816ky"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_j0gtk"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_tb2qj"]
 [ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="11_2ju74"]
 
@@ -53,13 +53,11 @@ offset = Vector2(1, 29)
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -36.0
-offset_top = -104.0
-offset_right = 51.0
-offset_bottom = -69.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("7_lt5kw")
-theme_override_font_sizes/font_size = 30
+offset_left = -53.0
+offset_top = -91.0
+offset_right = 56.0
+offset_bottom = -45.0
+theme = ExtResource("9_j0gtk")
 text = "Pick up"
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]

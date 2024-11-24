@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_ra7mn"]
 [ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="8_7x1ur"]
 [ext_resource type="Texture2D" uid="uid://djxhf1p38iads" path="res://resource/assets/rooms/Guardiola/armadietto-aperto.png" id="8_d8yps"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_f6152"]
 [ext_resource type="Texture2D" uid="uid://d15ltam456ilt" path="res://resource/assets/rooms/Guardiola/armadietto-chiuso.png" id="9_3ntj5"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_6ffum"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_cu0pi"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_v7ll8"]
 [ext_resource type="PackedScene" uid="uid://dqwdlx6ofhlti" path="res://puzzle_magic_book/key/key.tscn" id="14_47550"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="15_ty1wu"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="16_8sruw"]
@@ -106,7 +106,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ays0v"]
-radius = 183.709
+radius = 233.034
 
 [node name="GuardarobaGuardiano" type="StaticBody2D"]
 y_sort_enabled = true
@@ -118,14 +118,13 @@ key_collected = Array[ExtResource("3_rk0ve")]([SubResource("Resource_s527r")])
 interact_pickup_text = "Pick up the key"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 1
-offset_left = 60.0
-offset_top = -150.0
-offset_right = 154.0
-offset_bottom = -115.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("11_v7ll8")
-theme_override_font_sizes/font_size = 30
+offset_left = -40.0
+offset_top = -78.0
+offset_right = 85.0
+offset_bottom = -32.0
+theme = ExtResource("8_f6152")
 text = "Interact
 "
 
