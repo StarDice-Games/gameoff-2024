@@ -13,7 +13,8 @@ func _on_interactable_player_exit() -> void:
 
 
 func _on_interactable_interacted() -> void:
-	InventorySystem.pick_up(item)
-	DialogueSystem.start_dialog(dialog)
-	TriggersSystem.toggle_trigger("key_picked")
-	queue_free()
+	if visible:
+		InventorySystem.pick_up(item)
+		DialogueSystem.start_dialog(dialog)
+		TriggersSystem.toggle_trigger("key_picked")
+		queue_free()

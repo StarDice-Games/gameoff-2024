@@ -1,18 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhy01qy7khi6"]
+[gd_scene load_steps=14 format=3 uid="uid://dhy01qy7khi6"]
 
-[ext_resource type="Texture2D" uid="uid://s5npvo36k6s1" path="res://player/images/minidaemon.png" id="1_8o6jp"]
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/statue.gd" id="1_hwkmv"]
 [ext_resource type="AudioStream" uid="uid://dbv4gg21xljrg" path="res://audio/sfx/magic_book/Drag_Statue_02.wav" id="2_2xrir"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_8071q"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="2_w38de"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="3_jimny"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_63dej"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_g5r2r"]
+[ext_resource type="Texture2D" uid="uid://bgehbrjiylf8f" path="res://resource/assets/rooms/Corridoio/Asset nuovi/bastone.png" id="5_x4xun"]
+[ext_resource type="Texture2D" uid="uid://dr0xe0m16ja0t" path="res://resource/assets/rooms/Corridoio/Asset nuovi/infinito.png" id="6_odclo"]
+[ext_resource type="Texture2D" uid="uid://vbqqa26wespu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/occhio.png" id="7_4e5t5"]
+[ext_resource type="Texture2D" uid="uid://qdrweudkp43w" path="res://resource/assets/rooms/Corridoio/Asset nuovi/piramidi.png" id="8_1jup1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lifky"]
 size = Vector2(144, 154)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hhj60"]
-radius = 117.652
+radius = 26.6833
 
 [sub_resource type="Resource" id="Resource_iy18g"]
 script = ExtResource("5_g5r2r")
@@ -25,13 +28,11 @@ audio_sfx = ExtResource("2_2xrir")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -46.0
-offset_top = -136.0
-offset_right = 48.0
-offset_bottom = -101.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_w38de")
-theme_override_font_sizes/font_size = 30
+offset_left = -57.0
+offset_top = -115.0
+offset_right = 68.0
+offset_bottom = -69.0
+theme = ExtResource("3_jimny")
 text = "Interact"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -39,34 +40,27 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="statue front" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(5, 5)
-texture = ExtResource("1_8o6jp")
-region_enabled = true
+texture = ExtResource("5_x4xun")
 region_rect = Rect2(131.046, 130.363, 29.39, 30.7895)
 
 [node name="statue back" type="Sprite2D" parent="StaticBody2D"]
 visible = false
-scale = Vector2(5, 5)
-texture = ExtResource("1_8o6jp")
-region_enabled = true
+texture = ExtResource("6_odclo")
 region_rect = Rect2(101, -5, 27, 35)
 
 [node name="statue left" type="Sprite2D" parent="StaticBody2D"]
 visible = false
-scale = Vector2(5, 5)
-texture = ExtResource("1_8o6jp")
-region_enabled = true
+texture = ExtResource("7_4e5t5")
 region_rect = Rect2(26, 193, 25, 31)
 
 [node name="statue right" type="Sprite2D" parent="StaticBody2D"]
 visible = false
-scale = Vector2(5, 5)
-texture = ExtResource("1_8o6jp")
-region_enabled = true
+texture = ExtResource("8_1jup1")
 region_rect = Rect2(170, 65, 29, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_lifky")
+disabled = true
 
 [node name="Interactable" parent="." instance=ExtResource("2_8071q")]
 

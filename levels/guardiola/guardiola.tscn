@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=55 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
@@ -30,6 +30,9 @@ dialogue_text = Array[String](["Later!? Maybe he will come for a visit."])
 character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c48ag"]
+size = Vector2(793.5, 104.5)
 
 [sub_resource type="Resource" id="Resource_k2cmd"]
 script = ExtResource("7_xu3vp")
@@ -337,10 +340,14 @@ texture = ExtResource("12_px1fs")
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
-polygon = PackedVector2Array(-288, 255, -295, 288, 139, 288, 126, 198, 151, 162, 189, 138, 192, 127, 178, 127, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -253, 94, -264, 173, -218, 180, -213, 192, -259, 256, -288, 255, -323, 239, -283, -235, 158, -231, 264, 167, 178, 315, -344, 297, -323, 239)
+polygon = PackedVector2Array(220, 136, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -213, 192, -232, 291, -286, 294, -340, 291, -396, -189, -283, -235, 283, -234, 265, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stanze/StaticBody2D"]
+position = Vector2(3.25, 341.75)
+shape = SubResource("RectangleShape2D_c48ag")
 
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
-position = Vector2(1160, 671)
+position = Vector2(1201, 603)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
 dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
 dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])
@@ -372,7 +379,7 @@ link_id = "SouthDoor"
 position = Vector2(699, 531)
 
 [node name="Post-it" parent="PuzzleGuardaroba" instance=ExtResource("17_8aj5y")]
-position = Vector2(310, -180)
+position = Vector2(316, -229)
 
 [node name="CloseMuseumCutscene" type="Node2D" parent="."]
 
@@ -429,7 +436,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(943, 579)
+position = Vector2(1004, 545)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
 visible = false

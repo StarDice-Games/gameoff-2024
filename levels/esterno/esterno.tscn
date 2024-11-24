@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=34 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
@@ -14,12 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://cpjmkubf8hubb" path="res://resource/assets/title/movimenti.png" id="12_w7dr2"]
 [ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="13_qtdt8"]
 [ext_resource type="Texture2D" uid="uid://pwrq3lb21vbl" path="res://resource/assets/title/ringhiera-sopra.png" id="14_38yyi"]
+[ext_resource type="Texture2D" uid="uid://578ktanofgxi" path="res://resource/assets/title/ingresso-aperto.png" id="15_7jdho"]
 [ext_resource type="Texture2D" uid="uid://ck4yiohdwq52j" path="res://resource/assets/title/ringhiera-sotto.png" id="15_duuq2"]
 [ext_resource type="Texture2D" uid="uid://dycink1w47biv" path="res://resource/assets/title/cancelli.png" id="16_1w8gp"]
 [ext_resource type="Texture2D" uid="uid://c1765eu750fo5" path="res://resource/assets/title/lampioni-spenti.png" id="17_jfbqv"]
 [ext_resource type="Texture2D" uid="uid://d0abk5cbol38a" path="res://resource/assets/title/giorno_porta.png" id="18_jlixt"]
 [ext_resource type="Texture2D" uid="uid://cwh2ehc0ogkja" path="res://resource/assets/title/fondo-notte.jpg" id="19_8usn8"]
 [ext_resource type="Texture2D" uid="uid://byq4iit0jw1if" path="res://resource/assets/title/facciata-notte.png" id="20_kummy"]
+[ext_resource type="Texture2D" uid="uid://b8m0hvqp8pfk8" path="res://resource/assets/title/ingresso chiuso.png" id="21_1uowl"]
 [ext_resource type="Texture2D" uid="uid://ck0iiswmluywo" path="res://resource/assets/title/lampioni-accesi.png" id="21_8mh2y"]
 [ext_resource type="Texture2D" uid="uid://bnb5yjrf2n4c5" path="res://resource/assets/title/luna.png" id="22_oa7ec"]
 [ext_resource type="Texture2D" uid="uid://6qm5c730ne3k" path="res://resource/assets/title/notte_porta.png" id="23_toal3"]
@@ -180,6 +182,10 @@ position = Vector2(-735, -473)
 position = Vector2(-75, 528)
 shape = SubResource("RectangleShape2D_51w63")
 
+[node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(134, 911)
+texture = ExtResource("15_7jdho")
+
 [node name="Notte" type="Node2D" parent="."]
 visible = false
 y_sort_enabled = true
@@ -243,6 +249,10 @@ position = Vector2(-698.182, 381.818)
 texture = ExtResource("23_toal3")
 offset = Vector2(698.182, -381.818)
 
+[node name="IngressoChiuso" type="Sprite2D" parent="Notte"]
+position = Vector2(147, 911)
+texture = ExtResource("21_1uowl")
+
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")
 
@@ -261,7 +271,7 @@ player_ref = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_x6rer")]
 unique_name_in_owner = true
-position = Vector2(180, 543)
+position = Vector2(187, 730)
 
 [node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
 position = Vector2(-718, 70)
@@ -269,7 +279,6 @@ level_id = "ingresso"
 link_id = "ExitDoor"
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
 color = Color(0, 0, 0, 1)

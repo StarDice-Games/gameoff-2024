@@ -1,14 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://btpwdekddbacl"]
+[gd_scene load_steps=19 format=3 uid="uid://btpwdekddbacl"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
-[ext_resource type="Texture2D" uid="uid://1ihoqo3wesse" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/images/unnamed (1).png" id="1_v7jrb"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_ba2bi"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_ey4hm"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_7wpa3"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_rfxo3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gdyyu"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_apwyo"]
+[ext_resource type="Texture2D" uid="uid://tqo1nbpn1nq8" path="res://resource/assets/rooms/Corridoio/Asset nuovi/quadro.png" id="8_f0ude"]
+[ext_resource type="Texture2D" uid="uid://8n2qqqa7w0g0" path="res://resource/assets/rooms/Corridoio/Asset nuovi/quadro-girato.png" id="9_lkyg0"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_16yyu"]
 [ext_resource type="PackedScene" uid="uid://d0sqgofooexlq" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice.tscn" id="12_prl61"]
 
@@ -39,15 +40,6 @@ script = ExtResource("3_rfxo3")
 id = "Chalice"
 icon = ExtResource("2_ey4hm")
 
-[sub_resource type="Gradient" id="Gradient_tne00"]
-interpolation_mode = 1
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5sr3"]
-gradient = SubResource("Gradient_tne00")
-width = 128
-height = 128
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
 size = Vector2(159, 176)
 
@@ -64,11 +56,11 @@ open_dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k74jg")])
 item_data = SubResource("Resource_0ojl7")
 
 [node name="PaintingClosed" type="Sprite2D" parent="."]
-texture = ExtResource("1_v7jrb")
+texture = ExtResource("8_f0ude")
 
 [node name="PaintingOpened" type="Sprite2D" parent="."]
 visible = false
-texture = SubResource("GradientTexture2D_h5sr3")
+texture = ExtResource("9_lkyg0")
 
 [node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]
 

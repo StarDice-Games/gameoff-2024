@@ -9,8 +9,8 @@
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="7_b68n0"]
 [ext_resource type="Script" path="res://highlight_component/TelephoneHighlight.gd" id="7_p0q3e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn5eu"]
-size = Vector2(60, 127)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8xyj"]
+radius = 74.4261
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_myyij"]
 radius = 99.1262
@@ -24,54 +24,59 @@ shader_parameter/blockSize = 5.0
 shader_parameter/color = Color(1, 1, 1, 0)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfp4"]
-size = Vector2(477, 238)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsxm4"]
+radius = 149.584
 
 [node name="Telephone" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-1, -40)
 script = ExtResource("1_bv30h")
 
 [node name="Label" type="Label" parent="."]
 visible = false
 z_index = 1
-offset_left = -88.0
-offset_top = -136.0
-offset_right = 109.0
-offset_bottom = -87.0
+offset_left = -130.0
+offset_top = -82.0
+offset_right = 132.0
+offset_bottom = -33.0
 theme = ExtResource("2_1lqqx")
-text = "Pick up the phone"
+text = "Pick up
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 5)
 collision_layer = 2
 
 [node name="Agganciato" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(44, -3)
+position = Vector2(2, 60)
 texture = ExtResource("3_6p3fh")
 
 [node name="NonAgganciato" type="Sprite2D" parent="StaticBody2D"]
 visible = false
-position = Vector2(44, -9)
+position = Vector2(2, 54)
 texture = ExtResource("4_phg0e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_bn5eu")
+position = Vector2(4, 89.5)
+shape = SubResource("CircleShape2D_w8xyj")
 
 [node name="Interactable" parent="StaticBody2D" instance=ExtResource("3_k3lcd")]
+position = Vector2(3, 89)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Interactable"]
 shape = SubResource("CircleShape2D_myyij")
 
 [node name="HighlightComponent" parent="StaticBody2D" node_paths=PackedStringArray("sprite") instance=ExtResource("6_qnsv1")]
-position = Vector2(44, -9)
+position = Vector2(47, 80)
 script = ExtResource("7_p0q3e")
 sprite = NodePath("../Agganciato")
 shader = SubResource("ShaderMaterial_8sc8d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/HighlightComponent"]
-position = Vector2(-40.5, 11)
-shape = SubResource("RectangleShape2D_qvfp4")
+position = Vector2(-48.5, 11)
+shape = SubResource("CircleShape2D_nsxm4")
 
 [connection signal="interacted" from="StaticBody2D/Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="StaticBody2D/Interactable" to="." method="_on_interactable_player_enter"]

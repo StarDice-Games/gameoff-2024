@@ -77,8 +77,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	#TriggersSystem.update_trigger("close_museum", false)
 	#TriggersSystem.update_trigger("act_3", true)
 	EventSystem.cutscene_finished.emit()
-	AudioSystem.play_music_event("go2024_phase2_v2")
 	TriggersSystem.toggle_trigger("night")
+	AudioSystem.play_music_event("go2024_phase2_v2")
 	LevelSystem.load_level("esterno")
 
 #questo fa iniziare il telefono se si parte dalla guardiola, 

@@ -19,8 +19,8 @@ character_image = ExtResource("4_5depl")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_pe210")]([])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnnpb"]
-size = Vector2(221, 161)
+[sub_resource type="CircleShape2D" id="CircleShape2D_04ca6"]
+radius = 185.973
 
 [sub_resource type="Resource" id="Resource_x5ycc"]
 script = ExtResource("5_pe210")
@@ -28,7 +28,7 @@ key = "second_boss_call"
 value = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
-radius = 146.67
+radius = 227.079
 
 [node name="Post-it" type="Node2D"]
 y_sort_enabled = true
@@ -39,8 +39,8 @@ dialog = Array[ExtResource("3_gdcps")]([SubResource("Resource_q7vkj")])
 [node name="Interactable" parent="." instance=ExtResource("2_q6b8c")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-3.5, 28.5)
-shape = SubResource("RectangleShape2D_mnnpb")
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_04ca6")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("4_kdpl3")]
 position = Vector2(-4, 0)
@@ -52,7 +52,6 @@ texture = ExtResource("8_816ky")
 offset = Vector2(1, 29)
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -53.0
 offset_top = -91.0
 offset_right = 56.0

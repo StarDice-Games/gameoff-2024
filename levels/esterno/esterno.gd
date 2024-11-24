@@ -4,8 +4,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioSystem.play_music_event("Traffic_01")
-	
 	if TriggersSystem.check_trigger("night", true):
 		$Giorno.hide()
 		$Notte.show()
