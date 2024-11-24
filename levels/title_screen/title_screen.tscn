@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bn66sogio8l8v"]
+[gd_scene load_steps=17 format=3 uid="uid://bn66sogio8l8v"]
 
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
@@ -52,6 +52,8 @@ Button/constants/outline_size = 0
 Button/styles/hover = SubResource("StyleBoxTexture_nfkf5")
 Button/styles/normal = SubResource("StyleBoxTexture_7fjyp")
 Button/styles/pressed = SubResource("StyleBoxTexture_rm4fp")
+
+[sub_resource type="Theme" id="Theme_1crtr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8fmm"]
 load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
@@ -130,7 +132,6 @@ text = "Settings"
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
 theme = SubResource("Theme_y1vjg")
-theme_override_font_sizes/font_size = 40
 text = "Exit"
 
 [node name="Sprite2D" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
@@ -153,6 +154,7 @@ offset_bottom = 1006.0
 grow_horizontal = 2
 scale = Vector2(0.405, 0.405)
 pivot_offset = Vector2(801, 0)
+theme = SubResource("Theme_1crtr")
 texture = ExtResource("4_3sqsw")
 
 [node name="Sprite2D2" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
@@ -191,9 +193,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3024.0
+offset_bottom = 1701.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="TitleBackground" type="ColorRect" parent="StateMenu/Settings/MainPanel"]
 layout_mode = 1
@@ -207,45 +211,24 @@ offset_bottom = 253.73
 grow_horizontal = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="StateMenu/Settings/MainPanel/TitleBackground"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_n3ecd")
-theme_override_font_sizes/font_size = 125
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Back" type="Button" parent="StateMenu/Settings/MainPanel"]
+custom_minimum_size = Vector2(280, 80)
 layout_mode = 0
-offset_left = 72.0
-offset_top = 68.0
-offset_right = 184.0
-offset_bottom = 145.0
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.556863)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
-theme_override_constants/outline_size = 10
+offset_left = 1300.0
+offset_top = 781.0
+offset_right = 1580.0
+offset_bottom = 861.0
+theme = SubResource("Theme_y1vjg")
 theme_override_fonts/font = ExtResource("4_n3ecd")
-theme_override_font_sizes/font_size = 60
 text = "Back"
-flat = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/Settings/MainPanel"]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 0
-offset_left = 977.0
-offset_top = 606.0
-offset_right = 1802.0
-offset_bottom = 979.0
+offset_left = 1658.0
+offset_top = 647.0
+offset_right = 2483.0
+offset_bottom = 1020.0
 theme_override_constants/separation = 100
 
 [node name="MasterVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
@@ -261,6 +244,21 @@ label_name = "Music Volume"
 layout_mode = 2
 audio_channel = "Sfx"
 label_name = "SFX Volume"
+
+[node name="TextureRect3" type="TextureRect" parent="StateMenu/Settings/MainPanel"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1854.0
+offset_top = 44.0
+offset_right = -93.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+scale = Vector2(0.405, 0.405)
+pivot_offset = Vector2(801, 0)
+texture = ExtResource("4_3sqsw")
 
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_pressed"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Settings" to="StateMenu/MainMenu" method="_on_settings_pressed"]

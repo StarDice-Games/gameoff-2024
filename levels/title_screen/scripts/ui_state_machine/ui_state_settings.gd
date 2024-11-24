@@ -11,4 +11,5 @@ func exit() -> void:
 
 
 func _on_back_pressed():
+	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	state_machine.change_state("MainMenu")

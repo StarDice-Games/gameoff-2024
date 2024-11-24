@@ -93,10 +93,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0.39, 0.39)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(966, 619)]
+}
 
 [sub_resource type="Animation" id="Animation_ti7s3"]
 resource_name = "hide_title"
-length = 6.0
+length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,7 +140,7 @@ tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4.03333, 6),
+"times": PackedFloat32Array(5.2, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -80.0]
@@ -140,10 +152,22 @@ tracks/3/path = NodePath("Giorno/Env:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.23333, 6),
+"times": PackedFloat32Array(2.36667, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.39, 0.39), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(966, 619), Vector2(769, 1115)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]

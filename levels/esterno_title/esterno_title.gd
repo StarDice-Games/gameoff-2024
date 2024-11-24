@@ -23,8 +23,9 @@ func _process(delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if TriggersSystem.check_trigger("not_in_title", true):
-		AudioSystem.play_music_event("go2024_briefing")
+		AudioSystem.play_music_event("Traffic_01")
 		if TriggersSystem.check_trigger("start", false):
+			$CameraFollow.player_ref = %Player
 			DialogueSystem.start_dialog(dialog_1)
 
 
@@ -33,4 +34,4 @@ func _on_music_start_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	$CameraFollow.player_ref = %Player
+	pass

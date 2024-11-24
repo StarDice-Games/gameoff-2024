@@ -23,24 +23,22 @@ audio_channel = "Master"
 [node name="Label" type="Label" parent="."]
 auto_translate_mode = 1
 layout_mode = 0
-offset_left = -355.0
-offset_top = -168.0
-offset_right = -81.0
-offset_bottom = -110.0
+offset_left = -460.0
+offset_top = -184.0
+offset_right = -235.0
+offset_bottom = -126.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
-theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_ws5vb")
 theme_override_font_sizes/font_size = 50
-text = "SFX Volume"
+text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="."]
 auto_translate_mode = 1
 layout_mode = 0
-offset_left = -3.0
-offset_top = -150.0
-offset_right = 346.0
-offset_bottom = -114.0
+offset_left = -158.0
+offset_top = -161.0
+offset_right = 94.0
+offset_bottom = -135.0
 min_value = -60.0
 max_value = 0.0
 tick_count = 10

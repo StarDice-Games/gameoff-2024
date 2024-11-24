@@ -20,14 +20,17 @@ func exit() -> void:
 
 
 func _on_settings_pressed():
+	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	state_machine.change_state("Settings")
 
 func _on_exit_pressed():
+	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	get_tree().quit()
 
 
 func _on_new_game_pressed() -> void:
 	TriggersSystem.toggle_trigger("not_in_title")
+	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	EventSystem.cutscene_started.emit()
 
 func _on_load_game_pressed():
