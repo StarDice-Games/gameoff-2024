@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dm6ydcq6bkfx4"]
+[gd_scene load_steps=16 format=3 uid="uid://dm6ydcq6bkfx4"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/post-it-item/scripts/post_it.gd" id="1_1tpli"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_q6b8c"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_pe210"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_lt5kw"]
 [ext_resource type="Texture2D" uid="uid://dfvehsx8h8pul" path="res://resource/assets/items/foglietto.png" id="8_on411"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_tb2qj"]
+[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://highlight_component/new_shader_material.tres" id="11_i5cv0"]
 
 [sub_resource type="Resource" id="Resource_q7vkj"]
 script = ExtResource("3_gdcps")
@@ -24,6 +26,9 @@ size = Vector2(192, 179)
 script = ExtResource("5_pe210")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
+radius = 363.456
 
 [node name="Post-it" type="Node2D"]
 script = ExtResource("1_1tpli")
@@ -53,6 +58,14 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("7_lt5kw")
 theme_override_font_sizes/font_size = 30
 text = "Pick up"
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+highlight_color = Color(1, 1, 1, 1)
+sprite = NodePath("../Sprite2D")
+shader = ExtResource("11_i5cv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+shape = SubResource("CircleShape2D_p7ebc")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
