@@ -45,11 +45,6 @@ text = "Pick up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "interactable") instance=ExtResource("10_wqkuw")]
-sprite = NodePath("../Tooth")
-interactable = NodePath("../Interactable")
-shader = ExtResource("11_76eqr")
-
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
 [connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
