@@ -565,7 +565,6 @@ position = Vector2(1157, 1093)
 [node name="GambaDx" type="Sprite2D" parent="Left"]
 position = Vector2(-13.8984, 47.4921)
 rotation = -0.795379
-scale = Vector2(1, 1)
 texture = ExtResource("6_nma4f")
 offset = Vector2(-2, 15.9994)
 region_rect = Rect2(200, 377, 44, 66)

@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://8il3mjn3x70q"]
+
+[ext_resource type="Script" path="res://enemy_patrol/scripts/enemy_patrol.gd" id="1_ejy71"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_4efgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
+size = Vector2(101.25, 96.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jljmw"]
+size = Vector2(182, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu2wp"]
+size = Vector2(182, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krx8c"]
+size = Vector2(50, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcnqm"]
+size = Vector2(50, 150)
+
+[node name="EnemyPatrol" type="CharacterBody2D"]
+position = Vector2(6, 2)
+collision_layer = 512
+collision_mask = 129
+script = ExtResource("1_ejy71")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.703125, 0.679688)
+texture = ExtResource("2_4efgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[node name="LeftFov" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFov"]
+position = Vector2(-64, -1)
+shape = SubResource("RectangleShape2D_jljmw")
+debug_color = Color(0.838179, 0.122111, 0.880316, 0.42)
+
+[node name="RightFov" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightFov"]
+position = Vector2(79.5, -2)
+shape = SubResource("RectangleShape2D_gu2wp")
+debug_color = Color(0.864693, 0.353164, 0.134086, 0.42)
+
+[node name="UpFov" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpFov"]
+position = Vector2(1, -53)
+shape = SubResource("RectangleShape2D_krx8c")
+debug_color = Color(0, 0.101961, 0.701961, 0.419608)
+
+[node name="DownFov" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownFov"]
+position = Vector2(1, 48)
+shape = SubResource("RectangleShape2D_lcnqm")
+debug_color = Color(0.382935, 0.612631, 0.00968294, 0.42)
+
+[node name="EnemyArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[node name="Caught" type="ColorRect" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -116.0
+offset_right = 19.0
+offset_bottom = -76.0
+
+[connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
+[connection signal="area_entered" from="RightFov" to="." method="detect_player"]
+[connection signal="area_entered" from="UpFov" to="." method="detect_player"]
+[connection signal="area_entered" from="DownFov" to="." method="detect_player"]
+[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]

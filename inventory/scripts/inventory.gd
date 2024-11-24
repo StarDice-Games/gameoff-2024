@@ -7,10 +7,13 @@ var items_array : Array[ItemData] = []
 
 func _ready() -> void:
 	
+	
 	EventSystem.hide_hud.connect(hide_inventory)
 	EventSystem.show_hud.connect(show_inventory)
 	EventSystem.cutscene_started.connect(hide_inventory)
 	EventSystem.cutscene_finished.connect(show_inventory)
+	
+	
 	
 	
 func pick_up(data: ItemData):
@@ -26,6 +29,7 @@ func pick_up(data: ItemData):
 	EventSystem.picked_up_item.emit(data.id)
 	
 
+
 func drop_item(data: ItemData):
 	var item_index
 	for i in range(items_array.size()):
@@ -34,6 +38,7 @@ func drop_item(data: ItemData):
 			break
 	items_array.remove_at(item_index)
 	update_ui()
+	
 	EventSystem.dropped_item.emit(data.id)
 
 func check_item(data: ItemData):

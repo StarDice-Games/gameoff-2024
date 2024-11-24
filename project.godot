@@ -33,6 +33,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Checpoint="enemy checkpoint"
+
 [input]
 
 up={
@@ -100,3 +104,6 @@ close_task={
 2d_physics/layer_5="Camera"
 2d_physics/layer_6="Camera Walls"
 2d_physics/layer_7="Portal"
+2d_physics/layer_8="Checkpoint"
+2d_physics/layer_9="enemy"
+2d_physics/layer_10="Shadow"

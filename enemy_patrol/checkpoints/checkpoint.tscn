@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi6dr6imf2xbx"]
+
+[ext_resource type="Script" path="res://enemy_patrol/checkpoints/script/checkpoint.gd" id="1_023ko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tbc"]
+
+[node name="Checkpoint" type="Area2D" groups=["Checpoint"]]
+collision_layer = 128
+collision_mask = 8
+script = ExtResource("1_023ko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a0tbc")

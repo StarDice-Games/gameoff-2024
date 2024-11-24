@@ -52,14 +52,13 @@ func start_dialog(dialog : Array[DialogText]):
 	EventSystem.cutscene_started.emit()
 
 func next_dialog():
-	
+	#set all the triggers, for the current one
 	var dialog_triggers = dialogs[dialog_index].triggers
 	if  dialog_triggers != null and dialog_triggers.size() > 0:
 		for trigger in dialog_triggers:
 			TriggersSystem.update_trigger(trigger.key, trigger.value)
-	
+				
 	if dialog_index < dialogs.size() - 1:
-		#set all the triggers, for the current one
 		dialog_index += 1
 		text_index = 0
 		text_label.text = dialogs[dialog_index].dialogue_text[text_index]
