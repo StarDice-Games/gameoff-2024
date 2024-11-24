@@ -12,14 +12,14 @@
 [ext_resource type="AudioStream" uid="uid://y73pv85x1hq1" path="res://audio/sfx/various/Alarm_01.wav" id="6_xu4h3"]
 [ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
-[ext_resource type="Texture2D" uid="uid://y0iraahv5ke5" path="res://resource/assets/rooms/Corridoio/CORRIDOIO.png" id="7_us18e"]
-[ext_resource type="Texture2D" uid="uid://7agvum4lie5k" path="res://resource/assets/rooms/Corridoio/BALENOZZA.png" id="8_t2a83"]
+[ext_resource type="Texture2D" uid="uid://dg0ap7vn1fqn4" path="res://resource/assets/rooms/Corridoio/Asset nuovi/base.png" id="7_xpo0o"]
+[ext_resource type="Texture2D" uid="uid://dkl13yf37dqkn" path="res://resource/assets/rooms/Corridoio/Asset nuovi/balena.png" id="8_epekt"]
 [ext_resource type="Texture2D" uid="uid://dho4dr84grq7e" path="res://resource/assets/rooms/Corridoio/porte.png" id="9_ikfpq"]
 [ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="10_esjjd"]
 [ext_resource type="Texture2D" uid="uid://m1rcxilbigqy" path="res://resource/assets/rooms/Corridoio/POLTRONA.png" id="10_y3aqg"]
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
+[ext_resource type="Texture2D" uid="uid://dcjax5e0wbsdu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/sedie-statua.png" id="11_in8sk"]
 [ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
-[ext_resource type="Texture2D" uid="uid://cnjltc5lsqg3a" path="res://resource/assets/rooms/Corridoio/SEDIE.png" id="11_uqlkm"]
 [ext_resource type="Texture2D" uid="uid://cff8d11qa4uat" path="res://resource/assets/rooms/Corridoio/STATUA.png" id="12_p7jp6"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
@@ -112,9 +112,16 @@ dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), Su
 alarm_sfx = ExtResource("6_xu4h3")
 
 [node name="Stanze" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(947, 529)
-texture = ExtResource("7_us18e")
+texture = ExtResource("7_xpo0o")
 region_rect = Rect2(2186.73, 1490.61, 2216.14, 1365.98)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
+polygon = PackedVector2Array(-961, 522, -917, 442, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 175, -581, 175, -585, -206, -439, -208, -443, 175, 431, 175, 431, -211, 595, -212, 579, 175, 617.231, 175, 792, 175, 846, 261, 864, 261, 900, -72, 964, -6, 921, 299, 893, 372, 916, 443, 949, 526, -979, 523, -969, 551, 977, 545, 987, -9, 909, -85, 646, -256, -844, -243, -1001, -39)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
 z_index = -1
@@ -126,32 +133,51 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Balenozza" type="Sprite2D" parent="Stanze"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(1, -537)
-texture = ExtResource("8_t2a83")
+texture = ExtResource("8_epekt")
 
 [node name="Porte" type="Sprite2D" parent="Stanze"]
-position = Vector2(894, 320)
+position = Vector2(897, 283)
 texture = ExtResource("9_ikfpq")
-offset = Vector2(92, -99)
+offset = Vector2(91, -56)
 region_enabled = true
 region_rect = Rect2(1977, 488, 183, 928)
 
 [node name="Porte2" type="Sprite2D" parent="Stanze"]
-position = Vector2(-880, 312)
+position = Vector2(-879, 274)
 texture = SubResource("CompressedTexture2D_pj42f")
-offset = Vector2(-101, -155)
+offset = Vector2(-101, -115)
 region_enabled = true
 region_rect = Rect2(0, 413, 201, 942)
 
 [node name="Poltrona" type="Sprite2D" parent="Stanze"]
-position = Vector2(-22, 144)
+position = Vector2(-18, 90)
 texture = ExtResource("10_y3aqg")
+offset = Vector2(-4, 54)
 
 [node name="Sedie" type="Sprite2D" parent="Stanze"]
-position = Vector2(88, 398)
-texture = ExtResource("11_uqlkm")
+y_sort_enabled = true
+position = Vector2(6, 369)
+texture = ExtResource("11_in8sk")
+offset = Vector2(57, -53)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Stanze/Sedie"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
+position = Vector2(61, -51)
+polygon = PackedVector2Array(-718, 223, -600, 224, -594, 187, -587, 122, -591, 110, -611, 102, -644, 101, -671, 102, -698, 106, -713, 112, -722, 119, -721, 162, -720, 183)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
+polygon = PackedVector2Array(-345, 8, -347, 168, 207, 178, 197, 8)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
+polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
 
 [node name="Statua" type="Sprite2D" parent="Stanze"]
+visible = false
 position = Vector2(4, 297)
 texture = ExtResource("12_p7jp6")
 
@@ -204,7 +230,7 @@ position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(1294, 794)
+position = Vector2(1710, 785)
 
 [node name="PuzzleChalice" type="Node2D" parent="."]
 position = Vector2(1546, 569)
@@ -228,22 +254,24 @@ position = Vector2(-382, 15)
 position = Vector2(156, -12)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1939, 665)
+position = Vector2(1909, 654)
 level_id = "ingresso"
 link_id = "WestDoor"
 
 [node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1462, 401)
+position = Vector2(1453, 375)
+scale = Vector2(1.4, 0.8)
 level_id = "sala arte"
 link_id = "South"
 
 [node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(438, 419)
+position = Vector2(433, 375)
+scale = Vector2(1.368, 0.8)
 level_id = "sala preistorica"
 link_id = "South"
 
 [node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(-68, 652)
+position = Vector2(4, 635)
 level_id = "sala sacrificio"
 link_id = "East"
 
@@ -265,10 +293,10 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
-offset_left = -3764.0
-offset_top = -2134.0
-offset_right = 5817.0
-offset_bottom = 3808.0
+offset_left = -3735.0
+offset_top = -2150.0
+offset_right = 5846.0
+offset_bottom = 3792.0
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
