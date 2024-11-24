@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if TriggersSystem.check_trigger("doors_locked", true):
+		AudioSystem.play_audio_event("Locked_Door_01", "Sfx")
 		DialogueSystem.start_dialog(dialog)

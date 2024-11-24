@@ -55,6 +55,7 @@ func _on_interactable_interacted() -> void:
 			close_sprite.hide()
 			TriggersSystem.update_trigger(open_trigger, true)
 			open = true
+			AudioSystem.play_audio_event("Open_Drawer_01", "Sfx")
 			$MagicBook.show()
 			$Interactable.queue_free()
 			interact_label.hide()

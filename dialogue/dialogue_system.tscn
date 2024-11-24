@@ -133,3 +133,5 @@ theme_override_fonts/font = ExtResource("3_wmpg3")
 text = "Press E to continue"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

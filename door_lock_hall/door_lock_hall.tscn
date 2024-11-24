@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4q1hdxo0i0xe"]
 
-[ext_resource type="Script" path="res://door_lock/door_lock.gd" id="1_3hagi"]
+[ext_resource type="Script" path="res://door_lock_hall/door_lock_hall.gd" id="1_4fq22"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_ku3x8"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_5k1l3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_ppv2w"]
@@ -27,7 +27,7 @@ value = false
 [node name="DoorLockHall" type="Area2D"]
 position = Vector2(1358, 533)
 collision_layer = 64
-script = ExtResource("1_3hagi")
+script = ExtResource("1_4fq22")
 dialog = Array[ExtResource("2_ku3x8")]([SubResource("Resource_1fggd")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

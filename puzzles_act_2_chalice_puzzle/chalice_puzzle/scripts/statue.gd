@@ -51,18 +51,21 @@ func _on_interactable_interacted() -> void:
 		counter_position = 0
 	match position_statue[counter_position]: 
 		"Front":
+			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			direction_statue = "Front"
 			sprite_front.show()
 			sprite_back.hide()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Back":
+			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			direction_statue = "Back"
 			sprite_front.hide()
 			sprite_back.show()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Left":
+			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			direction_statue = "Left"
 			sprite_front.hide()
 			sprite_back.hide()
@@ -70,6 +73,7 @@ func _on_interactable_interacted() -> void:
 			sprite_right.hide()
 		"Right":
 			direction_statue = "Right"
+			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			sprite_front.hide()
 			sprite_back.hide()
 			sprite_left.hide()
