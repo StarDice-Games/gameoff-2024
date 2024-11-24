@@ -25,7 +25,7 @@ shader_parameter/color = Color(1, 1, 1, 0)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfp4"]
-size = Vector2(245, 238)
+size = Vector2(477, 238)
 
 [node name="Telephone" type="Node2D"]
 script = ExtResource("1_bv30h")
@@ -38,8 +38,6 @@ offset_top = -136.0
 offset_right = 109.0
 offset_bottom = -87.0
 theme = ExtResource("2_1lqqx")
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 30
 text = "Pick up the phone"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,7 +70,7 @@ sprite = NodePath("../Agganciato")
 shader = SubResource("ShaderMaterial_8sc8d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/HighlightComponent"]
-position = Vector2(-44.5, 11)
+position = Vector2(-40.5, 11)
 shape = SubResource("RectangleShape2D_qvfp4")
 
 [connection signal="interacted" from="StaticBody2D/Interactable" to="." method="_on_interactable_interacted"]

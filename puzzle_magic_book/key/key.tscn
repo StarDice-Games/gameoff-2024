@@ -19,10 +19,10 @@ text_name = "Angelo"
 triggers = Array[ExtResource("5_4pea3")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jobi0"]
-size = Vector2(110, 82)
+size = Vector2(110, 235)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2seii"]
-radius = 136.18
+radius = 216.0
 
 [node name="Key" type="Node2D"]
 y_sort_enabled = true
@@ -37,7 +37,7 @@ texture = ExtResource("6_yhm6x")
 [node name="Interactable" parent="." instance=ExtResource("7_di3gg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(23, -1)
+position = Vector2(23, 0.5)
 shape = SubResource("RectangleShape2D_jobi0")
 
 [node name="Label" type="Label" parent="."]
