@@ -17,13 +17,15 @@ func _ready() -> void:
 	TriggersSystem.update_trigger("doors_locked", true)
 	
 	# Prima chiamata con il boss e task NPC
+	# ora quando si completano le task è il player che controlla, 
+	# ma qui dobbiamo settare il trigger ring
 	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("act_1", true):
 		TriggersSystem.update_trigger("act_2", true)
-		TriggersSystem.update_trigger("ring", true)
+		#TriggersSystem.update_trigger("ring", true)
 	
 	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("second_boss_call", true):
 		TriggersSystem.update_trigger("act_4", true)
-		TriggersSystem.update_trigger("ring", true)
+		#TriggersSystem.update_trigger("ring", true)
 
 func trigger_update(key, value):	
 	if key == "first_boss_call" and value == true:
@@ -40,8 +42,10 @@ func trigger_update(key, value):
 	if key == "second_boss_call" and value == true:
 		TaskSystem.load_tasks(second_tasks)
 		
-	if key == "act_3" and value == true:
-		TriggersSystem.update_trigger("ring", true)
+	#suona il telefono dopo che chiude il museo ? si ma non serve
+	#if key == "act_3" and value == true:
+		#pass
+		#TriggersSystem.update_trigger("ring", true)
 	
 	if key == "dialog_player" and value == true:
 		DialogueSystem.start_dialog(dialog_player)
@@ -77,10 +81,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	TriggersSystem.toggle_trigger("night")
 	LevelSystem.load_level("esterno")
 
-
-func _on_timer_timeout() -> void:
-	if TriggersSystem.check_trigger("act_1", false):
-		TriggersSystem.update_trigger("ring", true)
+#questo fa iniziare il telefono se si parte dalla guardiola, 
+#in futuro si potrebbe togliere anche questo
+#func _on_timer_timeout() -> void:
+	#if TriggersSystem.check_trigger("act_1", false):
+		#TriggersSystem.update_trigger("ring", true)
 
 
 func _on_animation_player_animation_finished_guardaroba(anim_name: StringName) -> void:

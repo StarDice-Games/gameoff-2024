@@ -8,11 +8,16 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("act_3", true):
 		AudioSystem.play_music_event("go2024_phase2_v2")
+		if TriggersSystem.check_trigger("second_boss_call", false):
+			TriggersSystem.update_trigger("ring", true)
 	else:
 		AudioSystem.play_music_event("go2024_phase1_v1")
 	
 	if TriggersSystem.check_trigger("stealth", true):
 		AudioSystem.play_music_event("go2024_stealth_v1")
+	
+	if TriggersSystem.check_trigger("act_1", false):
+		TriggersSystem.update_trigger("ring", true)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

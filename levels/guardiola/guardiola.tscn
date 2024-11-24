@@ -346,7 +346,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(842, 536)
+position = Vector2(892, 536)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 441.0

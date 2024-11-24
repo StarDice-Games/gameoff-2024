@@ -13,10 +13,20 @@ var in_cutscene : bool = false
 var in_shadow : bool = false
 
 var direction : GameState.PLAYER_DIR
+var schedule_phone_ring = false
 
 func _ready() -> void:
 	EventSystem.cutscene_started.connect(enter_cutscene)
 	EventSystem.cutscene_finished.connect(exit_cutscene)
+	
+	EventSystem.all_task_completed.connect(all_task_completed)
+
+func all_task_completed():
+	if not in_cutscene:
+		TriggersSystem.update_trigger("ring", true)
+		schedule_phone_ring = false
+	else:
+		schedule_phone_ring = true
 
 func enter_cutscene():
 	in_cutscene = true
@@ -63,6 +73,10 @@ func _process(delta: float) -> void:
 			var area_collider = ray_cast.get_collider()
 			if area_collider != null and area_collider is Interactable:
 				area_collider.interact()
+	
+	if schedule_phone_ring and not in_cutscene:
+		TriggersSystem.update_trigger("ring", true)
+		schedule_phone_ring = false
 
 func _physics_process(delta: float) -> void:
 
