@@ -30,3 +30,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_music_start_body_entered(body: Node2D) -> void:
 	AudioSystem.play_music_event("go2024_phase1_v1")
+
+
+func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	$CameraFollow.player_ref = %Player

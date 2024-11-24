@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn66sogio8l8v"]
+[gd_scene load_steps=16 format=3 uid="uid://bn66sogio8l8v"]
 
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_settings.gd" id="2_ovesd"]
+[ext_resource type="Texture2D" uid="uid://dsfbhwg48rbt8" path="res://resource/assets/title/titolo new.png" id="4_3sqsw"]
+[ext_resource type="Texture2D" uid="uid://ddjp3ifnq8kju" path="res://resource/assets/title/pulsante.png" id="4_cmoi4"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_n3ecd"]
 [ext_resource type="PackedScene" uid="uid://r6wtux0ghoss" path="res://settings_screen/volume_slider.tscn" id="4_nqphs"]
-[ext_resource type="Texture2D" uid="uid://bea0mm6limq8u" path="res://resource/assets/UI/title.png" id="5_mybly"]
+[ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="5_l6pcx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ueym0"]
+load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
 
 [sub_resource type="Theme" id="Theme_4t44a"]
 default_font = ExtResource("4_n3ecd")
@@ -24,6 +29,32 @@ Label/constants/shadow_offset_x = 16
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 31
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfkf5"]
+texture = ExtResource("4_cmoi4")
+modulate_color = Color(1, 1, 0.694118, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7fjyp"]
+texture = ExtResource("4_cmoi4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rm4fp"]
+texture = ExtResource("4_cmoi4")
+modulate_color = Color(0.92917, 0.865182, 0.815082, 1)
+
+[sub_resource type="Theme" id="Theme_y1vjg"]
+default_font_size = 50
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 0
+Button/styles/hover = SubResource("StyleBoxTexture_nfkf5")
+Button/styles/normal = SubResource("StyleBoxTexture_7fjyp")
+Button/styles/pressed = SubResource("StyleBoxTexture_rm4fp")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8fmm"]
+load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -62,6 +93,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
+[node name="Sprite2D4" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1599, 734)
+rotation = -0.111701
+scale = Vector2(0.555, 0.555)
+skew = -0.139626
+texture = SubResource("CompressedTexture2D_ueym0")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 109)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/MainMenu/MainPanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -73,45 +114,66 @@ theme = SubResource("Theme_4t44a")
 theme_override_constants/separation = 15
 
 [node name="NewGame" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.576471)
-theme_override_colors/font_outline_color = Color(1, 0.951394, 0.591726, 1)
-theme_override_font_sizes/font_size = 40
+theme = SubResource("Theme_y1vjg")
 text = "New Game"
-flat = true
-alignment = 0
+icon_alignment = 1
 
 [node name="Settings" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.576471)
-theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
-theme_override_font_sizes/font_size = 40
+theme = SubResource("Theme_y1vjg")
 text = "Settings"
-flat = true
-alignment = 0
 
 [node name="Exit" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.321569)
-theme_override_colors/font_outline_color = Color(1, 0.952941, 0.592157, 1)
+theme = SubResource("Theme_y1vjg")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
-flat = true
-alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+position = Vector2(-227, -101)
+scale = Vector2(0.405, 0.405)
+texture = ExtResource("5_l6pcx")
+region_enabled = true
+region_rect = Rect2(2658, 575, 541, 170)
 
 [node name="TextureRect2" type="TextureRect" parent="StateMenu/MainMenu/MainPanel"]
 layout_direction = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -900.0
-offset_top = 80.0
-offset_right = -99.0
-offset_bottom = 414.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.0
+offset_top = 44.0
+offset_right = 1419.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+scale = Vector2(0.405, 0.405)
 pivot_offset = Vector2(801, 0)
-texture = ExtResource("5_mybly")
+texture = ExtResource("4_3sqsw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1728, 470)
+rotation = -0.0139626
+scale = Vector2(0.29, 0.29)
+skew = 0.0450061
+texture = ExtResource("5_l6pcx")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(2658, 575, 541, 170)
+
+[node name="Sprite2D3" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1252, 860)
+rotation = -0.111701
+scale = Vector2(0.46, 0.46)
+skew = -0.139626
+texture = SubResource("CompressedTexture2D_i8fmm")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(2186, 231, 336, 109)
 
 [node name="Settings" type="Control" parent="StateMenu"]
 layout_mode = 1

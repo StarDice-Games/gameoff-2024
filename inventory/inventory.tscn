@@ -19,16 +19,18 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 556.0
 offset_bottom = 104.0
-scale = Vector2(1.725, 1.725)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 8.0
-offset_top = 7.0
+offset_top = 2.0
 offset_right = 500.0
-offset_bottom = 49.0
+offset_bottom = 44.0
+theme_override_constants/separation = 25

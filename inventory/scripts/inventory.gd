@@ -17,6 +17,8 @@ func pick_up(data: ItemData):
 	items_array.append(data)
 	var slot = TextureRect.new()
 	slot.texture = data.icon
+	slot.expand_mode = TextureRect.EXPAND_KEEP_SIZE
+	slot.stretch_mode = TextureRect.STRETCH_SCALE
 	#size is a placeholder
 	slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 	inventory_slot.add_child(slot)
