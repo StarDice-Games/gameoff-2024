@@ -40,6 +40,9 @@ triggers = Array[ExtResource("4_x38vt")]([SubResource("Resource_vfy75")])
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kf3p5"]
 load_path = "res://.godot/imported/lampioni-spenti.png-7f505827b5fa0f60d5aaa741a33b3fc8.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpik6"]
+size = Vector2(297.727, 551.818)
+
 [sub_resource type="Animation" id="Animation_irevx"]
 length = 0.001
 tracks/0/type = "value"
@@ -149,9 +152,6 @@ _data = {
 "hide_title": SubResource("Animation_ti7s3")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpik6"]
-size = Vector2(297.727, 551.818)
-
 [node name="Esterno_Title" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_2y21b")
@@ -220,6 +220,18 @@ offset = Vector2(636.364, -592.727)
 unique_name_in_owner = true
 position = Vector2(124.706, 515.294)
 
+[node name="Entrance" parent="Giorno/Env" instance=ExtResource("9_526m0")]
+position = Vector2(-729, 74)
+level_id = "ingresso"
+link_id = "ExitDoor"
+
+[node name="MusicStart" type="Area2D" parent="Giorno/Env"]
+position = Vector2(-735, -473)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Giorno/Env/MusicStart"]
+position = Vector2(-75, 528)
+shape = SubResource("RectangleShape2D_kpik6")
+
 [node name="Notte" type="Node2D" parent="."]
 visible = false
 y_sort_enabled = true
@@ -275,11 +287,6 @@ metadata/_edit_lock_ = true
 position = Vector2(962, 543)
 player_ref = NodePath("../CharacterBody2D")
 
-[node name="Entrance" parent="." instance=ExtResource("9_526m0")]
-position = Vector2(-727.273, 58.1818)
-level_id = "ingresso"
-link_id = "ExitDoor"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("10_cot7y")]
@@ -293,16 +300,9 @@ libraries = {
 stream = ExtResource("11_nexd5")
 autoplay = true
 
-[node name="MusicStart" type="Area2D" parent="."]
-position = Vector2(-916.364, -501.818)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicStart"]
-position = Vector2(83.8636, 509.091)
-shape = SubResource("RectangleShape2D_kpik6")
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(966, 619)
 
+[connection signal="body_entered" from="Giorno/Env/MusicStart" to="." method="_on_music_start_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
-[connection signal="body_entered" from="MusicStart" to="." method="_on_music_start_body_entered"]

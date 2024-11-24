@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=17 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Texture2D" uid="uid://bew7sw7bjsrr2" path="res://resource/assets/rooms/ingresso copia.jpg" id="1_dw653"]
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_un5ie"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_x6rer"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="5_8nwid"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_2m52d"]
 
 [sub_resource type="Resource" id="Resource_vfy75"]
 script = ExtResource("4_un5ie")
@@ -27,7 +28,7 @@ resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/path = NodePath("Node2D/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +43,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/path = NodePath("Node2D/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,6 +58,11 @@ _data = {
 "RESET": SubResource("Animation_2pu1e"),
 "fade_out": SubResource("Animation_h8uvp")
 }
+
+[sub_resource type="Resource" id="Resource_rqwq0"]
+script = ExtResource("4_un5ie")
+key = "close_museum"
+value = false
 
 [node name="Esterno" type="Node2D"]
 script = ExtResource("1_ll6ia")
@@ -91,12 +97,18 @@ position = Vector2(157, 520)
 level_id = "ingresso"
 link_id = "ExitDoor"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_4qo00")
 }
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+[node name="NodeToggle" parent="Node2D" instance=ExtResource("10_2m52d")]
+trigger = SubResource("Resource_rqwq0")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Node2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
