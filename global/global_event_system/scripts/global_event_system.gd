@@ -26,5 +26,8 @@ signal cutscene_finished()
 #Triggers
 signal trigger_changed(key : String, value : bool)
 
+signal player_enter_trigger
+signal player_exit_trigger
+
 signal ring_phone(audio_id : String)
 signal stop_ring_phone(audio_id : String)
