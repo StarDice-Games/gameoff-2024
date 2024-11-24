@@ -206,7 +206,6 @@ stream = ExtResource("14_8gly2")
 player_ref = NodePath("../Player")
 
 [node name="Stanza" type="Sprite2D" parent="FollowCamera"]
-y_sort_enabled = true
 texture = ExtResource("2_vknqs")
 offset = Vector2(962, 539)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
@@ -218,23 +217,6 @@ collision_layer = 2
 position = Vector2(0, -5)
 polygon = PackedVector2Array(1314, 1105, 2111, 1103, 2100, 1053, 2100, 904, 2071, 865, 2029, 870, 1992, 852, 1971, 835, 1956, 811, 1975, 770, 2015, 553, 2035, 267, 1895, 65, 1832, 481, 1756, 441, 1750, 397, 1325, 377, 1284, 167, 1212, 181, 1166, 91, 1056, 86, 959, 87, 621, 101, 547, 195, 49, 207, -78, 407, -89, 123, -210, 246, -159, 599, -351, 937, -438, 1085, 1081, 1107, 1080, 1153, -475, 1131, -239, 223, -79, 68, 58, 160, 517, 154, 598, 31, 968, -9, 1166, 9, 1304, 55, 1789, 206, 1879, 11, 2104, 304, 2098, 811, 2246, 1063, 2231, 1129, 1313, 1151)
 
-[node name="PortaDx" type="Sprite2D" parent="FollowCamera/Stanza"]
-visible = false
-y_sort_enabled = true
-position = Vector2(1999, 541)
-texture = ExtResource("17_eok5r")
-offset = Vector2(113, -157.18)
-region_enabled = true
-region_rect = Rect2(2605, 461, 286, 822)
-
-[node name="PortaSx" type="Sprite2D" parent="FollowCamera/Stanza"]
-y_sort_enabled = true
-position = Vector2(-146, 535)
-texture = ExtResource("17_eok5r")
-offset = Vector2(-154, -278.18)
-region_enabled = true
-region_rect = Rect2(68, 269, 533, 948)
-
 [node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
 position = Vector2(-208, 316)
 
@@ -242,9 +224,25 @@ position = Vector2(-208, 316)
 position = Vector2(549, 311)
 dialog = Array[ExtResource("3_fpr8x")]([SubResource("Resource_fn0b3")])
 
+[node name="PortaDx" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1988, 627)
+texture = ExtResource("17_eok5r")
+offset = Vector2(124, -243.18)
+region_enabled = true
+region_rect = Rect2(2605, 461, 286, 822)
+
+[node name="PortaSx" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-135, 526)
+texture = ExtResource("17_eok5r")
+offset = Vector2(-165, -269.18)
+region_enabled = true
+region_rect = Rect2(68, 269, 533, 948)
+
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
-position = Vector2(1212, 505)
+position = Vector2(1187, 612)
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
