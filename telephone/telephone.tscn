@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf7a0a6fbohbw"]
+[gd_scene load_steps=7 format=3 uid="uid://bf7a0a6fbohbw"]
 
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="1_0q6q2"]
 [ext_resource type="Script" path="res://telephone/script/telephone.gd" id="1_bv30h"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="2_1lqqx"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_k3lcd"]
-[ext_resource type="AudioStream" uid="uid://cpxcoph3vaasm" path="res://telephone/sound/Phone_Ring.wav" id="4_1ytcf"]
-[ext_resource type="AudioStream" uid="uid://oldodapfa5rw" path="res://telephone/sound/Phone_Answer.wav" id="5_dlb18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn5eu"]
 size = Vector2(130, 127)
@@ -45,16 +43,6 @@ shape = SubResource("RectangleShape2D_bn5eu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Interactable"]
 shape = SubResource("CircleShape2D_myyij")
 
-[node name="Ring" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_1ytcf")
-
-[node name="Hang" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_dlb18")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="interacted" from="StaticBody2D/Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="StaticBody2D/Interactable" to="." method="_on_interactable_player_enter"]
 [connection signal="player_exit" from="StaticBody2D/Interactable" to="." method="_on_interactable_player_exit"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
