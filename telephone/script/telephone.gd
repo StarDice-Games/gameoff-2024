@@ -11,7 +11,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	EventSystem.cutscene_finished.connect(change_sprite)
 	#EventSystem.trigger_changed.connect(trigger_update)
 	#if TriggersSystem.check_trigger("ring", true):
 		#EventSystem.ring_phone.emit("Phone_Ring")
@@ -19,6 +19,11 @@ func _ready() -> void:
 #func trigger_update(key, value):
 	#if key == "ring" and value == true:
 		#EventSystem.ring_phone.emit("Phone_Ring")
+
+func change_sprite():
+	$StaticBody2D/NonAgganciato.hide()
+	$StaticBody2D/Agganciato.show()
+	$StaticBody2D/HighlightComponent.sprite = $StaticBody2D/Agganciato
 	
 func _on_interactable_player_enter() -> void:
 	if TriggersSystem.check_trigger("ring", true):
@@ -36,6 +41,9 @@ func _on_interactable_interacted() -> void:
 		collision_hide.hide()
 		EventSystem.cutscene_started.emit()
 		TriggersSystem.update_trigger(act, true)
+		$StaticBody2D/NonAgganciato.show()
+		$StaticBody2D/Agganciato.hide()
+		$StaticBody2D/HighlightComponent.sprite = $StaticBody2D/NonAgganciato
 		start_dialog()
 
 func start_dialog():

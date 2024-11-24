@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_kdpl3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_pe210"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_lt5kw"]
-[ext_resource type="Texture2D" uid="uid://dfvehsx8h8pul" path="res://resource/assets/items/foglietto.png" id="8_on411"]
+[ext_resource type="Texture2D" uid="uid://bb7o5nsbmevad" path="res://resource/assets/rooms/Guardiola/biglietto.png" id="8_816ky"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_tb2qj"]
-[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://highlight_component/new_shader_material.tres" id="11_i5cv0"]
+[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="11_2ju74"]
 
 [sub_resource type="Resource" id="Resource_q7vkj"]
 script = ExtResource("3_gdcps")
@@ -20,7 +20,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("5_pe210")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnnpb"]
-size = Vector2(192, 179)
+size = Vector2(221, 161)
 
 [sub_resource type="Resource" id="Resource_x5ycc"]
 script = ExtResource("5_pe210")
@@ -28,9 +28,10 @@ key = "second_boss_call"
 value = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
-radius = 363.456
+radius = 192.042
 
 [node name="Post-it" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_1tpli")
 item = ExtResource("2_xv4wl")
 dialog = Array[ExtResource("3_gdcps")]([SubResource("Resource_q7vkj")])
@@ -38,7 +39,7 @@ dialog = Array[ExtResource("3_gdcps")]([SubResource("Resource_q7vkj")])
 [node name="Interactable" parent="." instance=ExtResource("2_q6b8c")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(2, -4.5)
+position = Vector2(-3.5, 28.5)
 shape = SubResource("RectangleShape2D_mnnpb")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("4_kdpl3")]
@@ -46,23 +47,24 @@ position = Vector2(-4, 0)
 trigger = SubResource("Resource_x5ycc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.500001, 0.499999)
-texture = ExtResource("8_on411")
+position = Vector2(-1, -29)
+texture = ExtResource("8_816ky")
+offset = Vector2(1, 29)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -39.0
-offset_top = -126.0
-offset_right = 48.0
-offset_bottom = -91.0
+visible = false
+offset_left = -36.0
+offset_top = -104.0
+offset_right = 51.0
+offset_bottom = -69.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("7_lt5kw")
 theme_override_font_sizes/font_size = 30
 text = "Pick up"
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
-highlight_color = Color(1, 1, 1, 1)
 sprite = NodePath("../Sprite2D")
-shader = ExtResource("11_i5cv0")
+shader = ExtResource("11_2ju74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
 shape = SubResource("CircleShape2D_p7ebc")

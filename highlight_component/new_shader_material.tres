@@ -4,5 +4,9 @@
 
 [resource]
 shader = ExtResource("1_ctfs8")
-shader_parameter/line_color = Vector4(1, 1, 1, 0.25)
-shader_parameter/line_thickness = 3.0
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 5.0
+shader_parameter/speed = 1.0
+shader_parameter/blockSize = 20.0
+shader_parameter/color = null
+shader_parameter/tolerance = 0.0

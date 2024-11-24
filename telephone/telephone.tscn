@@ -1,15 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf7a0a6fbohbw"]
+[gd_scene load_steps=13 format=3 uid="uid://bf7a0a6fbohbw"]
 
-[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="1_0q6q2"]
 [ext_resource type="Script" path="res://telephone/script/telephone.gd" id="1_bv30h"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="2_1lqqx"]
+[ext_resource type="Texture2D" uid="uid://dog3kq1wlyc0v" path="res://resource/assets/rooms/Guardiola/telefono-agganciato.png" id="3_6p3fh"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_k3lcd"]
+[ext_resource type="Texture2D" uid="uid://bh76u364bare1" path="res://resource/assets/rooms/Guardiola/telefono-sganciato.png" id="4_phg0e"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="6_qnsv1"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="7_b68n0"]
+[ext_resource type="Script" path="res://highlight_component/TelephoneHighlight.gd" id="7_p0q3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn5eu"]
-size = Vector2(130, 127)
+size = Vector2(60, 127)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_myyij"]
-radius = 121.803
+radius = 99.1262
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sc8d"]
+shader = ExtResource("7_b68n0")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvfp4"]
+size = Vector2(245, 238)
 
 [node name="Telephone" type="Node2D"]
 script = ExtResource("1_bv30h")
@@ -31,17 +47,33 @@ vertical_alignment = 1
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_0q6q2")
+[node name="Agganciato" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(44, -3)
+texture = ExtResource("3_6p3fh")
+
+[node name="NonAgganciato" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(44, -9)
+texture = ExtResource("4_phg0e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2, 0.5)
+position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_bn5eu")
 
 [node name="Interactable" parent="StaticBody2D" instance=ExtResource("3_k3lcd")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Interactable"]
 shape = SubResource("CircleShape2D_myyij")
+
+[node name="HighlightComponent" parent="StaticBody2D" node_paths=PackedStringArray("sprite") instance=ExtResource("6_qnsv1")]
+position = Vector2(44, -9)
+script = ExtResource("7_p0q3e")
+sprite = NodePath("../Agganciato")
+shader = SubResource("ShaderMaterial_8sc8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/HighlightComponent"]
+position = Vector2(-44.5, 11)
+shape = SubResource("RectangleShape2D_qvfp4")
 
 [connection signal="interacted" from="StaticBody2D/Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="StaticBody2D/Interactable" to="." method="_on_interactable_player_enter"]

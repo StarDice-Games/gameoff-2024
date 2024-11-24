@@ -5,7 +5,7 @@
 [node name="HighlightComponent" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_puuv5")
-highlight_color = Color(0.721569, 0, 0.12549, 0.623529)
+highlight_color = Color(1, 1, 1, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

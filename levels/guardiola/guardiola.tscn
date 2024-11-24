@@ -1,7 +1,6 @@
-[gd_scene load_steps=52 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=54 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
-[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_hm8vv"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_1mvgn"]
 [ext_resource type="Script" path="res://task_system/data/task.gd" id="2_53fam"]
@@ -14,7 +13,10 @@
 [ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="6_atd8t"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="7_x57c3"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
+[ext_resource type="Texture2D" uid="uid://v3gv4057qxyu" path="res://resource/assets/rooms/Guardiola/base.png" id="10_rqxwf"]
+[ext_resource type="Texture2D" uid="uid://ce14ssv42hsas" path="res://resource/assets/rooms/Guardiola/luce lampadina.png" id="11_k4ciy"]
 [ext_resource type="Texture2D" uid="uid://bt2v471ydnuv" path="res://resource/assets/enemy/Boss_Face_Obs.png" id="12_e3x06"]
+[ext_resource type="Texture2D" uid="uid://grc21k560q6r" path="res://resource/assets/rooms/Guardiola/lampadina.png" id="12_px1fs"]
 [ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="16_7xk1d"]
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
 [ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="17_rhtdm"]
@@ -242,7 +244,7 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 4.3, 5),
+"times": PackedFloat32Array(0.0333333, 4.3, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -297,15 +299,16 @@ _data = {
 }
 
 [node name="GuardiolaHall" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_mwtu7")
 first_tasks = Array[ExtResource("2_53fam")]([ExtResource("3_dpcsg")])
 second_tasks = Array[ExtResource("2_53fam")]([ExtResource("4_7anjd"), ExtResource("4_2qtxl"), ExtResource("6_atd8t")])
 dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 
 [node name="Stanze" type="Sprite2D" parent="."]
-position = Vector2(947, 529)
-texture = ExtResource("1_hm8vv")
-region_enabled = true
+position = Vector2(969, 459)
+texture = ExtResource("10_rqxwf")
+offset = Vector2(-22, 70)
 region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
@@ -319,10 +322,19 @@ offset_left = -3287.56
 offset_top = -2212.13
 offset_right = -245.563
 offset_bottom = -522.125
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="LuceLampadina" type="Sprite2D" parent="Stanze"]
+position = Vector2(115, -223)
+texture = ExtResource("11_k4ciy")
+
+[node name="Lampadina" type="Sprite2D" parent="Stanze"]
+position = Vector2(119, -355)
+texture = ExtResource("12_px1fs")
+
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
-position = Vector2(1096, 576)
+position = Vector2(1160, 671)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
 dialog_2 = Array[ExtResource("6_66euh")]([SubResource("Resource_5eku6"), SubResource("Resource_ngl3b")])
 dialog_3 = Array[ExtResource("6_66euh")]([SubResource("Resource_71bqx"), SubResource("Resource_8tlt2"), SubResource("Resource_i7w26"), SubResource("Resource_ma26e")])
@@ -336,7 +348,7 @@ trigger = SubResource("Resource_6qwgt")
 player_ref = NodePath("../Player")
 
 [node name="NorthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(786, 587)
+position = Vector2(854, 465)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/NorthDoor"]
 offset_right = 40.0
@@ -344,30 +356,16 @@ offset_bottom = 40.0
 color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("2_1mvgn")]
-unique_name_in_owner = true
-position = Vector2(892, 536)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 441.0
-offset_top = 273.0
-offset_right = 912.0
-offset_bottom = 328.0
-theme_override_font_sizes/font_size = 40
-text = "Guardiola"
-
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(800, 254)
+position = Vector2(856, 175)
 level_id = "ingresso"
 link_id = "SouthDoor"
 
 [node name="PuzzleGuardaroba" type="Node2D" parent="."]
-position = Vector2(909, 737)
-
-[node name="GuardarobaGuardiano" parent="PuzzleGuardaroba" instance=ExtResource("16_7xk1d")]
-position = Vector2(-274, -210)
+position = Vector2(699, 531)
 
 [node name="Post-it" parent="PuzzleGuardaroba" instance=ExtResource("17_8aj5y")]
+position = Vector2(310, -180)
 
 [node name="CloseMuseumCutscene" type="Node2D" parent="."]
 
@@ -422,7 +420,12 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Player" parent="." instance=ExtResource("2_1mvgn")]
+unique_name_in_owner = true
+position = Vector2(995, 475)
+
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
+visible = false
 position = Vector2(1097, 577)
 
 [node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
@@ -446,6 +449,9 @@ offset_top = -116.0
 offset_right = 2044.0
 offset_bottom = 1202.0
 color = Color(0, 0, 0, 0)
+
+[node name="GuardarobaGuardiano" parent="." instance=ExtResource("16_7xk1d")]
+position = Vector2(698, 534)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
 [connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

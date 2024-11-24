@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqwdlx6ofhlti"]
+[gd_scene load_steps=14 format=3 uid="uid://dqwdlx6ofhlti"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/key/script/key.gd" id="1_f53d7"]
 [ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="2_xqx52"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_vj5hh"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_1fa4u"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_4pea3"]
-[ext_resource type="Texture2D" uid="uid://bkxhg0vdqqb11" path="res://resource/assets/items/chiave.png" id="6_tqvl7"]
+[ext_resource type="Texture2D" uid="uid://c11ufe6v6p6oc" path="res://resource/assets/rooms/Guardiola/chiave.png" id="6_yhm6x"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_di3gg"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="8_dbbob"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_l5pyt"]
+[ext_resource type="Material" uid="uid://c8nsf6sr6vqbg" path="res://highlight_component/new_shader_material.tres" id="10_q16f0"]
 
 [sub_resource type="Resource" id="Resource_t6ndw"]
 script = ExtResource("3_vj5hh")
@@ -17,7 +19,10 @@ text_name = "Angelo"
 triggers = Array[ExtResource("5_4pea3")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jobi0"]
-size = Vector2(150, 146)
+size = Vector2(110, 82)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2seii"]
+radius = 136.18
 
 [node name="Key" type="Node2D"]
 script = ExtResource("1_f53d7")
@@ -25,26 +30,35 @@ item = ExtResource("2_xqx52")
 dialog = Array[ExtResource("3_vj5hh")]([SubResource("Resource_t6ndw")])
 
 [node name="Key" type="Sprite2D" parent="."]
-texture = ExtResource("6_tqvl7")
+texture = ExtResource("6_yhm6x")
 
 [node name="Interactable" parent="." instance=ExtResource("7_di3gg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-3, -2)
+position = Vector2(23, -1)
 shape = SubResource("RectangleShape2D_jobi0")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -79.0
-offset_top = -154.0
-offset_right = 72.0
-offset_bottom = -77.0
+offset_left = -77.0
+offset_top = -118.0
+offset_right = 74.0
+offset_bottom = -41.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("8_dbbob")
 theme_override_font_sizes/font_size = 30
 text = "Pick up"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_l5pyt")]
+position = Vector2(-131, 4)
+sprite = NodePath("../Key")
+shader = ExtResource("10_q16f0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(133, -4)
+shape = SubResource("CircleShape2D_2seii")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

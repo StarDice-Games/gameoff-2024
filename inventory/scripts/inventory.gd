@@ -61,7 +61,6 @@ func update_ui():
 		var slot = TextureRect.new()
 		slot.texture = item.icon
 		#size is a placeholder
-		slot.expand_mode = TextureRect.EXPAND_FIT_WIDTH
 		inventory_slot.add_child(slot)
 
 func hide_inventory():
