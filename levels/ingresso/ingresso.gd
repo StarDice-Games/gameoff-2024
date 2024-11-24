@@ -6,6 +6,13 @@ extends Node2D
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
+	if TriggersSystem.check_trigger("act_3", true):
+		AudioSystem.play_music_event("go2024_phase2_v2")
+	else:
+		AudioSystem.play_music_event("go2024_phase1_v1")
+	
+	if TriggersSystem.check_trigger("stealth", true):
+		AudioSystem.play_music_event("go2024_stealth_v1")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
