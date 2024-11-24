@@ -10,6 +10,7 @@ class_name Player
 var raycast_target : Vector2
 var entered_interactable = null
 var in_cutscene : bool = false
+var in_shadow : bool = false
 
 var direction : GameState.PLAYER_DIR
 
@@ -125,3 +126,10 @@ func _on_portal_trigger_area_entered(area: Area2D) -> void:
 			GameState.last_player_link_id = next_link
 			GameState.last_player_dir = direction
 			LevelSystem.call_deferred("load_level", next_scene, true)
+	
+	if area is Shadow:
+		in_shadow = true
+
+func _on_portal_trigger_area_exited(area: Area2D) -> void:
+	if area is Shadow:
+		in_shadow = false

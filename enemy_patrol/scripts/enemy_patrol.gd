@@ -100,9 +100,11 @@ func detect_player(area: Area2D) -> void:
 		return
 	
 	if father is Player:
+		if father.in_shadow:
+			return
+		
 		caught.show()
 		stop = true
 		EventSystem.cutscene_started.emit()
 		if monolog != null and monolog.size() > 0:
 			DialogueSystem.start_dialog(monolog)
-	pass

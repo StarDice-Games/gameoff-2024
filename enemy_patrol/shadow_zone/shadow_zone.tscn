@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnk7pf80sm6t3"]
+
+[ext_resource type="Script" path="res://enemy_patrol/shadow_zone/scripts/shadow_zone.gd" id="1_gbad5"]
+
+[node name="ShadowZone" type="Area2D"]
+collision_layer = 512
+script = ExtResource("1_gbad5")

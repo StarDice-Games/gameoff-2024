@@ -90,3 +90,4 @@ debug_trigger={
 2d_physics/layer_7="Portal"
 2d_physics/layer_8="Checkpoint"
 2d_physics/layer_9="enemy"
+2d_physics/layer_10="Shadow"
