@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=13 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="1_g8klr"]
@@ -21,6 +21,9 @@ size = Vector2(249, 234)
 script = ExtResource("6_32ndp")
 key = "rope_picked"
 value = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bu8wp"]
+radius = 334.383
 
 [node name="Rope" type="Node2D"]
 script = ExtResource("1_cbrfo")
@@ -50,10 +53,12 @@ vertical_alignment = 1
 action = 1
 trigger = SubResource("Resource_diarw")
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "interactable") instance=ExtResource("7_6k3ia")]
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_6k3ia")]
 sprite = NodePath("../RopeSprite")
-interactable = NodePath("../Interactable")
 shader = ExtResource("8_vmi3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+shape = SubResource("CircleShape2D_bu8wp")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

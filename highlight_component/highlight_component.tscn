@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" path="res://highlight_component/ItemHighlight.gd" id="1_puuv5"]
 
-[node name="HighlightComponent" type="Node2D"]
+[node name="HighlightComponent" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_puuv5")
 highlight_color = Color(0.721569, 0, 0.12549, 0.623529)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
