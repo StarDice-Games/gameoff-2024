@@ -1,19 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=18 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
+[ext_resource type="Texture2D" uid="uid://cqofxbj8rdkbt" path="res://resource/assets/rooms/Sala_arte_new/stanza completa.png" id="2_6tip2"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_cc2si"]
-[ext_resource type="Texture2D" uid="uid://cakxqpc0ejtu6" path="res://resource/assets/rooms/Sala arte/Stanza.png" id="2_ccb5e"]
-[ext_resource type="Texture2D" uid="uid://b12uv8utlyon8" path="res://resource/assets/rooms/Sala arte/Luci candelabri.png" id="3_t1yt0"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_cd7wf"]
 [ext_resource type="Texture2D" uid="uid://ddmxsif11e3l5" path="res://resource/assets/rooms/Sala arte/Poltrona.png" id="4_ev18k"]
 [ext_resource type="Texture2D" uid="uid://dresh08c2u5go" path="res://resource/assets/rooms/Sala arte/Sedia 1.png" id="5_wprlo"]
 [ext_resource type="Texture2D" uid="uid://0yoeqnt17egg" path="res://resource/assets/rooms/Sala arte/Sedia 2.png" id="6_xpd3u"]
 [ext_resource type="Texture2D" uid="uid://qpbrgx820w3p" path="res://resource/assets/rooms/Sala arte/Sedia 3.png" id="7_cnr76"]
-[ext_resource type="Texture2D" uid="uid://cgek87c06t8dv" path="res://resource/assets/rooms/Sala arte/Stanza_Arte-12(1).png" id="8_njpfj"]
-[ext_resource type="Texture2D" uid="uid://bdty7v33jqw1u" path="res://resource/assets/rooms/Sala arte/Quadro.png" id="9_yuw44"]
+[ext_resource type="Texture2D" uid="uid://cm80svfsiaryi" path="res://resource/assets/rooms/Sala_arte_new/candelabbro.png" id="8_j8ylw"]
+[ext_resource type="Texture2D" uid="uid://rp1bu6gsob33" path="res://resource/assets/rooms/Sala_arte_new/Candele.png" id="9_pgwkn"]
 [ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
 [ext_resource type="Texture2D" uid="uid://1lu4h4dawdf5" path="res://resource/assets/rooms/Sala arte/Vaso.png" id="12_hksjq"]
+[ext_resource type="Texture2D" uid="uid://bjxxn48rvh7i3" path="res://resource/assets/rooms/Sala_arte_new/vaso.png" id="13_cu4xh"]
+[ext_resource type="Texture2D" uid="uid://b8ws2gaxbrack" path="res://resource/assets/rooms/Sala_arte_new/panchina.png" id="14_nb10u"]
 [ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="16_1axwy"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
@@ -39,9 +40,8 @@ y_sort_enabled = true
 
 [node name="SpriteStanza" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
-texture = ExtResource("2_ccb5e")
+texture = ExtResource("2_6tip2")
 offset = Vector2(955, 508)
-region_enabled = true
 region_rect = Rect2(93, 311, 1912, 1014)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Environment/SpriteStanza"]
@@ -126,20 +126,19 @@ z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(942, -72)
-texture = ExtResource("8_njpfj")
-region_enabled = true
+texture = ExtResource("8_j8ylw")
 region_rect = Rect2(904, 143, 274, 409)
 
 [node name="LuciCandelabri" type="Sprite2D" parent="Environment/StanzaArte-12(1)"]
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(-1, -14)
-texture = ExtResource("3_t1yt0")
-region_enabled = true
+position = Vector2(-1, 54)
+texture = ExtResource("9_pgwkn")
 region_rect = Rect2(902, 304, 272, 79)
 
 [node name="Busto" type="Sprite2D" parent="Environment"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1181, 476)
@@ -148,14 +147,8 @@ offset = Vector2(4, 65)
 region_enabled = true
 region_rect = Rect2(1236, 757, 78, 195)
 
-[node name="Quadro" type="Sprite2D" parent="Environment"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(1373, 193)
-texture = ExtResource("9_yuw44")
-offset = Vector2(-425, 199)
-
 [node name="Vaso" type="Sprite2D" parent="Environment"]
+visible = false
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1121, 761)
@@ -172,6 +165,14 @@ polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
 [node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
 unique_name_in_owner = true
 position = Vector2(852, 637)
+
+[node name="Vaso2" type="Sprite2D" parent="Environment"]
+position = Vector2(1121, 763)
+texture = ExtResource("13_cu4xh")
+
+[node name="Panchina" type="Sprite2D" parent="Environment"]
+position = Vector2(890, 794)
+texture = ExtResource("14_nb10u")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
 player_ref = NodePath("../Environment/Player")
