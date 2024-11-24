@@ -408,7 +408,7 @@ stream = ExtResource("18_is8n0")
 
 [node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
+z_index = 6
 offset_left = -260.0
 offset_top = -75.0
 offset_right = 2176.0

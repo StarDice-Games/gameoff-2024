@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqdeu1mk0x22h"]
+[gd_scene load_steps=15 format=3 uid="uid://cqdeu1mk0x22h"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
 [ext_resource type="Texture2D" uid="uid://y3fcd7ohxebx" path="res://resource/assets/items/dente.png" id="2_3i154"]
@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
 [ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="6_4m1ev"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_176xo"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="10_3qhn1"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="10_lfvt5"]
 
 [sub_resource type="Resource" id="Resource_8qbi7"]
 script = ExtResource("3_r0vbg")
@@ -16,6 +18,18 @@ icon = ExtResource("2_3i154")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq5mh"]
 size = Vector2(150, 197)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dtt6"]
+shader = ExtResource("10_lfvt5")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35qb8"]
+radius = 147.275
 
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
@@ -44,6 +58,13 @@ theme_override_font_sizes/font_size = 30
 text = "Pick up"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_176xo")]
+sprite = NodePath("../Tooth")
+shader = SubResource("ShaderMaterial_8dtt6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+shape = SubResource("CircleShape2D_35qb8")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

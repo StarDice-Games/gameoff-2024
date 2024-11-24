@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("can_pool", true):
 		t_rex_tooth.hide()
+		$HighlightComponent.sprite = $StaticBody2D/TrexToothRope
 		t_rex_tooth_rope.show()
 		label_text.text = "Pull"
 		
@@ -48,6 +49,9 @@ func _on_interactable_interacted() -> void:
 			t_rex_tooth_rope.show()
 			AudioSystem.play(audio_sfx)
 			label_text.text = "Pull"
+			$HighlightComponent.sprite = $StaticBody2D/TrexToothRope
+			$HighlightComponent.sprite_changed.emit()
+			$HighlightComponent/CollisionShape2D.disabled = true
 			TriggersSystem.toggle_trigger("can_pool")
 			can_pull = true
 			InventorySystem.drop_item(item)

@@ -28,7 +28,7 @@ key = "second_boss_call"
 value = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
-radius = 192.042
+radius = 146.67
 
 [node name="Post-it" type="Node2D"]
 y_sort_enabled = true

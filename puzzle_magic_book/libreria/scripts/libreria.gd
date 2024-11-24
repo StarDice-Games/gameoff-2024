@@ -26,6 +26,7 @@ func _ready() -> void:
 		open_sprite.show()
 		$MagicBook.show()
 		$Interactable.queue_free()
+		$HighlightComponent.queue_free()
 	else :
 		close_sprite.show()
 		
@@ -58,6 +59,7 @@ func _on_interactable_interacted() -> void:
 			AudioSystem.play_audio_event("Open_Drawer_01", "Sfx")
 			$MagicBook.show()
 			$Interactable.queue_free()
+			$HighlightComponent.queue_free()
 			interact_label.hide()
 			InventorySystem.drop_item(key_item)
 

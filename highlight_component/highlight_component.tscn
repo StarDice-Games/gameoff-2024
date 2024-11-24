@@ -9,3 +9,4 @@ highlight_color = Color(1, 1, 1, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="sprite_changed" from="." to="." method="_on_sprite_changed"]

@@ -106,7 +106,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ays0v"]
-radius = 233.034
+radius = 115.07
 
 [node name="GuardarobaGuardiano" type="StaticBody2D"]
 y_sort_enabled = true
@@ -184,6 +184,7 @@ sprite = NodePath("../LockerClosed")
 shader = SubResource("ShaderMaterial_5ujci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(52, 0)
 shape = SubResource("CircleShape2D_ays0v")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

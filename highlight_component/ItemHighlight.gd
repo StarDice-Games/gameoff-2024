@@ -5,6 +5,7 @@ extends Area2D
 #@export var interactable : Interactable
 @export var shader : ShaderMaterial
 
+signal sprite_changed
 #@onready var shader_material = sprite.material
 #@onready var collision_shape = interactable.get_node("CollisionShape2D")
 
@@ -16,7 +17,7 @@ func _ready():
 	#print("[Debug] CollisionShape2D exists: ", collision_shape)
 	
 	if shader is ShaderMaterial:
-		shader.set_shader_parameter("color", highlight_color)
+		shader.set_shader_parameter("color",  "#ffffff00")
 	else:
 		print("Error: Material is not a ShaderMaterial.")
 	
@@ -52,3 +53,10 @@ func _on_area_exited(area: Area2D) -> void:
 	if father is Player:
 		shader.set_shader_parameter("color", "#ffffff00")
 	pass # Replace with function body.
+
+
+func _on_sprite_changed(sprite_to_change: Sprite2D) -> void:
+	sprite = sprite_to_change
+
+	if sprite != null:
+		sprite.material = shader

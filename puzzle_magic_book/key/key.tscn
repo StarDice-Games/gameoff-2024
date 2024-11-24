@@ -22,7 +22,7 @@ triggers = Array[ExtResource("5_4pea3")]([])
 size = Vector2(110, 235)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2seii"]
-radius = 216.0
+radius = 121.017
 
 [node name="Key" type="Node2D"]
 y_sort_enabled = true
@@ -57,7 +57,7 @@ sprite = NodePath("../Key")
 shader = ExtResource("10_q16f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(133, -4)
+position = Vector2(194, -5)
 shape = SubResource("CircleShape2D_2seii")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

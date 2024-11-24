@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqegtq37pd18o"]
+[gd_scene load_steps=14 format=3 uid="uid://cqegtq37pd18o"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/fish/scripts/fish.gd" id="1_qedpr"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_70ly7"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gik0o"]
 [ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="6_m8ejv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_kaf1x"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="8_l8k8q"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="9_elcar"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="10_y08tt"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="11_ncetb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
 size = Vector2(211, 533)
@@ -18,6 +19,18 @@ size = Vector2(255, 869)
 script = ExtResource("5_gik0o")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3rnp"]
+shader = ExtResource("9_elcar")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0rrh"]
+radius = 191.128
 
 [node name="Fish" type="StaticBody2D"]
 script = ExtResource("1_qedpr")
@@ -48,10 +61,15 @@ offset_top = 301.0
 offset_right = 50.0
 offset_bottom = 336.0
 theme = ExtResource("10_y08tt")
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("11_ncetb")
-theme_override_font_sizes/font_size = 30
 text = "Interact"
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_l8k8q")]
+sprite = NodePath("../Sprite")
+shader = SubResource("ShaderMaterial_p3rnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(1, 504)
+shape = SubResource("CircleShape2D_e0rrh")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

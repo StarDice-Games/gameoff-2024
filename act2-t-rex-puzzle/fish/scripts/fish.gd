@@ -27,7 +27,8 @@ func _on_interactable_interacted() -> void:
 	taken = true
 	$Interactable.queue_free()
 	$CollisionShape2D.queue_free()
-
+	$HighlightComponent.queue_free()
+	
 func _on_interactable_player_enter() -> void:
 	if taken :
 		return

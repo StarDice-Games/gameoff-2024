@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dufkn0f3l1qfb"]
+[gd_scene load_steps=18 format=3 uid="uid://dufkn0f3l1qfb"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/libreria/scripts/libreria.gd" id="1_fouxy"]
 [ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="3_s2cr7"]
@@ -10,7 +10,8 @@
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="11_5o4m0"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="11_og05v"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="12_h48le"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="12_l16se"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="13_7ov44"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="14_julau"]
 [ext_resource type="PackedScene" uid="uid://bdsfmqfnh3l25" path="res://puzzle_magic_book/magic_book/magic_book.tscn" id="15_fvp7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
@@ -20,6 +21,18 @@ size = Vector2(255, 336)
 script = ExtResource("12_h48le")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkj4"]
+shader = ExtResource("14_julau")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvcx1"]
+radius = 202.941
 
 [node name="Libreria" type="StaticBody2D"]
 y_sort_enabled = true
@@ -54,14 +67,11 @@ trigger = SubResource("Resource_ruror")
 [node name="Label" type="Label" parent="."]
 visible = false
 texture_filter = 1
-offset_left = -50.0
-offset_top = -328.0
-offset_right = 44.0
-offset_bottom = -293.0
+offset_left = -66.0
+offset_top = -342.0
+offset_right = 59.0
+offset_bottom = -296.0
 theme = ExtResource("11_5o4m0")
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("12_l16se")
-theme_override_font_sizes/font_size = 30
 text = "Interact"
 
 [node name="MagicBook" parent="." instance=ExtResource("15_fvp7j")]
@@ -70,6 +80,14 @@ position = Vector2(-40, 216)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-104, 182, -18, 106, 113, 106, 114, 214, 76, 272, -104, 272)
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_7ov44")]
+sprite = NodePath("../Closed")
+shader = SubResource("ShaderMaterial_omkj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(2, 67)
+shape = SubResource("CircleShape2D_yvcx1")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

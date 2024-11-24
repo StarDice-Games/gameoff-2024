@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://ymmamvc2fsqp"]
+[gd_scene load_steps=21 format=3 uid="uid://ymmamvc2fsqp"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
 [ext_resource type="AudioStream" uid="uid://5gml5kqrh8jb" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.wav" id="4_4xn2y"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_a0hdr"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
 [ext_resource type="Texture2D" uid="uid://bfpwahn54x8a5" path="res://resource/assets/rooms/Hall/corda con dente.png" id="5_y87wl"]
 [ext_resource type="Texture2D" uid="uid://c0gtv7rvctfe2" path="res://resource/assets/rooms/Hall/trex sopra.png" id="6_3qbpc"]
@@ -11,8 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://blx4twhxb5g78" path="res://resource/assets/rooms/Hall/dente.png" id="7_jsqly"]
 [ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="8_w17g1"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_iwa3e"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_v0kll"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="13_o2yoa"]
 [ext_resource type="Texture2D" uid="uid://bvc237scomqyo" path="res://resource/assets/rooms/Hall/trex sotto.png" id="13_ocfy1"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="14_05qwv"]
 
 [sub_resource type="Resource" id="Resource_m12fb"]
 script = ExtResource("6_s7f21")
@@ -26,6 +28,18 @@ size = Vector2(178, 265)
 script = ExtResource("9_v0kll")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kpw7"]
+shader = ExtResource("14_05qwv")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 5.0
+shader_parameter/speed = 1.0
+shader_parameter/blockSize = 20.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhujr"]
+radius = 121.598
 
 [node name="TRexTrigger" type="Node2D"]
 script = ExtResource("1_4gv0c")
@@ -63,14 +77,12 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 255.0
-offset_top = -101.0
-offset_right = 490.0
-offset_bottom = -46.0
+offset_left = 306.0
+offset_top = -252.0
+offset_right = 541.0
+offset_bottom = -197.0
 grow_horizontal = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("4_a0hdr")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("9_iwa3e")
 text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -83,6 +95,16 @@ shape = SubResource("RectangleShape2D_v5ejc")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("8_w17g1")]
 trigger = SubResource("Resource_74vpo")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "sprite2") instance=ExtResource("13_o2yoa")]
+position = Vector2(0, 199)
+sprite = NodePath("../StaticBody2D/TrexToothSprite")
+sprite2 = NodePath("../StaticBody2D/TrexToothRope")
+shader = SubResource("ShaderMaterial_5kpw7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(444, -91)
+shape = SubResource("CircleShape2D_jhujr")
 
 [node name="TrexSotto" type="Sprite2D" parent="."]
 y_sort_enabled = true

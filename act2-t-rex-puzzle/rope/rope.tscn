@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=16 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
 [ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_qcshn"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oefkw"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="5_rqc4c"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_jvlqr"]
 [ext_resource type="Texture2D" uid="uid://b81nmdn5vf1pu" path="res://resource/assets/items/corda.png" id="7_nqfqw"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="8_lfd5p"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_bekj2"]
 
 [sub_resource type="Resource" id="Resource_j4ugp"]
 script = ExtResource("3_lqtwb")
@@ -21,6 +23,18 @@ character_image = ExtResource("5_oefkw")
 text_name = "Angelo"
 triggers = Array[ExtResource("6_32ndp")]([])
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvk36"]
+shader = ExtResource("8_lfd5p")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wcsx"]
+radius = 112.161
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ob1"]
 size = Vector2(190, 170)
 
@@ -32,6 +46,13 @@ dialog = Array[ExtResource("4_qcshn")]([SubResource("Resource_6jpcq")])
 [node name="RopeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("7_nqfqw")
 
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
+sprite = NodePath("../RopeSprite")
+shader = SubResource("ShaderMaterial_jvk36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+shape = SubResource("CircleShape2D_8wcsx")
+
 [node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
@@ -40,13 +61,11 @@ shape = SubResource("RectangleShape2D_i2ob1")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -189.0
-offset_top = -237.0
-offset_right = 198.0
-offset_bottom = -91.0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_rqc4c")
-theme_override_font_sizes/font_size = 30
+offset_left = -187.0
+offset_top = -218.0
+offset_right = 200.0
+offset_bottom = -72.0
+theme = ExtResource("9_bekj2")
 text = "Pick up "
 horizontal_alignment = 1
 vertical_alignment = 1
