@@ -25,11 +25,13 @@ size = Vector2(110, 82)
 radius = 136.18
 
 [node name="Key" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_f53d7")
 item = ExtResource("2_xqx52")
 dialog = Array[ExtResource("3_vj5hh")]([SubResource("Resource_t6ndw")])
 
 [node name="Key" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("6_yhm6x")
 
 [node name="Interactable" parent="." instance=ExtResource("7_di3gg")]

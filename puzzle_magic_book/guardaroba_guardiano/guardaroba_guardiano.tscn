@@ -130,17 +130,19 @@ text = "Interact
 
 [node name="LockerOpen" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(1, -10)
+position = Vector2(48, 29)
 texture = ExtResource("8_d8yps")
-offset = Vector2(-1, 10)
+offset = Vector2(-48, -29)
 
 [node name="LockerClosed" type="Sprite2D" parent="."]
-position = Vector2(-14, -32)
+y_sort_enabled = true
+position = Vector2(47, 31)
 texture = ExtResource("9_3ntj5")
-offset = Vector2(0, 36)
+offset = Vector2(-61, -27)
 
 [node name="Key" parent="." instance=ExtResource("14_47550")]
 visible = false
+z_index = 1
 position = Vector2(4, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

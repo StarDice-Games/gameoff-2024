@@ -333,6 +333,12 @@ texture = ExtResource("11_k4ciy")
 position = Vector2(119, -355)
 texture = ExtResource("12_px1fs")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
+polygon = PackedVector2Array(-288, 255, -295, 288, 139, 288, 126, 198, 151, 162, 189, 138, 192, 127, 178, 127, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -253, 94, -264, 173, -218, 180, -213, 192, -259, 256, -288, 255, -323, 239, -283, -235, 158, -231, 264, 167, 178, 315, -344, 297, -323, 239)
+
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
 position = Vector2(1160, 671)
 dialog_1 = Array[ExtResource("6_66euh")]([SubResource("Resource_5jy0i"), SubResource("Resource_x2y3w"), SubResource("Resource_uq2jl")])
@@ -358,6 +364,7 @@ metadata/_edit_lock_ = true
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
 position = Vector2(856, 175)
+scale = Vector2(2.2, 1.24)
 level_id = "ingresso"
 link_id = "SouthDoor"
 
@@ -422,7 +429,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(995, 475)
+position = Vector2(943, 579)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
 visible = false
