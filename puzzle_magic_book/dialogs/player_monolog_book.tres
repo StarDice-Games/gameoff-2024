@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_qd75k")
-dialogue_text = Array[String](["Wow, like in the films! There is a secret compartment in this statue.", "Is that the book!? Black leather, a white star on it, very heavy…that's curious. "])
+dialogue_text = Array[String](["Wow, like in the films! There is a secret compartment in this statue.", "Is that the book!? Purple leather, a black star on it, very heavy…that's curious. "])
 character_image = ExtResource("1_lwpx2")
 text_name = "Angelo"
 triggers = Array[ExtResource("2_qcc8v")]([])
