@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=17 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
 [ext_resource type="Texture2D" uid="uid://bjxxn48rvh7i3" path="res://resource/assets/rooms/Sala_arte_new/vaso.png" id="13_cu4xh"]
 [ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="16_1axwy"]
+[ext_resource type="PackedScene" uid="uid://bltkk80sv7ldj" path="res://npc_act_1/npc_2.tscn" id="16_rd3pp"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
 [node name="SalaArte" type="Node2D"]
@@ -163,7 +164,7 @@ polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
 
 [node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
 unique_name_in_owner = true
-position = Vector2(618, 795)
+position = Vector2(635, 745)
 
 [node name="Vaso2" type="Sprite2D" parent="Environment"]
 position = Vector2(1121, 763)
@@ -183,8 +184,8 @@ offset_bottom = 21.0
 color = Color(0.586297, 1, 0.416665, 1)
 
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(491, 996)
-scale = Vector2(2.8359, 0.2)
+position = Vector2(502, 978)
+scale = Vector2(2.5959, 0.2)
 level_id = "corridoio"
 link_id = "North2"
 
@@ -196,3 +197,6 @@ color = Color(0.343338, 0.445565, 0.999296, 0.956863)
 visible = false
 position = Vector2(941, 542)
 player_ref = NodePath("../Environment/Player")
+
+[node name="Npc" parent="." instance=ExtResource("16_rd3pp")]
+position = Vector2(438, 627)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://t87t82e062ie"]
+[gd_scene load_steps=22 format=3 uid="uid://t87t82e062ie"]
 
 [ext_resource type="Script" path="res://npc_act_1/scripts/npc.gd" id="1_fx3dc"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_fjwrt"]
@@ -10,24 +10,25 @@
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_cmkiw"]
 [ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="10_73l0d"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_044op"]
-[ext_resource type="Texture2D" uid="uid://bd78ckr75ye8h" path="res://resource/assets/npc/NPC bimbo fronte.png" id="11_u4kda"]
+[ext_resource type="Texture2D" uid="uid://cgwxya3ny7kod" path="res://resource/assets/npc/NPC Finali/bimbo-frontale.png" id="11_j4f1g"]
+[ext_resource type="Texture2D" uid="uid://c2s3rhgqos8bl" path="res://resource/assets/npc/NPC Finali/ombra piedi.png" id="12_1jhim"]
 
 [sub_resource type="Resource" id="Resource_m13sm"]
 script = ExtResource("2_fjwrt")
-dialogue_text = Array[String](["Hey kid, we are closing. I have to ask to leave the museum"])
+dialogue_text = Array[String](["Hello kid, could you please leavve the museum? We are closinc"])
 character_image = ExtResource("3_wf2la")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_sm26a")]([])
 
 [sub_resource type="Resource" id="Resource_5jobv"]
 script = ExtResource("2_fjwrt")
-dialogue_text = Array[String](["Ok mister keeper, I call my mum "])
+dialogue_text = Array[String](["Ok, I'll call my dad"])
 character_image = ExtResource("5_xtspc")
 text_name = "Visitor"
 triggers = Array[ExtResource("4_sm26a")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
-size = Vector2(89, 22.75)
+size = Vector2(124, 21.375)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
 radius = 63.9531
@@ -101,7 +102,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 56.375)
+position = Vector2(1, 89.3125)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("8_st8um")]
@@ -128,9 +129,21 @@ position = Vector2(-8, 67)
 shape = SubResource("CircleShape2D_mdwis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-24, -3)
-texture = ExtResource("11_u4kda")
-offset = Vector2(21, -3)
+position = Vector2(0, 85)
+texture = ExtResource("11_j4f1g")
+offset = Vector2(-3, -91)
+
+[node name="OmbraPiedi" type="Sprite2D" parent="."]
+position = Vector2(25, 82)
+texture = ExtResource("12_1jhim")
+offset = Vector2(0, 11)
+
+[node name="OmbraPiedi2" type="Sprite2D" parent="."]
+position = Vector2(-20, 80)
+texture = ExtResource("12_1jhim")
+offset = Vector2(0, 13)
+flip_h = true
+flip_v = true
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
