@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqxengvcqlsrp"]
 
-[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue.tscn" id="1_ibrjq"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_1.tscn" id="1_ibrjq"]
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="2_n5e1q"]
 
 [node name="TestChalicePuzzle" type="Node2D"]

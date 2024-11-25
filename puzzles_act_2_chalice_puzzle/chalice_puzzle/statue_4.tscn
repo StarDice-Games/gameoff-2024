@@ -1,0 +1,111 @@
+[gd_scene load_steps=19 format=3 uid="uid://1uo4spegx35o"]
+
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/statue.gd" id="1_vil2a"]
+[ext_resource type="AudioStream" uid="uid://dbv4gg21xljrg" path="res://audio/sfx/magic_book/Drag_Statue_02.wav" id="2_bnoo2"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="3_ukc0t"]
+[ext_resource type="Texture2D" uid="uid://c3nhnblb57cff" path="res://resource/assets/rooms/Corridoio/vaso03.png" id="4_x4fqx"]
+[ext_resource type="Texture2D" uid="uid://bgehbrjiylf8f" path="res://resource/assets/rooms/Corridoio/Asset nuovi/bastone.png" id="5_i1jp6"]
+[ext_resource type="Texture2D" uid="uid://dr0xe0m16ja0t" path="res://resource/assets/rooms/Corridoio/Asset nuovi/infinito.png" id="6_nkaop"]
+[ext_resource type="Texture2D" uid="uid://vbqqa26wespu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/occhio.png" id="7_57p6h"]
+[ext_resource type="Texture2D" uid="uid://qdrweudkp43w" path="res://resource/assets/rooms/Corridoio/Asset nuovi/piramidi.png" id="8_slm7m"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="9_kcrie"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_qii2q"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="11_b642w"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="12_hhwg7"]
+[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="13_l1tlv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_edqau"]
+radius = 164.049
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdh4k"]
+size = Vector2(88, 116)
+
+[sub_resource type="Resource" id="Resource_iy18g"]
+script = ExtResource("11_b642w")
+key = "second_boss_call"
+value = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e04aj"]
+size = Vector2(87, 116)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gj46"]
+radius = 163.003
+
+[node name="Statue" type="Node2D"]
+script = ExtResource("1_vil2a")
+audio_sfx = ExtResource("2_bnoo2")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -57.0
+offset_top = -115.0
+offset_right = 68.0
+offset_bottom = -69.0
+theme = ExtResource("3_ukc0t")
+text = "Interact"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Vaso" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("4_x4fqx")
+
+[node name="statue front" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 10)
+texture = ExtResource("5_i1jp6")
+region_rect = Rect2(131.046, 130.363, 29.39, 30.7895)
+
+[node name="statue back" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(1, 11)
+texture = ExtResource("6_nkaop")
+region_rect = Rect2(101, -5, 27, 35)
+
+[node name="statue left" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(0, 8)
+texture = ExtResource("7_57p6h")
+region_rect = Rect2(26, 193, 25, 31)
+
+[node name="statue right" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(0, 9)
+texture = ExtResource("8_slm7m")
+region_rect = Rect2(170, 65, 29, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource("CircleShape2D_edqau")
+disabled = true
+
+[node name="Interactable" parent="." instance=ExtResource("9_kcrie")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-3, 48)
+shape = SubResource("RectangleShape2D_bdh4k")
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("10_qii2q")]
+position = Vector2(-4, 0)
+trigger = SubResource("Resource_iy18g")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("12_hhwg7")]
+sprite = NodePath("../StaticBody2D/Vaso")
+shader = ExtResource("13_l1tlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-2.5, 48)
+shape = SubResource("RectangleShape2D_e04aj")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("12_hhwg7")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../StaticBody2D/Vaso")
+shader = ExtResource("13_l1tlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(0, 42)
+shape = SubResource("CircleShape2D_8gj46")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
