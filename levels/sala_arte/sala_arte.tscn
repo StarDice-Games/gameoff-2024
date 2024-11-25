@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=16 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://rp1bu6gsob33" path="res://resource/assets/rooms/Sala_arte_new/Candele.png" id="9_pgwkn"]
 [ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
 [ext_resource type="Texture2D" uid="uid://bjxxn48rvh7i3" path="res://resource/assets/rooms/Sala_arte_new/vaso.png" id="13_cu4xh"]
-[ext_resource type="Texture2D" uid="uid://b8ws2gaxbrack" path="res://resource/assets/rooms/Sala_arte_new/panchina.png" id="14_nb10u"]
 [ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="16_1axwy"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
@@ -49,7 +48,7 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/SpriteStanza/StaticBody2D"]
 position = Vector2(4, 2)
-polygon = PackedVector2Array(100, 947, 194, 830, 368, 650, 495, 637, 999, 638, 1149, 629, 1560, 631, 1577, 676, 1615, 766, 1643, 831, 1714, 968, 1633, 973, 1536, 966, 921, 952, 622, 947, 616, 973, 614, 990, 1729, 999, 1721, 843, 1581, 569, 370, 587, 99, 885)
+polygon = PackedVector2Array(100, 947, 194, 830, 368, 650, 495, 637, 999, 637, 1560, 637, 1577, 676, 1615, 766, 1643, 831, 1714, 968, 1633, 952, 1536, 952, 921, 952, 622, 952, 616, 973, 614, 990, 1729, 999, 1721, 843, 1581, 569, 370, 587, 99, 885)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Environment/SpriteStanza/StaticBody2D"]
 polygon = PackedVector2Array(384, 953, 373, 994, 74, 1003, 76, 943)
@@ -57,9 +56,9 @@ polygon = PackedVector2Array(384, 953, 373, 994, 74, 1003, 76, 943)
 [node name="Poltrona" type="Sprite2D" parent="Environment"]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(891, 753)
+position = Vector2(892, 725)
 texture = ExtResource("4_ev18k")
-offset = Vector2(1, 43)
+offset = Vector2(0, 71)
 region_enabled = true
 region_rect = Rect2(862, 1041, 276, 114)
 
@@ -68,6 +67,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Poltrona/StaticBody2D"]
+position = Vector2(0, 27)
 polygon = PackedVector2Array(-121, 28, -138, 31, -141, 54, -136, 83, -124, 103, 90, 105, 130, 62, 135, 33)
 
 [node name="Libreria" parent="Environment" instance=ExtResource("16_1axwy")]
@@ -163,15 +163,11 @@ polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
 
 [node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
 unique_name_in_owner = true
-position = Vector2(852, 637)
+position = Vector2(618, 795)
 
 [node name="Vaso2" type="Sprite2D" parent="Environment"]
 position = Vector2(1121, 763)
 texture = ExtResource("13_cu4xh")
-
-[node name="Panchina" type="Sprite2D" parent="Environment"]
-position = Vector2(890, 794)
-texture = ExtResource("14_nb10u")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
 player_ref = NodePath("../Environment/Player")

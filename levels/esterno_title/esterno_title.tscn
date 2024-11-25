@@ -211,24 +211,40 @@ offset = Vector2(18.3636, -196.727)
 region_enabled = true
 region_rect = Rect2(13, 1, 272, 573)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Lampioni-spenti2"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Lampioni-spenti2/StaticBody2D"]
+polygon = PackedVector2Array(-30, 10, -50, 28, -56, 82, 5, 96, 77, 81, 65, 27, 23, 4)
+
 [node name="Facciata-giorno" type="Sprite2D" parent="Giorno/Env"]
 texture = ExtResource("5_cfbhh")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Facciata-giorno"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Facciata-giorno/StaticBody2D"]
+polygon = PackedVector2Array(-204, 748, -354, 1035, 542, 1035, 1238, 1035, 941, 121, 274, 121, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
+
 [node name="Movimenti" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(378.182, 298.182)
+y_sort_enabled = true
+position = Vector2(394.872, 7.69226)
 texture = ExtResource("8_hsd1f")
+offset = Vector2(-16.6898, 290.49)
 
 [node name="Nuvole" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(-309.091, -992.727)
 texture = ExtResource("9_qs4pb")
 
 [node name="Ringhiera-sopra" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(-210.909, 301.818)
+position = Vector2(-441.026, 158.974)
 texture = ExtResource("10_kkrbm")
+offset = Vector2(230.117, 142.844)
 
 [node name="Ringhiera-sotto" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(-403.636, 443.636)
+position = Vector2(-174.359, 643.59)
 texture = ExtResource("11_wedho")
+offset = Vector2(-229.277, -199.954)
 
 [node name="Cancelli" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(139, 1070)
@@ -241,6 +257,14 @@ texture = ExtResource("7_18xae")
 offset = Vector2(-24.6364, -257.727)
 region_enabled = true
 region_rect = Rect2(0, 677, 302, 673)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Lampioni-spenti"]
+position = Vector2(-22, -13)
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Lampioni-spenti/StaticBody2D"]
+position = Vector2(-849, -900)
+polygon = PackedVector2Array(827, 901, 800, 921, 782, 960, 782, 977, 794, 984, 854, 997, 899, 994, 929, 961, 930, 921, 897, 900)
 
 [node name="GiornoPorta" type="Sprite2D" parent="Giorno/Env"]
 y_sort_enabled = true
@@ -265,8 +289,18 @@ position = Vector2(-75, 528)
 shape = SubResource("RectangleShape2D_kpik6")
 
 [node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(141.026, 897.436)
+position = Vector2(135.897, 917.949)
 texture = ExtResource("17_pknci")
+offset = Vector2(5.12854, -20.5129)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Ingresso-aperto"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
+polygon = PackedVector2Array(-158.974, 33.3333, -128.205, 38.4614, -133.333, 123.077, -333.333, 128.205, -323.077, 25.6409)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
+polygon = PackedVector2Array(258.974, 64.1025, 241.026, 120.513, 279.487, 123.077, 323.077, 123.077, 323.077, 66.6665)
 
 [node name="Notte" type="Node2D" parent="."]
 visible = false
