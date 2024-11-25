@@ -123,7 +123,7 @@ texture = ExtResource("11_xo1tc")
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Facciata-giorno/StaticBody2D"]
-polygon = PackedVector2Array(-204, 748, -354, 1036, 542, 1035, 1238, 1039, 941, 115, 274, 106, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
+polygon = PackedVector2Array(-204, 748, -354, 1036, 542, 1035, 1238, 1035, 941, 121, 274, 121, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
 
 [node name="Movimenti" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(395, 9)
@@ -185,6 +185,17 @@ shape = SubResource("RectangleShape2D_51w63")
 [node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(134, 911)
 texture = ExtResource("15_7jdho")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Ingresso-aperto"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(-158.974, 33.3333, -128.205, 38.4614, -133.333, 123.077, -333.333, 128.205, -323.077, 25.6409)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(258.974, 64.1025, 241.026, 120.513, 279.487, 123.077, 323.077, 123.077, 323.077, 66.6665)
 
 [node name="Notte" type="Node2D" parent="."]
 visible = false
@@ -250,8 +261,15 @@ texture = ExtResource("23_toal3")
 offset = Vector2(698.182, -381.818)
 
 [node name="IngressoChiuso" type="Sprite2D" parent="Notte"]
-position = Vector2(147, 911)
+position = Vector2(147, 930)
 texture = ExtResource("21_1uowl")
+offset = Vector2(0, -19)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Notte/IngressoChiuso"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/IngressoChiuso/StaticBody2D"]
+polygon = PackedVector2Array(298, 38, 328, 117, -333.333, 128.205, -300, 38)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")

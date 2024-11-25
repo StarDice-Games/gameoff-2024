@@ -249,6 +249,7 @@ position = Vector2(1187, 612)
 
 [node name="Npc2" parent="." instance=ExtResource("16_wlojo")]
 position = Vector2(825, 844)
+collision_layer = 10
 
 [node name="Npc3" parent="." instance=ExtResource("17_a6agr")]
 position = Vector2(1530, 436)
