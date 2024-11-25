@@ -242,16 +242,16 @@ task_chalice = ExtResource("7_m5sq3")
 combination = ["Left", "Front", "Right", "Right"]
 
 [node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
-position = Vector2(-1320, 18)
+position = Vector2(-1310, -102)
 
 [node name="Statue2" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
-position = Vector2(-878, 17)
+position = Vector2(-878, -103)
 
 [node name="Statue3" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
-position = Vector2(-354, 15)
+position = Vector2(-349, -108)
 
 [node name="Statue4" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
-position = Vector2(148, 13)
+position = Vector2(143, -109)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
 position = Vector2(1909, 654)

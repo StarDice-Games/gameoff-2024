@@ -1,30 +1,30 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxjpn016wk5vr"]
+[gd_scene load_steps=21 format=3 uid="uid://bbftqg7gy0x17"]
 
-[ext_resource type="Script" path="res://npc_act_1/scripts/npc.gd" id="1_rl6wn"]
-[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_151ff"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_t4n3s"]
-[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_xttip"]
-[ext_resource type="Texture2D" uid="uid://c1qw536uyg5pv" path="res://resource/assets/npc/npc_1/NPC TESTA BIMBA.png" id="5_4dsow"]
-[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_hrxqu"]
-[ext_resource type="Texture2D" uid="uid://0aqcoawtvrlw" path="res://resource/assets/npc/npc_1/NPC bimba fronte.png" id="7_mubu6"]
-[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_ul2wj"]
-[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_3mhuq"]
-[ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="10_aw8mf"]
-[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_wwryi"]
+[ext_resource type="Script" path="res://npc_act_1/scripts/npc.gd" id="1_61dq3"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_gsnay"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_vxa1x"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_an3xi"]
+[ext_resource type="Texture2D" uid="uid://mjxgqm0nqd8b" path="res://resource/assets/npc/NPC vecchino testa (1).png" id="5_7leko"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_7g2ki"]
+[ext_resource type="Texture2D" uid="uid://brjkiqosfqtam" path="res://resource/assets/npc/NPC vecchino fronte.png" id="7_drk75"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="8_cd6j6"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_yvgqn"]
+[ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="10_upix2"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_wqp8e"]
 
 [sub_resource type="Resource" id="Resource_m13sm"]
-script = ExtResource("2_151ff")
+script = ExtResource("2_gsnay")
 dialogue_text = Array[String](["Hey kid, we are closing. I have to ask to leave the museum"])
-character_image = ExtResource("3_t4n3s")
+character_image = ExtResource("3_vxa1x")
 text_name = "Angelo"
-triggers = Array[ExtResource("4_xttip")]([])
+triggers = Array[ExtResource("4_an3xi")]([])
 
 [sub_resource type="Resource" id="Resource_5jobv"]
-script = ExtResource("2_151ff")
+script = ExtResource("2_gsnay")
 dialogue_text = Array[String](["Ok mister keeper, I call my mum "])
-character_image = ExtResource("5_4dsow")
+character_image = ExtResource("5_7leko")
 text_name = "Visitor"
-triggers = Array[ExtResource("4_xttip")]([])
+triggers = Array[ExtResource("4_an3xi")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
 size = Vector2(93, 37)
@@ -69,7 +69,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_br53n"]
-shader = ExtResource("11_wwryi")
+shader = ExtResource("11_wqp8e")
 shader_parameter/maxLineWidth = 10.0
 shader_parameter/minLineWidth = 1.0
 shader_parameter/speed = 5.0
@@ -84,32 +84,31 @@ radius = 89.0225
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 17
-script = ExtResource("1_rl6wn")
-dialog = Array[ExtResource("2_151ff")]([SubResource("Resource_m13sm"), SubResource("Resource_5jobv")])
-trigger_id = "talk0"
+script = ExtResource("1_61dq3")
+dialog = Array[ExtResource("2_gsnay")]([SubResource("Resource_m13sm"), SubResource("Resource_5jobv")])
+trigger_id = "talk3"
 
 [node name="Label" type="Label" parent="."]
-visible = false
 z_index = 1
-offset_left = -40.0
-offset_top = -254.0
-offset_right = 46.0
-offset_bottom = -208.0
-theme = ExtResource("6_hrxqu")
+offset_left = -47.0
+offset_top = -305.0
+offset_right = 39.0
+offset_bottom = -259.0
+theme = ExtResource("6_7g2ki")
 text = "Talk"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, -36.5)
-texture = ExtResource("7_mubu6")
+position = Vector2(1, -49)
+texture = ExtResource("7_drk75")
 offset = Vector2(21, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 68)
+position = Vector2(3, 104)
 shape = SubResource("RectangleShape2D_xmc1t")
 
-[node name="Interactable" parent="." instance=ExtResource("7_ul2wj")]
+[node name="Interactable" parent="." instance=ExtResource("8_cd6j6")]
 position = Vector2(10, -64.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
@@ -122,9 +121,9 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_3mhuq")]
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_yvgqn")]
 position = Vector2(9, -67)
-script = ExtResource("10_aw8mf")
+script = ExtResource("10_upix2")
 sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_br53n")
 

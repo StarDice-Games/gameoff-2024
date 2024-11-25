@@ -17,7 +17,12 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("can_pool", true):
 		t_rex_tooth.hide()
+		$TRexConDente.hide()
 		$HighlightComponent.sprite = $StaticBody2D/TrexToothRope
+		$HighlightComponent.sprite.material = $HighlightComponent.shader
+		$PreArea.sprite = $StaticBody2D/TrexToothRope
+		$PreArea.sprite.material = $PreArea.shader
+		$StaticBody2D/TrexToothSprite.material = null
 		t_rex_tooth_rope.show()
 		label_text.text = "Pull"
 		
@@ -47,10 +52,13 @@ func _on_interactable_interacted() -> void:
 		if not can_pull and has_rope:
 			t_rex_tooth.hide()
 			t_rex_tooth_rope.show()
+			$TRexConDente.hide()
 			AudioSystem.play(audio_sfx)
 			label_text.text = "Pull"
 			$HighlightComponent.sprite = $StaticBody2D/TrexToothRope
 			$HighlightComponent.sprite.material = $HighlightComponent.shader
+			$PreArea.sprite = $StaticBody2D/TrexToothRope
+			$PreArea.sprite.material = $PreArea.shader
 			$StaticBody2D/TrexToothSprite.material = null
 			#$HighlightComponent.sprite_changed.emit()
 			#$HighlightComponent/CollisionShape2D.disabled = true

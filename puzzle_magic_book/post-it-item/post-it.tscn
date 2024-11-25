@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dm6ydcq6bkfx4"]
+[gd_scene load_steps=17 format=3 uid="uid://dm6ydcq6bkfx4"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/post-it-item/scripts/post_it.gd" id="1_1tpli"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_q6b8c"]
@@ -20,7 +20,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("5_pe210")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04ca6"]
-radius = 185.973
+radius = 157.258
 
 [sub_resource type="Resource" id="Resource_x5ycc"]
 script = ExtResource("5_pe210")
@@ -28,7 +28,10 @@ key = "second_boss_call"
 value = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
-radius = 227.079
+radius = 195.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8n74"]
+radius = 276.261
 
 [node name="Post-it" type="Node2D"]
 y_sort_enabled = true
@@ -59,12 +62,20 @@ offset_bottom = -45.0
 theme = ExtResource("9_j0gtk")
 text = "Pick up"
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
 sprite = NodePath("../Sprite2D")
 shader = ExtResource("11_2ju74")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
 shape = SubResource("CircleShape2D_p7ebc")
+
+[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Sprite2D")
+shader = ExtResource("11_2ju74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
+shape = SubResource("CircleShape2D_b8n74")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

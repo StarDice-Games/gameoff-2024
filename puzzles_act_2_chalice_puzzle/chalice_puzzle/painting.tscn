@@ -60,6 +60,7 @@ texture = ExtResource("8_f0ude")
 
 [node name="PaintingOpened" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(122, 14)
 texture = ExtResource("9_lkyg0")
 
 [node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]

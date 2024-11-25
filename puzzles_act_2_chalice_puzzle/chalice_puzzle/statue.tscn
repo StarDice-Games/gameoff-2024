@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhy01qy7khi6"]
+[gd_scene load_steps=18 format=3 uid="uid://dhy01qy7khi6"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/statue.gd" id="1_hwkmv"]
 [ext_resource type="AudioStream" uid="uid://dbv4gg21xljrg" path="res://audio/sfx/magic_book/Drag_Statue_02.wav" id="2_2xrir"]
@@ -10,17 +10,25 @@
 [ext_resource type="Texture2D" uid="uid://dr0xe0m16ja0t" path="res://resource/assets/rooms/Corridoio/Asset nuovi/infinito.png" id="6_odclo"]
 [ext_resource type="Texture2D" uid="uid://vbqqa26wespu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/occhio.png" id="7_4e5t5"]
 [ext_resource type="Texture2D" uid="uid://qdrweudkp43w" path="res://resource/assets/rooms/Corridoio/Asset nuovi/piramidi.png" id="8_1jup1"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="11_oymks"]
+[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="12_jmbxt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lifky"]
-size = Vector2(144, 154)
+[sub_resource type="CircleShape2D" id="CircleShape2D_edqau"]
+radius = 164.049
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hhj60"]
-radius = 26.6833
+radius = 82.0549
 
 [sub_resource type="Resource" id="Resource_iy18g"]
 script = ExtResource("5_g5r2r")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1pclv"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gj46"]
+radius = 163.003
 
 [node name="Statue" type="Node2D"]
 script = ExtResource("1_hwkmv")
@@ -59,7 +67,7 @@ texture = ExtResource("8_1jup1")
 region_rect = Rect2(170, 65, 29, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_lifky")
+shape = SubResource("CircleShape2D_edqau")
 disabled = true
 
 [node name="Interactable" parent="." instance=ExtResource("2_8071q")]
@@ -70,6 +78,21 @@ shape = SubResource("CircleShape2D_hhj60")
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("4_63dej")]
 position = Vector2(-4, 0)
 trigger = SubResource("Resource_iy18g")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("11_oymks")]
+sprite = NodePath("../StaticBody2D/statue front")
+shader = ExtResource("12_jmbxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+shape = SubResource("CircleShape2D_1pclv")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("11_oymks")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../StaticBody2D/statue front")
+shader = ExtResource("12_jmbxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+shape = SubResource("CircleShape2D_8gj46")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

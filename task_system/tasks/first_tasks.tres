@@ -7,5 +7,5 @@ script = ExtResource("1_54dba")
 id = "first_tasks"
 description = "Notify visitors"
 complete = false
-counter_max = 1
+counter_max = 4
 current_counter = 0

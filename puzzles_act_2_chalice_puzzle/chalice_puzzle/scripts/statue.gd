@@ -57,6 +57,13 @@ func _on_interactable_interacted() -> void:
 			sprite_back.hide()
 			sprite_left.hide()
 			sprite_right.hide()
+			$HighlightComponent.sprite = $"StaticBody2D/statue front"
+			$HighlightComponent.sprite.material = $HighlightComponent.shader
+			$PreArea.sprite = $"StaticBody2D/statue front"
+			$PreArea.sprite.material = $PreArea.shader
+			$"StaticBody2D/statue back".material = null
+			$"StaticBody2D/statue left".material = null
+			$"StaticBody2D/statue right".material = null
 		"Back":
 			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			direction_statue = "Back"
@@ -64,6 +71,13 @@ func _on_interactable_interacted() -> void:
 			sprite_back.show()
 			sprite_left.hide()
 			sprite_right.hide()
+			$HighlightComponent.sprite = $"StaticBody2D/statue back"
+			$HighlightComponent.sprite.material = $HighlightComponent.shader
+			$PreArea.sprite = $"StaticBody2D/statue back"
+			$PreArea.sprite.material = $PreArea.shader
+			$"StaticBody2D/statue front".material = null
+			$"StaticBody2D/statue left".material = null
+			$"StaticBody2D/statue right".material = null
 		"Left":
 			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			direction_statue = "Left"
@@ -71,6 +85,13 @@ func _on_interactable_interacted() -> void:
 			sprite_back.hide()
 			sprite_left.show()
 			sprite_right.hide()
+			$HighlightComponent.sprite = $"StaticBody2D/statue left"
+			$HighlightComponent.sprite.material = $HighlightComponent.shader
+			$PreArea.sprite = $"StaticBody2D/statue left"
+			$PreArea.sprite.material = $PreArea.shader
+			$"StaticBody2D/statue front".material = null
+			$"StaticBody2D/statue back".material = null
+			$"StaticBody2D/statue right".material = null
 		"Right":
 			direction_statue = "Right"
 			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
@@ -78,5 +99,12 @@ func _on_interactable_interacted() -> void:
 			sprite_back.hide()
 			sprite_left.hide()
 			sprite_right.show()
+			$HighlightComponent.sprite = $"StaticBody2D/statue right"
+			$HighlightComponent.sprite.material = $HighlightComponent.shader
+			$PreArea.sprite = $"StaticBody2D/statue right"
+			$PreArea.sprite.material = $PreArea.shader
+			$"StaticBody2D/statue front".material = null
+			$"StaticBody2D/statue left".material = null
+			$"StaticBody2D/statue back".material = null
 		_:
 			printerr("Unexpected position value:", position_statue[counter_position])

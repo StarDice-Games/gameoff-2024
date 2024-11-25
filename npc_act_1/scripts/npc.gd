@@ -19,7 +19,9 @@ func _on_interactable_player_exit() -> void:
 func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger(trigger_id, true) or TriggersSystem.check_trigger("place_npc", false):
 		return
-	
+	$Interactable.queue_free()
+	$HighlightComponent.queue_free()
+	$Label.hide()
 	EventSystem.cutscene_started.emit()
 	DialogueSystem.start_dialog(dialog)
 	TriggersSystem.update_trigger(trigger_id, true)

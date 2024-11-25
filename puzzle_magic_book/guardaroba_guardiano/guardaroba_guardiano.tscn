@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://crs786q6e44hc"]
+[gd_scene load_steps=27 format=3 uid="uid://crs786q6e44hc"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/guardaroba_guardiano/scripts/guardaroba_guardiano.gd" id="1_3qbkv"]
 [ext_resource type="Resource" uid="uid://dj0y6v6u4wbx1" path="res://puzzle_magic_book/post-it-item/data/post-it.tres" id="2_on27d"]
@@ -28,7 +28,7 @@ triggers = Array[ExtResource("10_cu0pi")]([])
 size = Vector2(61, 337)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
-size = Vector2(133, 395)
+size = Vector2(174.5, 395)
 
 [sub_resource type="Resource" id="Resource_1klwi"]
 script = ExtResource("10_cu0pi")
@@ -106,7 +106,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ays0v"]
-radius = 115.07
+radius = 180.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8rfn"]
+radius = 186.325
 
 [node name="GuardarobaGuardiano" type="StaticBody2D"]
 y_sort_enabled = true
@@ -152,7 +155,7 @@ shape = SubResource("RectangleShape2D_k1qxw")
 [node name="Interactable" parent="." instance=ExtResource("4_3cmhb")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(35.5, 0.5)
+position = Vector2(5.75, 1)
 shape = SubResource("RectangleShape2D_y8ulm")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("9_6ffum")]
@@ -184,8 +187,18 @@ sprite = NodePath("../LockerClosed")
 shader = SubResource("ShaderMaterial_5ujci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(52, 0)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_ays0v")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_ty1wu")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../LockerClosed")
+shader = SubResource("ShaderMaterial_5ujci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(75, 1)
+shape = SubResource("CircleShape2D_a8rfn")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
