@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqdeu1mk0x22h"]
+[gd_scene load_steps=16 format=3 uid="uid://cqdeu1mk0x22h"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
 [ext_resource type="Texture2D" uid="uid://y3fcd7ohxebx" path="res://resource/assets/items/dente.png" id="2_3i154"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
 [ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="6_4m1ev"]
+[ext_resource type="Texture2D" uid="uid://blx4twhxb5g78" path="res://resource/assets/rooms/Hall/dente.png" id="7_5dkm5"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_11r73"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_176xo"]
 [ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="10_vskab"]
@@ -17,13 +18,13 @@ id = "Tooth"
 icon = ExtResource("2_3i154")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_odl8j"]
-radius = 105.058
+radius = 44.0114
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxkwp"]
-radius = 105.171
+radius = 44.0114
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhg7l"]
-radius = 162.444
+radius = 83.0963
 
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
@@ -32,12 +33,11 @@ dialog = Array[ExtResource("4_pxbun")]([ExtResource("5_03qiv")])
 task = ExtResource("6_4m1ev")
 
 [node name="Tooth" type="Sprite2D" parent="."]
-texture = ExtResource("2_3i154")
+texture = ExtResource("7_5dkm5")
 
 [node name="Interactable" parent="." instance=ExtResource("5_yg3y7")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-3, -0.5)
 shape = SubResource("CircleShape2D_odl8j")
 
 [node name="Label" type="Label" parent="."]

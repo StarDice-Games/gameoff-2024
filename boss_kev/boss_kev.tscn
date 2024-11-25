@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b43hax8kcwef"]
+[gd_scene load_steps=30 format=3 uid="uid://b43hax8kcwef"]
 
 [ext_resource type="Script" path="res://boss_kev/boss_kev.gd" id="1_inowa"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qes3u"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://1mx5av2ablnb" path="res://resource/assets/enemy/Boss_Face.png" id="3_qqduw"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_a4ro4"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_qhvsw"]
-[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="7_73qr7"]
 [ext_resource type="Texture2D" uid="uid://debo6fysx4m0h" path="res://resource/assets/enemy/Incappucciato_1.png" id="8_3ydll"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="9_5niit"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_7q66l"]
 [ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="10_hutjl"]
+[ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="11_mplof"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="12_nuw5o"]
 
 [sub_resource type="Resource" id="Resource_cts7d"]
 script = ExtResource("2_qes3u")
@@ -25,12 +27,17 @@ character_image = ExtResource("3_0s62d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_a4ro4")]([])
 
+[sub_resource type="Resource" id="Resource_ptvd8"]
+script = ExtResource("4_a4ro4")
+key = "talk_boss"
+value = true
+
 [sub_resource type="Resource" id="Resource_5b178"]
 script = ExtResource("2_qes3u")
 dialogue_text = Array[String](["Please Angelo, put the objects you found on the altar."])
 character_image = ExtResource("3_qqduw")
 text_name = "Museum Director"
-triggers = Array[ExtResource("4_a4ro4")]([])
+triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptvd8")])
 
 [sub_resource type="Resource" id="Resource_6xilf"]
 script = ExtResource("2_qes3u")
@@ -159,6 +166,18 @@ _data = {
 "walk": SubResource("Animation_hkecf")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stvt3"]
+shader = ExtResource("12_nuw5o")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl1ke"]
+radius = 129.0
+
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 17
@@ -169,14 +188,12 @@ dialog3 = Array[ExtResource("2_qes3u")]([SubResource("Resource_ycf8y"), SubResou
 trigger_id = "talk_boss"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -26.0
-offset_top = -332.0
-offset_right = 39.0
-offset_bottom = -290.0
+offset_left = 38.0
+offset_top = -355.0
+offset_right = 124.0
+offset_bottom = -309.0
+scale = Vector2(-1, 1)
 theme = ExtResource("6_qhvsw")
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("7_73qr7")
-theme_override_font_sizes/font_size = 30
 text = "Talk E"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -193,7 +210,7 @@ shape = SubResource("RectangleShape2D_xmc1t")
 [node name="Interactable" parent="." instance=ExtResource("9_5niit")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-12, -154)
+position = Vector2(-13, -153)
 shape = SubResource("CircleShape2D_ngufx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -204,6 +221,16 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_hutjl")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_7q66l")]
+position = Vector2(-9, -142)
+script = ExtResource("11_mplof")
+sprite = NodePath("../Sprite2D")
+shader = SubResource("ShaderMaterial_stvt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-3, -12)
+shape = SubResource("CircleShape2D_wl1ke")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

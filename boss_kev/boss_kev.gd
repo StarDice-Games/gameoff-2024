@@ -25,7 +25,6 @@ func _on_interactable_interacted() -> void:
 		DialogueSystem.start_dialog(dialog2)
 	else:
 		DialogueSystem.start_dialog(dialog1)
-		TriggersSystem.update_trigger(trigger_id, true)
 		
 	if TriggersSystem.check_trigger("ritual_objects_placed", true):
 		DialogueSystem.start_dialog(dialog3)

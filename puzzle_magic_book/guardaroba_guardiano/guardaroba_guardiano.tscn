@@ -106,10 +106,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuhtw"]
-size = Vector2(171, 398)
+size = Vector2(164, 398)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8rfn"]
-radius = 186.325
+radius = 188.0
 
 [node name="GuardarobaGuardiano" type="StaticBody2D"]
 y_sort_enabled = true
@@ -187,7 +187,7 @@ sprite = NodePath("../LockerClosed")
 shader = SubResource("ShaderMaterial_5ujci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(10.5, 1)
+position = Vector2(16, 1)
 shape = SubResource("RectangleShape2D_vuhtw")
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_ty1wu")]
