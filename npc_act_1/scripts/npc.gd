@@ -24,4 +24,5 @@ func _on_interactable_interacted() -> void:
 	$Label.hide()
 	EventSystem.cutscene_started.emit()
 	DialogueSystem.start_dialog(dialog)
+	EventSystem.task_update.emit("first_tasks")
 	TriggersSystem.update_trigger(trigger_id, true)

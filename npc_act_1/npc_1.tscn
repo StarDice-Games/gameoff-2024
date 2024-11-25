@@ -86,7 +86,7 @@ collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_rl6wn")
 dialog = Array[ExtResource("2_151ff")]([SubResource("Resource_m13sm"), SubResource("Resource_5jobv")])
-trigger_id = "talk0"
+trigger_id = "talk4"
 
 [node name="Label" type="Label" parent="."]
 visible = false
