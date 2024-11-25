@@ -17,6 +17,8 @@ func _process(delta: float) -> void:
 
 func _on_interactable_interacted() -> void:
 	AudioSystem.mute
+	$Agganciato.hide()
+	$NonAgganciato.show()
 	$AnimationPlayer.play("dial")
 	$Interactable.queue_free()
 

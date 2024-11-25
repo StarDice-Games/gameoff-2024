@@ -440,7 +440,7 @@ position = Vector2(1004, 545)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
 visible = false
-position = Vector2(1097, 577)
+position = Vector2(1172, 666)
 
 [node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
 position = Vector2(-204, 47)

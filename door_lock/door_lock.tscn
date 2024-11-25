@@ -14,7 +14,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("4_3q0w6")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12ubx"]
-size = Vector2(103, 344)
+size = Vector2(103, 367)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y17gx"]
 size = Vector2(77, 344)
@@ -31,7 +31,7 @@ script = ExtResource("1_2b8he")
 dialog = Array[ExtResource("2_42sbi")]([SubResource("Resource_1fggd")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(53.5, 24)
+position = Vector2(53.5, 24.5)
 shape = SubResource("RectangleShape2D_12ubx")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

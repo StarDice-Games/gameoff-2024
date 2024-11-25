@@ -15,10 +15,10 @@
 radius = 87.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w06ri"]
-radius = 147.031
+radius = 87.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nsaji"]
-radius = 221.002
+radius = 220.02
 
 [node name="MagicBook" type="Node2D"]
 script = ExtResource("1_wt5bb")

@@ -1,17 +1,116 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2dqmrjmohag0"]
+[gd_scene load_steps=15 format=3 uid="uid://b2dqmrjmohag0"]
 
 [ext_resource type="Script" path="res://levels/end_cutscene/scripts/end_cutscene.gd" id="1_d02st"]
+[ext_resource type="Texture2D" uid="uid://ck0iiswmluywo" path="res://resource/assets/title/lampioni-accesi.png" id="2_06ily"]
+[ext_resource type="Texture2D" uid="uid://cwh2ehc0ogkja" path="res://resource/assets/title/fondo-notte.jpg" id="3_807fk"]
+[ext_resource type="Texture2D" uid="uid://byq4iit0jw1if" path="res://resource/assets/title/facciata-notte.png" id="4_1s7l4"]
+[ext_resource type="Texture2D" uid="uid://bnb5yjrf2n4c5" path="res://resource/assets/title/luna.png" id="5_wnkgy"]
+[ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="6_8cvki"]
+[ext_resource type="Texture2D" uid="uid://pwrq3lb21vbl" path="res://resource/assets/title/ringhiera-sopra.png" id="7_3qjce"]
+[ext_resource type="Texture2D" uid="uid://ck4yiohdwq52j" path="res://resource/assets/title/ringhiera-sotto.png" id="8_dlxro"]
+[ext_resource type="Texture2D" uid="uid://dycink1w47biv" path="res://resource/assets/title/cancelli.png" id="9_d858u"]
+[ext_resource type="Texture2D" uid="uid://6qm5c730ne3k" path="res://resource/assets/title/notte_porta.png" id="10_rqmxp"]
+[ext_resource type="Texture2D" uid="uid://b8m0hvqp8pfk8" path="res://resource/assets/title/ingresso chiuso.png" id="11_c68bn"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="12_atddq"]
+[ext_resource type="Texture2D" uid="uid://bclf1fok0cmd" path="res://resource/assets/title/fora auto polizia.png" id="13_vs3ma"]
+[ext_resource type="Texture2D" uid="uid://c1x0qqjs7omm1" path="res://resource/assets/title/polizia.png" id="14_ecd4n"]
 
 [node name="EndCutscene" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_d02st")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 469.0
-offset_top = 388.0
-offset_right = 1353.0
-offset_bottom = 557.0
-theme_override_font_sizes/font_size = 60
-text = "BEAUTIFULL END CUTSCENE
-PRESS E to move on
-"
-horizontal_alignment = 1
+[node name="Fondo-notte" type="Sprite2D" parent="."]
+texture = ExtResource("3_807fk")
+
+[node name="Notte" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(950, 538)
+scale = Vector2(0.4, 0.4)
+
+[node name="Lampioni-accesi2" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(808, 100)
+texture = ExtResource("2_06ily")
+offset = Vector2(28.364, 187.273)
+
+[node name="Facciata-notte" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+texture = ExtResource("4_1s7l4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Notte/Facciata-notte"]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/Facciata-notte/StaticBody2D"]
+polygon = PackedVector2Array(-204, 748, -354, 1036, 542, 1035, 1238, 1039, 941, 131, 555, 132, 272, 122, 162, 136, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
+
+[node name="Lampioni-accesi" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(849, 880)
+texture = ExtResource("2_06ily")
+offset = Vector2(-12.636, -592.727)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Notte/Lampioni-accesi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/Lampioni-accesi/StaticBody2D"]
+polygon = PackedVector2Array(-25.364, 604.727, -66.364, 622.727, -79.364, 655.727, -75.364, 685.727, -34.364, 696.727, 21.636, 699.727, 57.636, 688.727, 76.636, 667.727, 83.636, 632.727, 66.636, 606.727, 23.636, 595.727)
+
+[node name="Luna" type="Sprite2D" parent="Notte"]
+position = Vector2(1469.09, -1032.73)
+texture = ExtResource("5_wnkgy")
+
+[node name="Nuvole" type="Sprite2D" parent="Notte"]
+position = Vector2(-309.091, -992.727)
+texture = ExtResource("6_8cvki")
+
+[node name="Ringhiera-sopra" type="Sprite2D" parent="Notte"]
+position = Vector2(-462, 187)
+texture = ExtResource("7_3qjce")
+offset = Vector2(251.091, 114.818)
+
+[node name="Ringhiera-sotto" type="Sprite2D" parent="Notte"]
+position = Vector2(-168, 619)
+texture = ExtResource("8_dlxro")
+offset = Vector2(-235.636, -175.364)
+
+[node name="Cancelli" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(140, 1093)
+texture = ExtResource("9_d858u")
+offset = Vector2(1.81799, -238.455)
+
+[node name="NottePorta" type="Sprite2D" parent="Notte"]
+position = Vector2(-698.182, 381.818)
+texture = ExtResource("10_rqmxp")
+offset = Vector2(698.182, -381.818)
+
+[node name="IngressoChiuso" type="Sprite2D" parent="Notte"]
+position = Vector2(147, 911)
+texture = ExtResource("11_c68bn")
+
+[node name="Player" parent="." instance=ExtResource("12_atddq")]
+position = Vector2(911, 717)
+scale = Vector2(0.4, 0.4)
+
+[node name="ForaAutoPolizia" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(924, 848)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_vs3ma")
+offset = Vector2(-217.5, -370)
+
+[node name="ForaAutoPolizia2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+position = Vector2(888, 724)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_vs3ma")
+
+[node name="Polizia" type="Sprite2D" parent="."]
+position = Vector2(1124, 644)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_ecd4n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

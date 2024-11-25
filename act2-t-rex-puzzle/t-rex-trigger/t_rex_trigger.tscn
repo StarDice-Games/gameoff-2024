@@ -23,7 +23,7 @@ id = "Rope"
 icon = ExtResource("5_x8aad")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6s8d"]
-radius = 119.038
+radius = 159.255
 
 [sub_resource type="Resource" id="Resource_74vpo"]
 script = ExtResource("9_v0kll")
@@ -40,10 +40,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g2tl"]
-radius = 180.003
+radius = 159.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7q4j"]
-radius = 186.325
+radius = 258.031
 
 [node name="TRexTrigger" type="Node2D"]
 script = ExtResource("1_4gv0c")
@@ -100,7 +100,7 @@ vertical_alignment = 1
 position = Vector2(69, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(371, 105)
+position = Vector2(254, 89)
 shape = SubResource("CircleShape2D_n6s8d")
 debug_color = Color(0.657455, 0.516008, 1.92523e-07, 0.42)
 
@@ -113,7 +113,7 @@ sprite = NodePath("../TRexConDente")
 shader = SubResource("ShaderMaterial_35c4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(33, 2)
+position = Vector2(-103, -12)
 shape = SubResource("CircleShape2D_0g2tl")
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_o2yoa")]
@@ -123,7 +123,7 @@ sprite = NodePath("../TRexConDente")
 shader = SubResource("ShaderMaterial_35c4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
-position = Vector2(75, 1)
+position = Vector2(15, -4)
 shape = SubResource("CircleShape2D_p7q4j")
 
 [node name="TrexSotto" type="Sprite2D" parent="PreArea"]

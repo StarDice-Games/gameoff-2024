@@ -89,6 +89,7 @@ dialog = Array[ExtResource("2_2j2rf")]([SubResource("Resource_m13sm"), SubResour
 trigger_id = "talk1"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 1
 offset_left = -47.0
 offset_top = -305.0
@@ -128,7 +129,7 @@ sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_br53n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(-106, 1)
+position = Vector2(-4, 1)
 shape = SubResource("CircleShape2D_mdwis")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

@@ -105,8 +105,8 @@ shader_parameter/blockSize = 5.0
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ays0v"]
-radius = 180.003
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuhtw"]
+size = Vector2(171, 398)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8rfn"]
 radius = 186.325
@@ -187,8 +187,8 @@ sprite = NodePath("../LockerClosed")
 shader = SubResource("ShaderMaterial_5ujci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_ays0v")
+position = Vector2(10.5, 1)
+shape = SubResource("RectangleShape2D_vuhtw")
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_ty1wu")]
 position = Vector2(-4, -1)

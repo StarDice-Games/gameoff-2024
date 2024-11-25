@@ -1,13 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://heowlo4h6fdn"]
+[gd_scene load_steps=22 format=3 uid="uid://heowlo4h6fdn"]
 
 [ext_resource type="Script" path="res://end_phone/script/end_phone.gd" id="1_4hsqm"]
-[ext_resource type="Texture2D" uid="uid://cepit1b3crehm" path="res://levels/credits/Credits/Claudio.png" id="2_0dl11"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_3xu23"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_k4sa5"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_wtfak"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_1uhme"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_uvss2"]
+[ext_resource type="Texture2D" uid="uid://dog3kq1wlyc0v" path="res://resource/assets/rooms/Guardiola/telefono-agganciato.png" id="5_ysvu1"]
+[ext_resource type="Texture2D" uid="uid://bh76u364bare1" path="res://resource/assets/rooms/Guardiola/telefono-sganciato.png" id="6_hdvbe"]
 [ext_resource type="AudioStream" uid="uid://b7j6upbs7mcik" path="res://audio/sfx/phone/Phone_Dial_01.wav" id="8_qsdsk"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_lmlw3"]
+[ext_resource type="Script" path="res://highlight_component/TelephoneHighlight.gd" id="11_cpiah"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="12_wriuh"]
 
 [sub_resource type="Resource" id="Resource_tt4s5"]
 script = ExtResource("4_1uhme")
@@ -64,12 +68,30 @@ _data = {
 "dial": SubResource("Animation_6yrt7")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj72j"]
+shader = ExtResource("12_wriuh")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm85l"]
+radius = 128.004
+
 [node name="EndPhone" type="Node2D"]
 script = ExtResource("1_4hsqm")
 dialog = Array[ExtResource("2_3xu23")]([SubResource("Resource_o4jv2")])
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_0dl11")
+[node name="Agganciato" type="Sprite2D" parent="."]
+position = Vector2(33, 2)
+texture = ExtResource("5_ysvu1")
+
+[node name="NonAgganciato" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(33, -4)
+texture = ExtResource("6_hdvbe")
 
 [node name="Interactable" parent="." instance=ExtResource("3_wtfak")]
 
@@ -104,6 +126,16 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_qsdsk")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_lmlw3")]
+position = Vector2(50, 76)
+script = ExtResource("11_cpiah")
+sprite = NodePath("../Agganciato")
+shader = SubResource("ShaderMaterial_jj72j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-49, -77)
+shape = SubResource("CircleShape2D_wm85l")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

@@ -1,7 +1,9 @@
 extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
-		LevelSystem.load_level("credits")
-	pass
+func _ready() -> void:
+	$Timer.start()
+	AudioSystem.play_music_event("Police_Siren_01")
+
+func _on_timer_timeout() -> void:
+	LevelSystem.load_level("credits")

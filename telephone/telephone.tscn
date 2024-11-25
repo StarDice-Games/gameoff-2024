@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://highlight_component/TelephoneHighlight.gd" id="7_p0q3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8xyj"]
-radius = 74.4261
+radius = 60.075
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_myyij"]
 radius = 99.1262
@@ -25,7 +25,7 @@ shader_parameter/color = Color(1, 1, 1, 0)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nsxm4"]
-radius = 149.584
+radius = 98.5457
 
 [node name="Telephone" type="Node2D"]
 y_sort_enabled = true
@@ -59,23 +59,23 @@ position = Vector2(2, 54)
 texture = ExtResource("4_phg0e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4, 89.5)
+position = Vector2(-40, 66)
 shape = SubResource("CircleShape2D_w8xyj")
 
 [node name="Interactable" parent="StaticBody2D" instance=ExtResource("3_k3lcd")]
-position = Vector2(3, 89)
+position = Vector2(-42, 65)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Interactable"]
 shape = SubResource("CircleShape2D_myyij")
 
 [node name="HighlightComponent" parent="StaticBody2D" node_paths=PackedStringArray("sprite") instance=ExtResource("6_qnsv1")]
-position = Vector2(47, 80)
+position = Vector2(50, 76)
 script = ExtResource("7_p0q3e")
 sprite = NodePath("../Agganciato")
 shader = SubResource("ShaderMaterial_8sc8d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/HighlightComponent"]
-position = Vector2(-48.5, 11)
+position = Vector2(-94, -12)
 shape = SubResource("CircleShape2D_nsxm4")
 
 [connection signal="interacted" from="StaticBody2D/Interactable" to="." method="_on_interactable_interacted"]

@@ -16,14 +16,14 @@ script = ExtResource("3_r0vbg")
 id = "Tooth"
 icon = ExtResource("2_3i154")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq5mh"]
-size = Vector2(150, 197)
+[sub_resource type="CircleShape2D" id="CircleShape2D_odl8j"]
+radius = 105.058
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxkwp"]
-radius = 151.0
+radius = 105.171
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhg7l"]
-radius = 362.199
+radius = 162.444
 
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
@@ -38,7 +38,7 @@ texture = ExtResource("2_3i154")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-3, -0.5)
-shape = SubResource("RectangleShape2D_kq5mh")
+shape = SubResource("CircleShape2D_odl8j")
 
 [node name="Label" type="Label" parent="."]
 visible = false

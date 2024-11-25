@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dm6ydcq6bkfx4"]
+[gd_scene load_steps=18 format=3 uid="uid://dm6ydcq6bkfx4"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/post-it-item/scripts/post_it.gd" id="1_1tpli"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_q6b8c"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bb7o5nsbmevad" path="res://resource/assets/rooms/Guardiola/biglietto.png" id="8_816ky"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_j0gtk"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_tb2qj"]
-[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="11_2ju74"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_a1axn"]
 
 [sub_resource type="Resource" id="Resource_q7vkj"]
 script = ExtResource("3_gdcps")
@@ -27,11 +27,20 @@ script = ExtResource("5_pe210")
 key = "second_boss_call"
 value = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p7ebc"]
-radius = 195.01
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apsno"]
+shader = ExtResource("11_a1axn")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b8n74"]
-radius = 276.261
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5lys"]
+radius = 156.058
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cj33l"]
+radius = 315.228
 
 [node name="Post-it" type="Node2D"]
 y_sort_enabled = true
@@ -62,20 +71,24 @@ offset_bottom = -45.0
 theme = ExtResource("9_j0gtk")
 text = "Pick up"
 
-[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+position = Vector2(-4, -1)
 sprite = NodePath("../Sprite2D")
-shader = ExtResource("11_2ju74")
+shader = SubResource("ShaderMaterial_apsno")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
-shape = SubResource("CircleShape2D_p7ebc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(3, 1)
+shape = SubResource("CircleShape2D_g5lys")
 
-[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_tb2qj")]
+position = Vector2(-4, -1)
 highlight_color = Color(1, 1, 1, 0.364706)
 sprite = NodePath("../Sprite2D")
-shader = ExtResource("11_2ju74")
+shader = SubResource("ShaderMaterial_apsno")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
-shape = SubResource("CircleShape2D_b8n74")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(6, 2)
+shape = SubResource("CircleShape2D_cj33l")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

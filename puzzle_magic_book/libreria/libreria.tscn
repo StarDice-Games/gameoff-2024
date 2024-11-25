@@ -22,11 +22,11 @@ script = ExtResource("12_h48le")
 key = "second_boss_call"
 value = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_csm6r"]
-radius = 213.059
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ckv2"]
+size = Vector2(255, 338)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lseja"]
-radius = 508.048
+radius = 313.129
 
 [node name="Libreria" type="StaticBody2D"]
 y_sort_enabled = true
@@ -80,8 +80,8 @@ sprite = NodePath("../Closed")
 shader = ExtResource("14_t1vqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(9, 95)
-shape = SubResource("CircleShape2D_csm6r")
+position = Vector2(6.5, 98)
+shape = SubResource("RectangleShape2D_4ckv2")
 debug_color = Color(0.965603, 0, 0.485683, 0.42)
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_7ov44")]
@@ -90,6 +90,7 @@ sprite = NodePath("../Closed")
 shader = ExtResource("14_t1vqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(4, 96)
 shape = SubResource("CircleShape2D_lseja")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

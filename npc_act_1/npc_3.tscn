@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_sm26a"]
 [ext_resource type="Texture2D" uid="uid://ld0xp7y101iu" path="res://resource/assets/npc/NPC incazzato testa .png" id="5_xtspc"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_lmohu"]
-[ext_resource type="Texture2D" uid="uid://jrd38w8s68b4" path="res://resource/assets/npc/NPC incazzato fronte.png" id="7_ujvio"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="8_st8um"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_cmkiw"]
 [ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="10_73l0d"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_044op"]
+[ext_resource type="Texture2D" uid="uid://bd78ckr75ye8h" path="res://resource/assets/npc/NPC bimbo fronte.png" id="11_u4kda"]
 
 [sub_resource type="Resource" id="Resource_m13sm"]
 script = ExtResource("2_fjwrt")
@@ -27,10 +27,10 @@ text_name = "Visitor"
 triggers = Array[ExtResource("4_sm26a")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
-size = Vector2(93, 37)
+size = Vector2(89, 22.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
-radius = 89.0898
+radius = 63.9531
 
 [sub_resource type="Animation" id="Animation_5h4s2"]
 length = 0.001
@@ -78,7 +78,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdwis"]
-radius = 89.0225
+radius = 64.0312
 
 [node name="Npc" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -89,30 +89,26 @@ dialog = Array[ExtResource("2_fjwrt")]([SubResource("Resource_m13sm"), SubResour
 trigger_id = "talk2"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 1
-offset_left = -47.0
-offset_top = -305.0
-offset_right = 39.0
-offset_bottom = -259.0
+offset_left = -43.0
+offset_top = -155.0
+offset_right = 43.0
+offset_bottom = -109.0
 theme = ExtResource("6_lmohu")
 text = "Talk"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -49)
-texture = ExtResource("7_ujvio")
-offset = Vector2(21, -3)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 104)
+position = Vector2(-0.5, 56.375)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("8_st8um")]
 position = Vector2(10, -64.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-5, 0)
+position = Vector2(-10, 63.5)
 shape = SubResource("CircleShape2D_ngufx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -128,8 +124,13 @@ sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_br53n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(-106, 1)
+position = Vector2(-8, 67)
 shape = SubResource("CircleShape2D_mdwis")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, -3)
+texture = ExtResource("11_u4kda")
+offset = Vector2(21, -3)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

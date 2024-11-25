@@ -45,6 +45,12 @@ func start_dialog(dialog : Array[DialogText]):
 	dialog_index = 0
 	text_label.text = dialogs[dialog_index].dialogue_text[text_index]
 	name_character.text = dialogs[dialog_index].text_name
+	if name_character.text == "Angelo":
+		$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_vecchietto.ogg")
+		$AudioStreamPlayer2D.play()
+	elif name_character.text == "Museum Director":
+		$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_capo.ogg")
+		$AudioStreamPlayer2D.play()
 	image_character.texture = dialogs[dialog_index].character_image
 	text_label.visible_characters = 0
 	text_label.visible_ratio = 0
@@ -63,11 +69,18 @@ func next_dialog():
 		text_index = 0
 		text_label.text = dialogs[dialog_index].dialogue_text[text_index]
 		name_character.text = dialogs[dialog_index].text_name
+		if name_character.text == "Angelo":
+			$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_vecchietto.ogg")
+			$AudioStreamPlayer2D.play()
+		elif name_character.text == "Museum Director":
+			$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_capo.ogg")
+			$AudioStreamPlayer2D.play()
 		image_character.texture = dialogs[dialog_index].character_image
 		text_label.visible_characters = 0
 		text_label.visible_ratio = 0
 		
 	else:
+		$AudioStreamPlayer2D.stop()
 		dialogue_box.hide()
 		started = false
 		EventSystem.cutscene_finished.emit()
