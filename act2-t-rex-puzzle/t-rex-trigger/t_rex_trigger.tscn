@@ -96,10 +96,9 @@ shape = SubResource("RectangleShape2D_v5ejc")
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("8_w17g1")]
 trigger = SubResource("Resource_74vpo")
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite", "sprite2") instance=ExtResource("13_o2yoa")]
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_o2yoa")]
 position = Vector2(0, 199)
 sprite = NodePath("../StaticBody2D/TrexToothSprite")
-sprite2 = NodePath("../StaticBody2D/TrexToothRope")
 shader = SubResource("ShaderMaterial_5kpw7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
