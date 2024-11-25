@@ -1,21 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=20 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
-[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="2_4lqhc"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
 [ext_resource type="Texture2D" uid="uid://b8cvs5u71frtf" path="res://resource/assets/rooms/Hall/Hall.PNG" id="2_vknqs"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
-[ext_resource type="PackedScene" uid="uid://bltkk80sv7ldj" path="res://npc_act_1/npc_2.tscn" id="9_je8hs"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
 [ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
 [ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="16_b4hsd"]
 [ext_resource type="PackedScene" uid="uid://t87t82e062ie" path="res://npc_act_1/npc_3.tscn" id="16_wlojo"]
-[ext_resource type="PackedScene" uid="uid://bbftqg7gy0x17" path="res://npc_act_1/npc_4.tscn" id="17_a6agr"]
 [ext_resource type="Texture2D" uid="uid://cba3khksutltm" path="res://resource/assets/rooms/Hall/porte_hall.png" id="17_eok5r"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
 
@@ -153,13 +150,15 @@ color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1194, 1176)
+position = Vector2(1194, 1152)
 scale = Vector2(2.92001, 0.28)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(-225, 352)
+z_index = 1
+position = Vector2(-202, 311)
+scale = Vector2(1, 0.560001)
 level_id = "corridoio"
 link_id = "EastDoor"
 
@@ -176,10 +175,6 @@ offset_right = 912.0
 offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "Ingresso"
-
-[node name="Npc" parent="." instance=ExtResource("2_4lqhc")]
-position = Vector2(1371, 704)
-scale = Vector2(0.7, 0.7)
 
 [node name="FallingToothAnim" type="Node2D" parent="."]
 
@@ -215,7 +210,7 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanza/StaticBody2D"]
 position = Vector2(0, -5)
-polygon = PackedVector2Array(1314, 1105, 2111, 1103, 2100, 1053, 2100, 904, 2071, 865, 2029, 870, 1992, 852, 1971, 835, 1956, 811, 1975, 770, 2015, 553, 2035, 267, 1895, 65, 1832, 481, 1756, 441, 1750, 397, 1325, 377, 1284, 167, 1212, 181, 1166, 91, 1056, 86, 959, 87, 621, 101, 547, 195, 49, 207, -78, 407, -89, 123, -210, 246, -159, 599, -351, 937, -438, 1085, 1081, 1107, 1080, 1153, -475, 1131, -239, 223, -79, 68, 58, 160, 517, 154, 598, 31, 968, -9, 1166, 9, 1304, 55, 1789, 206, 1879, 11, 2104, 304, 2098, 811, 2246, 1063, 2231, 1129, 1313, 1151)
+polygon = PackedVector2Array(1314, 1100, 2111, 1100, 2100, 1053, 2100, 904, 2071, 865, 2029, 870, 1992, 852, 1971, 835, 1956, 811, 1975, 770, 2015, 553, 2035, 267, 1895, 65, 1832, 481, 1756, 441, 1750, 400, 1310, 400, 1278, 195, 1174, 195, 1166, 100, 1056, 100, 959, 100, 621, 100, 547, 210, 49, 210, -55, 412, -84, 411, -94, 149, -200, 264, -133, 562, -351, 937, -438, 1100, 1081, 1100, 1080, 1153, -475, 1131, -239, 223, -79, 68, 58, 160, 517, 154, 598, 31, 968, -9, 1166, 9, 1304, 55, 1789, 206, 1879, 11, 2104, 304, 2098, 811, 2246, 1063, 2231, 1129, 1313, 1151)
 
 [node name="FollowCamera" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("19_f21q0")]
 player_ref = NodePath("../Player")
@@ -237,25 +232,19 @@ region_rect = Rect2(2605, 461, 286, 822)
 
 [node name="PortaSx" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-135, 526)
+position = Vector2(-135, 469)
 texture = ExtResource("17_eok5r")
-offset = Vector2(-165, -269.18)
+offset = Vector2(-165, -212.18)
 region_enabled = true
 region_rect = Rect2(68, 269, 533, 948)
 
-[node name="Player" parent="." instance=ExtResource("2_amsm6")]
-unique_name_in_owner = true
-position = Vector2(1187, 612)
-
 [node name="Npc2" parent="." instance=ExtResource("16_wlojo")]
-position = Vector2(825, 844)
+position = Vector2(691, 97)
 collision_layer = 10
 
-[node name="Npc3" parent="." instance=ExtResource("17_a6agr")]
-position = Vector2(1530, 436)
-
-[node name="Npc4" parent="." instance=ExtResource("9_je8hs")]
-position = Vector2(1698, 803)
+[node name="Player" parent="." instance=ExtResource("2_amsm6")]
+unique_name_in_owner = true
+position = Vector2(1362, 574)
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=33 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdw54qhrvqhy" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_2.tscn" id="19_y4mm1"]
 [ext_resource type="PackedScene" uid="uid://dtgi8mhp76d54" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_3.tscn" id="20_ms3ha"]
 [ext_resource type="PackedScene" uid="uid://1uo4spegx35o" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_4.tscn" id="21_j0h8a"]
+[ext_resource type="PackedScene" uid="uid://cxjpn016wk5vr" path="res://npc_act_1/npc_1.tscn" id="25_gqghf"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
 script = ExtResource("2_dnq7l")
@@ -126,7 +127,7 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
 position = Vector2(-60, 83)
-polygon = PackedVector2Array(-961, 522, -917, 442, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 175, -581, 175, -585, -206, -439, -208, -443, 175, -292, 176, -294, 213, -264, 219, -233, 210, -232, 180, 237, 178, 238, 210, 259, 217, 287, 217, 304, 207, 306, 176, 438, 175, 431, -211, 595, -212, 590, 171, 617.231, 175, 700.32, 175, 700, 211, 732, 220, 765, 210, 767, 176, 801, 175, 846, 261, 864, 261, 900, -72, 964, -6, 921, 299, 893, 372, 916, 443, 949, 526, -979, 523, -969, 551, 977, 545, 987, -9, 909, -85, 646, -256, -844, -243, -1001, -39)
+polygon = PackedVector2Array(-961, 522, -917, 442, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, -292, 200, 237, 200, 306, 200, 438, 200, 431, -211, 595, -212, 590, 200, 617.231, 200, 700.32, 200, 767, 200, 801, 200, 846, 261, 864, 261, 900, -72, 964, -6, 921, 299, 893, 372, 916, 443, 949, 526, -979, 523, -969, 551, 977, 545, 987, -9, 909, -85, 646, -256, -844, -243, -1001, -39)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
 z_index = -1
@@ -235,7 +236,7 @@ position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(1683, 709)
+position = Vector2(1624, 628)
 
 [node name="PuzzleChalice" type="Node2D" parent="."]
 position = Vector2(1546, 569)
@@ -264,13 +265,13 @@ level_id = "ingresso"
 link_id = "WestDoor"
 
 [node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1456, 278)
+position = Vector2(1456, 205)
 scale = Vector2(1.4, 0.8)
 level_id = "sala arte"
 link_id = "South"
 
 [node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(432, 257)
+position = Vector2(432, 205)
 scale = Vector2(1.368, 0.8)
 level_id = "sala preistorica"
 link_id = "South"
@@ -312,6 +313,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
 stream = ExtResource("11_tm84c")
+
+[node name="Npc" parent="." instance=ExtResource("25_gqghf")]
+position = Vector2(1273, 719)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
