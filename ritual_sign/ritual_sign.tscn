@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://rriaauq8dxpi"]
 
 [ext_resource type="Script" path="res://ritual_sign/script/ritual_sign.gd" id="1_l2nph"]
-[ext_resource type="Texture2D" uid="uid://d2vld3w8te5df" path="res://resource/assets/rooms/sala_sacrificio/Pentagramma.PNG" id="2_n716y"]
+[ext_resource type="Texture2D" uid="uid://hnqre6mc1yo2" path="res://resource/assets/rooms/sala_sacrificio/Pentagramma bianco.PNG" id="2_n2waj"]
 
 [sub_resource type="Animation" id="Animation_ui0f6"]
 length = 0.001
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qthmk"]
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.756242, 0, 0.134771, 1)]
+"values": [Color(0, 0, 0, 1), Color(0.705882, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7hprd"]
@@ -43,9 +43,12 @@ _data = {
 script = ExtResource("1_l2nph")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-2, 0)
-texture = ExtResource("2_n716y")
+texture = ExtResource("2_n2waj")
 offset = Vector2(-4, 1)
+region_enabled = true
+region_rect = Rect2(767, 944, 558, 450)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

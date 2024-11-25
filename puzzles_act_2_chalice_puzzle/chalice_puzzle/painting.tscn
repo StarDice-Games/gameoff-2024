@@ -49,6 +49,7 @@ key = "chalice_picked"
 value = true
 
 [node name="Painting" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_h8pmy")
 task_chalice = SubResource("Resource_5mtew")
 dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k5gwa")])
@@ -56,7 +57,10 @@ open_dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k74jg")])
 item_data = SubResource("Resource_0ojl7")
 
 [node name="PaintingClosed" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -104)
 texture = ExtResource("8_f0ude")
+offset = Vector2(0, 104)
 
 [node name="PaintingOpened" type="Sprite2D" parent="."]
 visible = false

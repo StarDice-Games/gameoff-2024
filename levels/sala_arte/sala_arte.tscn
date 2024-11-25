@@ -199,4 +199,4 @@ position = Vector2(941, 542)
 player_ref = NodePath("../Environment/Player")
 
 [node name="Npc" parent="." instance=ExtResource("16_rd3pp")]
-position = Vector2(438, 627)
+position = Vector2(440, 710)

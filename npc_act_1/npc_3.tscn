@@ -35,32 +35,22 @@ radius = 63.9531
 
 [sub_resource type="Animation" id="Animation_5h4s2"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_r3v0m"]
 resource_name = "idle"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale:y")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.97, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1, 2)
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.97), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djno7"]
@@ -92,21 +82,21 @@ trigger_id = "talk2"
 [node name="Label" type="Label" parent="."]
 visible = false
 z_index = 1
-offset_left = -43.0
-offset_top = -155.0
-offset_right = 43.0
-offset_bottom = -109.0
+offset_left = -47.0
+offset_top = -275.0
+offset_right = 39.0
+offset_bottom = -229.0
 theme = ExtResource("6_lmohu")
 text = "Talk"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 89.3125)
+position = Vector2(0.5, -1.6875)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("8_st8um")]
-position = Vector2(10, -64.5)
+position = Vector2(9.5, -155.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-10, 63.5)
@@ -119,7 +109,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_cmkiw")]
-position = Vector2(9, -67)
+position = Vector2(8.5, -158)
 script = ExtResource("10_73l0d")
 sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_br53n")
@@ -129,19 +119,19 @@ position = Vector2(-8, 67)
 shape = SubResource("CircleShape2D_mdwis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 85)
+position = Vector2(0.5, -91)
 texture = ExtResource("11_j4f1g")
-offset = Vector2(-3, -91)
+offset = Vector2(-4, -6)
 
 [node name="OmbraPiedi" type="Sprite2D" parent="."]
-position = Vector2(25, 82)
+position = Vector2(1.5, -158)
 texture = ExtResource("12_1jhim")
-offset = Vector2(0, 11)
+offset = Vector2(23, 160)
 
 [node name="OmbraPiedi2" type="Sprite2D" parent="."]
-position = Vector2(-20, 80)
+position = Vector2(-2.5, -161)
 texture = ExtResource("12_1jhim")
-offset = Vector2(0, 13)
+offset = Vector2(-18, 163)
 flip_h = true
 flip_v = true
 

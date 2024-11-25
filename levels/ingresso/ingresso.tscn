@@ -239,7 +239,7 @@ region_enabled = true
 region_rect = Rect2(68, 269, 533, 948)
 
 [node name="Npc2" parent="." instance=ExtResource("16_wlojo")]
-position = Vector2(691, 97)
+position = Vector2(700, 171)
 collision_layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
