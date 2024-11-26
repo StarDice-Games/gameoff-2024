@@ -10,6 +10,9 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("close_museum", true):
 		$Node2D/AnimationPlayer.play("fade_out")
+		
+	TriggersSystem.toggle_trigger("from_exit")
+	AudioSystem.play_music_event("Traffic_01")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

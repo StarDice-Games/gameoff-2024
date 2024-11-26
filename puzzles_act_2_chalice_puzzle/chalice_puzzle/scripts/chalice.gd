@@ -14,8 +14,9 @@ func _on_interactable_player_exit() -> void:
 
 
 func _on_interactable_interacted() -> void:
-	InventorySystem.pick_up(item)
-	TriggersSystem.update_trigger("chalice_picked", true)
-	TaskSystem.task_completed(task.id)
-	DialogueSystem.start_dialog(dialog)
-	queue_free()
+	if visible:
+		InventorySystem.pick_up(item)
+		TriggersSystem.update_trigger("chalice_picked", true)
+		TaskSystem.task_completed(task.id)
+		DialogueSystem.start_dialog(dialog)
+		queue_free()
