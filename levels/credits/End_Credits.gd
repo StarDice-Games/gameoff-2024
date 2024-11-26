@@ -6,7 +6,7 @@ func _ready():
 	EventSystem.cutscene_started.emit()
 	EventSystem.hide_hud.emit()
 	$AnimationPlayer.play("credits")
-	pass # Replace with function body.
+	EventSystem.stop_sound.emit("Police_Siren_01")
 
 func return_to_main_menu():
 	LevelSystem.load_level("esterno_title")
