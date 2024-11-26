@@ -175,7 +175,7 @@ position = Vector2(894, 1082)
 scale = Vector2(-1, 1)
 
 [node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
-position = Vector2(1542, 476)
+position = Vector2(1536, 640)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
