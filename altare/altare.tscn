@@ -86,15 +86,16 @@ radius = 178.869
 radius = 245.033
 
 [node name="Altare" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_a5ybs")
 thoot_item = ExtResource("2_ydgfb")
 magic_book_item = ExtResource("3_h1fab")
 chalice_item = ExtResource("4_kcren")
 
 [node name="Sprite_empty" type="Sprite2D" parent="."]
-position = Vector2(1, 160)
+position = Vector2(146, -70)
 texture = ExtResource("2_x3xy3")
-offset = Vector2(-1, -160)
+offset = Vector2(-146, 70)
 
 [node name="Sprite_object" type="Sprite2D" parent="."]
 visible = false

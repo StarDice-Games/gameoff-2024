@@ -130,8 +130,9 @@ position = Vector2(633, 885)
 texture = ExtResource("14_6a3pp")
 
 [node name="Candelabro-3" type="Sprite2D" parent="."]
-position = Vector2(1258, 882)
+position = Vector2(1258, 952)
 texture = ExtResource("15_ymqb7")
+offset = Vector2(0, -70)
 
 [node name="Candelabro" type="Sprite2D" parent="."]
 position = Vector2(776, 480)
@@ -150,6 +151,12 @@ position = Vector2(-40, 968)
 position = Vector2(0, 147)
 texture = ExtResource("17_fxu7n")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
+polygon = PackedVector2Array(-61, 610, -61, 730, 75, 793, 90, 830, 96, 866, 96, 906, 92, 933, 76, 964, 38, 1005, -57, 1013, -61, 1165, 205, 1165, 204, 1116, 369, 1117, 374, 1165, 574, 1163, 524, 990, 560, 915, 624, 915, 650, 575, 612, 543, 590, 837, 517, 837, 483, 765, 450, 695, 249, 695, 249, 730, 111, 730, -61, 730, -61, 637, 578, 445, 689, 537, 693, 990, 628, 1172, -78, 1183, -83, 609)
+
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_68cts")]
 player_ref = NodePath("../Player")
 
@@ -163,7 +170,7 @@ color = Color(0.580646, 1, 0.440148, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ylly3")]
 unique_name_in_owner = true
-position = Vector2(1328, 706)
+position = Vector2(1244, 714)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
 position = Vector2(1706, 562)
@@ -208,6 +215,7 @@ region_enabled = true
 region_rect = Rect2(1462, 348, 221, 824)
 
 [node name="Stealth" type="Node2D" parent="."]
+visible = false
 position = Vector2(241, 455.716)
 scale = Vector2(1.44886, 1.33271)
 
