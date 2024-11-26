@@ -2,7 +2,6 @@ extends StaticBody2D
 
 @export var trigger : String =  "rope_taken"
 @export var interact_text : String = "Interact"
-@export var rope_position_marker : Marker2D
 
 @onready var interact_label = $Label
 
@@ -15,9 +14,11 @@ func _ready() -> void:
 	if TriggersSystem.check_trigger(trigger, true):
 		taken = true
 		$Interactable.queue_free()
-		$CollisionShape2D.queue_free()
+		$HighlightComponent.queue_free()
+		$PreArea.queue_free()
 		interact_label.hide()
-
+		$Corda.hide()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -26,8 +27,11 @@ func _on_interactable_interacted() -> void:
 	TriggersSystem.update_trigger(trigger, true)
 	taken = true
 	$Interactable.queue_free()
-	$CollisionShape2D.queue_free()
 	$HighlightComponent.queue_free()
+	$HighlightComponent.queue_free()
+	$PreArea.queue_free()
+	interact_label.hide()
+	$Corda.hide()
 	
 func _on_interactable_player_enter() -> void:
 	if taken :

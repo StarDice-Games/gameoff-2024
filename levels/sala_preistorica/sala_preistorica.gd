@@ -5,6 +5,10 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
+	
+	if TriggersSystem.check_trigger("rope_taken", true):
+		$Stanze/PesceLuna.position = $Fish/Marker2D.position
+		$Stanze/PesceLuna.rotation = -0.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,4 +29,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
+	$Stanze/PesceLuna.position = $Fish/Marker2D.position
+	$Stanze/PesceLuna.rotation = -0.5
 	EventSystem.cutscene_started.emit()

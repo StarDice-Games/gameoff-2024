@@ -81,6 +81,7 @@ dialog = Array[ExtResource("2_gsnay")]([SubResource("Resource_m13sm"), SubResour
 trigger_id = "talk3"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 1
 offset_left = -48.0
 offset_top = -274.0

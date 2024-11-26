@@ -1,16 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=20 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
-[ext_resource type="Texture2D" uid="uid://cujmfwn60i8h1" path="res://resource/assets/placeholder/stanze.png" id="1_f8vd0"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
+[ext_resource type="Texture2D" uid="uid://bnmqco1m4k3l5" path="res://resource/assets/rooms/Sala animali/base.png" id="2_o5trs"]
+[ext_resource type="Texture2D" uid="uid://c1ykgx0rtq2d3" path="res://resource/assets/rooms/Sala animali/alce.png" id="3_71nrj"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
+[ext_resource type="Texture2D" uid="uid://4ayojkm2sfk7" path="res://resource/assets/rooms/Sala animali/elementi forntali.png" id="4_op8el"]
 [ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="7_f24n0"]
 [ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="8_alvi4"]
+[ext_resource type="Texture2D" uid="uid://bqb7361meab4x" path="res://resource/assets/rooms/Sala animali/pesce luna.png" id="9_f1pih"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_n8j22"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_l6ab1"]
 [ext_resource type="PackedScene" uid="uid://bbftqg7gy0x17" path="res://npc_act_1/npc_4.tscn" id="11_lq22p"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="15_hbg3j"]
 
 [sub_resource type="Resource" id="Resource_hx5ly"]
 script = ExtResource("10_l6ab1")
@@ -108,26 +112,42 @@ script = ExtResource("1_m84jc")
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(947, 529)
-texture = ExtResource("1_f8vd0")
-region_enabled = true
+texture = ExtResource("2_o5trs")
 region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
 z_index = -1
 anchors_preset = -1
-anchor_right = 0.00810682
-anchor_bottom = 0.0706215
+anchor_left = -0.769795
+anchor_top = -0.716981
+anchor_right = 0.783429
+anchor_bottom = 0.977359
 offset_left = -1517.0
 offset_top = -831.0
 offset_right = 1525.0
 offset_bottom = 859.0
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Alce" type="Sprite2D" parent="Stanze"]
+position = Vector2(-624, -282)
+texture = ExtResource("3_71nrj")
+
+[node name="ElementiForntali" type="Sprite2D" parent="Stanze"]
+position = Vector2(95, 312)
+texture = ExtResource("4_op8el")
+
+[node name="PesceLuna" type="Sprite2D" parent="Stanze"]
+position = Vector2(444, -249)
+texture = ExtResource("9_f1pih")
+offset = Vector2(-4, 48)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
 player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-position = Vector2(1418, 789)
+visible = false
+position = Vector2(1396, 945)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
 offset_left = -16.0
@@ -138,7 +158,7 @@ color = Color(0.582582, 1, 0.432314, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_x3oc3")]
 unique_name_in_owner = true
-position = Vector2(1032, 658)
+position = Vector2(1475, 671)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 432.0
@@ -149,12 +169,15 @@ theme_override_font_sizes/font_size = 60
 text = "Sala Preistorica/Naturale"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1444, 1121)
+position = Vector2(1417, 1218)
 level_id = "corridoio"
 link_id = "North1"
 
 [node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
-position = Vector2(1461, 59)
+position = Vector2(995, 639)
+
+[node name="Marker2D" type="Marker2D" parent="Fish"]
+position = Vector2(385, 14)
 
 [node name="Rope" parent="." instance=ExtResource("8_alvi4")]
 visible = false
@@ -187,6 +210,10 @@ stream = ExtResource("7_f24n0")
 
 [node name="Npc" parent="." instance=ExtResource("11_lq22p")]
 position = Vector2(739, 757)
+
+[node name="CameraFollow" parent="." instance=ExtResource("15_hbg3j")]
+position = Vector2(941, 542)
+scale = Vector2(1, 1)
 
 [connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

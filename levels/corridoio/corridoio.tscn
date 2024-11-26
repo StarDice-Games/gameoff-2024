@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="27_qp2n0"]
 [ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="28_6nmjo"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="29_jnotp"]
-[ext_resource type="Texture2D" uid="uid://cesm6wy6ww0tu" path="res://resource/assets/enemy/fascio luce stanza.png" id="30_5hml8"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
 script = ExtResource("2_dnq7l")
@@ -181,9 +180,9 @@ region_enabled = true
 region_rect = Rect2(0, 413, 201, 942)
 
 [node name="Poltrona" type="Sprite2D" parent="Stanze"]
-position = Vector2(-98, 167.5)
+position = Vector2(-110, 118)
 texture = ExtResource("10_y3aqg")
-offset = Vector2(-4, 54)
+offset = Vector2(8, 103.5)
 
 [node name="Sedie" type="Sprite2D" parent="Stanze"]
 light_mask = 0
@@ -263,7 +262,7 @@ position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(215, 594)
+position = Vector2(505, 619)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
 position = Vector2(1899, 500)
@@ -354,6 +353,7 @@ scale = Vector2(1.44886, 1.33271)
 trigger = SubResource("Resource_xkj33")
 
 [node name="Path2D" type="Path2D" parent="Stealth"]
+position = Vector2(-13.1138, -8.04076)
 curve = SubResource("Curve2D_dluho")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D"]
@@ -365,6 +365,7 @@ cubic_interp = false
 loop = false
 
 [node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("27_qp2n0")]
+position = Vector2(2.76237, 2.24744)
 speed = 150
 path = NodePath("..")
 monolog = Array[ExtResource("2_dnq7l")]([ExtResource("28_6nmjo")])
@@ -374,34 +375,12 @@ position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="Stealth"]
-light_mask = 0
-visibility_layer = 0
-y_sort_enabled = true
-position = Vector2(55.2158, -61.3157)
-scale = Vector2(0.690198, 0.750351)
-energy = 1.5
-texture = ExtResource("30_5hml8")
-texture_scale = 1.28
-
-[node name="PointLight2D2" type="PointLight2D" parent="Stealth"]
-position = Vector2(443.107, -144.605)
-scale = Vector2(0.690198, 0.750351)
-energy = 1.5
-texture = ExtResource("30_5hml8")
-
-[node name="PointLight2D3" type="PointLight2D" parent="Stealth"]
-position = Vector2(890.355, -151.358)
-scale = Vector2(0.690198, 0.750351)
-energy = 1.5
-texture = ExtResource("30_5hml8")
-
-[node name="Checkpoint" parent="." instance=ExtResource("29_jnotp")]
-position = Vector2(1712, 561.716)
+[node name="Checkpoint" parent="Stealth" instance=ExtResource("29_jnotp")]
+position = Vector2(1054.62, 71.4964)
 direction = "left"
 
-[node name="Checkpoint4" parent="." instance=ExtResource("29_jnotp")]
-position = Vector2(207, 561.716)
+[node name="Checkpoint2" parent="Stealth" instance=ExtResource("29_jnotp")]
+position = Vector2(-55.2158, 71.4964)
 direction = "right"
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

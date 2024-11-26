@@ -1,24 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://8il3mjn3x70q"]
+[gd_scene load_steps=11 format=3 uid="uid://8il3mjn3x70q"]
 
 [ext_resource type="Script" path="res://enemy_patrol/scripts/enemy_patrol.gd" id="1_ejy71"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_4efgi"]
 [ext_resource type="Texture2D" uid="uid://dhyttvq0guhtq" path="res://resource/assets/enemy/Incappucciato_2.png" id="2_6m0pe"]
 [ext_resource type="Texture2D" uid="uid://dh8qf2ypf8xtk" path="res://resource/assets/enemy/fascio luce guardiano.png" id="3_40odj"]
+[ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="5_dekpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
 size = Vector2(101.25, 96.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jljmw"]
-size = Vector2(182, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu2wp"]
-size = Vector2(182, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_krx8c"]
-size = Vector2(50, 150)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcnqm"]
-size = Vector2(50, 150)
 
 [sub_resource type="Animation" id="Animation_bw7gc"]
 length = 0.001
@@ -103,6 +92,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 1.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwjga"]
 _data = {
@@ -112,6 +113,7 @@ _data = {
 }
 
 [node name="EnemyPatrol" type="CharacterBody2D"]
+y_sort_enabled = true
 position = Vector2(6, 2)
 collision_layer = 512
 collision_mask = 129
@@ -124,64 +126,67 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_6m0pe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_f6gaj")
 
 [node name="LeftFov" type="Area2D" parent="."]
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFov"]
-position = Vector2(-64, -1)
-shape = SubResource("RectangleShape2D_jljmw")
-debug_color = Color(0.838179, 0.122111, 0.880316, 0.42)
-
-[node name="FascioLuceGuardiano" type="Sprite2D" parent="LeftFov"]
-position = Vector2(-111, -3)
-scale = Vector2(0.365, 0.365)
+[node name="PointLight2D2" type="PointLight2D" parent="LeftFov"]
+light_mask = 8
+position = Vector2(-159, -10)
+energy = 2.0
 texture = ExtResource("3_40odj")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LeftFov"]
+rotation = 1.5708
+polygon = PackedVector2Array(0, 1, -109, 274, -90, 298, -65, 308, -9.99999, 314, 52, 308, 75, 297, 90, 278)
 
 [node name="RightFov" type="Area2D" parent="."]
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightFov"]
-position = Vector2(79.5, -2)
-shape = SubResource("RectangleShape2D_gu2wp")
-debug_color = Color(0.864693, 0.353164, 0.134086, 0.42)
-
-[node name="FascioLuceGuardiano2" type="Sprite2D" parent="RightFov"]
-position = Vector2(88, -4)
-scale = Vector2(0.365, 0.365)
+[node name="PointLight2D2" type="PointLight2D" parent="RightFov"]
+light_mask = 8
+position = Vector2(151, 11)
+rotation = 3.14159
+energy = 2.0
 texture = ExtResource("3_40odj")
-flip_h = true
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RightFov"]
+rotation = 4.71239
+polygon = PackedVector2Array(0, 1, -113, 262, -89, 295, -17, 306, 66, 298, 89, 261)
 
 [node name="UpFov" type="Area2D" parent="."]
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpFov"]
-position = Vector2(1, -53)
-shape = SubResource("RectangleShape2D_krx8c")
-debug_color = Color(0, 0.101961, 0.701961, 0.419608)
-
-[node name="FascioLuceGuardiano3" type="Sprite2D" parent="UpFov"]
-position = Vector2(2.99999, -73)
+[node name="PointLight2D2" type="PointLight2D" parent="UpFov"]
+light_mask = 8
+position = Vector2(10, -150)
 rotation = 1.5708
-scale = Vector2(0.365, 0.365)
+energy = 2.0
 texture = ExtResource("3_40odj")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="UpFov"]
+rotation = 3.14159
+polygon = PackedVector2Array(-3, 3.57628e-07, -107, 273, -72, 299, -3.99997, 304, 55, 300, 92, 270)
 
 [node name="DownFov" type="Area2D" parent="."]
 collision_layer = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DownFov"]
-position = Vector2(1, 48)
-shape = SubResource("RectangleShape2D_lcnqm")
-debug_color = Color(0.382935, 0.612631, 0.00968294, 0.42)
-
-[node name="FascioLuceGuardiano4" type="Sprite2D" parent="DownFov"]
-position = Vector2(3, 69)
-rotation = 1.5708
-scale = Vector2(0.365, 0.365)
+[node name="PointLight2D" type="PointLight2D" parent="DownFov"]
+light_mask = 8
+position = Vector2(-9, 142)
+rotation = -1.5708
+energy = 2.0
 texture = ExtResource("3_40odj")
-flip_h = true
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownFov"]
+polygon = PackedVector2Array(0, 1, -106, 258, -76, 289, -6, 301, 68, 290, 93, 255)
 
 [node name="EnemyArea" type="Area2D" parent="."]
 collision_layer = 512
@@ -201,6 +206,17 @@ libraries = {
 "": SubResource("AnimationLibrary_nwjga")
 }
 autoplay = "walk"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -327.0
+offset_top = -457.0
+offset_right = 476.0
+offset_bottom = 461.0
+color = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dekpu")
 
 [connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
 [connection signal="area_entered" from="RightFov" to="." method="detect_player"]

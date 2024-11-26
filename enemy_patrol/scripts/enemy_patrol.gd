@@ -43,8 +43,10 @@ func _process(delta: float) -> void:
 		var progress = path.progress_ratio
 		if progress >= 1:
 			path_direction *= -1
+			$Sprite.flip_h = false
 		if progress <= 0:
 			path_direction *= -1
+			$Sprite.flip_h = true
 		
 	path.progress += speed * delta * path_direction
 	
@@ -71,10 +73,9 @@ func set_fov(dir: String):
 			toggle_node(fov_down, true)
 		"left":
 			toggle_node(fov_left, true)
-			$Sprite.flip_h = false
 		"right":
 			toggle_node(fov_right, true)
-			$Sprite.flip_h = true
+
 
 	print("FOV updated to:", dir)  
 

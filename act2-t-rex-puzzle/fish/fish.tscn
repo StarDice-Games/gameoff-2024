@@ -1,26 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqegtq37pd18o"]
+[gd_scene load_steps=16 format=3 uid="uid://cqegtq37pd18o"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/fish/scripts/fish.gd" id="1_qedpr"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="4_70ly7"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gik0o"]
-[ext_resource type="Texture2D" uid="uid://pquowyxqutyv" path="res://resource/assets/rooms/Sala arte/Statua - cassetto chiuso.png" id="6_m8ejv"]
+[ext_resource type="Texture2D" uid="uid://440da26pqj0m" path="res://resource/assets/rooms/Sala animali/carrucola.png" id="6_lxx4y"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_kaf1x"]
+[ext_resource type="Texture2D" uid="uid://bp0uv3e7av5hl" path="res://resource/assets/rooms/Sala animali/corda.png" id="7_r1biv"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="8_l8k8q"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="9_elcar"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="10_y08tt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
-size = Vector2(211, 533)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmrwr"]
+size = Vector2(279, 149)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
-size = Vector2(255, 869)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb2hv"]
+radius = 295.205
 
 [sub_resource type="Resource" id="Resource_i86oa"]
 script = ExtResource("5_gik0o")
 key = "second_boss_call"
 value = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3rnp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpdkm"]
 shader = ExtResource("9_elcar")
 shader_parameter/maxLineWidth = 10.0
 shader_parameter/minLineWidth = 1.0
@@ -29,26 +30,34 @@ shader_parameter/blockSize = 5.0
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e0rrh"]
-radius = 191.128
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctw41"]
+radius = 294.138
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7jy6"]
+radius = 518.139
 
 [node name="Fish" type="StaticBody2D"]
 script = ExtResource("1_qedpr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, -1)
-shape = SubResource("RectangleShape2D_k1qxw")
+visible = false
+position = Vector2(-2, -355)
+shape = SubResource("RectangleShape2D_nmrwr")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("6_m8ejv")
-region_enabled = true
-region_rect = Rect2(1436, 639, 227, 545)
+[node name="Carrucola" type="Sprite2D" parent="."]
+position = Vector2(356, -803.5)
+texture = ExtResource("6_lxx4y")
+
+[node name="Corda" type="Sprite2D" parent="."]
+position = Vector2(-53, -399.5)
+texture = ExtResource("7_r1biv")
 
 [node name="Interactable" parent="." instance=ExtResource("7_kaf1x")]
+position = Vector2(398, -313)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(6.5, 363.5)
-shape = SubResource("RectangleShape2D_y8ulm")
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_pb2hv")
 
 [node name="NodeToggle" parent="Interactable" instance=ExtResource("4_70ly7")]
 trigger = SubResource("Resource_i86oa")
@@ -56,20 +65,30 @@ trigger = SubResource("Resource_i86oa")
 [node name="Label" type="Label" parent="."]
 visible = false
 texture_filter = 1
-offset_left = -44.0
-offset_top = 301.0
-offset_right = 50.0
-offset_bottom = 336.0
+offset_left = 251.0
+offset_top = -548.0
+offset_right = 376.0
+offset_bottom = -502.0
 theme = ExtResource("10_y08tt")
 text = "Interact"
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_l8k8q")]
-sprite = NodePath("../Sprite")
-shader = SubResource("ShaderMaterial_p3rnp")
+position = Vector2(401, -311)
+sprite = NodePath("../Corda")
+shader = SubResource("ShaderMaterial_hpdkm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(1, 504)
-shape = SubResource("CircleShape2D_e0rrh")
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_ctw41")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_l8k8q")]
+position = Vector2(402, -311)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Corda")
+shader = SubResource("ShaderMaterial_hpdkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+shape = SubResource("CircleShape2D_i7jy6")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

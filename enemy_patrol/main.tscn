@@ -9,9 +9,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_nxkba"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 801.32, -118.555, 0, 0, 0, 0, 1007, 79.5372)
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 555.818, 74.5419, 0, 0, 0, 0, 583.216, 79.7549)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhsky"]
 radius = 244.72
@@ -25,7 +25,7 @@ scale = Vector2(1.44886, 1.33271)
 curve = SubResource("Curve2D_nxkba")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(52.85, 79.0625)
+position = Vector2(52.8484, 78.6127)
 rotation = 0.00130556
 progress = 47.85
 rotates = false
@@ -54,7 +54,7 @@ position = Vector2(123, 314)
 direction = "right"
 
 [node name="Checkpoint5" parent="." instance=ExtResource("3_qr5sd")]
-position = Vector2(965, 314)
+position = Vector2(1549, 584)
 direction = "down"
 
 [node name="Player" parent="." instance=ExtResource("4_xlmmy")]
