@@ -18,8 +18,8 @@ character_image = ExtResource("4_1fa4u")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_4pea3")]([])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jobi0"]
-size = Vector2(110, 235)
+[sub_resource type="CircleShape2D" id="CircleShape2D_k27q5"]
+radius = 75.2811
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vevg2"]
 shader = ExtResource("10_7hllm")
@@ -30,11 +30,11 @@ shader_parameter/blockSize = 5.0
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vj7k"]
-size = Vector2(109.5, 235)
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0jva"]
+radius = 74.5252
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfrcr"]
-radius = 191.755
+radius = 147.085
 
 [node name="Key" type="Node2D"]
 y_sort_enabled = true
@@ -49,8 +49,8 @@ texture = ExtResource("6_yhm6x")
 [node name="Interactable" parent="." instance=ExtResource("7_di3gg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(23, 0.5)
-shape = SubResource("RectangleShape2D_jobi0")
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_k27q5")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -69,8 +69,8 @@ sprite = NodePath("../Key")
 shader = SubResource("ShaderMaterial_vevg2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(27.25, 1.5)
-shape = SubResource("RectangleShape2D_6vj7k")
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_f0jva")
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_l5pyt")]
 position = Vector2(-4, -1)

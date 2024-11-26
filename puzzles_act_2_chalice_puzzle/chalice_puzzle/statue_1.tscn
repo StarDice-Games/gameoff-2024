@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhy01qy7khi6"]
+[gd_scene load_steps=20 format=3 uid="uid://dhy01qy7khi6"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/statue.gd" id="1_6fwq6"]
 [ext_resource type="AudioStream" uid="uid://dbv4gg21xljrg" path="res://audio/sfx/magic_book/Drag_Statue_02.wav" id="2_gyu8u"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_qo6qf"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="11_jblq5"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="12_7ut10"]
-[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="13_yxjee"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="13_bua6v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_edqau"]
 radius = 164.049
@@ -24,6 +24,15 @@ size = Vector2(88, 116)
 script = ExtResource("11_jblq5")
 key = "second_boss_call"
 value = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2u6a"]
+shader = ExtResource("13_bua6v")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e04aj"]
 size = Vector2(87, 116)
@@ -52,7 +61,7 @@ collision_mask = 3
 texture = ExtResource("4_y2q8n")
 
 [node name="statue front" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(0, 10)
+position = Vector2(0, 12)
 texture = ExtResource("5_ouyiy")
 region_rect = Rect2(131.046, 130.363, 29.39, 30.7895)
 
@@ -91,7 +100,7 @@ trigger = SubResource("Resource_iy18g")
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("12_7ut10")]
 sprite = NodePath("../StaticBody2D/Vaso")
-shader = ExtResource("13_yxjee")
+shader = SubResource("ShaderMaterial_g2u6a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
 position = Vector2(-2.5, 48)
@@ -100,7 +109,7 @@ shape = SubResource("RectangleShape2D_e04aj")
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("12_7ut10")]
 highlight_color = Color(1, 1, 1, 0.364706)
 sprite = NodePath("../StaticBody2D/Vaso")
-shader = ExtResource("13_yxjee")
+shader = SubResource("ShaderMaterial_g2u6a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
 position = Vector2(0, 42)

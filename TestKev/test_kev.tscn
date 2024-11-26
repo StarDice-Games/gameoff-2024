@@ -1,0 +1,36 @@
+[gd_scene load_steps=11 format=3 uid="uid://bimh43rosrgdr"]
+
+[ext_resource type="Script" path="res://TestKev/test_kev.gd" id="1_q0rul"]
+[ext_resource type="Resource" uid="uid://5rj628d30ja0" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tres" id="2_bgmgv"]
+[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="2_dbiw8"]
+[ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="2_uvxwt"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_02add"]
+[ext_resource type="PackedScene" uid="uid://d0sqgofooexlq" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice.tscn" id="3_4ejn1"]
+[ext_resource type="Resource" uid="uid://vixehbn46gp2" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice_item.tres" id="3_sc32u"]
+[ext_resource type="PackedScene" uid="uid://bdsfmqfnh3l25" path="res://puzzle_magic_book/magic_book/magic_book.tscn" id="4_x4sl2"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="5_ofpgc"]
+[ext_resource type="PackedScene" uid="uid://dqwdlx6ofhlti" path="res://puzzle_magic_book/key/key.tscn" id="6_a4vlp"]
+
+[node name="TestKev" type="Node2D"]
+script = ExtResource("1_q0rul")
+thoot_item = ExtResource("2_bgmgv")
+magic_book_item = ExtResource("2_dbiw8")
+chalice_item = ExtResource("3_sc32u")
+
+[node name="TRexTooth" parent="." instance=ExtResource("2_uvxwt")]
+position = Vector2(725, 342)
+
+[node name="Chalice" parent="." instance=ExtResource("3_4ejn1")]
+position = Vector2(1448, 800)
+
+[node name="MagicBook" parent="." instance=ExtResource("4_x4sl2")]
+position = Vector2(908, 738)
+
+[node name="Rope" parent="." instance=ExtResource("5_ofpgc")]
+position = Vector2(1444, 462)
+
+[node name="Key" parent="." instance=ExtResource("6_a4vlp")]
+position = Vector2(357, 402)
+
+[node name="Player" parent="." instance=ExtResource("3_02add")]
+position = Vector2(966, 311)

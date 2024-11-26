@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://0h08en1f6gqc"]
+[gd_scene load_steps=19 format=3 uid="uid://0h08en1f6gqc"]
 
 [ext_resource type="Script" path="res://altare/script/altare.gd" id="1_a5ybs"]
 [ext_resource type="Texture2D" uid="uid://bhns6n15oi56m" path="res://resource/assets/rooms/sala_sacrificio/Altare.png" id="2_x3xy3"]
+[ext_resource type="Resource" uid="uid://5rj628d30ja0" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tres" id="2_ydgfb"]
 [ext_resource type="Texture2D" uid="uid://bvs3r22e81v6g" path="res://resource/assets/rooms/sala_sacrificio/Oggetti.PNG" id="3_2l30n"]
+[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="3_h1fab"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_h4y86"]
+[ext_resource type="Resource" uid="uid://vixehbn46gp2" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice_item.tres" id="4_kcren"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="5_3546t"]
 [ext_resource type="AudioStream" uid="uid://c2xy14ppklklp" path="res://audio/sfx/various/sfx_thunder.ogg" id="6_i0vui"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_6gipo"]
@@ -84,6 +87,9 @@ radius = 245.033
 
 [node name="Altare" type="Node2D"]
 script = ExtResource("1_a5ybs")
+thoot_item = ExtResource("2_ydgfb")
+magic_book_item = ExtResource("3_h1fab")
+chalice_item = ExtResource("4_kcren")
 
 [node name="Sprite_empty" type="Sprite2D" parent="."]
 position = Vector2(1, 160)

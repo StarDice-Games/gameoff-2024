@@ -9,9 +9,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_nxkba"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 1007, 79.5372)
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 801.32, -118.555, 0, 0, 0, 0, 1007, 79.5372)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhsky"]
 radius = 244.72
@@ -54,11 +54,11 @@ position = Vector2(123, 314)
 direction = "right"
 
 [node name="Checkpoint5" parent="." instance=ExtResource("3_qr5sd")]
-position = Vector2(1238, 55)
+position = Vector2(965, 314)
 direction = "down"
 
 [node name="Player" parent="." instance=ExtResource("4_xlmmy")]
-position = Vector2(50, 566)
+position = Vector2(417, 550)
 
 [node name="ShadowZone" parent="." instance=ExtResource("6_ltle0")]
 position = Vector2(860.492, 498.817)

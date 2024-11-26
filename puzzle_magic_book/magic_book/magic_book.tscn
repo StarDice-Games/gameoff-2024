@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdsfmqfnh3l25"]
+[gd_scene load_steps=15 format=3 uid="uid://bdsfmqfnh3l25"]
 
 [ext_resource type="Script" path="res://puzzle_magic_book/magic_book/scripts/magic_book.gd" id="1_wt5bb"]
 [ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="2_cnfls"]
@@ -9,16 +9,25 @@
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_is7y2"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_4lil6"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_pu538"]
-[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="10_kgmxg"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="10_ufwkb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0v5r"]
 radius = 87.023
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qtsd"]
+shader = ExtResource("10_ufwkb")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w06ri"]
 radius = 87.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nsaji"]
-radius = 220.02
+radius = 153.003
 
 [node name="MagicBook" type="Node2D"]
 script = ExtResource("1_wt5bb")
@@ -47,7 +56,7 @@ vertical_alignment = 1
 
 [node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_pu538")]
 sprite = NodePath("../MagicBook")
-shader = ExtResource("10_kgmxg")
+shader = SubResource("ShaderMaterial_6qtsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
 shape = SubResource("CircleShape2D_w06ri")
@@ -55,7 +64,7 @@ shape = SubResource("CircleShape2D_w06ri")
 [node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_pu538")]
 highlight_color = Color(1, 1, 1, 0.364706)
 sprite = NodePath("../MagicBook")
-shader = ExtResource("10_kgmxg")
+shader = SubResource("ShaderMaterial_6qtsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
 shape = SubResource("CircleShape2D_nsaji")

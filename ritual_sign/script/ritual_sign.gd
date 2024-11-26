@@ -28,4 +28,5 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 
 func _on_timer_timeout() -> void:
+	AudioSystem.play_audio_event("voce_rituale", "Sfx")
 	$AnimationPlayer.play("change_color")

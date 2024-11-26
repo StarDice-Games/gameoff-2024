@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var task_ui : PackedScene
-@export var sound_sfx: AudioStream
 
 @onready var container = $CanvasLayer/Control/Panel/VBoxContainer
 
@@ -23,18 +22,19 @@ func _ready() -> void:
 	EventSystem.cutscene_finished.connect(show_task_list)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("close_task"):
+	if Input.is_action_just_pressed("close_task") and container.get_child_count() > 0 and !all_complete:
 		if tab_close:
 			$CanvasLayer/Control/Panel.show()
-			AudioSystem.play(sound_sfx)
+			AudioSystem.play_audio_event("UI_Highlight_Selection_01", "Sfx")
 			tab_close = false
 		else:
 			$CanvasLayer/Control/Panel.hide()
-			AudioSystem.play(sound_sfx)
+			AudioSystem.play_audio_event("UI_Highlight_Selection_03", "Sfx")
 			tab_close = true
 
 func load_tasks(task_list : Array[Task]):
 	
+	AudioSystem.play_audio_event("UI_Highlight_Selection_02", "Sfx")
 	all_complete = false
 	
 	if container.get_child_count() > 0 :

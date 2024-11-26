@@ -83,7 +83,7 @@ one_shot = true
 
 [node name="Chalice" parent="." instance=ExtResource("12_prl61")]
 visible = false
-position = Vector2(5, 167)
+position = Vector2(0, 45)
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

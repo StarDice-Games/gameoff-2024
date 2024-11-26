@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var thoot_item : ItemData
+@export var magic_book_item : ItemData
+@export var chalice_item : ItemData
+
 @onready var label: Label = $Label
 @onready var sprite_object: Sprite2D = $Sprite_object
 @onready var sprite_empty: Sprite2D = $Sprite_empty
@@ -32,6 +36,9 @@ func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("talk_boss", true):
 		sprite_object.show()
 		TriggersSystem.toggle_trigger("ritual_objects_placed")
+		#InventorySystem.drop_item(thoot_item)
+		#InventorySystem.drop_item(magic_book_item)
+		#InventorySystem.drop_item(chalice_item)
 		$AnimationPlayer.play("thunder")
 		interactable.queue_free()
 		$HighlightComponent2.queue_free()

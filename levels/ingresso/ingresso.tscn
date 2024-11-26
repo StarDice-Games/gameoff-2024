@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=26 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -11,10 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
 [ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="16_4dyp1"]
 [ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="16_b4hsd"]
 [ext_resource type="PackedScene" uid="uid://t87t82e062ie" path="res://npc_act_1/npc_3.tscn" id="16_wlojo"]
 [ext_resource type="Texture2D" uid="uid://cba3khksutltm" path="res://resource/assets/rooms/Hall/porte_hall.png" id="17_eok5r"]
+[ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="17_k8g4v"]
+[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="18_5cdul"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
+[ext_resource type="Texture2D" uid="uid://cesm6wy6ww0tu" path="res://resource/assets/enemy/fascio luce stanza.png" id="19_qftki"]
 
 [sub_resource type="Animation" id="Animation_yrndo"]
 length = 0.001
@@ -107,6 +111,17 @@ dialogue_text = Array[String](["I need something to catch it!"])
 character_image = ExtResource("12_4ffme")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_twhkk")]([])
+
+[sub_resource type="Resource" id="Resource_0sktr"]
+script = ExtResource("5_twhkk")
+key = "stealth"
+value = false
+
+[sub_resource type="Curve2D" id="Curve2D_k5ovg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 1007, 79.5372)
+}
+point_count = 3
 
 [node name="Ingresso" type="Node2D"]
 y_sort_enabled = true
@@ -216,7 +231,10 @@ polygon = PackedVector2Array(1314, 1100, 2111, 1100, 2100, 1053, 2100, 904, 2071
 player_ref = NodePath("../Player")
 
 [node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(-208, 316)
+position = Vector2(-211, 346)
+
+[node name="DoorLockHall2" parent="." instance=ExtResource("16_b4hsd")]
+position = Vector2(1937, 401)
 
 [node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
 position = Vector2(549, 311)
@@ -245,6 +263,43 @@ collision_layer = 10
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
 position = Vector2(1362, 574)
+
+[node name="Stealth" type="Node2D" parent="."]
+position = Vector2(224, 767)
+scale = Vector2(1.44886, 1.33271)
+
+[node name="NodeToggle" parent="Stealth" instance=ExtResource("16_4dyp1")]
+trigger = SubResource("Resource_0sktr")
+
+[node name="Path2D" type="Path2D" parent="Stealth"]
+curve = SubResource("Curve2D_k5ovg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D"]
+position = Vector2(1007, 79.5372)
+rotation = 0.00130556
+progress = 1002.0
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("17_k8g4v")]
+speed = 150
+path = NodePath("..")
+monolog = Array[ExtResource("3_fpr8x")]([ExtResource("18_5cdul")])
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
+position = Vector2(-166.338, -341.947)
+scale = Vector2(0.690198, 0.750351)
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Stealth"]
+light_mask = 0
+visibility_layer = 0
+y_sort_enabled = true
+position = Vector2(631.531, -213.85)
+scale = Vector2(0.690198, 0.750351)
+energy = 1.5
+texture = ExtResource("19_qftki")
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

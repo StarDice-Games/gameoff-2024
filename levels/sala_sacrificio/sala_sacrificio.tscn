@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=30 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://benn7vml6s17o" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_.png" id="16_v01k8"]
 [ext_resource type="Texture2D" uid="uid://be1yr06pjuh8" path="res://resource/assets/rooms/sala_sacrificio/Lampadario.PNG" id="17_fxu7n"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="18_jent7"]
+[ext_resource type="Texture2D" uid="uid://dhyixhohegg0m" path="res://resource/assets/rooms/sala_sacrificio/Sala rituale porte.png" id="19_y0vbw"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="20_pmicq"]
 
 [sub_resource type="Resource" id="Resource_3n6nf"]
 script = ExtResource("4_6u53w")
@@ -108,6 +110,11 @@ _data = {
 "light_change": SubResource("Animation_85l4n")
 }
 
+[sub_resource type="Resource" id="Resource_tq7f3"]
+script = ExtResource("4_6u53w")
+key = "ritual_objects_placed"
+value = false
+
 [node name="SalaSacrificio" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_445d4")
@@ -156,7 +163,7 @@ color = Color(0.580646, 1, 0.440148, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ylly3")]
 unique_name_in_owner = true
-position = Vector2(1202, 701)
+position = Vector2(1328, 706)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
 position = Vector2(1706, 562)
@@ -180,7 +187,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
-position = Vector2(899, 807)
+position = Vector2(906, 807)
 
 [node name="CameraFollow" parent="." instance=ExtResource("18_jent7")]
 visible = false
@@ -192,6 +199,25 @@ offset_top = -1486.0
 offset_right = 4128.0
 offset_bottom = 2751.0
 color = Color(0, 0, 0, 1)
+
+[node name="SalaRitualePorte" type="Sprite2D" parent="."]
+position = Vector2(1570, 880)
+texture = ExtResource("19_y0vbw")
+offset = Vector2(107, -358)
+region_enabled = true
+region_rect = Rect2(1462, 348, 221, 824)
+
+[node name="Stealth" type="Node2D" parent="."]
+position = Vector2(241, 455.716)
+scale = Vector2(1.44886, 1.33271)
+
+[node name="NodeToggle" parent="Stealth" instance=ExtResource("20_pmicq")]
+trigger = SubResource("Resource_tq7f3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
+position = Vector2(-166.338, -341.947)
+scale = Vector2(0.690198, 0.750351)
+color = Color(0.212305, 0.212305, 0.212305, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -25,7 +25,6 @@ func _ready():
 	set_fov(initial_direction)
 	print("Initial FOV set to:", initial_direction)
 	
-	caught.hide()
 	EventSystem.cutscene_started.connect(enter_cutscene)
 	EventSystem.cutscene_finished.connect(exit_cutscene)
 
@@ -33,7 +32,7 @@ func enter_cutscene():
 	stop = true
 	
 func exit_cutscene():
-	pass
+	stop = false
 
 func _process(delta: float) -> void:
 	
@@ -72,8 +71,10 @@ func set_fov(dir: String):
 			toggle_node(fov_down, true)
 		"left":
 			toggle_node(fov_left, true)
+			$Sprite.flip_h = false
 		"right":
 			toggle_node(fov_right, true)
+			$Sprite.flip_h = true
 
 	print("FOV updated to:", dir)  
 
@@ -103,8 +104,9 @@ func detect_player(area: Area2D) -> void:
 		if father.in_shadow:
 			return
 		
-		caught.show()
+		$AnimationPlayer.play("spotted")
 		stop = true
+		
 		EventSystem.cutscene_started.emit()
 		if monolog != null and monolog.size() > 0:
 			DialogueSystem.start_dialog(monolog)

@@ -24,7 +24,9 @@ func _ready() -> void:
 	direction_statue = position_statue[counter_position]
 	
 	if TriggersSystem.check_trigger("opened_painting", true):
-			$Interactable.queue_free()
+		$Interactable.queue_free()
+		$HighlightComponent.queue_free()
+		$PreArea.queue_free()
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -34,6 +36,9 @@ func trigger_update(key, value):
 	if key == "opened_painting" and value == true:
 		interactable_statue.queue_free()
 		text_prompt.hide()
+		$Interactable.queue_free()
+		$HighlightComponent.queue_free()
+		$PreArea.queue_free()
 
 func _on_interactable_player_enter() -> void:
 	text_prompt.show()
@@ -46,6 +51,9 @@ func _on_interactable_player_exit() -> void:
 func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("opened_painting", true):
 		interactable_statue.hide()
+		$Interactable.queue_free()
+		$HighlightComponent.queue_free()
+		$PreArea.queue_free()
 	counter_position += 1
 	if counter_position >= position_statue.size():
 		counter_position = 0

@@ -37,3 +37,15 @@ func _on_load_game_pressed():
 	pass
 	#SaveSystem.load_game()
 	#LevelSystem.load_level("level_1")
+
+
+func _on_new_game_mouse_entered() -> void:
+	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")
+
+
+func _on_settings_mouse_entered() -> void:
+	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")
+
+
+func _on_exit_mouse_entered() -> void:
+	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")

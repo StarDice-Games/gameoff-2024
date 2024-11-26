@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwlyefkomsfa6"]
+[gd_scene load_steps=8 format=3 uid="uid://cwlyefkomsfa6"]
 
 [ext_resource type="Script" path="res://task_system/scripts/task_system.gd" id="1_xj3qx"]
 [ext_resource type="PackedScene" uid="uid://cxrlpr7aaoasy" path="res://task_system/task_ui.tscn" id="2_pmb02"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_r3hg3"]
-[ext_resource type="AudioStream" uid="uid://dcu7q0fkiphuw" path="res://audio/sfx/UI/UI_Highlight_Selection_02.wav" id="3_wwrgi"]
 [ext_resource type="Texture2D" uid="uid://cy16538i8gnfq" path="res://resource/assets/UI/task.png" id="4_qbedr"]
 
 [sub_resource type="Theme" id="Theme_anfox"]
@@ -20,7 +19,6 @@ Panel/styles/panel = SubResource("StyleBoxFlat_ppoq2")
 [node name="TaskSystem" type="Node2D"]
 script = ExtResource("1_xj3qx")
 task_ui = ExtResource("2_pmb02")
-sound_sfx = ExtResource("3_wwrgi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

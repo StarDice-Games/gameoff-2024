@@ -15,9 +15,11 @@ func _ready() -> void:
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
 		AudioSystem.play_music_event("go2024_stealth_v1")
-	else:
+	
+	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()
 		$DoorLock3.queue_free()
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

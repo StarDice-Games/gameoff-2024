@@ -260,7 +260,10 @@ scale = Vector2(0.405, 0.405)
 pivot_offset = Vector2(801, 0)
 texture = ExtResource("4_3sqsw")
 
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Settings" to="StateMenu/MainMenu" method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Settings" to="StateMenu/MainMenu" method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_pressed"]
 [connection signal="pressed" from="StateMenu/Settings/MainPanel/Back" to="StateMenu/Settings" method="_on_back_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=41 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -21,10 +21,16 @@
 [ext_resource type="Texture2D" uid="uid://dcjax5e0wbsdu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/sedie-statua.png" id="11_in8sk"]
 [ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
 [ext_resource type="Texture2D" uid="uid://cff8d11qa4uat" path="res://resource/assets/rooms/Corridoio/STATUA.png" id="12_p7jp6"]
+[ext_resource type="Texture2D" uid="uid://vthicuq0fe75" path="res://resource/assets/rooms/Corridoio/Luci.png" id="13_ao4pd"]
 [ext_resource type="PackedScene" uid="uid://dfdw54qhrvqhy" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_2.tscn" id="19_y4mm1"]
 [ext_resource type="PackedScene" uid="uid://dtgi8mhp76d54" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_3.tscn" id="20_ms3ha"]
 [ext_resource type="PackedScene" uid="uid://1uo4spegx35o" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_4.tscn" id="21_j0h8a"]
 [ext_resource type="PackedScene" uid="uid://bwgjq1cqqnp4" path="res://npc_act_1/npc_5.tscn" id="25_7xsap"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="26_lmyf7"]
+[ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="27_qp2n0"]
+[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="28_6nmjo"]
+[ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="29_jnotp"]
+[ext_resource type="Texture2D" uid="uid://cesm6wy6ww0tu" path="res://resource/assets/enemy/fascio luce stanza.png" id="30_5hml8"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
 script = ExtResource("2_dnq7l")
@@ -109,6 +115,17 @@ _data = {
 "open_painting": SubResource("Animation_6vtbb")
 }
 
+[sub_resource type="Resource" id="Resource_xkj33"]
+script = ExtResource("4_wk1te")
+key = "stealth"
+value = false
+
+[sub_resource type="Curve2D" id="Curve2D_dluho"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 1007, 79.5372)
+}
+point_count = 3
+
 [node name="Corridoio" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_w2gne")
@@ -131,6 +148,11 @@ polygon = PackedVector2Array(-961, 522, -917, 442, -876, 361, -900, 253, -933, -
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
 z_index = -1
+anchors_preset = -1
+anchor_left = -0.951852
+anchor_top = -0.918261
+anchor_right = 0.826852
+anchor_bottom = 1.00348
 offset_left = -1517.0
 offset_top = -831.0
 offset_right = 1525.0
@@ -164,6 +186,7 @@ texture = ExtResource("10_y3aqg")
 offset = Vector2(-4, 54)
 
 [node name="Sedie" type="Sprite2D" parent="Stanze"]
+light_mask = 0
 y_sort_enabled = true
 position = Vector2(-74, 446.5)
 texture = ExtResource("11_in8sk")
@@ -186,6 +209,11 @@ polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
 visible = false
 position = Vector2(4, 297)
 texture = ExtResource("12_p7jp6")
+
+[node name="Luci" type="Sprite2D" parent="Stanze"]
+position = Vector2(-69, 43)
+texture = ExtResource("13_ao4pd")
+offset = Vector2(4, -33)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_fksk1")]
 player_ref = NodePath("../Player")
@@ -231,12 +259,11 @@ offset_bottom = 25.0
 color = Color(0.570505, 1, 0.478134, 1)
 
 [node name="CameraFollow" parent="." instance=ExtResource("1_un85s")]
-visible = false
 position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(1346, 667)
+position = Vector2(215, 594)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
 position = Vector2(1899, 500)
@@ -318,6 +345,64 @@ position = Vector2(-331, -232)
 
 [node name="Npc" parent="." instance=ExtResource("25_7xsap")]
 position = Vector2(1271, 786)
+
+[node name="Stealth" type="Node2D" parent="."]
+position = Vector2(241, 455.716)
+scale = Vector2(1.44886, 1.33271)
+
+[node name="NodeToggle" parent="Stealth" instance=ExtResource("26_lmyf7")]
+trigger = SubResource("Resource_xkj33")
+
+[node name="Path2D" type="Path2D" parent="Stealth"]
+curve = SubResource("Curve2D_dluho")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D"]
+position = Vector2(1007, 79.5372)
+rotation = 0.00130556
+progress = 1002.0
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("27_qp2n0")]
+speed = 150
+path = NodePath("..")
+monolog = Array[ExtResource("2_dnq7l")]([ExtResource("28_6nmjo")])
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
+position = Vector2(-166.338, -341.947)
+scale = Vector2(0.690198, 0.750351)
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Stealth"]
+light_mask = 0
+visibility_layer = 0
+y_sort_enabled = true
+position = Vector2(55.2158, -61.3157)
+scale = Vector2(0.690198, 0.750351)
+energy = 1.5
+texture = ExtResource("30_5hml8")
+texture_scale = 1.28
+
+[node name="PointLight2D2" type="PointLight2D" parent="Stealth"]
+position = Vector2(443.107, -144.605)
+scale = Vector2(0.690198, 0.750351)
+energy = 1.5
+texture = ExtResource("30_5hml8")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Stealth"]
+position = Vector2(890.355, -151.358)
+scale = Vector2(0.690198, 0.750351)
+energy = 1.5
+texture = ExtResource("30_5hml8")
+
+[node name="Checkpoint" parent="." instance=ExtResource("29_jnotp")]
+position = Vector2(1712, 561.716)
+direction = "left"
+
+[node name="Checkpoint4" parent="." instance=ExtResource("29_jnotp")]
+position = Vector2(207, 561.716)
+direction = "right"
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

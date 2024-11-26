@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=17 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
@@ -23,7 +23,10 @@ character_image = ExtResource("5_oefkw")
 text_name = "Angelo"
 triggers = Array[ExtResource("6_32ndp")]([])
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvk36"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8a6r7"]
+radius = 73.0274
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8avd"]
 shader = ExtResource("8_lfd5p")
 shader_parameter/maxLineWidth = 10.0
 shader_parameter/minLineWidth = 1.0
@@ -32,11 +35,11 @@ shader_parameter/blockSize = 5.0
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8wcsx"]
-radius = 112.161
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxtts"]
+radius = 72.0278
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2ob1"]
-size = Vector2(190, 170)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4knnd"]
+radius = 128.472
 
 [node name="Rope" type="Node2D"]
 script = ExtResource("1_cbrfo")
@@ -46,29 +49,41 @@ dialog = Array[ExtResource("4_qcshn")]([SubResource("Resource_6jpcq")])
 [node name="RopeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("7_nqfqw")
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
-sprite = NodePath("../RopeSprite")
-shader = SubResource("ShaderMaterial_jvk36")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-shape = SubResource("CircleShape2D_8wcsx")
-
-[node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-1, 4)
-shape = SubResource("RectangleShape2D_i2ob1")
-
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -187.0
-offset_top = -218.0
-offset_right = 200.0
-offset_bottom = -72.0
+offset_left = -190.0
+offset_top = -191.0
+offset_right = 197.0
+offset_bottom = -45.0
 theme = ExtResource("9_bekj2")
 text = "Pick up "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_8a6r7")
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
+position = Vector2(-4, -1)
+sprite = NodePath("../RopeSprite")
+shader = SubResource("ShaderMaterial_p8avd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_vxtts")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../RopeSprite")
+shader = SubResource("ShaderMaterial_p8avd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_4knnd")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

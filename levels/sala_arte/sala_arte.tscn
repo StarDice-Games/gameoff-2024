@@ -164,11 +164,14 @@ polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
 
 [node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
 unique_name_in_owner = true
-position = Vector2(635, 745)
+position = Vector2(608, 653)
 
 [node name="Vaso2" type="Sprite2D" parent="Environment"]
 position = Vector2(1121, 763)
 texture = ExtResource("13_cu4xh")
+
+[node name="Npc" parent="Environment" instance=ExtResource("16_rd3pp")]
+position = Vector2(420, 737)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
 player_ref = NodePath("../Environment/Player")
@@ -197,6 +200,3 @@ color = Color(0.343338, 0.445565, 0.999296, 0.956863)
 visible = false
 position = Vector2(941, 542)
 player_ref = NodePath("../Environment/Player")
-
-[node name="Npc" parent="." instance=ExtResource("16_rd3pp")]
-position = Vector2(440, 710)

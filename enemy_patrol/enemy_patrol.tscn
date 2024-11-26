@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://8il3mjn3x70q"]
+[gd_scene load_steps=14 format=3 uid="uid://8il3mjn3x70q"]
 
 [ext_resource type="Script" path="res://enemy_patrol/scripts/enemy_patrol.gd" id="1_ejy71"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_4efgi"]
+[ext_resource type="Texture2D" uid="uid://dhyttvq0guhtq" path="res://resource/assets/enemy/Incappucciato_2.png" id="2_6m0pe"]
+[ext_resource type="Texture2D" uid="uid://dh8qf2ypf8xtk" path="res://resource/assets/enemy/fascio luce guardiano.png" id="3_40odj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
 size = Vector2(101.25, 96.25)
@@ -18,6 +20,97 @@ size = Vector2(50, 150)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcnqm"]
 size = Vector2(50, 150)
 
+[sub_resource type="Animation" id="Animation_bw7gc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Caught:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Caught:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sjaql"]
+resource_name = "spotted"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caught:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Caught:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lqm57"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwjga"]
+_data = {
+"RESET": SubResource("Animation_bw7gc"),
+"spotted": SubResource("Animation_sjaql"),
+"walk": SubResource("Animation_lqm57")
+}
+
 [node name="EnemyPatrol" type="CharacterBody2D"]
 position = Vector2(6, 2)
 collision_layer = 512
@@ -26,8 +119,9 @@ script = ExtResource("1_ejy71")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
-scale = Vector2(0.703125, 0.679688)
-texture = ExtResource("2_4efgi")
+rotation = 0.0174533
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_6m0pe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2)
@@ -41,6 +135,11 @@ position = Vector2(-64, -1)
 shape = SubResource("RectangleShape2D_jljmw")
 debug_color = Color(0.838179, 0.122111, 0.880316, 0.42)
 
+[node name="FascioLuceGuardiano" type="Sprite2D" parent="LeftFov"]
+position = Vector2(-111, -3)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("3_40odj")
+
 [node name="RightFov" type="Area2D" parent="."]
 collision_layer = 256
 
@@ -48,6 +147,12 @@ collision_layer = 256
 position = Vector2(79.5, -2)
 shape = SubResource("RectangleShape2D_gu2wp")
 debug_color = Color(0.864693, 0.353164, 0.134086, 0.42)
+
+[node name="FascioLuceGuardiano2" type="Sprite2D" parent="RightFov"]
+position = Vector2(88, -4)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("3_40odj")
+flip_h = true
 
 [node name="UpFov" type="Area2D" parent="."]
 collision_layer = 256
@@ -57,6 +162,12 @@ position = Vector2(1, -53)
 shape = SubResource("RectangleShape2D_krx8c")
 debug_color = Color(0, 0.101961, 0.701961, 0.419608)
 
+[node name="FascioLuceGuardiano3" type="Sprite2D" parent="UpFov"]
+position = Vector2(2.99999, -73)
+rotation = 1.5708
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("3_40odj")
+
 [node name="DownFov" type="Area2D" parent="."]
 collision_layer = 256
 
@@ -65,6 +176,13 @@ position = Vector2(1, 48)
 shape = SubResource("RectangleShape2D_lcnqm")
 debug_color = Color(0.382935, 0.612631, 0.00968294, 0.42)
 
+[node name="FascioLuceGuardiano4" type="Sprite2D" parent="DownFov"]
+position = Vector2(3, 69)
+rotation = 1.5708
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("3_40odj")
+flip_h = true
+
 [node name="EnemyArea" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 129
@@ -72,12 +190,17 @@ collision_mask = 129
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("RectangleShape2D_f6gaj")
 
-[node name="Caught" type="ColorRect" parent="."]
+[node name="Caught" type="Sprite2D" parent="."]
 visible = false
-offset_left = -21.0
-offset_top = -116.0
-offset_right = 19.0
-offset_bottom = -76.0
+position = Vector2(-6, -179)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4efgi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nwjga")
+}
+autoplay = "walk"
 
 [connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
 [connection signal="area_entered" from="RightFov" to="." method="detect_player"]

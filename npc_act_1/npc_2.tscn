@@ -90,9 +90,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.5, -167.5)
+y_sort_enabled = true
+position = Vector2(-1, -117)
 texture = ExtResource("7_hpetu")
-offset = Vector2(19, 11)
+offset = Vector2(20.5, -39.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
