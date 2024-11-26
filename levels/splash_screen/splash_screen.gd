@@ -15,4 +15,4 @@ func _process(delta):
 
 func endSpashScreen():
 	#end_splash.emit()
-	LevelSystem.load_level("main menu")
+	LevelSystem.load_level("esterno_title")

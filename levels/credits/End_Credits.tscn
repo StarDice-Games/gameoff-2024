@@ -93,7 +93,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"returnToMainMenu"
+"method": &"return_to_main_menu"
 }]
 }
 
