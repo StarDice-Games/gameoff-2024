@@ -177,6 +177,15 @@ offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
+[node name="Bath" type="Node2D" parent="LinkSystem"]
+position = Vector2(1063, 75)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/Bath"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.435294, 0.580392, 0.34902, 1)
+metadata/_edit_lock_ = true
+
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
 position = Vector2(1194, 1163)
 scale = Vector2(2.92001, 0.28)
@@ -195,6 +204,12 @@ position = Vector2(2059, 378)
 scale = Vector2(1, 1.56)
 level_id = "esterno"
 link_id = "WestDoor"
+
+[node name="Bath" parent="." instance=ExtResource("4_4x6bi")]
+position = Vector2(1058, -333)
+scale = Vector2(1, 1.56)
+level_id = "bathroom"
+link_id = "South"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 441.0

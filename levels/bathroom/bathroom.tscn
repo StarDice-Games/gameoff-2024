@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://beukjp0k4wfpw"]
+
+[ext_resource type="Texture2D" uid="uid://jcgcdo30msl" path="res://resource/assets/rooms/Bagno/bagno.png" id="4_c8pgc"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="11_6o853"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="14_ujq8x"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="15_ry6fn"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="16_fseb8"]
+
+[node name="SalaArte" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2088.0
+offset_top = -1039.0
+offset_right = 4112.0
+offset_bottom = 2335.0
+color = Color(0, 0, 0, 1)
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("14_ujq8x")]
+player_ref = NodePath("../Player")
+
+[node name="South" type="Node2D" parent="LinkSystem"]
+position = Vector2(829, 690)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
+visible = false
+offset_left = -12.0
+offset_top = -19.0
+offset_right = 28.0
+offset_bottom = 21.0
+color = Color(0.586297, 1, 0.416665, 1)
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("16_fseb8")]
+visible = false
+position = Vector2(941, 542)
+player_ref = NodePath("")
+
+[node name="Bagno" type="Sprite2D" parent="."]
+position = Vector2(942, 542)
+texture = ExtResource("4_c8pgc")
+
+[node name="Player" parent="." instance=ExtResource("11_6o853")]
+position = Vector2(878, 573)
+
+[node name="Portal" parent="." instance=ExtResource("15_ry6fn")]
+position = Vector2(910, 773)
+scale = Vector2(5.5159, 0.2)
+level_id = "ingresso"
+link_id = "Bath"
