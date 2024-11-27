@@ -3633,6 +3633,7 @@ footstep = ExtResource("2_ave4c")
 modulate = Color(0.996946, 3.44135e-06, 0, 1)
 target_position = Vector2(0, 100)
 collision_mask = 4
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="Front" type="Node2D" parent="."]
