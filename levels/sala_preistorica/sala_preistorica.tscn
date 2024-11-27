@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=25 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="12_ig3nv"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="13_e86rr"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="15_hbg3j"]
+[ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
 
 [sub_resource type="Resource" id="Resource_kpamj"]
 script = ExtResource("12_ig3nv")
@@ -69,6 +70,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ScenaPesce:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_m6ydv"]
 resource_name = "falling_fish"
@@ -108,6 +121,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ScenaPesce:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.46667, 3.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agkou"]
@@ -220,6 +245,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene/CanvasLayer"]
 stream = ExtResource("7_f24n0")
+
+[node name="ScenaPesce" type="Sprite2D" parent="FishCutScene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(959, 542)
+texture = ExtResource("17_5mw4a")
 
 [node name="Npc" parent="." instance=ExtResource("11_lq22p")]
 position = Vector2(739, 757)

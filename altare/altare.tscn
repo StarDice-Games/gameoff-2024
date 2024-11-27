@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://0h08en1f6gqc"]
+[gd_scene load_steps=20 format=3 uid="uid://0h08en1f6gqc"]
 
 [ext_resource type="Script" path="res://altare/script/altare.gd" id="1_a5ybs"]
 [ext_resource type="Texture2D" uid="uid://bhns6n15oi56m" path="res://resource/assets/rooms/sala_sacrificio/Altare.png" id="2_x3xy3"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c2xy14ppklklp" path="res://audio/sfx/various/sfx_thunder.ogg" id="6_i0vui"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_6gipo"]
 [ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="8_w2prh"]
+[ext_resource type="Texture2D" uid="uid://ymu1su6c5d7l" path="res://resource/assets/scene_azione/Oggetti posizionamento.PNG" id="12_58y7o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvnnh"]
 radius = 179.07
@@ -44,6 +45,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/ScenaOggetti:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_vg5m2"]
 resource_name = "thunder"
@@ -71,6 +84,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/ScenaOggetti:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.633333, 1.23333, 5.26667, 5.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5y5is"]
@@ -166,6 +191,11 @@ offset_right = 2472.0
 offset_bottom = 1388.0
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="ScenaOggetti" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(959, 538)
+texture = ExtResource("12_58y7o")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

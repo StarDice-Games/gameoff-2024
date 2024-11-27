@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=59 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
@@ -21,9 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
 [ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="17_rhtdm"]
 [ext_resource type="AudioStream" uid="uid://b0n8kpjkerh0g" path="res://audio/sfx/various/Lock_Door_01.wav" id="18_is8n0"]
+[ext_resource type="Texture2D" uid="uid://d1vhakptciknd" path="res://resource/assets/scene_azione/Chiusura museo.PNG" id="19_6scr7"]
 [ext_resource type="PackedScene" uid="uid://heowlo4h6fdn" path="res://end_phone/end_phone.tscn" id="20_hvcx5"]
+[ext_resource type="Texture2D" uid="uid://1geqd0gri8h1" path="res://resource/assets/scene_azione/Armadietto.PNG" id="21_55meu"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="21_nud1n"]
 [ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="24_3hbrg"]
+[ext_resource type="Texture2D" uid="uid://c5gt8esvdugam" path="res://resource/assets/scene_azione/Telefonata polizia.PNG" id="25_1qhqn"]
 
 [sub_resource type="Resource" id="Resource_bmfvq"]
 script = ExtResource("6_66euh")
@@ -173,6 +176,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaChiusura:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ci7yj"]
 resource_name = "close_museum"
@@ -184,10 +199,10 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 4.53333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0666667, 4.53333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -200,6 +215,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaChiusura:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.93333, 3.56667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtup7"]
@@ -234,6 +261,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaArmadietto:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0wa4b"]
 resource_name = "end"
@@ -265,6 +304,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaArmadietto:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.73333, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sehj2"]
 _data = {
@@ -280,9 +331,22 @@ value = false
 
 [sub_resource type="Animation" id="Animation_egydi"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ScenaPolice:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_blnn4"]
 resource_name = "end"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -294,6 +358,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ScenaPolice:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7xco"]
@@ -410,6 +486,12 @@ color = Color(0, 0, 0, 1)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CloseMuseumCutscene/CanvasLayer"]
 stream = ExtResource("18_is8n0")
 
+[node name="ScenaChiusura" type="Sprite2D" parent="CloseMuseumCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(958, 544)
+texture = ExtResource("19_6scr7")
+
 [node name="OpenGuardarobaCutscene" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="OpenGuardarobaCutscene"]
@@ -431,6 +513,12 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_sehj2")
 }
+
+[node name="ScenaArmadietto" type="Sprite2D" parent="OpenGuardarobaCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 6
+position = Vector2(958, 539)
+texture = ExtResource("21_55meu")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -464,6 +552,11 @@ offset_top = -116.0
 offset_right = 2044.0
 offset_bottom = 1202.0
 color = Color(0, 0, 0, 0)
+
+[node name="ScenaPolice" type="Sprite2D" parent="EndPhone/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(959, 541)
+texture = ExtResource("25_1qhqn")
 
 [node name="GuardarobaGuardiano" parent="." instance=ExtResource("16_7xk1d")]
 position = Vector2(698, 534)

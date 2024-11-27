@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
 [ext_resource type="Texture2D" uid="uid://cff8d11qa4uat" path="res://resource/assets/rooms/Corridoio/STATUA.png" id="12_p7jp6"]
 [ext_resource type="Texture2D" uid="uid://vthicuq0fe75" path="res://resource/assets/rooms/Corridoio/Luci.png" id="13_ao4pd"]
+[ext_resource type="Texture2D" uid="uid://cchfe6wrakdx0" path="res://resource/assets/scene_azione/Apertura quadro.PNG" id="19_jrd7r"]
 [ext_resource type="PackedScene" uid="uid://dfdw54qhrvqhy" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_2.tscn" id="19_y4mm1"]
 [ext_resource type="PackedScene" uid="uid://dtgi8mhp76d54" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_3.tscn" id="20_ms3ha"]
 [ext_resource type="PackedScene" uid="uid://1uo4spegx35o" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_4.tscn" id="21_j0h8a"]
@@ -78,6 +79,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaQuadro:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6vtbb"]
 resource_name = "open_painting"
@@ -105,6 +118,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaQuadro:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 4, 4.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_21xjm"]
@@ -305,6 +330,12 @@ libraries = {
 "": SubResource("AnimationLibrary_21xjm")
 }
 
+[node name="ScenaQuadro" type="Sprite2D" parent="OpenPaintingCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(962, 543)
+texture = ExtResource("19_jrd7r")
+
 [node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 top_level = true
@@ -345,6 +376,7 @@ position = Vector2(-331, -232)
 position = Vector2(1271, 786)
 
 [node name="Stealth" type="Node2D" parent="."]
+visible = false
 position = Vector2(241, 455.716)
 scale = Vector2(1.44886, 1.33271)
 
