@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://t3cdxwm3ovne"]
+[gd_scene load_steps=18 format=3 uid="uid://t3cdxwm3ovne"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oefkw"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_jvlqr"]
+[ext_resource type="Texture2D" uid="uid://687n7gtcgwck" path="res://resource/assets/rooms/Sala animali/corda-caduta.png" id="7_lbqoa"]
 [ext_resource type="Texture2D" uid="uid://b81nmdn5vf1pu" path="res://resource/assets/items/corda.png" id="7_nqfqw"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="8_lfd5p"]
 [ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_bekj2"]
@@ -47,7 +48,8 @@ item = SubResource("Resource_j4ugp")
 dialog = Array[ExtResource("4_qcshn")]([SubResource("Resource_6jpcq")])
 
 [node name="RopeSprite" type="Sprite2D" parent="."]
-texture = ExtResource("7_nqfqw")
+position = Vector2(-60, -39)
+texture = ExtResource("7_lbqoa")
 
 [node name="Label" type="Label" parent="."]
 visible = false

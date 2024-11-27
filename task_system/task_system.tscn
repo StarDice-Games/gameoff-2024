@@ -77,7 +77,8 @@ offset_bottom = 52.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_r3hg3")
 theme_override_font_sizes/font_size = 40
-text = "To Do List"
+text = "Find List
+"
 vertical_alignment = 1
 autowrap_mode = 2
 clip_text = true

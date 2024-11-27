@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=24 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
 [ext_resource type="Texture2D" uid="uid://4ayojkm2sfk7" path="res://resource/assets/rooms/Sala animali/elementi forntali.png" id="4_op8el"]
+[ext_resource type="Texture2D" uid="uid://bxg2vik1mg2g4" path="res://resource/assets/rooms/Sala animali/pesce schiantato.png" id="6_g1o0m"]
 [ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
 [ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="7_f24n0"]
 [ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="8_alvi4"]
@@ -14,7 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_n8j22"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_l6ab1"]
 [ext_resource type="PackedScene" uid="uid://bbftqg7gy0x17" path="res://npc_act_1/npc_4.tscn" id="11_lq22p"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="12_ig3nv"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="13_e86rr"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="15_hbg3j"]
+
+[sub_resource type="Resource" id="Resource_kpamj"]
+script = ExtResource("12_ig3nv")
+dialogue_text = Array[String](["Mmmh…this rope will surely help me catch something high."])
+character_image = ExtResource("13_e86rr")
+text_name = "Angelo"
+triggers = Array[ExtResource("10_l6ab1")]([])
 
 [sub_resource type="Resource" id="Resource_hx5ly"]
 script = ExtResource("10_l6ab1")
@@ -142,6 +152,11 @@ position = Vector2(444, -249)
 texture = ExtResource("9_f1pih")
 offset = Vector2(-4, 48)
 
+[node name="PesceSchiantato" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(420, 48)
+texture = ExtResource("6_g1o0m")
+
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
 player_ref = NodePath("../Player")
 
@@ -176,12 +191,10 @@ link_id = "North1"
 [node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
 position = Vector2(995, 639)
 
-[node name="Marker2D" type="Marker2D" parent="Fish"]
-position = Vector2(385, 14)
-
 [node name="Rope" parent="." instance=ExtResource("8_alvi4")]
 visible = false
-position = Vector2(956, 800)
+position = Vector2(1272, 656)
+dialog = Array[ExtResource("12_ig3nv")]([SubResource("Resource_kpamj")])
 
 [node name="NodeToggle2" parent="Rope" instance=ExtResource("9_n8j22")]
 position = Vector2(-96.0701, -182.915)

@@ -14,7 +14,7 @@
 size = Vector2(279, 149)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pb2hv"]
-radius = 295.205
+radius = 116.039
 
 [sub_resource type="Resource" id="Resource_i86oa"]
 script = ExtResource("5_gik0o")
@@ -31,10 +31,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctw41"]
-radius = 294.138
+radius = 116.108
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i7jy6"]
-radius = 518.139
+radius = 245.601
 
 [node name="Fish" type="StaticBody2D"]
 script = ExtResource("1_qedpr")
@@ -53,7 +53,7 @@ position = Vector2(-53, -399.5)
 texture = ExtResource("7_r1biv")
 
 [node name="Interactable" parent="." instance=ExtResource("7_kaf1x")]
-position = Vector2(398, -313)
+position = Vector2(-516, -35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(2, -2)
@@ -65,15 +65,15 @@ trigger = SubResource("Resource_i86oa")
 [node name="Label" type="Label" parent="."]
 visible = false
 texture_filter = 1
-offset_left = 251.0
-offset_top = -548.0
-offset_right = 376.0
-offset_bottom = -502.0
+offset_left = -574.0
+offset_top = -136.0
+offset_right = -449.0
+offset_bottom = -90.0
 theme = ExtResource("10_y08tt")
 text = "Interact"
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_l8k8q")]
-position = Vector2(401, -311)
+position = Vector2(-515, -37)
 sprite = NodePath("../Corda")
 shader = SubResource("ShaderMaterial_hpdkm")
 
@@ -82,7 +82,7 @@ position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_ctw41")
 
 [node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("8_l8k8q")]
-position = Vector2(402, -311)
+position = Vector2(-514, -37)
 highlight_color = Color(1, 1, 1, 0.364706)
 sprite = NodePath("../Corda")
 shader = SubResource("ShaderMaterial_hpdkm")

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_kal4g")
 id = "chalice"
-description = "Get the sacred chalice "
+description = "Ancient Goblet"
 complete = false
 counter_max = -1
 current_counter = -1
