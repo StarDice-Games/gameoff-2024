@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _on_interactable_interacted() -> void:
-	AudioSystem.mute
+	EventSystem.stop_sound.emit("go2024_stealth_v1")
 	$Agganciato.hide()
 	$NonAgganciato.show()
 	$AnimationPlayer.play("dial")

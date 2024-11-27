@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://heowlo4h6fdn"]
+[gd_scene load_steps=23 format=3 uid="uid://heowlo4h6fdn"]
 
 [ext_resource type="Script" path="res://end_phone/script/end_phone.gd" id="1_4hsqm"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_3xu23"]
@@ -8,9 +8,9 @@
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_uvss2"]
 [ext_resource type="Texture2D" uid="uid://dog3kq1wlyc0v" path="res://resource/assets/rooms/Guardiola/telefono-agganciato.png" id="5_ysvu1"]
 [ext_resource type="Texture2D" uid="uid://bh76u364bare1" path="res://resource/assets/rooms/Guardiola/telefono-sganciato.png" id="6_hdvbe"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_3gmt4"]
 [ext_resource type="AudioStream" uid="uid://b7j6upbs7mcik" path="res://audio/sfx/phone/Phone_Dial_01.wav" id="8_qsdsk"]
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_lmlw3"]
-[ext_resource type="Script" path="res://highlight_component/TelephoneHighlight.gd" id="11_cpiah"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="12_wriuh"]
 
 [sub_resource type="Resource" id="Resource_tt4s5"]
@@ -26,7 +26,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("4_1uhme")]([SubResource("Resource_tt4s5")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6mib"]
-radius = 129.124
+radius = 129.314
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_434pq"]
 size = Vector2(162, 163)
@@ -68,17 +68,20 @@ _data = {
 "dial": SubResource("Animation_6yrt7")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj72j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7j0eo"]
 shader = ExtResource("12_wriuh")
 shader_parameter/maxLineWidth = 10.0
 shader_parameter/minLineWidth = 1.0
 shader_parameter/speed = 5.0
 shader_parameter/blockSize = 5.0
-shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wm85l"]
-radius = 128.004
+[sub_resource type="CircleShape2D" id="CircleShape2D_376nu"]
+radius = 129.035
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b17hs"]
+radius = 191.094
 
 [node name="EndPhone" type="Node2D"]
 script = ExtResource("1_4hsqm")
@@ -101,14 +104,13 @@ shape = SubResource("CircleShape2D_w6mib")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -63.0
-offset_top = -190.0
-offset_right = 80.0
-offset_bottom = -155.0
-theme_override_constants/outline_size = 10
+offset_left = -100.0
+offset_top = -152.0
+offset_right = 104.0
+offset_bottom = -106.0
+theme = ExtResource("8_3gmt4")
 theme_override_fonts/font = ExtResource("4_uvss2")
-theme_override_font_sizes/font_size = 30
-text = "Call
+text = "Call the police
 "
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -127,15 +129,24 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_qsdsk")
 
-[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_lmlw3")]
-position = Vector2(50, 76)
-script = ExtResource("11_cpiah")
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_lmlw3")]
+position = Vector2(-4, -1)
 sprite = NodePath("../Agganciato")
-shader = SubResource("ShaderMaterial_jj72j")
+shader = SubResource("ShaderMaterial_7j0eo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
-position = Vector2(-49, -77)
-shape = SubResource("CircleShape2D_wm85l")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_376nu")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_lmlw3")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Agganciato")
+shader = SubResource("ShaderMaterial_7j0eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_b17hs")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

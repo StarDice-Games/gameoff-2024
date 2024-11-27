@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bimh43rosrgdr"]
+[gd_scene load_steps=12 format=3 uid="uid://bimh43rosrgdr"]
 
 [ext_resource type="Script" path="res://TestKev/test_kev.gd" id="1_q0rul"]
 [ext_resource type="Resource" uid="uid://5rj628d30ja0" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tres" id="2_bgmgv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdsfmqfnh3l25" path="res://puzzle_magic_book/magic_book/magic_book.tscn" id="4_x4sl2"]
 [ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="5_ofpgc"]
 [ext_resource type="PackedScene" uid="uid://dqwdlx6ofhlti" path="res://puzzle_magic_book/key/key.tscn" id="6_a4vlp"]
+[ext_resource type="PackedScene" uid="uid://heowlo4h6fdn" path="res://end_phone/end_phone.tscn" id="11_hl8wt"]
 
 [node name="TestKev" type="Node2D"]
 script = ExtResource("1_q0rul")
@@ -34,3 +35,6 @@ position = Vector2(357, 402)
 
 [node name="Player" parent="." instance=ExtResource("3_02add")]
 position = Vector2(966, 311)
+
+[node name="EndPhone" parent="." instance=ExtResource("11_hl8wt")]
+position = Vector2(1258, 185)

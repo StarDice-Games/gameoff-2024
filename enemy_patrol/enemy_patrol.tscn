@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://8il3mjn3x70q"]
+[gd_scene load_steps=14 format=3 uid="uid://8il3mjn3x70q"]
 
 [ext_resource type="Script" path="res://enemy_patrol/scripts/enemy_patrol.gd" id="1_ejy71"]
 [ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_4efgi"]
 [ext_resource type="Texture2D" uid="uid://dhyttvq0guhtq" path="res://resource/assets/enemy/Incappucciato_2.png" id="2_6m0pe"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_15anu"]
 [ext_resource type="Texture2D" uid="uid://dh8qf2ypf8xtk" path="res://resource/assets/enemy/fascio luce guardiano.png" id="3_40odj"]
+[ext_resource type="Texture2D" uid="uid://c2d64qxa8oamk" path="res://resource/assets/enemy/Retro.png" id="3_w5haw"]
+[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="3_ypxun"]
 [ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="5_dekpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
@@ -14,7 +17,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/path = NodePath("SpriteFront:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,6 +49,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteBack:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0174533]
 }
 
 [sub_resource type="Animation" id="Animation_sjaql"]
@@ -83,7 +98,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/path = NodePath("SpriteFront:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,10 +114,22 @@ tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.266667, 1.26667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, true, true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteBack:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwjga"]
@@ -118,12 +145,21 @@ position = Vector2(6, 2)
 collision_layer = 512
 collision_mask = 129
 script = ExtResource("1_ejy71")
+monolog = Array[ExtResource("2_15anu")]([ExtResource("3_ypxun")])
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="SpriteFront" type="Sprite2D" parent="."]
+position = Vector2(-6.78406, 81.0724)
+rotation = 0.0174533
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_6m0pe")
+offset = Vector2(8.91777, -136.964)
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 rotation = 0.0174533
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_6m0pe")
+scale = Vector2(0.6, 0.597749)
+texture = ExtResource("3_w5haw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -136,7 +172,6 @@ collision_layer = 256
 [node name="PointLight2D2" type="PointLight2D" parent="LeftFov"]
 light_mask = 8
 position = Vector2(-159, -10)
-energy = 2.0
 texture = ExtResource("3_40odj")
 texture_scale = 0.7
 
@@ -151,7 +186,6 @@ collision_layer = 256
 light_mask = 8
 position = Vector2(151, 11)
 rotation = 3.14159
-energy = 2.0
 texture = ExtResource("3_40odj")
 texture_scale = 0.7
 
@@ -166,7 +200,6 @@ collision_layer = 256
 light_mask = 8
 position = Vector2(10, -150)
 rotation = 1.5708
-energy = 2.0
 texture = ExtResource("3_40odj")
 texture_scale = 0.7
 
@@ -181,7 +214,6 @@ collision_layer = 256
 light_mask = 8
 position = Vector2(-9, 142)
 rotation = -1.5708
-energy = 2.0
 texture = ExtResource("3_40odj")
 texture_scale = 0.7
 

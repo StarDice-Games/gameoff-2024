@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://bwgjq1cqqnp4" path="res://npc_act_1/npc_5.tscn" id="25_7xsap"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="26_lmyf7"]
 [ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="27_qp2n0"]
-[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="28_6nmjo"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="29_jnotp"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
@@ -218,7 +217,7 @@ offset = Vector2(4, -33)
 player_ref = NodePath("../Player")
 
 [node name="EastDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1756, 683)
+position = Vector2(1720, 597)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/EastDoor"]
 offset_left = -16.0
@@ -228,7 +227,7 @@ offset_bottom = 20.0
 color = Color(0.352941, 0.952941, 0.439216, 1)
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(156, 687)
+position = Vector2(187, 624)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_left = -17.0
@@ -238,7 +237,7 @@ offset_bottom = 22.0
 color = Color(0.567675, 1, 0.487942, 1)
 
 [node name="North1" type="Node2D" parent="LinkSystem"]
-position = Vector2(438, 569)
+position = Vector2(432, 568)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North1"]
 offset_left = -16.0
@@ -248,7 +247,7 @@ offset_bottom = 23.0
 color = Color(0.533841, 1, 0.586211, 1)
 
 [node name="North2" type="Node2D" parent="LinkSystem"]
-position = Vector2(1472, 572)
+position = Vector2(1462, 555)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North2"]
 offset_left = -18.0
@@ -262,7 +261,7 @@ position = Vector2(941, 542)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(505, 619)
+position = Vector2(157, 605)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
 position = Vector2(1899, 500)
@@ -282,12 +281,12 @@ level_id = "sala preistorica"
 link_id = "South"
 
 [node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(8, 489)
+position = Vector2(-3, 551)
 level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(-24, 500)
+position = Vector2(-33, 529)
 
 [node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(382, 322)
@@ -346,6 +345,7 @@ position = Vector2(-331, -232)
 position = Vector2(1271, 786)
 
 [node name="Stealth" type="Node2D" parent="."]
+visible = false
 position = Vector2(241, 455.716)
 scale = Vector2(1.44886, 1.33271)
 
@@ -368,7 +368,6 @@ loop = false
 position = Vector2(2.76237, 2.24744)
 speed = 150
 path = NodePath("..")
-monolog = Array[ExtResource("2_dnq7l")]([ExtResource("28_6nmjo")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
 position = Vector2(-166.338, -341.947)

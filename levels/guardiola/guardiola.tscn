@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=56 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://b0n8kpjkerh0g" path="res://audio/sfx/various/Lock_Door_01.wav" id="18_is8n0"]
 [ext_resource type="PackedScene" uid="uid://heowlo4h6fdn" path="res://end_phone/end_phone.tscn" id="20_hvcx5"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="21_nud1n"]
+[ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="24_3hbrg"]
 
 [sub_resource type="Resource" id="Resource_bmfvq"]
 script = ExtResource("6_66euh")
@@ -34,17 +35,12 @@ triggers = Array[ExtResource("7_xu3vp")]([])
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c48ag"]
 size = Vector2(793.5, 104.5)
 
-[sub_resource type="Resource" id="Resource_k2cmd"]
-script = ExtResource("7_xu3vp")
-key = "first_boss_call"
-value = true
-
 [sub_resource type="Resource" id="Resource_5jy0i"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Good evening Angelo and welcome.", "I know your shift starts this evening, just make sure you take care of this place, ok?", "Since your predecessor was…was promoted, here in the night is a complete mess."])
 character_image = ExtResource("12_e3x06")
 text_name = "Museum Director"
-triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
+triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="Resource" id="Resource_x2y3w"]
 script = ExtResource("6_66euh")
@@ -53,12 +49,17 @@ character_image = ExtResource("7_x57c3")
 text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
+[sub_resource type="Resource" id="Resource_k2cmd"]
+script = ExtResource("7_xu3vp")
+key = "first_boss_call"
+value = true
+
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["You can start checking if someone is still here in the museum.", "We're closing, and it’s better not to have people here at night.", "Now I have to go, we’ll talk again later."])
 character_image = ExtResource("12_e3x06")
 text_name = "Museum Director"
-triggers = Array[ExtResource("7_xu3vp")]([])
+triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
 
 [sub_resource type="Resource" id="Resource_5eku6"]
 script = ExtResource("6_66euh")
@@ -370,7 +371,7 @@ color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(856, 175)
+position = Vector2(840, 114)
 scale = Vector2(2.2, 1.24)
 level_id = "ingresso"
 link_id = "SouthDoor"
@@ -466,6 +467,9 @@ color = Color(0, 0, 0, 0)
 
 [node name="GuardarobaGuardiano" parent="." instance=ExtResource("16_7xk1d")]
 position = Vector2(698, 534)
+
+[node name="DoorLockHall" parent="." instance=ExtResource("24_3hbrg")]
+position = Vector2(797, 321)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
 [connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

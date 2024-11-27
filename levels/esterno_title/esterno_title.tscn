@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="9_qs4pb"]
 [ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="10_cot7y"]
 [ext_resource type="Texture2D" uid="uid://pwrq3lb21vbl" path="res://resource/assets/title/ringhiera-sopra.png" id="10_kkrbm"]
-[ext_resource type="AudioStream" uid="uid://djnct0palh3v7" path="res://audio/bgmusic/go2024_title_v1.ogg" id="11_nexd5"]
 [ext_resource type="Texture2D" uid="uid://ck4yiohdwq52j" path="res://resource/assets/title/ringhiera-sotto.png" id="11_wedho"]
 [ext_resource type="Texture2D" uid="uid://dycink1w47biv" path="res://resource/assets/title/cancelli.png" id="12_uq48i"]
 [ext_resource type="Texture2D" uid="uid://d0abk5cbol38a" path="res://resource/assets/title/giorno_porta.png" id="13_yb1nw"]
@@ -27,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bnb5yjrf2n4c5" path="res://resource/assets/title/luna.png" id="17_rtrgh"]
 [ext_resource type="Texture2D" uid="uid://6qm5c730ne3k" path="res://resource/assets/title/notte_porta.png" id="18_y6ut1"]
 [ext_resource type="Texture2D" uid="uid://b8m0hvqp8pfk8" path="res://resource/assets/title/ingresso chiuso.png" id="23_mi14j"]
+[ext_resource type="AudioStream" uid="uid://djnct0palh3v7" path="res://audio/bgmusic/go2024_title_v1.ogg" id="27_1so3i"]
 
 [sub_resource type="Resource" id="Resource_vfy75"]
 script = ExtResource("4_x38vt")
@@ -75,38 +75,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/path = NodePath("Giorno/Env:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0.39, 0.39)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Giorno/Env:scale")
+tracks/3/path = NodePath("CharacterBody2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.39, 0.39)]
+"values": [Vector2(966, 619)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterBody2D:position")
+tracks/4/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(966, 619)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ti7s3"]
@@ -139,38 +139,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/path = NodePath("Giorno/Env:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(5.2, 9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Giorno/Env:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(2.36667, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.39, 0.39), Vector2(1, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterBody2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(966, 619), Vector2(769, 1115)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 2.21914),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]
@@ -371,13 +371,17 @@ libraries = {
 "": SubResource("AnimationLibrary_2wrdi")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_nexd5")
-autoplay = true
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(966, 619)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_1so3i")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Giorno/Env/MusicStart" to="." method="_on_music_start_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

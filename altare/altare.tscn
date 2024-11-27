@@ -99,7 +99,7 @@ offset = Vector2(-146, 70)
 
 [node name="Sprite_object" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(3, -77)
+position = Vector2(2, -61)
 texture = ExtResource("3_2l30n")
 
 [node name="Interactable" parent="." instance=ExtResource("3_h4y86")]

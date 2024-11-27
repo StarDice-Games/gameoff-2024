@@ -8,13 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_1fggd"]
 script = ExtResource("2_ku3x8")
-dialogue_text = Array[String](["Door locked"])
+dialogue_text = Array[String](["I need to find a phone to call the police"])
 character_image = ExtResource("3_5k1l3")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_ppv2w")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12ubx"]
-size = Vector2(103, 316)
+size = Vector2(103, 351)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y17gx"]
 size = Vector2(77, 317)
@@ -31,7 +31,7 @@ script = ExtResource("1_4fq22")
 dialog = Array[ExtResource("2_ku3x8")]([SubResource("Resource_1fggd")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(53.5, 26)
+position = Vector2(53.5, 25.5)
 shape = SubResource("RectangleShape2D_12ubx")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

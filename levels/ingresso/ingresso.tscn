@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=29 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -16,9 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://t87t82e062ie" path="res://npc_act_1/npc_3.tscn" id="16_wlojo"]
 [ext_resource type="Texture2D" uid="uid://cba3khksutltm" path="res://resource/assets/rooms/Hall/porte_hall.png" id="17_eok5r"]
 [ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="17_k8g4v"]
-[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="18_5cdul"]
+[ext_resource type="PackedScene" uid="uid://ddbxb4w0e5i7l" path="res://enemy_patrol/enemy_patrol_2.tscn" id="17_x6xpj"]
+[ext_resource type="PackedScene" uid="uid://bt3dhh7ty8nlq" path="res://enemy_patrol/enemy_patrol_3.tscn" id="18_4h17y"]
+[ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="19_bg8dd"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
-[ext_resource type="Texture2D" uid="uid://cesm6wy6ww0tu" path="res://resource/assets/enemy/fascio luce stanza.png" id="19_qftki"]
 
 [sub_resource type="Animation" id="Animation_yrndo"]
 length = 0.001
@@ -119,26 +120,38 @@ value = false
 
 [sub_resource type="Curve2D" id="Curve2D_k5ovg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 1007, 79.5372)
+"points": PackedVector2Array(0, 0, 0, 0, -348.381, 75.2482, 0, 0, 0, 0, 1011.31, 76.749)
 }
-point_count = 3
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t425o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -348.381, 75.2482, 0, 0, 0, 0, 1011.31, 76.749)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_aeywb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 557.292, 62.7084, 0, 0, 0, 0, 65.8706, 70.2119)
+}
+point_count = 2
 
 [node name="Ingresso" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_8qsso")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -959.0
-offset_top = -545.0
-offset_right = 2791.0
-offset_bottom = 1810.0
+offset_left = -2990.0
+offset_top = -1876.0
+offset_right = 4553.0
+offset_bottom = 3030.0
 color = Color(0, 0, 0, 1)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1124, 928)
+position = Vector2(1190, 969)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
 offset_right = 40.0
@@ -147,7 +160,7 @@ color = Color(0.769008, 0.954614, 0.43227, 1)
 metadata/_edit_lock_ = true
 
 [node name="ExitDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1869, 544)
+position = Vector2(1860, 489)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/ExitDoor"]
 offset_right = 40.0
@@ -156,7 +169,7 @@ color = Color(0.769008, 0.954614, 0.43227, 1)
 metadata/_edit_lock_ = true
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(-135, 419)
+position = Vector2(-41, 382)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -165,20 +178,20 @@ color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1194, 1152)
+position = Vector2(1194, 1163)
 scale = Vector2(2.92001, 0.28)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
 z_index = 1
-position = Vector2(-202, 311)
-scale = Vector2(1, 0.560001)
+position = Vector2(-217, 287)
+scale = Vector2(1.22925, 0.599561)
 level_id = "corridoio"
 link_id = "EastDoor"
 
 [node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(2047, 415)
+position = Vector2(2059, 378)
 scale = Vector2(1, 1.56)
 level_id = "esterno"
 link_id = "WestDoor"
@@ -231,10 +244,10 @@ polygon = PackedVector2Array(1314, 1100, 2111, 1100, 2100, 1053, 2100, 904, 2071
 player_ref = NodePath("../Player")
 
 [node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(-211, 346)
+position = Vector2(-236, 356)
 
 [node name="DoorLockHall2" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(1937, 401)
+position = Vector2(2001, 362)
 
 [node name="TRexTrigger" parent="." instance=ExtResource("11_e0sph")]
 position = Vector2(549, 311)
@@ -262,9 +275,10 @@ collision_layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
-position = Vector2(1362, 574)
+position = Vector2(-30, 398)
 
 [node name="Stealth" type="Node2D" parent="."]
+visible = false
 position = Vector2(224, 767)
 scale = Vector2(1.44886, 1.33271)
 
@@ -272,34 +286,73 @@ scale = Vector2(1.44886, 1.33271)
 trigger = SubResource("Resource_0sktr")
 
 [node name="Path2D" type="Path2D" parent="Stealth"]
+position = Vector2(104.741, -16.7209)
 curve = SubResource("Curve2D_k5ovg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D"]
-position = Vector2(1007, 79.5372)
+position = Vector2(1011.31, 76.749)
 rotation = 0.00130556
-progress = 1002.0
+progress = 1359.69
 rotates = false
 cubic_interp = false
 loop = false
 
-[node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("17_k8g4v")]
+[node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("17_x6xpj")]
 speed = 150
 path = NodePath("..")
-monolog = Array[ExtResource("3_fpr8x")]([ExtResource("18_5cdul")])
+
+[node name="Path2D2" type="Path2D" parent="Stealth"]
+position = Vector2(104.741, -16.7209)
+curve = SubResource("Curve2D_t425o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D2"]
+position = Vector2(-348.381, 75.2482)
+rotation = 0.00130556
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Stealth/Path2D2/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("18_4h17y")]
+speed = 150
+path = NodePath("..")
+
+[node name="Path2D3" type="Path2D" parent="Stealth"]
+position = Vector2(569.111, -242.042)
+curve = SubResource("Curve2D_aeywb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D3"]
+position = Vector2(557.292, 62.7084)
+rotation = -0.00562924
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Stealth/Path2D3/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("17_k8g4v")]
+speed = 150
+path = NodePath("..")
+
+[node name="Checkpoint1" parent="Stealth/Path2D3" instance=ExtResource("19_bg8dd")]
+position = Vector2(16.8665, 70.2119)
+scale = Vector2(0.690198, 0.750351)
+direction = "right"
+
+[node name="Checkpoint3" parent="Stealth/Path2D3" instance=ExtResource("19_bg8dd")]
+position = Vector2(619.409, 67.9608)
+scale = Vector2(0.690198, 0.750351)
+direction = "left"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
 position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="Stealth"]
-light_mask = 0
-visibility_layer = 0
-y_sort_enabled = true
-position = Vector2(631.531, -213.85)
-scale = Vector2(0.690198, 0.750351)
-energy = 1.5
-texture = ExtResource("19_qftki")
+[node name="Checkpoint" parent="Stealth" instance=ExtResource("19_bg8dd")]
+position = Vector2(1178.17, 60.7784)
+direction = "left"
+
+[node name="Checkpoint2" parent="Stealth" instance=ExtResource("19_bg8dd")]
+position = Vector2(-297.475, 55.526)
+direction = "right"
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

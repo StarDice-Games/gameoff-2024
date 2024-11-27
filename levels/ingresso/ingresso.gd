@@ -6,6 +6,11 @@ extends Node2D
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
+	TriggersSystem.update_trigger("stealth", true)
+	
+	if TriggersSystem.check_trigger("stealth", true):
+		return
+	
 	if TriggersSystem.check_trigger("from_exit", true):
 		if TriggersSystem.check_trigger("night", true):
 			AudioSystem.play_music_event("go2024_phase2_v2")
@@ -42,6 +47,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 80)
 	EventSystem.cutscene_started.emit()
 	

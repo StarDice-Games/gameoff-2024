@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var caught = $Caught
 
 var is_resetting = false
-var path_direction = -1
+var path_direction = 1
 var stop = false
 
 func _ready():
@@ -43,13 +43,13 @@ func _process(delta: float) -> void:
 		var progress = path.progress_ratio
 		if progress >= 1:
 			path_direction *= -1
-			$Sprite.flip_h = false
+
 		if progress <= 0:
 			path_direction *= -1
-			$Sprite.flip_h = true
-		
-	path.progress += speed * delta * path_direction
+			
+		path.progress += speed * delta * path_direction
 	
+	print(path_direction)
 	pass
 
 func toggle_node(node:Node2D, enabled):
@@ -69,12 +69,22 @@ func set_fov(dir: String):
 	match dir:
 		"up":
 			toggle_node(fov_up, true)
+			$SpriteBack.show()
+			$SpriteFront.hide()
 		"down":
 			toggle_node(fov_down, true)
+			$SpriteBack.hide()
+			$SpriteFront.show()
 		"left":
 			toggle_node(fov_left, true)
+			$SpriteBack.hide()
+			$SpriteFront.show()
+			$SpriteFront.flip_h = false
 		"right":
 			toggle_node(fov_right, true)
+			$SpriteBack.hide()
+			$SpriteFront.show()
+			$SpriteFront.flip_h = true
 
 
 	print("FOV updated to:", dir)  

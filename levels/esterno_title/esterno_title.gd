@@ -6,10 +6,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventSystem.set_volume.emit("Music", -15)
-	EventSystem.set_volume.emit("Sfx", -7)
-	
 	EventSystem.trigger_changed.connect(trigger_update)
+	
+	$AudioStreamPlayer2D.play()
 	
 	TriggersSystem.update_trigger("doors_locked", true)
 
@@ -34,4 +33,8 @@ func _on_music_start_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
 	pass

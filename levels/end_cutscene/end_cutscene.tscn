@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2dqmrjmohag0"]
+[gd_scene load_steps=19 format=3 uid="uid://b2dqmrjmohag0"]
 
 [ext_resource type="Script" path="res://levels/end_cutscene/scripts/end_cutscene.gd" id="1_d02st"]
 [ext_resource type="Texture2D" uid="uid://ck0iiswmluywo" path="res://resource/assets/title/lampioni-accesi.png" id="2_06ily"]
@@ -14,6 +14,92 @@
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="12_atddq"]
 [ext_resource type="Texture2D" uid="uid://bclf1fok0cmd" path="res://resource/assets/title/fora auto polizia.png" id="13_vs3ma"]
 [ext_resource type="Texture2D" uid="uid://c1x0qqjs7omm1" path="res://resource/assets/title/polizia.png" id="14_ecd4n"]
+[ext_resource type="AudioStream" uid="uid://b3c5ch50sg170" path="res://audio/sfx/various/Police_Siren_01.wav" id="15_qwbnx"]
+
+[sub_resource type="Animation" id="Animation_bebp0"]
+resource_name = "intro"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0999999, 6),
+"transitions": PackedFloat32Array(3.60501, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasModulate:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.26667, 4.03333, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bncvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasModulate:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1348o"]
+_data = {
+"RESET": SubResource("Animation_bncvn"),
+"intro": SubResource("Animation_bebp0")
+}
 
 [node name="EndCutscene" type="Node2D"]
 y_sort_enabled = true
@@ -112,5 +198,16 @@ texture = ExtResource("14_ecd4n")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1348o")
+}
+autoplay = "intro"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_qwbnx")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

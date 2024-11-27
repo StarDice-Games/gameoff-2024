@@ -6,6 +6,9 @@ extends UIState
 
 #@export var menu_music : String
 
+var music_off = false
+var sfx_off = false
+
 func init(_state_machine: UIStateMachine) -> void:
 	state_machine = _state_machine
 	#AudioSystem.play_music_event(menu_music)
@@ -49,3 +52,21 @@ func _on_settings_mouse_entered() -> void:
 
 func _on_exit_mouse_entered() -> void:
 	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")
+
+
+func _on_music_pressed() -> void:
+	if !music_off:
+		music_off = true
+		AudioSystem.set_volumes_value("Music", -80)
+	else:
+		music_off = false
+		AudioSystem.set_volumes_value("Music", 0)
+
+
+func _on_sfx_pressed() -> void:
+	if !sfx_off:
+		sfx_off = true
+		AudioSystem.set_volumes_value("Sfx", -80)
+	else:
+		sfx_off = false
+		AudioSystem.set_volumes_value("Sfx", 0)

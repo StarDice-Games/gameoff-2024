@@ -28,7 +28,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 80)
 	$Stanze/PesceLuna.position = $Fish/Marker2D.position
 	$Stanze/PesceLuna.rotation = -0.5
 	EventSystem.cutscene_started.emit()

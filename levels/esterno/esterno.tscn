@@ -275,7 +275,7 @@ polygon = PackedVector2Array(298, 38, 328, 117, -333.333, 128.205, -300, 38)
 player_ref = NodePath("../Player")
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(-541, 253)
+position = Vector2(-537, 170)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -297,6 +297,7 @@ level_id = "ingresso"
 link_id = "ExitDoor"
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
 color = Color(0, 0, 0, 1)

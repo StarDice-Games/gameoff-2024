@@ -173,7 +173,7 @@ unique_name_in_owner = true
 position = Vector2(1244, 714)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
-position = Vector2(1706, 562)
+position = Vector2(1635, 667)
 level_id = "corridoio"
 link_id = "WestDoor"
 
@@ -194,7 +194,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
-position = Vector2(906, 807)
+position = Vector2(920, 807)
 
 [node name="CameraFollow" parent="." instance=ExtResource("18_jent7")]
 visible = false

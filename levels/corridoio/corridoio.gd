@@ -9,12 +9,14 @@ extends Node2D
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
+	TriggersSystem.update_trigger("stealth", true)
+		
 	if TriggersSystem.check_trigger("stealth", true) and TriggersSystem.check_trigger("alarm_started", false):
 		DialogueSystem.start_dialog(dialog_escape)
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
-		AudioSystem.play_music_event("go2024_stealth_v1")
+		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
 	
 	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()
@@ -41,5 +43,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 10)
+	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 80)
 	EventSystem.cutscene_started.emit()
