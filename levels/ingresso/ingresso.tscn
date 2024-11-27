@@ -293,7 +293,6 @@ unique_name_in_owner = true
 position = Vector2(-30, 398)
 
 [node name="Stealth" type="Node2D" parent="."]
-visible = false
 position = Vector2(224, 767)
 scale = Vector2(1.44886, 1.33271)
 
@@ -352,7 +351,7 @@ scale = Vector2(0.690198, 0.750351)
 direction = "right"
 
 [node name="Checkpoint3" parent="Stealth/Path2D3" instance=ExtResource("19_bg8dd")]
-position = Vector2(619.409, 67.9608)
+position = Vector2(616.649, 67.2103)
 scale = Vector2(0.690198, 0.750351)
 direction = "left"
 

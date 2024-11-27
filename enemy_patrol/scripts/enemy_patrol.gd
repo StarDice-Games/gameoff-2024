@@ -71,20 +71,32 @@ func set_fov(dir: String):
 			toggle_node(fov_up, true)
 			$SpriteBack.show()
 			$SpriteFront.hide()
+			$SpriteFront/ManoDx.hide()
+			$SpriteFront/ManoSx.hide()
+			$SpriteFront/ManoDown.hide()
 		"down":
 			toggle_node(fov_down, true)
 			$SpriteBack.hide()
 			$SpriteFront.show()
+			$SpriteFront/ManoDx.hide()
+			$SpriteFront/ManoSx.hide()
+			$SpriteFront/ManoDown.show()
 		"left":
 			toggle_node(fov_left, true)
 			$SpriteBack.hide()
 			$SpriteFront.show()
 			$SpriteFront.flip_h = false
+			$SpriteFront/ManoSx.hide()
+			$SpriteFront/ManoDx.show()
+			$SpriteFront/ManoDown.hide()
 		"right":
 			toggle_node(fov_right, true)
 			$SpriteBack.hide()
 			$SpriteFront.show()
 			$SpriteFront.flip_h = true
+			$SpriteFront/ManoSx.show()
+			$SpriteFront/ManoDx.hide()
+			$SpriteFront/ManoDown.hide()
 
 
 	print("FOV updated to:", dir)  

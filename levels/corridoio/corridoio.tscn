@@ -345,7 +345,6 @@ position = Vector2(-331, -232)
 position = Vector2(1271, 786)
 
 [node name="Stealth" type="Node2D" parent="."]
-visible = false
 position = Vector2(241, 455.716)
 scale = Vector2(1.44886, 1.33271)
 
