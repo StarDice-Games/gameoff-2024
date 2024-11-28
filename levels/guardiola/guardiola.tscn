@@ -97,7 +97,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_8tlt2"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["It’s me, I have an important task for you.It’s me, I have an important task for you.", "As you may have noticed, there is something on your desk. As you may have noticed, there is something on your desk. ", "Please read it and carry on with your task."])
+dialogue_text = Array[String](["It’s me, I have an important task for you.It’s me, I have an important task for you.", "As you may have noticed, there is something on your desk. ", "Please read it and carry on with your task."])
 character_image = ExtResource("12_e3x06")
 text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
@@ -140,7 +140,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_2rnl0"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["It’s me again. Please bring the items to the locked room.It’s me again. Please bring the items to the locked room."])
+dialogue_text = Array[String](["It’s me again. Please bring the items to the locked room."])
 character_image = ExtResource("12_e3x06")
 text_name = "Museum Director"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])

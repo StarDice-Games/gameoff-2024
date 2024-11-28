@@ -386,12 +386,10 @@ path = NodePath("..")
 
 [node name="Checkpoint3" parent="Stealth/Path2D" instance=ExtResource("19_bg8dd")]
 position = Vector2(1036.16, 78.2497)
-scale = Vector2(1, 1)
 direction = "left"
 
 [node name="Checkpoint4" parent="Stealth/Path2D" instance=ExtResource("19_bg8dd")]
 position = Vector2(-371.848, 74.4979)
-scale = Vector2(1, 1)
 direction = "right"
 
 [node name="Path2D2" type="Path2D" parent="Stealth"]
@@ -401,7 +399,7 @@ curve = SubResource("Curve2D_t425o")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D2"]
 y_sort_enabled = true
-position = Vector2(329.915, 75.7854)
+position = Vector2(329.914, 75.7854)
 rotation = 0.00130556
 progress = 678.296
 rotates = false
