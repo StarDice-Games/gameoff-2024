@@ -19,7 +19,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("5_4pea3")]([])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k27q5"]
-radius = 75.2811
+radius = 148.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vevg2"]
 shader = ExtResource("10_7hllm")
@@ -31,10 +31,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0jva"]
-radius = 74.5252
+radius = 150.013
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfrcr"]
-radius = 147.085
+radius = 197.57
 
 [node name="Key" type="Node2D"]
 y_sort_enabled = true

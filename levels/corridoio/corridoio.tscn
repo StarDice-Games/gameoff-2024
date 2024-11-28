@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -144,11 +144,6 @@ _data = {
 "RESET": SubResource("Animation_fg1h2"),
 "open_painting": SubResource("Animation_6vtbb")
 }
-
-[sub_resource type="Resource" id="Resource_xkj33"]
-script = ExtResource("4_wk1te")
-key = "stealth"
-value = false
 
 [sub_resource type="Curve2D" id="Curve2D_dluho"]
 _data = {
@@ -367,7 +362,7 @@ y_sort_enabled = false
 position = Vector2(-618, -255)
 statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3"), NodePath("../Statue4")]
 task_chalice = ExtResource("7_m5sq3")
-combination = ["Back", "Right", "Front", "Left"]
+combination = ["Back", "Right", "Left", "Front"]
 
 [node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
 position = Vector2(-1318, -234)
@@ -385,9 +380,6 @@ position = Vector2(-331, -232)
 visible = false
 position = Vector2(241, 455.716)
 scale = Vector2(1.44886, 1.33271)
-
-[node name="NodeToggle" parent="Stealth" instance=ExtResource("26_lmyf7")]
-trigger = SubResource("Resource_xkj33")
 
 [node name="Path2D" type="Path2D" parent="Stealth"]
 position = Vector2(-13.1138, -8.04076)

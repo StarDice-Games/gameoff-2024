@@ -447,7 +447,7 @@ color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(840, 114)
+position = Vector2(854, 113)
 scale = Vector2(2.2, 1.24)
 level_id = "ingresso"
 link_id = "SouthDoor"

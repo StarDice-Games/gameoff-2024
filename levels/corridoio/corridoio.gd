@@ -19,6 +19,9 @@ func _ready() -> void:
 		EventSystem.stop_sound.emit("go2024_phase3_v1")
 		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
 		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
+		$Stealth.show()
+	else:
+		$Stealth.hide()
 	
 	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()

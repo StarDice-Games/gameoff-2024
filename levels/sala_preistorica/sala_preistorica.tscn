@@ -27,7 +27,7 @@ size = Vector2(1201, 148)
 size = Vector2(326.5, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx7wn"]
-size = Vector2(764, 86)
+size = Vector2(781, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8k38"]
 size = Vector2(177, 136)
@@ -189,9 +189,9 @@ texture = ExtResource("3_71nrj")
 
 [node name="ElementiForntali" type="Sprite2D" parent="Stanze"]
 y_sort_enabled = true
-position = Vector2(-106, 1023)
+position = Vector2(-145, 866)
 texture = ExtResource("4_op8el")
-offset = Vector2(184.999, -152)
+offset = Vector2(223.999, 5)
 
 [node name="PesceLuna" type="Sprite2D" parent="Stanze"]
 position = Vector2(427.999, 310)
@@ -200,22 +200,22 @@ offset = Vector2(-4, 48)
 
 [node name="PesceSchiantato" type="Sprite2D" parent="Stanze"]
 visible = false
-position = Vector2(420, 48)
+position = Vector2(409, 595)
 texture = ExtResource("6_g1o0m")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(693.5, 1094)
+position = Vector2(684, 1069)
 shape = SubResource("RectangleShape2D_jf2ot")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1663.75, 1092)
+position = Vector2(1665, 1071)
 shape = SubResource("RectangleShape2D_3xhk8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(812, 943)
+position = Vector2(817, 955)
 shape = SubResource("RectangleShape2D_tx7wn")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
@@ -223,17 +223,17 @@ position = Vector2(1671.5, 951)
 shape = SubResource("RectangleShape2D_u8k38")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1576, 709, 1105, 698, 1066, 729, 423, 714, 177, 1017)
+polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1575, 714, 1111, 712, 1066, 729, 419, 729, 177, 1017)
 
 [node name="Player" parent="." instance=ExtResource("3_x3oc3")]
 unique_name_in_owner = true
-position = Vector2(1378, 869)
+position = Vector2(1325, 786)
 
 [node name="Npc" parent="." instance=ExtResource("11_lq22p")]
-position = Vector2(536, 784)
+position = Vector2(560, 750)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1395, 1211)
+position = Vector2(1395, 1184)
 scale = Vector2(2.24, 1)
 level_id = "corridoio"
 link_id = "North1"

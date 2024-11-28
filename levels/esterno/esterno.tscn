@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=36 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
@@ -43,6 +43,9 @@ load_path = "res://.godot/imported/lampioni-spenti.png-7f505827b5fa0f60d5aaa741a
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ghm0"]
 size = Vector2(2601.5, 275)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3or1"]
+radius = 36.0139
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51w63"]
 size = Vector2(297.727, 469.909)
@@ -165,12 +168,6 @@ texture = ExtResource("15_7jdho")
 visible = false
 y_sort_enabled = true
 
-[node name="Lampioni-accesi2" type="Sprite2D" parent="Notte"]
-y_sort_enabled = true
-position = Vector2(808, 100)
-texture = ExtResource("21_8mh2y")
-offset = Vector2(28.364, 187.273)
-
 [node name="Fondo-notte" type="Sprite2D" parent="Notte"]
 texture = ExtResource("19_8usn8")
 
@@ -180,9 +177,19 @@ texture = ExtResource("20_kummy")
 
 [node name="Lampioni-accesi" type="Sprite2D" parent="Notte"]
 y_sort_enabled = true
-position = Vector2(849, 880)
+position = Vector2(803, 41)
 texture = ExtResource("21_8mh2y")
-offset = Vector2(-12.636, -592.727)
+offset = Vector2(20.364, -120.727)
+region_enabled = true
+region_rect = Rect2(23, 10, 466, 596)
+
+[node name="Lampioni-accesi2" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(860, 802)
+texture = ExtResource("21_8mh2y")
+offset = Vector2(20.364, -120.727)
+region_enabled = true
+region_rect = Rect2(23, 10, 466, 596)
 
 [node name="Luna" type="Sprite2D" parent="Notte"]
 position = Vector2(1469.09, -1032.73)
@@ -223,11 +230,19 @@ position = Vector2(0, 9)
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(773, 1077, 751, 121, 163, 125, -11, 503, -510, 197, -649, 197, -657, -208, -880, -210, -862, 226, -689, 218, -172, 702, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
+polygon = PackedVector2Array(1222, 1071, 915, 121, 163, 125, -11, 503, -510, 197, -649, 197, -657, -208, -880, -210, -862, 226, -689, 218, -172, 702, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(22.25, 1120.5)
 shape = SubResource("RectangleShape2D_5ghm0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(811, 178)
+shape = SubResource("CircleShape2D_m3or1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(865, 939)
+shape = SubResource("CircleShape2D_m3or1")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")
@@ -243,7 +258,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_x6rer")]
 unique_name_in_owner = true
-position = Vector2(-571, 124)
+position = Vector2(326, 188)
 
 [node name="MusicStart" type="Area2D" parent="."]
 position = Vector2(322, -107)

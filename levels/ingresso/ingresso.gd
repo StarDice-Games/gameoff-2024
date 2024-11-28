@@ -7,9 +7,12 @@ func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
 	#TriggersSystem.update_trigger("stealth", true)
-	
+		
 	if TriggersSystem.check_trigger("stealth", true):
+		$Stealth.show()
 		return
+	else:
+		$Stealth.queue_free()
 	
 	if TriggersSystem.check_trigger("from_exit", true):
 		if TriggersSystem.check_trigger("night", true):

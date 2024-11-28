@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=31 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -44,9 +44,6 @@ dialogue_text = Array[String](["Wait! What's going on?", "OK this is really bad.
 character_image = ExtResource("3_ruv8d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmiqv"]
-size = Vector2(375.5, 1283)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7btqm"]
 size = Vector2(1581.5, 171)
@@ -160,11 +157,7 @@ position = Vector2(972, -79)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(612, 543, 590, 837, 517, 837, 469, 701, -56, 693, -56, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 600, 877, 643, 574)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-213, 788)
-shape = SubResource("RectangleShape2D_jmiqv")
+polygon = PackedVector2Array(612, 543, 590, 837, 517, 837, 477, 723, 321, 718, 250, 688, -281, 677, -312, 774, -480, 770, -503, 813, -474, 1202, -773, 1210, -811, 259, -469, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 600, 877, 643, 574)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-36.75, 1285.5)

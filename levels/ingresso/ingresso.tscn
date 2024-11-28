@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=34 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
 [ext_resource type="Texture2D" uid="uid://begy3n8olkntj" path="res://resource/assets/UI/vignetta.png" id="5_vqsvf"]
 [ext_resource type="Texture2D" uid="uid://ccl256sqh5kka" path="res://resource/assets/scene_azione/Caduta dente.PNG" id="6_am7le"]
-[ext_resource type="Texture2D" uid="uid://dog3kq1wlyc0v" path="res://resource/assets/rooms/Guardiola/telefono-agganciato.png" id="6_ehu1q"]
+[ext_resource type="Texture2D" uid="uid://du3ckpspini26" path="res://resource/assets/UI/telefono-suona.png" id="6_hwv8x"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="16_4dyp1"]
@@ -151,11 +151,6 @@ character_image = ExtResource("12_4ffme")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_twhkk")]([])
 
-[sub_resource type="Resource" id="Resource_0sktr"]
-script = ExtResource("5_twhkk")
-key = "stealth"
-value = false
-
 [sub_resource type="Curve2D" id="Curve2D_k5ovg"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -348.381, 75.2482, 0, 0, 0, 0, 1011.31, 76.749)
@@ -215,8 +210,9 @@ position = Vector2(1185, 904)
 texture = ExtResource("5_vqsvf")
 
 [node name="Telefono-agganciato" type="Sprite2D" parent="VignettaTelefono"]
-position = Vector2(41, -23)
-texture = ExtResource("6_ehu1q")
+position = Vector2(4, -23)
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("6_hwv8x")
 
 [node name="NodeToggle" parent="VignettaTelefono" instance=ExtResource("16_4dyp1")]
 trigger = SubResource("Resource_agsoi")
@@ -253,7 +249,7 @@ position = Vector2(1805, 510)
 player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1220, 996)
+position = Vector2(1164, 1044)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
 visible = false
@@ -364,9 +360,6 @@ visible = false
 y_sort_enabled = true
 position = Vector2(224, 767)
 scale = Vector2(1.44886, 1.33271)
-
-[node name="NodeToggle" parent="Stealth" instance=ExtResource("16_4dyp1")]
-trigger = SubResource("Resource_0sktr")
 
 [node name="Path2D" type="Path2D" parent="Stealth"]
 y_sort_enabled = true

@@ -132,6 +132,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ti7s3"]
 resource_name = "hide_title"
@@ -195,6 +207,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 2.21914),
 "update": 0,
 "values": [0.0, -80.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_x6cir"]
@@ -277,7 +301,7 @@ texture = ExtResource("5_cfbhh")
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Facciata-giorno/StaticBody2D"]
-polygon = PackedVector2Array(-204, 748, -354, 1035, 542, 1035, 1238, 1035, 941, 121, 274, 121, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
+polygon = PackedVector2Array(-204, 748, -354, 1035, 542, 1035, 1238, 1035, 941, 121, 274, 121, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -497.436, 194.872, -612.821, 197.436, -620.513, -125.641, -720, -51, -661.538, 243.59, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
 
 [node name="Movimenti" type="Sprite2D" parent="Giorno/Env"]
 y_sort_enabled = true
@@ -325,21 +349,22 @@ position = Vector2(-636.364, 592.727)
 texture = ExtResource("13_yb1nw")
 offset = Vector2(636.364, -592.727)
 
-[node name="Player" parent="Giorno/Env" instance=ExtResource("8_hk6ts")]
-unique_name_in_owner = true
-position = Vector2(124.706, 515.294)
-
 [node name="Entrance" parent="Giorno/Env" instance=ExtResource("9_526m0")]
-position = Vector2(-729, 74)
+position = Vector2(-707.692, 43.59)
 level_id = "ingresso"
 link_id = "ExitDoor"
 
 [node name="MusicStart" type="Area2D" parent="Giorno/Env"]
-position = Vector2(-735, -473)
+z_index = 1
+position = Vector2(-707.692, -551.282)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giorno/Env/MusicStart"]
 position = Vector2(-75, 528)
 shape = SubResource("RectangleShape2D_kpik6")
+
+[node name="Player" parent="Giorno/Env" instance=ExtResource("8_hk6ts")]
+unique_name_in_owner = true
+position = Vector2(124.706, 515.294)
 
 [node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(135.897, 917.949)
