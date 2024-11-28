@@ -35,7 +35,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_pevej"]
 script = ExtResource("2_q5avm")
-dialogue_text = Array[String](["It’s the right time now, I’m old and will retire soon", "This is the right work at the right time. Now that my nephews are here, I’m closer to them…", "That’s perfect.", "Let’s go to work…better not to arrive late the first day."])
+dialogue_text = Array[String](["It’s the right time now, I’m old and will retire soon", "This is the right work at the right time. Now that my nephews are here, I’m closer to them…", "That’s perfect.", "I better haste myself to work, then. Don't wish to disappoint my new boss."])
 character_image = ExtResource("3_dhlrp")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_x38vt")]([SubResource("Resource_vfy75")])

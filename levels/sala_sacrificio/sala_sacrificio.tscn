@@ -28,7 +28,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_82hri"]
 script = ExtResource("2_2ycaj")
-dialogue_text = Array[String](["It’s absurd, a cult!? It's like the Ku Klux Klan or something...", "I’m not understanding anything, what do they need from me?", "Why do they need these objects? "])
+dialogue_text = Array[String](["How absurd, a cult!?", "I don't understand. What do they want from me?", "Why do they need these artifacts?Why do they need these artifacts?"])
 character_image = ExtResource("3_ruv8d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_3n6nf")])
@@ -40,7 +40,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_hnpbr"]
 script = ExtResource("2_2ycaj")
-dialogue_text = Array[String](["Wait! The sharpness of the tooth…it’s a knife! And the white star…it’s a pentacle.", "It is sure…I’m in danger now. I need to go away from here."])
+dialogue_text = Array[String](["Wait! What's going on?", "OK this is really bad. I need to get out from here."])
 character_image = ExtResource("3_ruv8d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])

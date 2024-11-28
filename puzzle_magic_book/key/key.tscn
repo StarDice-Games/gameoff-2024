@@ -13,7 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_t6ndw"]
 script = ExtResource("3_vj5hh")
-dialogue_text = Array[String](["What’s this!? A key!?", "It is better to keep it, it may open something useful.", "It seems that this locker was my predecessor's.", "For sure it is!", "Is this a journal? It is plenty of plans and projects for the future…", " But everything is interrupted the day before the promotion. Why? ", "And why he left it here…so strange."])
+dialogue_text = Array[String](["What’s this!? A key!?", "I better keep it. You never know.", "Wait, what's this? A book?", "Oh! Could it be a journal? Seems ripe with strange drawings and graphs. ", "Future plans, perhaps? Who can say. Future plans, perhaps? Who can say. ", "This journal goes blank after a while... The day before their promotion. That's where it stops.", "And why he left it here? So strange."])
 character_image = ExtResource("4_1fa4u")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_4pea3")]([])

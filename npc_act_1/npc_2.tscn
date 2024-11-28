@@ -14,14 +14,14 @@
 
 [sub_resource type="Resource" id="Resource_m13sm"]
 script = ExtResource("2_2j2rf")
-dialogue_text = Array[String](["Good evening Sir, we are closing, I need you to leave the museum."])
+dialogue_text = Array[String](["Good evening, Sir. We are closing. I need you to leave the museum."])
 character_image = ExtResource("3_pyjhg")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_uf5dt")]([])
 
 [sub_resource type="Resource" id="Resource_5jobv"]
 script = ExtResource("2_2j2rf")
-dialogue_text = Array[String](["Ok, just give me another 5 minutes."])
+dialogue_text = Array[String](["I was just about to enjoy this painting! Just give me another 5 minutes, please."])
 character_image = ExtResource("5_01rfo")
 text_name = "Visitor"
 triggers = Array[ExtResource("4_uf5dt")]([])

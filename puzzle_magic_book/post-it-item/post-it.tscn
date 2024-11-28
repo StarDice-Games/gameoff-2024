@@ -14,7 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_q7vkj"]
 script = ExtResource("3_gdcps")
-dialogue_text = Array[String](["Oh a post-it with a code. It may help me to open something."])
+dialogue_text = Array[String](["Oh! A note with a code! It might help me figure something out."])
 character_image = ExtResource("4_5depl")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_pe210")]([])

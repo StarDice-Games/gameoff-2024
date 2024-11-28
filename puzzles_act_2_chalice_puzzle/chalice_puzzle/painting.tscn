@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btpwdekddbacl"]
+[gd_scene load_steps=20 format=3 uid="uid://btpwdekddbacl"]
 
 [ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
@@ -30,7 +30,7 @@ triggers = Array[ExtResource("5_gdyyu")]([])
 
 [sub_resource type="Resource" id="Resource_k74jg"]
 script = ExtResource("3_7wpa3")
-dialogue_text = Array[String](["I opened something, I will give it a look."])
+dialogue_text = Array[String](["I think I heard a click somewhere. I should go investigate it."])
 character_image = ExtResource("6_apwyo")
 text_name = "Angelo"
 triggers = Array[ExtResource("5_gdyyu")]([])
@@ -39,6 +39,9 @@ triggers = Array[ExtResource("5_gdyyu")]([])
 script = ExtResource("3_rfxo3")
 id = "Chalice"
 icon = ExtResource("2_ey4hm")
+
+[sub_resource type="Resource" id="Resource_ctjfm"]
+metadata/__load_path__ = "res://audio/sfx/interaction/Interaction_01.ogg"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
 size = Vector2(159, 176)
@@ -68,6 +71,7 @@ position = Vector2(122, 14)
 texture = ExtResource("9_lkyg0")
 
 [node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]
+audio_sfx = SubResource("Resource_ctjfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(0.5, -2)

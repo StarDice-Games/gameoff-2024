@@ -20,7 +20,7 @@ icon = ExtResource("8_r1n8a")
 
 [sub_resource type="Resource" id="Resource_keucj"]
 script = ExtResource("4_vwnw6")
-dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!ssd", "Where are people when I make such jokes…"])
+dialogue_text = Array[String](["A goblet!? I’m lucky this is not the Holy Grail or else…", "...That's not funny."])
 character_image = ExtResource("5_oxxmq")
 text_name = "Angelo"
 triggers = Array[ExtResource("6_spr2k")]([])

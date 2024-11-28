@@ -17,12 +17,12 @@
 script = ExtResource("2_qes3u")
 dialogue_text = Array[String](["Finally you are here."])
 character_image = ExtResource("3_qqduw")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([])
 
 [sub_resource type="Resource" id="Resource_ixqye"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Yes!? What are you doing here?"])
+dialogue_text = Array[String](["And who am I talking to? Identify yourself!"])
 character_image = ExtResource("3_0s62d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_a4ro4")]([])
@@ -34,23 +34,23 @@ value = true
 
 [sub_resource type="Resource" id="Resource_5b178"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Please Angelo, put the objects you found on the altar."])
+dialogue_text = Array[String](["My identity right now is irrelevant. My identity right now is irrelevant. ", "What matters is that you obey me.", "Please Angelo, put the objects you found on the altar."])
 character_image = ExtResource("3_qqduw")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptvd8")])
 
 [sub_resource type="Resource" id="Resource_6xilf"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Please Angelo, put the objects you found on the altar."])
+dialogue_text = Array[String](["Now, Angelo, place what you have on that tableNow, Angelo, place what you have on that table"])
 character_image = ExtResource("3_qqduw")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([])
 
 [sub_resource type="Resource" id="Resource_ycf8y"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Thanks Angelo, you were useful…more than you know.", "As I told you during the interview, you are the right person to fulfill our purposes…", "But I was not talking about the museum."])
+dialogue_text = Array[String](["Thanks, Angelo. You have been useful… way more than you would ever think. ", "As I told you during the interview, you are the right person to fulfill our goals…", "But I was not talking about the museum."])
 character_image = ExtResource("3_qqduw")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([])
 
 [sub_resource type="Resource" id="Resource_dwxef"]
@@ -67,9 +67,9 @@ value = true
 
 [sub_resource type="Resource" id="Resource_apssx"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…", "Everything is connected...", "Now it’s time to call the other cult members. ", "Stay here and don’t move…I’ll be back in a second.", "We will give you your deserved…", "Promotion..."])
+dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…The contract, the night shift, your predecessor and his promotion…", "Everything is connected…", "Now it’s time to summon the other members.", "They'll be very pleased to meet you.", "Stay here and don’t move. I’ll return shortly", "We will grant you your deserved…We will grant you your deserved…", "...Promotion"])
 character_image = ExtResource("3_qqduw")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
