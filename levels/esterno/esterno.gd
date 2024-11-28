@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var dialog_1 : Array[DialogText]
+@onready var animation_player = $CloseMuseumAnimation/AnimationPlayer
+@onready var marker = $CloseMuseumAnimation/Marker2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +11,7 @@ func _ready() -> void:
 		$Notte.show()
 	
 	if TriggersSystem.check_trigger("close_museum", true):
-		$Node2D/AnimationPlayer.play("fade_out")
+		animation_player.play("fade_out")
 		
 	TriggersSystem.toggle_trigger("from_exit")
 	AudioSystem.play_music_event("Traffic_01")
@@ -26,4 +28,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	%Player.position = $Node2D/Marker2D.position
+	%Player.position = marker.position

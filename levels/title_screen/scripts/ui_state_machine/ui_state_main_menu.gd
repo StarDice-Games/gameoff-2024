@@ -3,7 +3,8 @@ extends UIState
 
 @onready var main_panel = $MainPanel
 @onready var load_button :Button = $MainPanel/VBoxContainer/LoadGame
-
+@onready var new_game_button : Button = $MainPanel/VBoxContainer/NewGame
+@onready var exit_button : Button = $MainPanel/VBoxContainer/Exit
 #@export var menu_music : String
 
 var music_off = false
@@ -11,6 +12,7 @@ var sfx_off = false
 
 func init(_state_machine: UIStateMachine) -> void:
 	state_machine = _state_machine
+	new_game_button.grab_focus()
 	#AudioSystem.play_music_event(menu_music)
 
 func enter(_msg := {}) -> void:
@@ -35,6 +37,7 @@ func _on_new_game_pressed() -> void:
 	TriggersSystem.toggle_trigger("not_in_title")
 	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	EventSystem.cutscene_started.emit()
+	get_viewport().gui_release_focus()
 
 func _on_load_game_pressed():
 	pass
