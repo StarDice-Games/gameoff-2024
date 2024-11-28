@@ -9,13 +9,15 @@ extends Node2D
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
-	#TriggersSystem.update_trigger("stealth", true)
+	TriggersSystem.update_trigger("stealth", true)
 		
 	if TriggersSystem.check_trigger("stealth", true) and TriggersSystem.check_trigger("alarm_started", false):
 		DialogueSystem.start_dialog(dialog_escape)
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
+		EventSystem.stop_sound.emit("go2024_phase3_v1")
+		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
 		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
 	
 	if TriggersSystem.check_trigger("stealth", false):

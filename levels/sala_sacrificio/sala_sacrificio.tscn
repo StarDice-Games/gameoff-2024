@@ -122,19 +122,23 @@ dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
 dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
 
 [node name="Candelabro-1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1147, 476)
 texture = ExtResource("13_5vk58")
 
 [node name="Candelabro-2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(633, 885)
 texture = ExtResource("14_6a3pp")
 
 [node name="Candelabro-3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1258, 952)
 texture = ExtResource("15_ymqb7")
 offset = Vector2(0, -70)
 
 [node name="Candelabro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(776, 480)
 texture = ExtResource("16_v01k8")
 

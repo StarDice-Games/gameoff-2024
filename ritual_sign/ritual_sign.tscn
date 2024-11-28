@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://rriaauq8dxpi"]
+[gd_scene load_steps=9 format=3 uid="uid://rriaauq8dxpi"]
 
 [ext_resource type="Script" path="res://ritual_sign/script/ritual_sign.gd" id="1_l2nph"]
 [ext_resource type="Texture2D" uid="uid://hnqre6mc1yo2" path="res://resource/assets/rooms/sala_sacrificio/Pentagramma bianco.PNG" id="2_n2waj"]
 [ext_resource type="Texture2D" uid="uid://cesm6wy6ww0tu" path="res://resource/assets/enemy/fascio luce stanza.png" id="3_116dr"]
+[ext_resource type="AudioStream" uid="uid://dm20tuvicjtry" path="res://audio/sfx/dialog/voce_rituale.ogg" id="3_k4trb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gqkxw"]
 blend_mode = 1
@@ -37,6 +38,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_qthmk"]
 resource_name = "change_color"
@@ -65,6 +78,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 2.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-2.66667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7hprd"]
 _data = {
@@ -83,6 +108,9 @@ texture = ExtResource("2_n2waj")
 offset = Vector2(-4, 1)
 region_enabled = true
 region_rect = Rect2(767, 944, 558, 450)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k4trb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

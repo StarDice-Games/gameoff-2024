@@ -272,6 +272,7 @@ collision_mask = 129
 shape = SubResource("RectangleShape2D_f6gaj")
 
 [node name="Caught" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-5, -148)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_eg62t")

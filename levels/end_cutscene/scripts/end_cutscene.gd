@@ -5,7 +5,7 @@ var sfx : AudioStream = load("res://audio/sfx/various/Police_Siren_01.wav")
 
 func _ready() -> void:
 	#$Timer.start()
-	AudioSystem.play(sfx)
+	AudioSystem.play_music_event("Police_Siren_01")
 	
 func move_to_credits():
 	LevelSystem.load_level("credits", true)

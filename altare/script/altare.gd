@@ -60,6 +60,6 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	AudioSystem.play_music_event("go2024_phase3_v1")
+	EventSystem.play_sound.emit("go2024_phase3_v1", "Music")
 	AudioSystem.set_volumes_value("Music", 0)
 	EventSystem.cutscene_finished.emit()

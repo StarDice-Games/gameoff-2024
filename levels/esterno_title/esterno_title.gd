@@ -29,6 +29,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_music_start_body_entered(body: Node2D) -> void:
+	EventSystem.stop_sound.emit("Police_Siren_01")
 	AudioSystem.play_music_event("go2024_phase1_v1")
 
 
