@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://l2d0fsl3gg0v" path="res://resource/assets/UI/Punto esclamativo nemici.PNG" id="8_cnpeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
-size = Vector2(101.25, 96.25)
+size = Vector2(32.625, 31.125)
 
 [sub_resource type="Animation" id="Animation_bw7gc"]
 length = 0.001
@@ -245,14 +245,14 @@ script = ExtResource("1_ejy71")
 monolog = Array[ExtResource("2_15anu")]([ExtResource("3_ypxun")])
 
 [node name="SpriteFront" type="Sprite2D" parent="."]
-position = Vector2(-6.78406, 81.0724)
+position = Vector2(-5.75177, 16.0347)
 rotation = 0.0174533
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_6m0pe")
-offset = Vector2(8.91777, -136.964)
+offset = Vector2(9.08932, -28.5543)
 
 [node name="ManoDx" type="Sprite2D" parent="SpriteFront"]
-position = Vector2(-47.7065, -97.2775)
+position = Vector2(-58.6963, 17.4656)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_tqy2p")
 offset = Vector2(-36.4988, 3.48479)
@@ -260,7 +260,7 @@ region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
 
 [node name="ManoSx" type="Sprite2D" parent="SpriteFront"]
 visible = false
-position = Vector2(126.663, -101.344)
+position = Vector2(115.673, 13.3991)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_tqy2p")
 offset = Vector2(-36.4988, 3.48479)
@@ -269,7 +269,7 @@ region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
 
 [node name="ManoDown" type="Sprite2D" parent="SpriteFront"]
 visible = false
-position = Vector2(7.10565, -55.2392)
+position = Vector2(-3.88419, 59.5039)
 rotation = 1.58825
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_tqy2p")
@@ -289,8 +289,18 @@ visible = false
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_f6gaj")
 
-[node name="LeftFov" type="Area2D" parent="."]
+[node name="EnemyArea" type="Area2D" parent="."]
 position = Vector2(-2, 25)
+collision_layer = 512
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+z_index = 1
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[node name="LeftFov" type="Area2D" parent="."]
+position = Vector2(-8, 25)
 collision_layer = 256
 
 [node name="PointLight2D2" type="PointLight2D" parent="LeftFov"]
@@ -304,7 +314,7 @@ rotation = 1.5708
 polygon = PackedVector2Array(0, 1, -109, 274, -90, 298, -65, 308, -9.99999, 314, 52, 308, 75, 297, 90, 278)
 
 [node name="RightFov" type="Area2D" parent="."]
-position = Vector2(-2, 25)
+position = Vector2(-8, 25)
 rotation = 0.0174533
 collision_layer = 256
 
@@ -320,7 +330,7 @@ rotation = 4.71239
 polygon = PackedVector2Array(0, 1, -113, 262, -89, 295, -17, 306, 66, 298, 89, 261)
 
 [node name="UpFov" type="Area2D" parent="."]
-position = Vector2(-2, 25)
+position = Vector2(-8, 25)
 rotation = 0.0174533
 collision_layer = 256
 
@@ -336,7 +346,7 @@ rotation = 3.14159
 polygon = PackedVector2Array(-3, 3.57628e-07, -107, 273, -72, 299, -3.99997, 304, 55, 300, 92, 270)
 
 [node name="DownFov" type="Area2D" parent="."]
-position = Vector2(-2, 25)
+position = Vector2(-8, 25)
 rotation = 0.0174533
 collision_layer = 256
 
@@ -349,14 +359,6 @@ texture_scale = 0.7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownFov"]
 polygon = PackedVector2Array(0, 1, -106, 258, -76, 289, -6, 301, 68, 290, 93, 255)
-
-[node name="EnemyArea" type="Area2D" parent="."]
-position = Vector2(-2, 25)
-collision_layer = 512
-collision_mask = 129
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
-shape = SubResource("RectangleShape2D_f6gaj")
 
 [node name="Caught" type="Sprite2D" parent="."]
 visible = false
@@ -382,8 +384,8 @@ color = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
 stream = ExtResource("5_dekpu")
 volume_db = -15.0
 
+[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]
 [connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
 [connection signal="area_entered" from="RightFov" to="." method="detect_player"]
 [connection signal="area_entered" from="UpFov" to="." method="detect_player"]
 [connection signal="area_entered" from="DownFov" to="." method="detect_player"]
-[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]

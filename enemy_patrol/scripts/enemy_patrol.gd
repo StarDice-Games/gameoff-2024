@@ -130,6 +130,8 @@ func detect_player(area: Area2D) -> void:
 		$AnimationPlayer.play("spotted")
 		stop = true
 		
+		EventSystem.play_sound.emit("Spotted_01", "Sfx")
+		
 		EventSystem.cutscene_started.emit()
 		if monolog != null and monolog.size() > 0:
 			DialogueSystem.start_dialog(monolog)

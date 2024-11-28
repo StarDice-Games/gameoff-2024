@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://civgdg6ang6q4"]
+[gd_scene load_steps=36 format=3 uid="uid://civgdg6ang6q4"]
 
 [ext_resource type="Script" path="res://levels/esterno_title/esterno_title.gd" id="1_2y21b"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_q5avm"]
@@ -108,6 +108,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ti7s3"]
 resource_name = "hide_title"
@@ -173,10 +197,39 @@ tracks/4/keys = {
 "values": [0.0, -80.0]
 }
 
+[sub_resource type="Animation" id="Animation_x6cir"]
+resource_name = "intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2wrdi"]
 _data = {
 "RESET": SubResource("Animation_irevx"),
-"hide_title": SubResource("Animation_ti7s3")
+"hide_title": SubResource("Animation_ti7s3"),
+"intro": SubResource("Animation_x6cir")
 }
 
 [node name="Esterno_Title" type="Node2D"]
@@ -366,10 +419,17 @@ player_ref = NodePath("../CharacterBody2D")
 
 [node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("10_cot7y")]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 2360.0
+offset_bottom = 1408.0
+color = Color(0, 0, 0, 1)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2wrdi")
 }
+autoplay = "intro"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(966, 619)

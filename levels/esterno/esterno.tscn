@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=35 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
@@ -41,15 +41,18 @@ triggers = Array[ExtResource("4_un5ie")]([SubResource("Resource_vfy75")])
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e0ovi"]
 load_path = "res://.godot/imported/lampioni-spenti.png-7f505827b5fa0f60d5aaa741a33b3fc8.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ghm0"]
+size = Vector2(2601.5, 275)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51w63"]
-size = Vector2(297.727, 551.818)
+size = Vector2(297.727, 469.909)
 
 [sub_resource type="Animation" id="Animation_2pu1e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/CanvasModulate:color")
+tracks/0/path = NodePath("CloseMuseumAnimation/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +67,7 @@ resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/CanvasModulate:color")
+tracks/0/path = NodePath("CloseMuseumAnimation/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,6 +93,10 @@ y_sort_enabled = true
 script = ExtResource("1_ll6ia")
 dialog_1 = Array[ExtResource("2_qv2lt")]([SubResource("Resource_pevej")])
 
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_o3w55")]
+position = Vector2(962, 543)
+player_ref = NodePath("../Player")
+
 [node name="Giorno" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -109,21 +116,9 @@ offset = Vector2(18.3636, -196.727)
 region_enabled = true
 region_rect = Rect2(13, 1, 272, 573)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Lampioni-spenti2"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Lampioni-spenti2/StaticBody2D"]
-polygon = PackedVector2Array(-30, 10, -50, 28, -56, 82, 5, 96, 77, 81, 65, 27, 23, 4)
-
 [node name="Facciata-giorno" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(0, 9)
 texture = ExtResource("11_xo1tc")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Facciata-giorno"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Facciata-giorno/StaticBody2D"]
-polygon = PackedVector2Array(-204, 748, -354, 1036, 542, 1035, 1238, 1035, 941, 121, 274, 121, 148, 121, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
 
 [node name="Movimenti" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(395, 9)
@@ -156,46 +151,15 @@ offset = Vector2(-24.6364, -257.727)
 region_enabled = true
 region_rect = Rect2(0, 677, 302, 673)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Lampioni-spenti"]
-position = Vector2(-22, -13)
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Lampioni-spenti/StaticBody2D"]
-position = Vector2(-849, -900)
-polygon = PackedVector2Array(827, 901, 800, 921, 782, 960, 782, 977, 794, 984, 854, 997, 899, 994, 929, 961, 930, 921, 897, 900)
-
 [node name="GiornoPorta" type="Sprite2D" parent="Giorno/Env"]
 y_sort_enabled = true
 position = Vector2(-636.364, 592.727)
 texture = ExtResource("18_jlixt")
 offset = Vector2(636.364, -592.727)
 
-[node name="Entrance" parent="Giorno/Env" instance=ExtResource("5_8nwid")]
-position = Vector2(-729, 74)
-level_id = "ingresso"
-link_id = "ExitDoor"
-
-[node name="MusicStart" type="Area2D" parent="Giorno/Env"]
-position = Vector2(-735, -473)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Giorno/Env/MusicStart"]
-position = Vector2(-75, 528)
-shape = SubResource("RectangleShape2D_51w63")
-
 [node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
 position = Vector2(134, 911)
 texture = ExtResource("15_7jdho")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Giorno/Env/Ingresso-aperto"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
-position = Vector2(0, 10)
-polygon = PackedVector2Array(-158.974, 33.3333, -128.205, 38.4614, -133.333, 123.077, -333.333, 128.205, -323.077, 25.6409)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Giorno/Env/Ingresso-aperto/StaticBody2D"]
-position = Vector2(0, 10)
-polygon = PackedVector2Array(258.974, 64.1025, 241.026, 120.513, 279.487, 123.077, 323.077, 123.077, 323.077, 66.6665)
 
 [node name="Notte" type="Node2D" parent="."]
 visible = false
@@ -214,22 +178,11 @@ texture = ExtResource("19_8usn8")
 y_sort_enabled = true
 texture = ExtResource("20_kummy")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Notte/Facciata-notte"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/Facciata-notte/StaticBody2D"]
-polygon = PackedVector2Array(-204, 748, -354, 1036, 542, 1035, 1238, 1039, 941, 131, 555, 132, 272, 122, 162, 136, 77, 278, -19, 482, -254, 389, -435, 276, -522, 201, -524, -120, -544, -187, -633, -148, -680, -107, -720, -51, -668, 316, -371, 521, -244, 596, -205, 641, -202, 673, -382, 1033, -739, 331, -799, -307, -512, -431, -430, -376, 1018, 96, 1300, 1036, 1237, 1109, -382, 1086, -368, 1032, -202, 649, -192, 727)
-
 [node name="Lampioni-accesi" type="Sprite2D" parent="Notte"]
 y_sort_enabled = true
 position = Vector2(849, 880)
 texture = ExtResource("21_8mh2y")
 offset = Vector2(-12.636, -592.727)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Notte/Lampioni-accesi"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/Lampioni-accesi/StaticBody2D"]
-polygon = PackedVector2Array(-25.364, 604.727, -66.364, 622.727, -79.364, 655.727, -75.364, 685.727, -34.364, 696.727, 21.636, 699.727, 57.636, 688.727, 76.636, 667.727, 83.636, 632.727, 66.636, 606.727, 23.636, 595.727)
 
 [node name="Luna" type="Sprite2D" parent="Notte"]
 position = Vector2(1469.09, -1032.73)
@@ -265,17 +218,22 @@ position = Vector2(147, 930)
 texture = ExtResource("21_1uowl")
 offset = Vector2(0, -19)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Notte/IngressoChiuso"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 9)
 collision_layer = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Notte/IngressoChiuso/StaticBody2D"]
-polygon = PackedVector2Array(298, 38, 328, 117, -333.333, 128.205, -300, 38)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(774, 1057, 751, 121, 148, 121, -6, 501, -510, 197, -664, 193, -657, -208, -880, -210, -862, 226, -689, 218, -189, 722, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22.25, 1120.5)
+shape = SubResource("RectangleShape2D_5ghm0")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(-537, 170)
+position = Vector2(-570, 124)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -283,36 +241,40 @@ offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_o3w55")]
-position = Vector2(962, 543)
-player_ref = NodePath("../Player")
-
 [node name="Player" parent="." instance=ExtResource("4_x6rer")]
 unique_name_in_owner = true
-position = Vector2(187, 730)
+position = Vector2(-571, 124)
+
+[node name="MusicStart" type="Area2D" parent="."]
+position = Vector2(322, -107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicStart"]
+z_index = 1
+position = Vector2(-1143, 141)
+shape = SubResource("RectangleShape2D_51w63")
 
 [node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
-position = Vector2(-718, 70)
+position = Vector2(-730, 46)
 level_id = "ingresso"
 link_id = "ExitDoor"
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="CloseMuseumAnimation" type="Node2D" parent="."]
 visible = false
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
+[node name="CanvasModulate" type="CanvasModulate" parent="CloseMuseumAnimation"]
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloseMuseumAnimation"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_4qo00")
 }
 
-[node name="NodeToggle" parent="Node2D" instance=ExtResource("10_2m52d")]
+[node name="NodeToggle" parent="CloseMuseumAnimation" instance=ExtResource("10_2m52d")]
 trigger = SubResource("Resource_rqwq0")
 
-[node name="Marker2D" type="Marker2D" parent="Node2D"]
+[node name="Marker2D" type="Marker2D" parent="CloseMuseumAnimation"]
 position = Vector2(140, 880)
 
-[connection signal="animation_finished" from="Node2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="Node2D/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="CloseMuseumAnimation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="CloseMuseumAnimation/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

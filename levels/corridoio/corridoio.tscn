@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=41 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
 [ext_resource type="Texture2D" uid="uid://dcjax5e0wbsdu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/sedie-statua.png" id="11_in8sk"]
 [ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
-[ext_resource type="Texture2D" uid="uid://cff8d11qa4uat" path="res://resource/assets/rooms/Corridoio/STATUA.png" id="12_p7jp6"]
 [ext_resource type="Texture2D" uid="uid://vthicuq0fe75" path="res://resource/assets/rooms/Corridoio/Luci.png" id="13_ao4pd"]
 [ext_resource type="Texture2D" uid="uid://cchfe6wrakdx0" path="res://resource/assets/scene_azione/Apertura quadro.PNG" id="19_jrd7r"]
 [ext_resource type="PackedScene" uid="uid://dfdw54qhrvqhy" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_2.tscn" id="19_y4mm1"]
@@ -52,6 +51,14 @@ triggers = Array[ExtResource("4_wk1te")]([SubResource("Resource_g0c14")])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pj42f"]
 load_path = "res://.godot/imported/porte.png-e0c780b14b680c41924bab1dde6292f7.ctex"
+
+[sub_resource type="Resource" id="Resource_uuwsy"]
+script = ExtResource("4_wk1te")
+key = "stealth"
+value = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_683vc"]
+size = Vector2(2076.5, 195)
 
 [sub_resource type="Animation" id="Animation_fg1h2"]
 length = 0.001
@@ -155,33 +162,22 @@ script = ExtResource("1_w2gne")
 dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
 alarm_sfx = ExtResource("6_xu4h3")
 
+[node name="CameraFollow" parent="." instance=ExtResource("1_un85s")]
+position = Vector2(941, 542)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2174.0
+offset_top = -1511.0
+offset_right = 3834.0
+offset_bottom = 2487.0
+color = Color(0, 0, 0, 1)
+
 [node name="Stanze" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(1001, 292)
 texture = ExtResource("7_ikpv2")
 offset = Vector2(-54, 237)
 region_rect = Rect2(2186.73, 1490.61, 2216.14, 1365.98)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
-collision_layer = 2
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
-position = Vector2(-60, 83)
-polygon = PackedVector2Array(-961, 522, -917, 442, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, -292, 200, 237, 200, 306, 200, 438, 200, 431, -211, 595, -212, 590, 200, 617.231, 200, 700.32, 200, 767, 200, 801, 200, 846, 261, 864, 261, 900, -72, 964, -6, 921, 299, 893, 372, 916, 443, 949, 526, -979, 523, -969, 551, 977, 545, 987, -9, 909, -85, 646, -256, -844, -243, -1001, -39)
-
-[node name="ColorRect" type="ColorRect" parent="Stanze"]
-z_index = -1
-anchors_preset = -1
-anchor_left = -0.951852
-anchor_top = -0.918261
-anchor_right = 0.826852
-anchor_bottom = 1.00348
-offset_left = -1517.0
-offset_top = -831.0
-offset_right = 1525.0
-offset_bottom = 859.0
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Balenozza" type="Sprite2D" parent="Stanze"]
 z_index = 1
@@ -215,28 +211,44 @@ position = Vector2(-74, 446.5)
 texture = ExtResource("11_in8sk")
 offset = Vector2(57, -53)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Stanze/Sedie"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
-position = Vector2(61, -51)
-polygon = PackedVector2Array(-718, 223, -600, 224, -594, 187, -587, 122, -591, 110, -611, 102, -644, 101, -671, 102, -698, 106, -713, 112, -722, 119, -721, 162, -720, 183)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
-polygon = PackedVector2Array(-345, 8, -347, 168, 207, 178, 197, 8)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Stanze/Sedie/StaticBody2D"]
-polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
-
-[node name="Statua" type="Sprite2D" parent="Stanze"]
-visible = false
-position = Vector2(4, 297)
-texture = ExtResource("12_p7jp6")
-
 [node name="Luci" type="Sprite2D" parent="Stanze"]
 position = Vector2(-69, 43)
 texture = ExtResource("13_ao4pd")
 offset = Vector2(4, -33)
+
+[node name="NodeToggle" parent="Stanze/Luci" instance=ExtResource("26_lmyf7")]
+trigger = SubResource("Resource_uuwsy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1001, 292)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-60, 83)
+polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, 438, 200, 431, -211, 595, -212, 590, 200, 801, 200, 846, 261, 895, 263, 910, -66, 964, -6, 901, 373, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-52.25, 716.5)
+shape = SubResource("RectangleShape2D_683vc")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-13, 395.5)
+polygon = PackedVector2Array(-718, 223, -600, 224, -594, 187, -587, 122, -591, 110, -611, 102, -644, 101, -671, 102, -698, 106, -713, 112, -722, 119, -721, 162, -720, 183)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-74, 446.5)
+polygon = PackedVector2Array(-345, 8, -347, 168, 207, 178, 197, 8)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-74, 446.5)
+polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
+
+[node name="Player" parent="." instance=ExtResource("2_qa672")]
+unique_name_in_owner = true
+position = Vector2(151, 596)
+
+[node name="Npc" parent="." instance=ExtResource("25_7xsap")]
+position = Vector2(1271, 786)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_fksk1")]
 player_ref = NodePath("../Player")
@@ -281,15 +293,8 @@ offset_right = 22.0
 offset_bottom = 25.0
 color = Color(0.570505, 1, 0.478134, 1)
 
-[node name="CameraFollow" parent="." instance=ExtResource("1_un85s")]
-position = Vector2(941, 542)
-
-[node name="Player" parent="." instance=ExtResource("2_qa672")]
-unique_name_in_owner = true
-position = Vector2(157, 605)
-
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1899, 500)
+position = Vector2(1894, 431)
 level_id = "ingresso"
 link_id = "WestDoor"
 
@@ -306,18 +311,20 @@ level_id = "sala preistorica"
 link_id = "South"
 
 [node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(-3, 551)
+position = Vector2(10, 385)
 level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(-33, 529)
+position = Vector2(13, 533)
 
 [node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(382, 322)
+position = Vector2(338, 320)
+scale = Vector2(1.70083, 1)
 
 [node name="DoorLock3" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(1407, 311)
+position = Vector2(1372, 311)
+scale = Vector2(1.52, 1)
 
 [node name="OpenPaintingCutscene" type="Node2D" parent="."]
 z_index = 1
@@ -340,11 +347,12 @@ texture = ExtResource("19_jrd7r")
 modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 1
-offset_left = -3691.0
-offset_top = -2213.0
-offset_right = 5890.0
-offset_bottom = 3729.0
+offset_left = -4034.0
+offset_top = -2413.0
+offset_right = 5547.0
+offset_bottom = 3529.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
 stream = ExtResource("11_tm84c")
@@ -372,9 +380,6 @@ position = Vector2(125, -236)
 
 [node name="Statue4" parent="PuzzleChalice" instance=ExtResource("21_j0h8a")]
 position = Vector2(-331, -232)
-
-[node name="Npc" parent="." instance=ExtResource("25_7xsap")]
-position = Vector2(1271, 786)
 
 [node name="Stealth" type="Node2D" parent="."]
 visible = false
@@ -407,11 +412,11 @@ scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
 
 [node name="Checkpoint" parent="Stealth" instance=ExtResource("29_jnotp")]
-position = Vector2(1054.62, 71.4964)
+position = Vector2(1013.9, 94.0069)
 direction = "left"
 
 [node name="Checkpoint2" parent="Stealth" instance=ExtResource("29_jnotp")]
-position = Vector2(-55.2158, 71.4964)
+position = Vector2(-34.5099, 89.5048)
 direction = "right"
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

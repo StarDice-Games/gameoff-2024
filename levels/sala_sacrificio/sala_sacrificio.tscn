@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=32 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -45,31 +45,25 @@ character_image = ExtResource("3_ruv8d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmiqv"]
+size = Vector2(375.5, 1283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7btqm"]
+size = Vector2(1581.5, 171)
+
 [sub_resource type="Animation" id="Animation_7hb65"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boss:visible")
+tracks/0/path = NodePath("Boss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Boss:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(894, 1082)]
+"values": [Vector2(894, 928)]
 }
 
 [sub_resource type="Animation" id="Animation_s8v40"]
@@ -77,26 +71,14 @@ resource_name = "boss_walk"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Boss:visible")
+tracks/0/path = NodePath("Boss:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Boss:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(901, 1102), Vector2(1564, 787)]
+"values": [Vector2(894, 928), Vector2(1540, 673)]
 }
 
 [sub_resource type="Animation" id="Animation_85l4n"]
@@ -121,26 +103,16 @@ script = ExtResource("1_445d4")
 dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
 dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
 
-[node name="Candelabro-1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1147, 476)
-texture = ExtResource("13_5vk58")
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("18_jent7")]
+position = Vector2(941, 542)
+player_ref = NodePath("../Player")
 
-[node name="Candelabro-2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(633, 885)
-texture = ExtResource("14_6a3pp")
-
-[node name="Candelabro-3" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1258, 952)
-texture = ExtResource("15_ymqb7")
-offset = Vector2(0, -70)
-
-[node name="Candelabro" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(776, 480)
-texture = ExtResource("16_v01k8")
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -2166.0
+offset_top = -1486.0
+offset_right = 4128.0
+offset_bottom = 2751.0
+color = Color(0, 0, 0, 1)
 
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(972, -79)
@@ -155,38 +127,75 @@ position = Vector2(-40, 968)
 position = Vector2(0, 147)
 texture = ExtResource("17_fxu7n")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
+[node name="Candelabro-1" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(175, 555)
+texture = ExtResource("13_5vk58")
+
+[node name="Candelabro-2" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(-339, 964)
+texture = ExtResource("14_6a3pp")
+
+[node name="Candelabro-3" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(286, 1031)
+texture = ExtResource("15_ymqb7")
+offset = Vector2(0, -70)
+
+[node name="Candelabro" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(-196, 559)
+texture = ExtResource("16_v01k8")
+
+[node name="SalaRitualePorte" type="Sprite2D" parent="Stanze"]
+position = Vector2(598, 959)
+texture = ExtResource("19_y0vbw")
+offset = Vector2(107, -358)
+region_enabled = true
+region_rect = Rect2(1462, 348, 221, 824)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(972, -79)
 collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
-polygon = PackedVector2Array(-61, 610, -61, 730, 75, 793, 90, 830, 96, 866, 96, 906, 92, 933, 76, 964, 38, 1005, -57, 1013, -61, 1165, 205, 1165, 204, 1116, 369, 1117, 374, 1165, 574, 1163, 524, 990, 560, 915, 624, 915, 650, 575, 612, 543, 590, 837, 517, 837, 483, 765, 450, 695, 249, 695, 249, 730, 111, 730, -61, 730, -61, 637, 578, 445, 689, 537, 693, 990, 628, 1172, -78, 1183, -83, 609)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(612, 543, 590, 837, 517, 837, 469, 701, -56, 693, -56, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 600, 877, 643, 574)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-213, 788)
+shape = SubResource("RectangleShape2D_jmiqv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-36.75, 1285.5)
+shape = SubResource("RectangleShape2D_7btqm")
+
+[node name="Player" parent="." instance=ExtResource("2_ylly3")]
+unique_name_in_owner = true
+position = Vector2(1405, 692)
+
+[node name="Boss" parent="." instance=ExtResource("5_jbukh")]
+position = Vector2(894, 928)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_68cts")]
 player_ref = NodePath("../Player")
 
 [node name="East" type="Node2D" parent="LinkSystem"]
-position = Vector2(1412, 614)
+position = Vector2(1403, 694)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/East"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.580646, 1, 0.440148, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_ylly3")]
-unique_name_in_owner = true
-position = Vector2(1244, 714)
-
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
-position = Vector2(1635, 667)
+position = Vector2(1618, 504)
 level_id = "corridoio"
 link_id = "WestDoor"
 
-[node name="Boss" parent="." instance=ExtResource("5_jbukh")]
-position = Vector2(894, 1082)
-scale = Vector2(-1, 1)
-
 [node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
-position = Vector2(1536, 640)
+position = Vector2(1525, 606)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -200,24 +209,6 @@ one_shot = true
 [node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
 position = Vector2(920, 807)
 
-[node name="CameraFollow" parent="." instance=ExtResource("18_jent7")]
-visible = false
-position = Vector2(941, 542)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -2166.0
-offset_top = -1486.0
-offset_right = 4128.0
-offset_bottom = 2751.0
-color = Color(0, 0, 0, 1)
-
-[node name="SalaRitualePorte" type="Sprite2D" parent="."]
-position = Vector2(1570, 880)
-texture = ExtResource("19_y0vbw")
-offset = Vector2(107, -358)
-region_enabled = true
-region_rect = Rect2(1462, 348, 221, 824)
-
 [node name="Stealth" type="Node2D" parent="."]
 visible = false
 position = Vector2(241, 455.716)
@@ -230,6 +221,8 @@ trigger = SubResource("Resource_tq7f3")
 position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

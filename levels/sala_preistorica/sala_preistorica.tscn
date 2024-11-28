@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=29 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
@@ -19,6 +19,18 @@
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="15_hbg3j"]
 [ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="16_yixx2"]
 [ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf2ot"]
+size = Vector2(1201, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xhk8"]
+size = Vector2(326.5, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx7wn"]
+size = Vector2(764, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8k38"]
+size = Vector2(177, 136)
 
 [sub_resource type="Resource" id="Resource_kpamj"]
 script = ExtResource("12_ig3nv")
@@ -145,9 +157,16 @@ _data = {
 y_sort_enabled = true
 script = ExtResource("1_m84jc")
 
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("15_hbg3j")]
+position = Vector2(941, 542)
+scale = Vector2(1, 1)
+player_ref = NodePath("../Player")
+
 [node name="Stanze" type="Sprite2D" parent="."]
-position = Vector2(947, 529)
+y_sort_enabled = true
+position = Vector2(959, -18)
 texture = ExtResource("2_o5trs")
+offset = Vector2(-18, 560)
 region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
@@ -157,23 +176,25 @@ anchor_left = -0.769795
 anchor_top = -0.716981
 anchor_right = 0.783429
 anchor_bottom = 0.977359
-offset_left = -1517.0
-offset_top = -831.0
-offset_right = 1525.0
-offset_bottom = 859.0
+offset_left = -1533.0
+offset_top = -272.0
+offset_right = 1509.0
+offset_bottom = 1418.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Alce" type="Sprite2D" parent="Stanze"]
-position = Vector2(-624, -282)
+position = Vector2(-640.001, 277)
 texture = ExtResource("3_71nrj")
 
 [node name="ElementiForntali" type="Sprite2D" parent="Stanze"]
-position = Vector2(95, 312)
+y_sort_enabled = true
+position = Vector2(-106, 1023)
 texture = ExtResource("4_op8el")
+offset = Vector2(184.999, -152)
 
 [node name="PesceLuna" type="Sprite2D" parent="Stanze"]
-position = Vector2(444, -249)
+position = Vector2(427.999, 310)
 texture = ExtResource("9_f1pih")
 offset = Vector2(-4, 48)
 
@@ -182,39 +203,54 @@ visible = false
 position = Vector2(420, 48)
 texture = ExtResource("6_g1o0m")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(693.5, 1094)
+shape = SubResource("RectangleShape2D_jf2ot")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1663.75, 1092)
+shape = SubResource("RectangleShape2D_3xhk8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(812, 943)
+shape = SubResource("RectangleShape2D_tx7wn")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1671.5, 951)
+shape = SubResource("RectangleShape2D_u8k38")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1576, 709, 1105, 698, 1066, 729, 423, 714, 177, 1017)
+
+[node name="Player" parent="." instance=ExtResource("3_x3oc3")]
+unique_name_in_owner = true
+position = Vector2(1378, 869)
+
+[node name="Npc" parent="." instance=ExtResource("11_lq22p")]
+position = Vector2(536, 784)
+
+[node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
+position = Vector2(1395, 1211)
+scale = Vector2(2.24, 1)
+level_id = "corridoio"
+link_id = "North1"
+
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
 player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-visible = false
-position = Vector2(1396, 945)
+position = Vector2(1378, 868)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
+visible = false
 offset_left = -16.0
 offset_top = -20.0
 offset_right = 24.0
 offset_bottom = 20.0
 color = Color(0.582582, 1, 0.432314, 1)
-
-[node name="Player" parent="." instance=ExtResource("3_x3oc3")]
-unique_name_in_owner = true
-position = Vector2(1475, 671)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 432.0
-offset_top = 273.0
-offset_right = 703.0
-offset_bottom = 356.0
-theme_override_font_sizes/font_size = 60
-text = "Sala Preistorica/Naturale"
-
-[node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1417, 1218)
-level_id = "corridoio"
-link_id = "North1"
-
-[node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
-position = Vector2(995, 639)
 
 [node name="Rope" parent="." instance=ExtResource("8_alvi4")]
 visible = false
@@ -251,12 +287,8 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 542)
 texture = ExtResource("17_5mw4a")
 
-[node name="Npc" parent="." instance=ExtResource("11_lq22p")]
-position = Vector2(739, 757)
-
-[node name="CameraFollow" parent="." instance=ExtResource("15_hbg3j")]
-position = Vector2(941, 542)
-scale = Vector2(1, 1)
+[node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
+position = Vector2(993, 650)
 
 [connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

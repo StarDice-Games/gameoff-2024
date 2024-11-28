@@ -119,9 +119,9 @@ shape = SubResource("CircleShape2D_mdwis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -56)
+position = Vector2(0, 29.0423)
 texture = ExtResource("12_f0bip")
-offset = Vector2(-33, -28)
+offset = Vector2(-33, -113.042)
 
 [node name="OmbraPiedi" type="Sprite2D" parent="."]
 y_sort_enabled = true

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://l2d0fsl3gg0v" path="res://resource/assets/UI/Punto esclamativo nemici.PNG" id="8_ys7tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
-size = Vector2(101.25, 96.25)
+size = Vector2(38.625, 37.125)
 
 [sub_resource type="Animation" id="Animation_bw7gc"]
 length = 0.001
@@ -161,13 +161,15 @@ script = ExtResource("1_tbwhe")
 monolog = Array[ExtResource("2_7ddah")]([ExtResource("3_0fm5w")])
 
 [node name="SpriteFront" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+y_sort_enabled = true
+position = Vector2(-6.5, 10.5)
 rotation = 0.0174533
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_6suqn")
+offset = Vector2(10.4972, -19.3528)
 
 [node name="ManoDx" type="Sprite2D" parent="SpriteFront"]
-position = Vector2(-79.2315, 44.7229)
+position = Vector2(-65.6384, 25.7899)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_24cpf")
 offset = Vector2(-36.4988, 3.48479)
@@ -175,7 +177,7 @@ region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
 
 [node name="ManoSx" type="Sprite2D" parent="SpriteFront"]
 visible = false
-position = Vector2(102.32, 36.5531)
+position = Vector2(115.913, 17.6201)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_24cpf")
 offset = Vector2(-36.4988, 3.48479)
@@ -184,7 +186,7 @@ region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
 
 [node name="ManoDown" type="Sprite2D" parent="SpriteFront"]
 visible = false
-position = Vector2(-0.0375233, 93.3482)
+position = Vector2(13.5556, 74.4152)
 rotation = 1.58825
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_24cpf")
@@ -271,9 +273,11 @@ collision_layer = 512
 collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2(-7, -2)
 shape = SubResource("RectangleShape2D_f6gaj")
 
 [node name="Caught" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-5, -148)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("8_ys7tn")

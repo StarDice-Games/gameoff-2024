@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=22 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
@@ -17,8 +17,29 @@
 [ext_resource type="PackedScene" uid="uid://bltkk80sv7ldj" path="res://npc_act_1/npc_2.tscn" id="16_rd3pp"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67rq6"]
+size = Vector2(292, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu6oy"]
+size = Vector2(388, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey8ik"]
+size = Vector2(365, 170.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuxh"]
+size = Vector2(122.5, 111.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jt5n"]
+size = Vector2(1140, 77)
+
 [node name="SalaArte" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_t0sdk")
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("17_fgpv8")]
+visible = false
+position = Vector2(941, 542)
+player_ref = NodePath("../Player")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -2088.0
@@ -27,48 +48,13 @@ offset_right = 4112.0
 offset_bottom = 2335.0
 color = Color(0, 0, 0, 1)
 
-[node name="Environment" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="SpriteStanza" type="Sprite2D" parent="Environment"]
+[node name="SpriteStanza" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture = ExtResource("2_6tip2")
 offset = Vector2(955, 508)
 region_rect = Rect2(93, 311, 1912, 1014)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/SpriteStanza"]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/SpriteStanza/StaticBody2D"]
-position = Vector2(4, 2)
-polygon = PackedVector2Array(100, 947, 194, 830, 368, 650, 495, 637, 999, 637, 1560, 637, 1577, 676, 1615, 766, 1643, 831, 1714, 968, 1633, 952, 1536, 952, 921, 952, 622, 952, 616, 973, 614, 990, 1729, 999, 1721, 843, 1581, 569, 370, 587, 99, 885)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Environment/SpriteStanza/StaticBody2D"]
-polygon = PackedVector2Array(384, 953, 373, 994, 74, 1003, 76, 943)
-
-[node name="Poltrona" type="Sprite2D" parent="Environment"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(892, 725)
-texture = ExtResource("4_ev18k")
-offset = Vector2(0, 71)
-region_enabled = true
-region_rect = Rect2(862, 1041, 276, 114)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Poltrona"]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Poltrona/StaticBody2D"]
-position = Vector2(0, 27)
-polygon = PackedVector2Array(-121, 28, -138, 31, -141, 54, -136, 83, -124, 103, 90, 105, 130, 62, 135, 33)
-
-[node name="Libreria" parent="Environment" instance=ExtResource("16_1axwy")]
-position = Vector2(1455, 611)
-collision_layer = 4
-
-[node name="Sedia1" type="Sprite2D" parent="Environment"]
+[node name="Sedia1" type="Sprite2D" parent="SpriteStanza"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(190, 832)
@@ -77,14 +63,16 @@ offset = Vector2(-32, 30)
 region_enabled = true
 region_rect = Rect2(204, 1079, 97, 165)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia1"]
-collision_layer = 4
+[node name="Poltrona" type="Sprite2D" parent="SpriteStanza"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(892, 725)
+texture = ExtResource("4_ev18k")
+offset = Vector2(0, 71)
+region_enabled = true
+region_rect = Rect2(862, 1041, 276, 114)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia1/StaticBody2D"]
-position = Vector2(-7, 8)
-polygon = PackedVector2Array(-21, 0, -4, 1, 13, 13, 22, 31, 27, 62, 1, 110, -79, 107)
-
-[node name="Sedia2" type="Sprite2D" parent="Environment"]
+[node name="Sedia2" type="Sprite2D" parent="SpriteStanza"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(430, 560)
@@ -93,14 +81,7 @@ offset = Vector2(-2, 61)
 region_enabled = true
 region_rect = Rect2(483, 847, 76, 148)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia2"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia2/StaticBody2D"]
-position = Vector2(3, 64)
-polygon = PackedVector2Array(38, 18, 36, 41, 29, 65, 27, 71, 20, 74, -22, 74, -102, 66, -66, 24, -13, 20)
-
-[node name="Sedia3" type="Sprite2D" parent="Environment"]
+[node name="Sedia3" type="Sprite2D" parent="SpriteStanza"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1665, 833)
@@ -109,14 +90,15 @@ offset = Vector2(0, 50)
 region_enabled = true
 region_rect = Rect2(1710, 1101, 97, 165)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Sedia3"]
-collision_layer = 4
+[node name="LuciCandelabri" type="Sprite2D" parent="SpriteStanza"]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(941, -18)
+texture = ExtResource("9_pgwkn")
+region_rect = Rect2(902, 304, 272, 79)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Sedia3/StaticBody2D"]
-position = Vector2(522, 114)
-polygon = PackedVector2Array(-559, -76, -570, -60, -574, -24, -551, 29, -466, 25, -490, -41, -527, -85, -546, -84)
-
-[node name="StanzaArte-12(1)" type="Sprite2D" parent="Environment"]
+[node name="StanzaArte-12(1)" type="Sprite2D" parent="SpriteStanza"]
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
@@ -124,15 +106,7 @@ position = Vector2(942, -72)
 texture = ExtResource("8_j8ylw")
 region_rect = Rect2(904, 143, 274, 409)
 
-[node name="LuciCandelabri" type="Sprite2D" parent="Environment/StanzaArte-12(1)"]
-z_index = 1
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(-1, 54)
-texture = ExtResource("9_pgwkn")
-region_rect = Rect2(902, 304, 272, 79)
-
-[node name="Busto" type="Sprite2D" parent="Environment"]
+[node name="Busto" type="Sprite2D" parent="SpriteStanza"]
 visible = false
 y_sort_enabled = true
 texture_filter = 1
@@ -142,32 +116,58 @@ offset = Vector2(4, 65)
 region_enabled = true
 region_rect = Rect2(1236, 757, 78, 195)
 
-[node name="Vaso" type="Sprite2D" parent="Environment"]
+[node name="Vaso" type="Sprite2D" parent="SpriteStanza"]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(1121, 761)
 region_enabled = true
 region_rect = Rect2(1158, 996, 101, 175)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Vaso"]
-collision_layer = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Vaso/StaticBody2D"]
-polygon = PackedVector2Array(-22, 34, -40, 56, -38, 92, 28, 91, 45, 70, 41, 35)
-
-[node name="Player" parent="Environment" instance=ExtResource("2_cc2si")]
-unique_name_in_owner = true
-position = Vector2(608, 653)
-
-[node name="Vaso2" type="Sprite2D" parent="Environment"]
+[node name="Vaso2" type="Sprite2D" parent="SpriteStanza"]
 position = Vector2(1121, 763)
 texture = ExtResource("13_cu4xh")
 
-[node name="Npc" parent="Environment" instance=ExtResource("16_rd3pp")]
-position = Vector2(420, 737)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(4, 2)
+polygon = PackedVector2Array(98, 946, 369, 647, 1560, 637, 1714, 968, 1729, 999, 1847, 145, 1637, 34, 354, 22, 49, 101)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(228, 990.5)
+shape = SubResource("RectangleShape2D_67rq6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(965, 814)
+shape = SubResource("RectangleShape2D_nu6oy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1537.5, 861.25)
+shape = SubResource("RectangleShape2D_ey8ik")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(142.75, 898.625)
+shape = SubResource("RectangleShape2D_ocuxh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(409, 614)
+shape = SubResource("RectangleShape2D_ocuxh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1199, 986)
+shape = SubResource("RectangleShape2D_8jt5n")
+
+[node name="Player" parent="." instance=ExtResource("2_cc2si")]
+unique_name_in_owner = true
+position = Vector2(526, 822)
+
+[node name="Npc" parent="." instance=ExtResource("16_rd3pp")]
+position = Vector2(282, 794)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_i1wci")]
-player_ref = NodePath("../Environment/Player")
+player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
 position = Vector2(525, 823)
@@ -181,12 +181,11 @@ offset_bottom = 21.0
 color = Color(0.586297, 1, 0.416665, 1)
 
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(502, 978)
+position = Vector2(502, 996)
 scale = Vector2(2.5959, 0.2)
 level_id = "corridoio"
 link_id = "North2"
 
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("17_fgpv8")]
-visible = false
-position = Vector2(941, 542)
-player_ref = NodePath("../Environment/Player")
+[node name="Libreria" parent="." instance=ExtResource("16_1axwy")]
+position = Vector2(1455, 611)
+collision_layer = 4

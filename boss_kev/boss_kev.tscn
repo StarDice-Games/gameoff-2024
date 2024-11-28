@@ -76,59 +76,61 @@ triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])
 size = Vector2(113, 275.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
-radius = 129.124
+radius = 232.868
 
 [sub_resource type="Animation" id="Animation_5h4s2"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale:y")
+tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.0005, 0, 0.0005, 0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_r3v0m"]
 resource_name = "idle"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale:y")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.97, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1, 2)
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.97), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hkecf"]
@@ -176,11 +178,12 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wl1ke"]
-radius = 129.0
+radius = 231.79
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 17
+up_direction = Vector2(0, 1)
 script = ExtResource("1_inowa")
 dialog1 = Array[ExtResource("2_qes3u")]([SubResource("Resource_cts7d"), SubResource("Resource_ixqye"), SubResource("Resource_5b178")])
 dialog2 = Array[ExtResource("2_qes3u")]([SubResource("Resource_6xilf")])
@@ -189,25 +192,27 @@ trigger_id = "talk_boss"
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 38.0
-offset_top = -355.0
-offset_right = 124.0
-offset_bottom = -309.0
-scale = Vector2(-1, 1)
+offset_left = -40.0
+offset_top = -211.791
+offset_right = 46.0
+offset_bottom = -165.791
 theme = ExtResource("6_qhvsw")
 text = "Talk E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.8742, -3.4469)
+scale = Vector2(-1, 1)
 texture = ExtResource("8_3ydll")
-offset = Vector2(1.00893, -138.822)
+offset = Vector2(8.00893, 6.17799)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8.5, -138.25)
+position = Vector2(0.374199, 3.3031)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("9_5niit")]
+position = Vector2(8.8742, 141.553)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-13, -153)
@@ -220,10 +225,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(8.8742, 141.553)
 stream = ExtResource("10_hutjl")
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_7q66l")]
-position = Vector2(-9, -142)
+position = Vector2(-0.125801, -0.446899)
 script = ExtResource("11_mplof")
 sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_stvt3")
