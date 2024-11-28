@@ -39,7 +39,9 @@ func update_counter_talk(key: String, value : bool) -> void:
 	
 	if key == "pulled_out" and value == true:
 		animation_player.play("fallling_tooth")
-
+	
+	if key == "ring" and value == true:
+		$VignettaTelefono.show()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	AudioSystem.set_volumes_value("Music", 0)

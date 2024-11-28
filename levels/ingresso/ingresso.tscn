@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=35 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://bdj4lpfig4tao" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.ogg" id="4_6yvli"]
 [ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="5_3s8i6"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
+[ext_resource type="Texture2D" uid="uid://begy3n8olkntj" path="res://resource/assets/UI/vignetta.png" id="5_vqsvf"]
 [ext_resource type="Texture2D" uid="uid://ccl256sqh5kka" path="res://resource/assets/scene_azione/Caduta dente.PNG" id="6_am7le"]
+[ext_resource type="Texture2D" uid="uid://dog3kq1wlyc0v" path="res://resource/assets/rooms/Guardiola/telefono-agganciato.png" id="6_ehu1q"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="16_4dyp1"]
@@ -21,6 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://bt3dhh7ty8nlq" path="res://enemy_patrol/enemy_patrol_3.tscn" id="18_4h17y"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="19_bg8dd"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
+
+[sub_resource type="Resource" id="Resource_agsoi"]
+script = ExtResource("5_twhkk")
+key = "ring"
+value = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwd2a"]
 size = Vector2(1628.5, 230)
@@ -203,6 +210,17 @@ texture = ExtResource("2_vknqs")
 offset = Vector2(236, 934)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 
+[node name="VignettaTelefono" type="Sprite2D" parent="."]
+position = Vector2(1185, 904)
+texture = ExtResource("5_vqsvf")
+
+[node name="Telefono-agganciato" type="Sprite2D" parent="VignettaTelefono"]
+position = Vector2(41, -23)
+texture = ExtResource("6_ehu1q")
+
+[node name="NodeToggle" parent="VignettaTelefono" instance=ExtResource("16_4dyp1")]
+trigger = SubResource("Resource_agsoi")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(3, 3)
 collision_layer = 2
@@ -229,7 +247,7 @@ collision_layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
-position = Vector2(1893, 430)
+position = Vector2(1805, 510)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
@@ -319,10 +337,10 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="FallingToothAnim/CanvasLayer"]
 z_index = 1
-offset_left = -961.0
-offset_top = -586.0
-offset_right = 2789.0
-offset_bottom = 1769.0
+offset_left = -966.0
+offset_top = -538.0
+offset_right = 2784.0
+offset_bottom = 1817.0
 color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FallingToothAnim/CanvasLayer"]
