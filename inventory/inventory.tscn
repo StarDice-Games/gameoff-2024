@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://7w03ydoa4p8f"]
 
 [ext_resource type="Script" path="res://inventory/scripts/inventory.gd" id="1_k1jwo"]
-[ext_resource type="AudioStream" uid="uid://b08nh0grqn4j8" path="res://audio/sfx/pickup/Pickup_Object-V2.wav" id="2_43r4j"]
+[ext_resource type="AudioStream" uid="uid://dfi1ou4iowoyh" path="res://audio/sfx/pickup/Pickup_Object-V2.ogg" id="2_vjm3y"]
 
 [node name="inventory" type="Node2D"]
 script = ExtResource("1_k1jwo")
-audio_sfx = ExtResource("2_43r4j")
+audio_sfx = ExtResource("2_vjm3y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp55k82sv4ufj"]
 
 [ext_resource type="Script" path="res://interactable/scripts/interactable.gd" id="1_l7pao"]
-[ext_resource type="AudioStream" uid="uid://ci60aho2s6t0r" path="res://audio/sfx/interaction/Interaction_01.wav" id="2_a0ico"]
+[ext_resource type="AudioStream" uid="uid://boopy0kuinv5y" path="res://audio/sfx/interaction/Interaction_01.ogg" id="2_3alc1"]
 
 [node name="Interactable" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_l7pao")
-audio_sfx = ExtResource("2_a0ico")
+audio_sfx = ExtResource("2_3alc1")

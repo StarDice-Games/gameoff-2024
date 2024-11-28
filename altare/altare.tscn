@@ -162,6 +162,7 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CutsceneLightChange"]
 stream = ExtResource("6_i0vui")
+volume_db = -10.0
 
 [node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_6gipo")]
 sprite = NodePath("../Sprite_empty")

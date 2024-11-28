@@ -126,7 +126,7 @@ tracks/2/path = NodePath("CanvasLayer/ScenaQuadro:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 4, 4.63333),
+"times": PackedFloat32Array(0, 1.76667, 4, 4.63333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -348,6 +348,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
 stream = ExtResource("11_tm84c")
+volume_db = -10.0
 
 [node name="PuzzleChalice" type="Node2D" parent="."]
 y_sort_enabled = true

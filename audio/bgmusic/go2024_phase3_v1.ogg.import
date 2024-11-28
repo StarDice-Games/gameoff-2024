@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/go2024_phase3_v1.ogg-4978c2ee26cce2e8bc273a94
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

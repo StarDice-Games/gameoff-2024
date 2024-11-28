@@ -294,6 +294,7 @@ color = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_kioje")
+volume_db = -15.0
 
 [connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
 [connection signal="area_entered" from="RightFov" to="." method="detect_player"]

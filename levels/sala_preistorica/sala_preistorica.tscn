@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://4ayojkm2sfk7" path="res://resource/assets/rooms/Sala animali/elementi forntali.png" id="4_op8el"]
 [ext_resource type="Texture2D" uid="uid://bxg2vik1mg2g4" path="res://resource/assets/rooms/Sala animali/pesce schiantato.png" id="6_g1o0m"]
 [ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
-[ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="7_f24n0"]
 [ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="8_alvi4"]
 [ext_resource type="Texture2D" uid="uid://bqb7361meab4x" path="res://resource/assets/rooms/Sala animali/pesce luna.png" id="9_f1pih"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_n8j22"]
@@ -18,6 +17,7 @@
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="12_ig3nv"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="13_e86rr"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="15_hbg3j"]
+[ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="16_yixx2"]
 [ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
 
 [sub_resource type="Resource" id="Resource_kpamj"]
@@ -244,7 +244,7 @@ offset_bottom = 1506.0
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene/CanvasLayer"]
-stream = ExtResource("7_f24n0")
+stream = ExtResource("16_yixx2")
 
 [node name="ScenaPesce" type="Sprite2D" parent="FishCutScene/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)

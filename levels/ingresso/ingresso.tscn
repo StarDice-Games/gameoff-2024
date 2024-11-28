@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
+[ext_resource type="AudioStream" uid="uid://bdj4lpfig4tao" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.ogg" id="4_6yvli"]
+[ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="5_3s8i6"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
 [ext_resource type="Texture2D" uid="uid://ccl256sqh5kka" path="res://resource/assets/scene_azione/Caduta dente.PNG" id="6_am7le"]
 [ext_resource type="PackedScene" uid="uid://ymmamvc2fsqp" path="res://act2-t-rex-puzzle/t-rex-trigger/t_rex_trigger.tscn" id="11_e0sph"]
 [ext_resource type="Texture2D" uid="uid://brwywxg2ftrdc" path="res://resource/assets/char-280px/Fronte/Testa.png" id="12_4ffme"]
-[ext_resource type="AudioStream" uid="uid://d0a5iyaq5q773" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.wav" id="13_q6wsf"]
-[ext_resource type="AudioStream" uid="uid://d4dnqfuhrocqe" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.wav" id="14_8gly2"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="16_4dyp1"]
 [ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="16_b4hsd"]
 [ext_resource type="PackedScene" uid="uid://t87t82e062ie" path="res://npc_act_1/npc_3.tscn" id="16_wlojo"]
@@ -263,10 +263,10 @@ offset_bottom = 1769.0
 color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FallingToothAnim/CanvasLayer"]
-stream = ExtResource("13_q6wsf")
+stream = ExtResource("4_6yvli")
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="FallingToothAnim/CanvasLayer"]
-stream = ExtResource("14_8gly2")
+stream = ExtResource("5_3s8i6")
 
 [node name="ScenaDente" type="Sprite2D" parent="FallingToothAnim/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
