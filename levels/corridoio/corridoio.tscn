@@ -367,7 +367,7 @@ y_sort_enabled = false
 position = Vector2(-618, -255)
 statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3"), NodePath("../Statue4")]
 task_chalice = ExtResource("7_m5sq3")
-combination = ["Left", "Front", "Right", "Right"]
+combination = ["Back", "Right", "Front", "Left"]
 
 [node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
 position = Vector2(-1318, -234)
