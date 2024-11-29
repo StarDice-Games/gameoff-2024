@@ -57,3 +57,7 @@ func one(checks : Array[String]) -> bool :
 		if triggers.has(t) and triggers[t] == true:
 			return true;
 	return false;
+
+func reset() -> void:
+	for key in triggers:
+		triggers[key] = false
