@@ -130,7 +130,7 @@ func _physics_process(delta: float) -> void:
 			AudioSystem.play(footstep) 
 			$Timer.start()
 	
-	velocity = Vector2(x_direction, y_direction) * SPEED
+	velocity = Vector2(x_direction, y_direction).normalized() * SPEED
 	
 	if x_direction != 0 or y_direction != 0 :
 		raycast_target = Vector2(x_direction, y_direction).normalized() * interact_distance
