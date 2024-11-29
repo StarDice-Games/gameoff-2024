@@ -3645,24 +3645,25 @@ visible = false
 [node name="GambaDx" type="Sprite2D" parent="Front"]
 position = Vector2(-9.27598, 43.6401)
 rotation = -0.222424
+scale = Vector2(1, 1)
 texture = ExtResource("3_uo86d")
 offset = Vector2(-2, 15.9994)
 region_rect = Rect2(200, 377, 44, 66)
 
 [node name="PiedeDx" type="Sprite2D" parent="Front/GambaDx"]
-position = Vector2(-6.39137, 41.0632)
+position = Vector2(-6.39138, 41.0632)
 rotation = 0.210591
-scale = Vector2(0.999898, 0.999933)
-skew = -6.00815e-05
+scale = Vector2(0.999899, 0.999933)
+skew = -5.97239e-05
 texture = ExtResource("4_o6gbs")
 offset = Vector2(-7.9989, 6.99918)
 region_rect = Rect2(180.872, 461.073, 64.3894, 35.627)
 
 [node name="GambaDx2" type="Sprite2D" parent="Front/GambaDx"]
 position = Vector2(-4.15178, 23.8098)
-rotation = 0.323725
-scale = Vector2(0.999905, 0.999926)
-skew = -6.62804e-05
+rotation = 0.323724
+scale = Vector2(0.999906, 0.999926)
+skew = -6.59227e-05
 texture = ExtResource("5_w5w4c")
 offset = Vector2(4.00015, 8.99904)
 region_rect = Rect2(199, 422, 46, 49)
@@ -3670,6 +3671,7 @@ region_rect = Rect2(199, 422, 46, 49)
 [node name="GambaSx" type="Sprite2D" parent="Front"]
 position = Vector2(17.0316, 43.0462)
 rotation = 0.0270703
+scale = Vector2(1, 1)
 texture = ExtResource("6_cnvsj")
 offset = Vector2(-1.95477, 11.5259)
 region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)
@@ -3698,16 +3700,16 @@ offset = Vector2(2, -4)
 region_rect = Rect2(205, 384, 79, 29)
 
 [node name="BraccioDx" type="Sprite2D" parent="Front"]
-position = Vector2(-41.9961, -5.04742)
-rotation = -0.00546189
+position = Vector2(-42.0432, -5.71744)
+rotation = 0.0236425
 scale = Vector2(0.999864, 0.999864)
 texture = ExtResource("10_m0e8d")
 offset = Vector2(10.9984, 15.9978)
 region_rect = Rect2(250, 268, 87, 101)
 
 [node name="BraccioSx" type="Sprite2D" parent="Front"]
-position = Vector2(55.8045, -5.59429)
-rotation = 0.0643303
+position = Vector2(55.9531, -6.6645)
+rotation = 0.0259471
 scale = Vector2(0.999877, 0.999877)
 texture = ExtResource("11_ntlow")
 offset = Vector2(-12.9984, 16.9973)
@@ -3761,18 +3763,18 @@ position = Vector2(27.509, 8.5)
 texture = ExtResource("19_7xd60")
 
 [node name="ManoDx" type="Sprite2D" parent="Front"]
-position = Vector2(-32.8758, 27.8216)
-rotation = -0.270574
-scale = Vector2(1.05939, 0.943859)
-skew = -0.00319111
+position = Vector2(-33.976, 27.0363)
+rotation = -0.286086
+scale = Vector2(1.05938, 0.943849)
+skew = -0.00319123
 texture = ExtResource("20_0so7q")
 offset = Vector2(-3.99966, 16.9972)
 region_rect = Rect2(287, 340, 46, 82)
 
 [node name="ManoSx" type="Sprite2D" parent="Front"]
-position = Vector2(42.5538, 25.6735)
-rotation = 0.493363
-scale = Vector2(0.999789, 0.999789)
+position = Vector2(44.1747, 24.676)
+rotation = 0.503662
+scale = Vector2(0.999777, 0.999777)
 texture = ExtResource("21_py6hp")
 offset = Vector2(5.00055, 17.9997)
 region_rect = Rect2(149, 337, 50, 88)
@@ -4009,8 +4011,8 @@ offset = Vector2(2, -4)
 region_rect = Rect2(205, 384, 79, 29)
 
 [node name="BraccioDx" type="Sprite2D" parent="Left"]
-position = Vector2(-17.1923, 1.53365)
-rotation = -0.041301
+position = Vector2(-17.1925, 1.53359)
+rotation = -0.0413009
 scale = Vector2(1.00313, 1.00313)
 texture = ExtResource("29_s322w")
 offset = Vector2(-12.9984, 16.9973)
@@ -4058,9 +4060,9 @@ rotation = -0.387463
 texture = ExtResource("37_ugy1d")
 
 [node name="ManoDx" type="Sprite2D" parent="Left"]
-position = Vector2(-49.4356, 48.28)
-rotation = -0.734035
-scale = Vector2(1.00306, 1.00306)
+position = Vector2(-49.4357, 48.2801)
+rotation = -0.734038
+scale = Vector2(1.00307, 1.00307)
 texture = ExtResource("38_by85w")
 offset = Vector2(5.00055, 17.9997)
 region_rect = Rect2(149, 337, 50, 88)
@@ -4296,8 +4298,8 @@ offset = Vector2(-1.95477, 11.5259)
 region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)
 
 [node name="PiedeDx" type="Sprite2D" parent="Right/GambaDx"]
-position = Vector2(-7.30356, 33.6544)
-rotation = 0.384647
+position = Vector2(-7.30354, 33.6544)
+rotation = 0.384645
 scale = Vector2(0.999762, 0.999762)
 texture = ExtResource("26_6f44o")
 offset = Vector2(6.9259, 5.77921)
@@ -4305,7 +4307,7 @@ region_rect = Rect2(252.162, 460.501, 52.8584, 37.9171)
 
 [node name="GambaDx" type="Sprite2D" parent="Right/GambaDx"]
 position = Vector2(1.61403, 22.7455)
-rotation = -0.0916484
+rotation = -0.09165
 scale = Vector2(0.999901, 0.999901)
 texture = ExtResource("27_tk1dg")
 offset = Vector2(-0.926331, 10.8792)
@@ -4320,8 +4322,8 @@ offset = Vector2(2, -4)
 region_rect = Rect2(205, 384, 79, 29)
 
 [node name="BraccioSx" type="Sprite2D" parent="Right"]
-position = Vector2(18.1935, 6.87435)
-rotation = 3.05819
+position = Vector2(18.193, 6.87637)
+rotation = 3.05815
 scale = Vector2(1.01092, -1.01092)
 texture = ExtResource("29_s322w")
 offset = Vector2(-12.9984, 16.9973)
@@ -4380,9 +4382,9 @@ rotation = -0.171042
 color = Color(0.505882, 0.329412, 0.12549, 1)
 
 [node name="ManoSx" type="Sprite2D" parent="Right"]
-position = Vector2(43.4989, 45.4876)
-rotation = -2.50886
-scale = Vector2(1.01084, -1.01084)
+position = Vector2(43.4994, 45.4881)
+rotation = -2.50883
+scale = Vector2(1.01083, -1.01083)
 texture = ExtResource("38_by85w")
 offset = Vector2(-6.65306, 17.6814)
 region_rect = Rect2(149, 337, 50, 88)
@@ -4390,15 +4392,15 @@ region_rect = Rect2(149, 337, 50, 88)
 [node name="BraccioDx" type="Sprite2D" parent="Right"]
 position = Vector2(-23.002, 17.0091)
 rotation = 3.10601
-scale = Vector2(1.00205, -1.00205)
+scale = Vector2(1.00206, -1.00206)
 texture = ExtResource("39_5psyy")
 offset = Vector2(10.9984, 15.9978)
 region_rect = Rect2(250, 268, 87, 101)
 
 [node name="ManoDx" type="Sprite2D" parent="Right"]
-position = Vector2(-46.589, 59.0205)
-rotation = 2.41898
-scale = Vector2(1.00203, -1.00203)
+position = Vector2(-46.5892, 59.0206)
+rotation = 2.41897
+scale = Vector2(1.00204, -1.00204)
 texture = ExtResource("40_q1p5m")
 offset = Vector2(-3.99966, 16.9972)
 region_rect = Rect2(287, 340, 46, 82)
@@ -4615,6 +4617,7 @@ region_rect = Rect2(287, 340, 46, 82)
 [node name="GambaSx" type="Sprite2D" parent="Back"]
 position = Vector2(-7.30141, 46.611)
 rotation = 0.270832
+scale = Vector2(1, 1)
 texture = ExtResource("43_vpxx7")
 offset = Vector2(-1.95477, 11.5259)
 region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)
@@ -4926,6 +4929,17 @@ debug_color = Color(3.51354e-06, 0.63468, 0.426201, 0.42)
 position = Vector2(-0.25, 2.5)
 shape = SubResource("RectangleShape2D_dbr28")
 debug_color = Color(0, 0.643082, 0.306457, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.17
+drag_top_margin = 0.16
+drag_right_margin = 0.16
+drag_bottom_margin = 0.16
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [connection signal="area_entered" from="PortalTrigger" to="." method="_on_portal_trigger_area_entered"]
 [connection signal="area_exited" from="PortalTrigger" to="." method="_on_portal_trigger_area_exited"]

@@ -40,7 +40,7 @@ size = Vector2(87, 116)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gj46"]
 radius = 163.003
 
-[node name="Statue" type="Node2D"]
+[node name="Statue2" type="Node2D"]
 script = ExtResource("1_ogmws")
 audio_sfx = ExtResource("2_ci4c2")
 
