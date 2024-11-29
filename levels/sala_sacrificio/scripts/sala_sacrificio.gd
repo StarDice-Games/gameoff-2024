@@ -5,7 +5,6 @@ extends Node2D
 
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(trigger_update)
-	EventSystem.play_music.emit("go2024_phase3_v1")
 	TriggersSystem.update_trigger("doors_locked", true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
