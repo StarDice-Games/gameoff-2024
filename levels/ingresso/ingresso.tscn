@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=37 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://bt3dhh7ty8nlq" path="res://enemy_patrol/enemy_patrol_3.tscn" id="18_4h17y"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="19_bg8dd"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
-[ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="26_vbota"]
 
 [sub_resource type="Resource" id="Resource_2k5b1"]
 script = ExtResource("5_twhkk")
@@ -465,9 +464,6 @@ direction = "up"
 position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
-
-[node name="GuardarobaGuardiano" parent="." instance=ExtResource("26_vbota")]
-position = Vector2(966, 909)
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

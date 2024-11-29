@@ -50,6 +50,7 @@ func _on_interactable_player_exit() -> void:
 
 func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("opened_painting", true):
+		EventSystem.stop_sound.emit("Drag_Statue_01")
 		interactable_statue.hide()
 		$Interactable.queue_free()
 		$HighlightComponent.queue_free()
@@ -59,29 +60,32 @@ func _on_interactable_interacted() -> void:
 		counter_position = 0
 	match position_statue[counter_position]: 
 		"Front":
-			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
+			EventSystem.play_sound.emit("Drag_Statue_01", "Sfx")
 			direction_statue = "Front"
 			sprite_front.show()
 			sprite_back.hide()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Back":
-			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
+			EventSystem.stop_sound.emit("Drag_Statue_01")
+			EventSystem.play_sound.emit("Drag_Statue_01", "Sfx")
 			direction_statue = "Back"
 			sprite_front.hide()
 			sprite_back.show()
 			sprite_left.hide()
 			sprite_right.hide()
 		"Left":
-			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
+			EventSystem.stop_sound.emit("Drag_Statue_01")
+			EventSystem.play_sound.emit("Drag_Statue_01", "Sfx")
 			direction_statue = "Left"
 			sprite_front.hide()
 			sprite_back.hide()
 			sprite_left.show()
 			sprite_right.hide()
 		"Right":
+			EventSystem.stop_sound.emit("Drag_Statue_01")
+			EventSystem.play_sound.emit("Drag_Statue_01", "Sfx")
 			direction_statue = "Right"
-			AudioSystem.play_audio_event("Drag_Statue_01", "Sfx")
 			sprite_front.hide()
 			sprite_back.hide()
 			sprite_left.hide()
