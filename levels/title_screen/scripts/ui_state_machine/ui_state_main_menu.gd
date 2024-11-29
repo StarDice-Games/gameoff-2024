@@ -44,10 +44,12 @@ func _on_exit_pressed():
 
 
 func _on_new_game_pressed() -> void:
+	TriggersSystem.reset()
 	TriggersSystem.toggle_trigger("not_in_title")
 	AudioSystem.play_audio_event("UI_Button_Click_01", "Sfx")
 	EventSystem.cutscene_started.emit()
 	get_viewport().gui_release_focus()
+	
 
 func _on_load_game_pressed():
 	pass
