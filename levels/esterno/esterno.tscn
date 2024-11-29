@@ -256,6 +256,7 @@ player_ref = NodePath("../Player")
 position = Vector2(-570, 168)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
