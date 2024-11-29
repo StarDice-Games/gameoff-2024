@@ -134,6 +134,9 @@ func _physics_process(delta: float) -> void:
 	
 	if x_direction != 0 or y_direction != 0 :
 		raycast_target = Vector2(x_direction, y_direction).normalized() * interact_distance
+		if $Camera2D.position_smoothing_enabled == false:
+			%Player/Camera2D.position_smoothing_enabled = true
+	
 		
 	velocity.move_toward(Vector2.ZERO, SPEED)
 

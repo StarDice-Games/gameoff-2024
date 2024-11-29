@@ -10,6 +10,7 @@ func _ready() -> void:
 	if TriggersSystem.check_trigger(picked_up, true):
 		hide()
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED
+		queue_free()
 
 func _on_interactable_interacted() -> void:	
 	print("player interaction with", name)

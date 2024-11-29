@@ -200,7 +200,7 @@ offset = Vector2(-4, 48)
 
 [node name="PesceSchiantato" type="Sprite2D" parent="Stanze"]
 visible = false
-position = Vector2(409, 595)
+position = Vector2(431, 580)
 texture = ExtResource("6_g1o0m")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -223,11 +223,11 @@ position = Vector2(1671.5, 951)
 shape = SubResource("RectangleShape2D_u8k38")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1575, 714, 1111, 712, 1066, 729, 414, 728, 177, 1017)
+polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1581, 730, 1066, 729, 414, 728, 177, 1017)
 
 [node name="Player" parent="." instance=ExtResource("3_x3oc3")]
 unique_name_in_owner = true
-position = Vector2(1390, 896)
+position = Vector2(1383, 832)
 
 [node name="Npc" parent="." instance=ExtResource("11_lq22p")]
 position = Vector2(567, 711)
@@ -254,7 +254,7 @@ color = Color(0.582582, 1, 0.432314, 1)
 
 [node name="Rope" parent="." instance=ExtResource("8_alvi4")]
 visible = false
-position = Vector2(1272, 656)
+position = Vector2(1293, 641)
 dialog = Array[ExtResource("12_ig3nv")]([SubResource("Resource_kpamj")])
 
 [node name="NodeToggle2" parent="Rope" instance=ExtResource("9_n8j22")]
