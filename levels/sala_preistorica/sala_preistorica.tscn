@@ -21,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jf2ot"]
-size = Vector2(1201, 148)
+size = Vector2(1215.5, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xhk8"]
-size = Vector2(326.5, 148)
+size = Vector2(322.255, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx7wn"]
 size = Vector2(781, 150)
@@ -207,11 +207,11 @@ texture = ExtResource("6_g1o0m")
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(684, 1069)
+position = Vector2(691.25, 1069)
 shape = SubResource("RectangleShape2D_jf2ot")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1665, 1071)
+position = Vector2(1667.13, 1071)
 shape = SubResource("RectangleShape2D_3xhk8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -223,17 +223,17 @@ position = Vector2(1671.5, 951)
 shape = SubResource("RectangleShape2D_u8k38")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1575, 714, 1111, 712, 1066, 729, 419, 729, 177, 1017)
+polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1575, 714, 1111, 712, 1066, 729, 414, 728, 177, 1017)
 
 [node name="Player" parent="." instance=ExtResource("3_x3oc3")]
 unique_name_in_owner = true
-position = Vector2(1325, 786)
+position = Vector2(1390, 896)
 
 [node name="Npc" parent="." instance=ExtResource("11_lq22p")]
-position = Vector2(560, 750)
+position = Vector2(567, 711)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
-position = Vector2(1395, 1184)
+position = Vector2(1405, 1228)
 scale = Vector2(2.24, 1)
 level_id = "corridoio"
 link_id = "North1"
@@ -242,7 +242,7 @@ link_id = "North1"
 player_ref = NodePath("../Player")
 
 [node name="South" type="Node2D" parent="LinkSystem"]
-position = Vector2(1378, 868)
+position = Vector2(1390, 896)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
 visible = false

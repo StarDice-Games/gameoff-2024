@@ -16,16 +16,14 @@ func _ready() -> void:
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
-		EventSystem.stop_sound.emit("go2024_phase3_v1")
-		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
-		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
-		$Stealth.show()
-	else:
-		$Stealth.hide()
+		EventSystem.play_music.emit("go2024_stealth_v1")
 	
 	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()
 		$DoorLock3.queue_free()
+		$Stealth.queue_free()
+	else:
+		$Stealth.show()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

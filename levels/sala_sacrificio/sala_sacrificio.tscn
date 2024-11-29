@@ -111,6 +111,13 @@ offset_right = 4128.0
 offset_bottom = 2751.0
 color = Color(0, 0, 0, 1)
 
+[node name="SalaRitualePorte" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1569, 805)
+texture = ExtResource("19_y0vbw")
+offset = Vector2(-622, -273)
+region_rect = Rect2(1462, 348, 221, 824)
+
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(972, -79)
 texture = ExtResource("5_3g3cf")
@@ -145,19 +152,12 @@ visible = false
 position = Vector2(-196, 559)
 texture = ExtResource("16_v01k8")
 
-[node name="SalaRitualePorte" type="Sprite2D" parent="Stanze"]
-position = Vector2(598, 959)
-texture = ExtResource("19_y0vbw")
-offset = Vector2(107, -358)
-region_enabled = true
-region_rect = Rect2(1462, 348, 221, 824)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(972, -79)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(612, 543, 590, 837, 517, 837, 477, 723, 321, 718, 250, 688, -281, 677, -312, 774, -480, 770, -503, 813, -474, 1202, -773, 1210, -811, 259, -469, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 600, 877, 643, 574)
+polygon = PackedVector2Array(612, 543, 589, 831, 510, 830, 477, 723, 321, 718, 250, 688, -281, 677, -312, 774, -480, 770, -503, 813, -474, 1202, -773, 1210, -811, 259, -469, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 688, 850, 709, 609)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-36.75, 1285.5)
@@ -165,7 +165,7 @@ shape = SubResource("RectangleShape2D_7btqm")
 
 [node name="Player" parent="." instance=ExtResource("2_ylly3")]
 unique_name_in_owner = true
-position = Vector2(1405, 692)
+position = Vector2(1457, 708)
 
 [node name="Boss" parent="." instance=ExtResource("5_jbukh")]
 position = Vector2(894, 928)
@@ -174,7 +174,7 @@ position = Vector2(894, 928)
 player_ref = NodePath("../Player")
 
 [node name="East" type="Node2D" parent="LinkSystem"]
-position = Vector2(1403, 694)
+position = Vector2(1458, 709)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/East"]
 visible = false
@@ -183,12 +183,12 @@ offset_bottom = 40.0
 color = Color(0.580646, 1, 0.440148, 1)
 
 [node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
-position = Vector2(1618, 504)
+position = Vector2(1662, 611)
 level_id = "corridoio"
 link_id = "WestDoor"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
-position = Vector2(1525, 606)
+position = Vector2(1551, 623)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

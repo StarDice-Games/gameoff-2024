@@ -4,6 +4,13 @@ extends Node2D
 @export var item : ItemData
 @export var dialog : Array[DialogText]
 
+func _ready() -> void:
+	EventSystem.trigger_changed.connect(trigger_update)
+
+func trigger_update(key, value):	
+	if key == "guardian_locker_open" and value == true:
+		$Interactable/CollisionShape2D.disabled = false
+
 func _on_interactable_player_enter() -> void:
 	label.show()
 

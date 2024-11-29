@@ -1,13 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=38 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
 [ext_resource type="Texture2D" uid="uid://b8cvs5u71frtf" path="res://resource/assets/rooms/Hall/Hall.PNG" id="2_vknqs"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="3_1w6um"]
+[ext_resource type="Texture2D" uid="uid://cgu4euyn5qoop" path="res://resource/assets/rooms/Hall/layer bagno.png" id="3_evsce"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_fpr8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_4x6bi"]
 [ext_resource type="AudioStream" uid="uid://bdj4lpfig4tao" path="res://audio/sfx/puzzle_t_rex/Rope_throwing.ogg" id="4_6yvli"]
 [ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="5_3s8i6"]
+[ext_resource type="Texture2D" uid="uid://c8c4hi32ohl0d" path="res://resource/assets/rooms/Hall/luci.png" id="5_b1wcu"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_twhkk"]
 [ext_resource type="Texture2D" uid="uid://begy3n8olkntj" path="res://resource/assets/UI/vignetta.png" id="5_vqsvf"]
 [ext_resource type="Texture2D" uid="uid://ccl256sqh5kka" path="res://resource/assets/scene_azione/Caduta dente.PNG" id="6_am7le"]
@@ -23,6 +25,12 @@
 [ext_resource type="PackedScene" uid="uid://bt3dhh7ty8nlq" path="res://enemy_patrol/enemy_patrol_3.tscn" id="18_4h17y"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="19_bg8dd"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="19_f21q0"]
+[ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="26_vbota"]
+
+[sub_resource type="Resource" id="Resource_2k5b1"]
+script = ExtResource("5_twhkk")
+key = "stealth"
+value = true
 
 [sub_resource type="Resource" id="Resource_agsoi"]
 script = ExtResource("5_twhkk")
@@ -30,10 +38,10 @@ key = "ring"
 value = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwd2a"]
-size = Vector2(1628.5, 230)
+size = Vector2(1651.5, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a5lt"]
-size = Vector2(995.25, 222.25)
+size = Vector2(1017.63, 222.25)
 
 [sub_resource type="Animation" id="Animation_yrndo"]
 length = 0.001
@@ -183,9 +191,22 @@ offset_right = 4553.0
 offset_bottom = 3091.0
 color = Color(0, 0, 0, 1)
 
+[node name="Luci" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.662745)
+position = Vector2(858, 769)
+texture = ExtResource("5_b1wcu")
+offset = Vector2(53, -562)
+
+[node name="NodeToggle" parent="Luci" instance=ExtResource("16_4dyp1")]
+trigger = SubResource("Resource_2k5b1")
+
+[node name="LayerBagno" type="Sprite2D" parent="."]
+position = Vector2(963, 540)
+texture = ExtResource("3_evsce")
+
 [node name="PortaSx" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-135, 469)
+position = Vector2(-136, 468)
 texture = ExtResource("17_eok5r")
 offset = Vector2(-165, -212.18)
 region_enabled = true
@@ -206,7 +227,8 @@ offset = Vector2(236, 934)
 region_rect = Rect2(4420.85, 1251.41, 2531.43, 1564.52)
 
 [node name="VignettaTelefono" type="Sprite2D" parent="."]
-position = Vector2(1185, 904)
+modulate = Color(1, 1, 1, 0.670588)
+position = Vector2(1198, 998)
 texture = ExtResource("5_vqsvf")
 
 [node name="Telefono-agganciato" type="Sprite2D" parent="VignettaTelefono"]
@@ -223,19 +245,19 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -5)
-polygon = PackedVector2Array(-464, 326, -216, -44, -142, 550, -468, 1102)
+polygon = PackedVector2Array(-464, 326, -238, -26, -168, 591, -468, 1102)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(237.75, 1221)
+position = Vector2(249.25, 1221)
 shape = SubResource("RectangleShape2D_nwd2a")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1837, 1215)
+position = Vector2(1825.81, 1215)
 shape = SubResource("RectangleShape2D_0a5lt")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(389, -689)
-polygon = PackedVector2Array(-470, 447, -372, 304, 236, 293, 262, 263, 573, 250, 729, 246, 789, 292, 1341, 281, 1543, 553, 1909, 1055, 1856, 1800, 1743, 1834, 1577, 1523, 1636, 964, 1599, 896, 1571, 1182, 1447, 1167, 1377, 1163, 1327, 1091, 932, 1073, 893, 889, 781, 881, 772, 756, 759, 491, 587, 493, 583, 775, 221, 784, 182, 881, -341, 900, -468, 1102, -537, 1081, -548, 876, -485, 810)
+polygon = PackedVector2Array(-470, 447, -372, 304, 236, 293, 262, 263, 573, 250, 729, 246, 789, 292, 1341, 281, 1543, 553, 1909, 1055, 1856, 1800, 1743, 1834, 1571, 1487, 1589, 1403, 1689, 1415, 1723, 968, 1669, 965, 1599, 896, 1571, 1182, 1447, 1167, 1377, 1163, 1327, 1091, 932, 1073, 893, 889, 781, 881, 772, 756, 759, 491, 587, 493, 583, 775, 221, 784, 182, 881, -341, 900, -468, 1102, -537, 1081, -548, 876, -485, 810)
 
 [node name="Npc2" parent="." instance=ExtResource("16_wlojo")]
 position = Vector2(700, 171)
@@ -243,13 +265,13 @@ collision_layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
-position = Vector2(1805, 510)
+position = Vector2(1790, 524)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
 
 [node name="SouthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(1164, 1044)
+position = Vector2(1184, 895)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
 visible = false
@@ -276,7 +298,7 @@ offset_bottom = 40.0
 color = Color(0.435294, 0.580392, 0.34902, 1)
 
 [node name="Bath" type="Node2D" parent="LinkSystem"]
-position = Vector2(1063, 75)
+position = Vector2(1085, 303)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/Bath"]
 visible = false
@@ -286,20 +308,20 @@ color = Color(0.435294, 0.580392, 0.34902, 1)
 metadata/_edit_lock_ = true
 
 [node name="Guardiola" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(1195, 1167)
+position = Vector2(1200, 1192)
 scale = Vector2(2.92001, 0.28)
 level_id = "guardiola"
 link_id = "NorthDoor"
 
 [node name="Corridoio" parent="." instance=ExtResource("4_4x6bi")]
 z_index = 1
-position = Vector2(-216, 279)
+position = Vector2(-238, 262)
 scale = Vector2(1.22925, 0.599561)
 level_id = "corridoio"
 link_id = "EastDoor"
 
 [node name="Esterno" parent="." instance=ExtResource("4_4x6bi")]
-position = Vector2(2039, 359)
+position = Vector2(2061, 436)
 scale = Vector2(1, 1.56)
 level_id = "esterno"
 link_id = "WestDoor"
@@ -311,14 +333,14 @@ level_id = "bathroom"
 link_id = "South"
 
 [node name="DoorLockHall" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(-233, 295)
+position = Vector2(-246, 338)
 
 [node name="DoorLockHall2" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(1956, 357)
+position = Vector2(1959, 438)
 scale = Vector2(1, 1.56)
 
 [node name="DoorLockHall3" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(968, -199)
+position = Vector2(973, -138)
 scale = Vector2(1.68, 1)
 
 [node name="FallingToothAnim" type="Node2D" parent="."]
@@ -443,6 +465,9 @@ direction = "up"
 position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="GuardarobaGuardiano" parent="." instance=ExtResource("26_vbota")]
+position = Vector2(966, 909)
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -26,7 +26,7 @@ value = false
 
 [node name="DoorLock" type="Area2D"]
 position = Vector2(1358, 533)
-collision_layer = 64
+collision_layer = 0
 script = ExtResource("1_2b8he")
 dialog = Array[ExtResource("2_42sbi")]([SubResource("Resource_1fggd")])
 

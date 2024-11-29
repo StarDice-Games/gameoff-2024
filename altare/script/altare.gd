@@ -36,9 +36,9 @@ func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("talk_boss", true):
 		sprite_object.show()
 		TriggersSystem.toggle_trigger("ritual_objects_placed")
-		#InventorySystem.drop_item(thoot_item)
-		#InventorySystem.drop_item(magic_book_item)
-		#InventorySystem.drop_item(chalice_item)
+		InventorySystem.drop_item(thoot_item)
+		InventorySystem.drop_item(magic_book_item)
+		InventorySystem.drop_item(chalice_item)
 		$AnimationPlayer.play("thunder")
 		interactable.queue_free()
 		$HighlightComponent2.queue_free()
@@ -60,6 +60,5 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	EventSystem.play_sound.emit("go2024_phase3_v1", "Music")
 	AudioSystem.set_volumes_value("Music", 0)
 	EventSystem.cutscene_finished.emit()

@@ -98,7 +98,7 @@ func _on_animation_player_animation_started_guardaroba(anim_name: StringName) ->
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	AudioSystem.set_volumes_value("Music", AudioSystem.music_volume - 80)
+	EventSystem.set_volume.emit("Music", -80)
 	EventSystem.cutscene_started.emit()
 
 

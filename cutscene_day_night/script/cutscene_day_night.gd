@@ -3,6 +3,7 @@ extends AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventSystem.set_volume.emit("Music", -80)
 	pass # Replace with function body.
 
 

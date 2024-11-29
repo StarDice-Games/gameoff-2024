@@ -11,10 +11,20 @@ var music_off = false
 var sfx_off = false
 
 func init(_state_machine: UIStateMachine) -> void:
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	
 	state_machine = _state_machine
-	new_game_button.grab_focus()
+	if Input.get_connected_joypads().size() > 0:
+		new_game_button.grab_focus()
 	#AudioSystem.play_music_event(menu_music)
 
+func _on_joy_connection_changed(device_id, connected):
+	if Input.get_connected_joypads().size() > 0:
+		new_game_button.grab_focus()
+	else:
+		new_game_button.release_focus()
+
+		
 func enter(_msg := {}) -> void:
 	main_panel.show()
 	#EventSystem.play_music.emit("sc_mx_title_v4")

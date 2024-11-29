@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="17_fgpv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67rq6"]
-size = Vector2(292, 77)
+size = Vector2(302, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nu6oy"]
 size = Vector2(388, 77)
@@ -30,14 +30,13 @@ size = Vector2(365, 170.5)
 size = Vector2(122.5, 111.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jt5n"]
-size = Vector2(1140, 77)
+size = Vector2(1150, 77)
 
 [node name="SalaArte" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_t0sdk")
 
 [node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("17_fgpv8")]
-visible = false
 position = Vector2(941, 542)
 player_ref = NodePath("../Player")
 
@@ -136,7 +135,7 @@ position = Vector2(4, 2)
 polygon = PackedVector2Array(98, 946, 369, 647, 1560, 637, 1714, 968, 1729, 999, 1847, 145, 1637, 34, 354, 22, 49, 101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(228, 990.5)
+position = Vector2(226, 989)
 shape = SubResource("RectangleShape2D_67rq6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -156,7 +155,7 @@ position = Vector2(409, 614)
 shape = SubResource("RectangleShape2D_ocuxh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1199, 986)
+position = Vector2(1194, 986)
 shape = SubResource("RectangleShape2D_8jt5n")
 
 [node name="Player" parent="." instance=ExtResource("2_cc2si")]
@@ -181,7 +180,7 @@ offset_bottom = 21.0
 color = Color(0.586297, 1, 0.416665, 1)
 
 [node name="Portal" parent="." instance=ExtResource("4_cd7wf")]
-position = Vector2(502, 996)
+position = Vector2(501, 1003)
 scale = Vector2(2.5959, 0.2)
 level_id = "corridoio"
 link_id = "North2"

@@ -220,7 +220,7 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-60, 83)
-polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, 438, 200, 431, -211, 595, -212, 590, 200, 801, 200, 846, 261, 895, 263, 910, -66, 964, -6, 901, 373, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
+polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, 438, 200, 431, -211, 595, -212, 590, 200, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-52.25, 716.5)
@@ -240,7 +240,7 @@ polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
 
 [node name="Player" parent="." instance=ExtResource("2_qa672")]
 unique_name_in_owner = true
-position = Vector2(151, 596)
+position = Vector2(199, 595)
 
 [node name="Npc" parent="." instance=ExtResource("25_7xsap")]
 position = Vector2(1271, 786)
@@ -252,6 +252,7 @@ player_ref = NodePath("../Player")
 position = Vector2(1720, 597)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/EastDoor"]
+visible = false
 offset_left = -16.0
 offset_top = -20.0
 offset_right = 24.0
@@ -259,9 +260,10 @@ offset_bottom = 20.0
 color = Color(0.352941, 0.952941, 0.439216, 1)
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(187, 624)
+position = Vector2(198, 595)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+visible = false
 offset_left = -17.0
 offset_top = -18.0
 offset_right = 23.0
@@ -269,9 +271,10 @@ offset_bottom = 22.0
 color = Color(0.567675, 1, 0.487942, 1)
 
 [node name="North1" type="Node2D" parent="LinkSystem"]
-position = Vector2(432, 568)
+position = Vector2(423, 500)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North1"]
+visible = false
 offset_left = -16.0
 offset_top = -17.0
 offset_right = 24.0
@@ -279,9 +282,10 @@ offset_bottom = 23.0
 color = Color(0.533841, 1, 0.586211, 1)
 
 [node name="North2" type="Node2D" parent="LinkSystem"]
-position = Vector2(1462, 555)
+position = Vector2(1455, 470)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/North2"]
+visible = false
 offset_left = -18.0
 offset_top = -15.0
 offset_right = 22.0
@@ -289,18 +293,18 @@ offset_bottom = 25.0
 color = Color(0.570505, 1, 0.478134, 1)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1894, 431)
+position = Vector2(1927, 379)
 level_id = "ingresso"
 link_id = "WestDoor"
 
 [node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1456, 205)
+position = Vector2(1453, 277)
 scale = Vector2(1.4, 0.8)
 level_id = "sala arte"
 link_id = "South"
 
 [node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(432, 205)
+position = Vector2(427, 280)
 scale = Vector2(1.368, 0.8)
 level_id = "sala preistorica"
 link_id = "South"
@@ -311,14 +315,14 @@ level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(13, 533)
+position = Vector2(-23, 528)
 
 [node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(338, 320)
+position = Vector2(338, 361)
 scale = Vector2(1.70083, 1)
 
 [node name="DoorLock3" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(1372, 311)
+position = Vector2(1372, 351)
 scale = Vector2(1.52, 1)
 
 [node name="OpenPaintingCutscene" type="Node2D" parent="."]

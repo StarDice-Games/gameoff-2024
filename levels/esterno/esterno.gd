@@ -12,9 +12,11 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("close_museum", true):
 		animation_player.play("fade_out")
+	
+	EventSystem.play_music.emit("Traffic_01")
 		
 	TriggersSystem.toggle_trigger("from_exit")
-	AudioSystem.play_music_event("Traffic_01")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,3 +31,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	%Player.position = marker.position
+	EventSystem.set_volume.emit("Music", 0)

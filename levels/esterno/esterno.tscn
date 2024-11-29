@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtg6inbafw5go"]
+[gd_scene load_steps=37 format=3 uid="uid://dtg6inbafw5go"]
 
 [ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
@@ -45,7 +45,11 @@ load_path = "res://.godot/imported/lampioni-spenti.png-7f505827b5fa0f60d5aaa741a
 size = Vector2(2601.5, 275)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m3or1"]
-radius = 36.0139
+radius = 56.0089
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncvf4"]
+radius = 77.8857
+height = 169.878
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51w63"]
 size = Vector2(297.727, 469.909)
@@ -113,9 +117,9 @@ texture = ExtResource("10_23qio")
 y_sort_enabled = true
 
 [node name="Lampioni-spenti2" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(808, 132)
+position = Vector2(807, 68)
 texture = SubResource("CompressedTexture2D_e0ovi")
-offset = Vector2(18.3636, -196.727)
+offset = Vector2(19.3636, -132.727)
 region_enabled = true
 region_rect = Rect2(13, 1, 272, 573)
 
@@ -148,9 +152,9 @@ texture = ExtResource("16_1w8gp")
 offset = Vector2(2.81812, -215.455)
 
 [node name="Lampioni-spenti" type="Sprite2D" parent="Giorno/Env"]
-position = Vector2(871, 913)
+position = Vector2(870, 813)
 texture = ExtResource("17_jfbqv")
-offset = Vector2(-24.6364, -257.727)
+offset = Vector2(-23.6364, -157.727)
 region_enabled = true
 region_rect = Rect2(0, 677, 302, 673)
 
@@ -230,25 +234,26 @@ position = Vector2(0, 9)
 collision_layer = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(1222, 1071, 915, 121, 163, 125, -11, 503, -510, 197, -649, 197, -657, -208, -880, -210, -862, 226, -689, 218, -172, 702, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
+polygon = PackedVector2Array(1222, 1071, 915, 118, 163, 125, -11, 503, -510, 197, -649, 197, -657, -208, -880, -210, -862, 226, -648, 319, -172, 702, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(22.25, 1120.5)
 shape = SubResource("RectangleShape2D_5ghm0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(811, 178)
+position = Vector2(814, 166)
 shape = SubResource("CircleShape2D_m3or1")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(865, 939)
-shape = SubResource("CircleShape2D_m3or1")
+position = Vector2(860, 934)
+rotation = -1.54287
+shape = SubResource("CapsuleShape2D_ncvf4")
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
 player_ref = NodePath("../Player")
 
 [node name="WestDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(-570, 124)
+position = Vector2(-570, 168)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
 offset_right = 40.0
@@ -258,7 +263,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_x6rer")]
 unique_name_in_owner = true
-position = Vector2(326, 188)
+position = Vector2(983, 863)
 
 [node name="MusicStart" type="Area2D" parent="."]
 position = Vector2(322, -107)

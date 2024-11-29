@@ -16,10 +16,10 @@ func _ready() -> void:
 	
 	if TriggersSystem.check_trigger("from_exit", true):
 		if TriggersSystem.check_trigger("night", true):
-			AudioSystem.play_music_event("go2024_phase2_v3")
+			EventSystem.play_music.emit("go2024_phase2_v3")
 			TriggersSystem.toggle_trigger("from_exit")
 		else:
-			AudioSystem.play_music_event("go2024_phase1_v1")
+			EventSystem.play_music.emit("go2024_phase1_v1")
 			TriggersSystem.toggle_trigger("from_exit")
 	
 	if TriggersSystem.check_trigger("act_3", true):

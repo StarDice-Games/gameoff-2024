@@ -51,6 +51,7 @@ texture = ExtResource("6_yhm6x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-2, 1)
 shape = SubResource("CircleShape2D_k27q5")
+disabled = true
 
 [node name="Label" type="Label" parent="."]
 visible = false

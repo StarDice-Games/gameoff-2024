@@ -417,7 +417,7 @@ texture = ExtResource("12_px1fs")
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
-polygon = PackedVector2Array(220, 136, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -213, 192, -232, 291, -286, 294, -340, 291, -396, -189, -283, -235, 283, -234, 265, 295)
+polygon = PackedVector2Array(220, 136, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -213, 192, -233, 290, -286, 294, -340, 291, -396, -189, -283, -235, 283, -234, 265, 295)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stanze/StaticBody2D"]
 position = Vector2(3.25, 341.75)
@@ -438,16 +438,17 @@ trigger = SubResource("Resource_6qwgt")
 player_ref = NodePath("../Player")
 
 [node name="NorthDoor" type="Node2D" parent="LinkSystem"]
-position = Vector2(854, 465)
+position = Vector2(844, 479)
 
 [node name="ColorRect" type="ColorRect" parent="LinkSystem/NorthDoor"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(854, 113)
+position = Vector2(845, 201)
 scale = Vector2(2.2, 1.24)
 level_id = "ingresso"
 link_id = "SouthDoor"
@@ -527,7 +528,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(1004, 545)
+position = Vector2(844, 479)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
 visible = false
@@ -561,9 +562,10 @@ position = Vector2(959, 541)
 texture = ExtResource("25_1qhqn")
 
 [node name="GuardarobaGuardiano" parent="." instance=ExtResource("16_7xk1d")]
-position = Vector2(698, 534)
+position = Vector2(696, 533)
 
 [node name="DoorLockHall" parent="." instance=ExtResource("24_3hbrg")]
+visible = false
 position = Vector2(797, 321)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]

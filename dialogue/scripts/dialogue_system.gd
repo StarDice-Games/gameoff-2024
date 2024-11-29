@@ -48,7 +48,7 @@ func start_dialog(dialog : Array[DialogText]):
 	if name_character.text == "Angelo":
 		$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_vecchietto.ogg")
 		$AudioStreamPlayer2D.play()
-	elif name_character.text == "Museum Director":
+	elif name_character.text == "The Curator":
 		$AudioStreamPlayer2D.stream = load("res://audio/sfx/dialog/voce_capo.ogg")
 		$AudioStreamPlayer2D.play()
 	image_character.texture = dialogs[dialog_index].character_image
