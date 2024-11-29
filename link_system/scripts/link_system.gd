@@ -23,7 +23,7 @@ func _ready() -> void:
 		if links.has(last_link):
 			var link_pos = links[last_link]
 			if link_pos != null:
-				%Player/Camera2D.position_smoothing_enabled = false
+				#%Player/Camera2D.position_smoothing_enabled = false
 				player_ref.global_position = link_pos
 				if player_ref.has_method("change_player_sprite"):
 					player_ref.direction = GameState.last_player_dir
