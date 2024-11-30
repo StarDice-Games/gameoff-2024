@@ -275,6 +275,7 @@ trigger = SubResource("Resource_agsoi")
 libraries = {
 "": SubResource("AnimationLibrary_m1rfq")
 }
+autoplay = "vignetta"
 speed_scale = 0.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
