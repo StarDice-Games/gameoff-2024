@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://end_phone/script/end_phone.gd" id="1_4hsqm"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_3xu23"]
-[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_k4sa5"]
+[ext_resource type="Texture2D" uid="uid://cljoh27fb5ca2" path="res://resource/assets/npc/Opera_senza_titolo.png" id="3_j1inf"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_wtfak"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_1uhme"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_uvss2"]
@@ -21,8 +21,8 @@ value = true
 [sub_resource type="Resource" id="Resource_o4jv2"]
 script = ExtResource("2_3xu23")
 dialogue_text = Array[String](["911, what’s the emergency ? "])
-character_image = ExtResource("3_k4sa5")
-text_name = "Angelo"
+character_image = ExtResource("3_j1inf")
+text_name = "Police Officer"
 triggers = Array[ExtResource("4_1uhme")]([SubResource("Resource_tt4s5")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w6mib"]

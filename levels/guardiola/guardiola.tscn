@@ -15,8 +15,8 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_xu3vp"]
 [ext_resource type="Texture2D" uid="uid://v3gv4057qxyu" path="res://resource/assets/rooms/Guardiola/base.png" id="10_rqxwf"]
 [ext_resource type="Texture2D" uid="uid://ce14ssv42hsas" path="res://resource/assets/rooms/Guardiola/luce lampadina.png" id="11_k4ciy"]
-[ext_resource type="Texture2D" uid="uid://bt2v471ydnuv" path="res://resource/assets/enemy/Boss_Face_Obs.png" id="12_e3x06"]
 [ext_resource type="Texture2D" uid="uid://grc21k560q6r" path="res://resource/assets/rooms/Guardiola/lampadina.png" id="12_px1fs"]
+[ext_resource type="Texture2D" uid="uid://bs73qyth6ekxr" path="res://resource/assets/enemy/boss.png" id="14_g5154"]
 [ext_resource type="PackedScene" uid="uid://crs786q6e44hc" path="res://puzzle_magic_book/guardaroba_guardiano/guardaroba_guardiano.tscn" id="16_7xk1d"]
 [ext_resource type="PackedScene" uid="uid://dm6ydcq6bkfx4" path="res://puzzle_magic_book/post-it-item/post-it.tscn" id="17_8aj5y"]
 [ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="17_rhtdm"]
@@ -41,7 +41,7 @@ size = Vector2(793.5, 104.5)
 [sub_resource type="Resource" id="Resource_5jy0i"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Good evening, Angelo, and welcome.", "I know your evening shift is about to start.", "Your task is simple, just make sure you take care of this place for me, ok?", "Ever since our previous hire was... promoted, the place tends to get messy."])
-character_image = ExtResource("12_e3x06")
+character_image = ExtResource("14_g5154")
 text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
@@ -60,7 +60,7 @@ value = true
 [sub_resource type="Resource" id="Resource_uq2jl"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["You may start checking if someone is still roaming in the museum.", "As we're closing shut, it’s best to not have anyone still roaming the museum at night.", "I have to leave now. I’ll ring you up later."])
-character_image = ExtResource("12_e3x06")
+character_image = ExtResource("14_g5154")
 text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_k2cmd")])
 
@@ -79,7 +79,7 @@ value = true
 [sub_resource type="Resource" id="Resource_ngl3b"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Well done, Angelo. Not a single presence left in the hallways, besides yours.", "You may now shut the exit."])
-character_image = ExtResource("12_e3x06")
+character_image = ExtResource("14_g5154")
 text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_vu2f6")])
 
@@ -97,8 +97,8 @@ value = true
 
 [sub_resource type="Resource" id="Resource_8tlt2"]
 script = ExtResource("6_66euh")
-dialogue_text = Array[String](["It’s me, I have an important task for you.It’s me, I have an important task for you.", "As you may have noticed, there is something on your desk. ", "Please read it and carry on with your task."])
-character_image = ExtResource("12_e3x06")
+dialogue_text = Array[String](["It’s me, I have an important task for you.", "As you may have noticed, there is something on your desk. ", "Please read it and carry on with your task."])
+character_image = ExtResource("14_g5154")
 text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5y0n3")])
 
@@ -117,7 +117,7 @@ triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_5gf7c")])
 [sub_resource type="Resource" id="Resource_ma26e"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["Thanks, see you later. "])
-character_image = ExtResource("12_e3x06")
+character_image = ExtResource("14_g5154")
 text_name = "Museum Director"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
@@ -141,7 +141,7 @@ value = true
 [sub_resource type="Resource" id="Resource_2rnl0"]
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["It’s me again. Please bring the items to the locked room."])
-character_image = ExtResource("12_e3x06")
+character_image = ExtResource("14_g5154")
 text_name = "Museum Director"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
 

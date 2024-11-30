@@ -27,7 +27,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_82hri"]
 script = ExtResource("2_2ycaj")
-dialogue_text = Array[String](["How absurd, a cult!?", "I don't understand. What do they want from me?", "Why do they need these artifacts?Why do they need these artifacts?"])
+dialogue_text = Array[String](["How absurd, a cult!?", "I don't understand. What do they want from me?", "Why do they need these artifacts?"])
 character_image = ExtResource("3_ruv8d")
 text_name = "Angelo"
 triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_3n6nf")])

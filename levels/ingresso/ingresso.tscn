@@ -283,14 +283,14 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -5)
-polygon = PackedVector2Array(-464, 326, -238, -26, -168, 591, -468, 1102)
+polygon = PackedVector2Array(-464, 326, -238, -26, -205, 464, -161, 605, -441, 1107)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(249.25, 1221)
+position = Vector2(249.25, 1202)
 shape = SubResource("RectangleShape2D_nwd2a")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1825.81, 1215)
+position = Vector2(1825.81, 1202)
 shape = SubResource("RectangleShape2D_0a5lt")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]

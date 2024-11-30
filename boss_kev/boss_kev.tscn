@@ -34,7 +34,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_5b178"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["My identity right now is irrelevant. ", "What matters is that you obey me.", "Please Angelo, put the objects you found on the altar."])
+dialogue_text = Array[String](["My identity right now is irrelevant. ", "What matters is that you obey me.", "Now, Angelo, place what you have on that tableNow, Angelo, place what you have on that table"])
 character_image = ExtResource("3_qqduw")
 text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptvd8")])
@@ -67,7 +67,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_apssx"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…", "Everything is connected…", "Now it’s time to summon the other members.", "They'll be very pleased to meet you.", "Stay here and don’t move. I’ll return shortly", "We will grant you your deserved…We will grant you your deserved…", "...Promotion"])
+dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…", "Everything is connected…", "Now it’s time to summon the other members.", "They'll be very pleased to meet you.", "Stay here and don’t move. I’ll return shortly", "We will grant you your deserved…", "...Promotion"])
 character_image = ExtResource("3_qqduw")
 text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])
