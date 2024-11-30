@@ -17,7 +17,7 @@ func _ready() -> void:
 	TriggersSystem.update_trigger("doors_locked", true)
 	
 	# Prima chiamata con il boss e task NPC
-	# ora quando si completano le task è il player che controlla, 
+	# ora quando si completano le task è il player che controlla,
 	# ma qui dobbiamo settare il trigger ring
 	if TaskSystem.check_all_task_completed() and TriggersSystem.check_trigger("act_1", true):
 		TriggersSystem.update_trigger("act_2", true)

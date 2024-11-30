@@ -37,3 +37,5 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	EventSystem.cutscene_finished.emit()
 	DialogueSystem.start_dialog(dialog)
+	$AudioStreamPlayer2D2.play()
+	
