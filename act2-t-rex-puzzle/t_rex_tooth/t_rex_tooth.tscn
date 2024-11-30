@@ -36,6 +36,7 @@ shape = SubResource("CircleShape2D_odl8j")
 
 [node name="Label" type="Label" parent="."]
 visible = false
+z_index = 1
 offset_left = -69.0
 offset_top = -161.0
 offset_right = 82.0

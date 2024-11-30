@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ymmamvc2fsqp"]
+[gd_scene load_steps=25 format=3 uid="uid://ymmamvc2fsqp"]
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="13_o2yoa"]
 [ext_resource type="Texture2D" uid="uid://bvc237scomqyo" path="res://resource/assets/rooms/Hall/trex sotto.png" id="13_ocfy1"]
 [ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="14_05qwv"]
+[ext_resource type="Texture2D" uid="uid://d3gl8mjd8ahc7" path="res://resource/assets/rooms/Hall/coda.png" id="17_w2ayw"]
+[ext_resource type="Texture2D" uid="uid://dnhaloo720scq" path="res://resource/assets/rooms/Hall/testa.png" id="18_gkreb"]
 
 [sub_resource type="Resource" id="Resource_m12fb"]
 script = ExtResource("6_s7f21")
@@ -43,7 +45,7 @@ shader_parameter/tolerance = 0.0
 radius = 159.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7q4j"]
-radius = 258.031
+radius = 345.117
 
 [node name="TRexTrigger" type="Node2D"]
 script = ExtResource("1_4gv0c")
@@ -70,12 +72,13 @@ texture = ExtResource("6_3qbpc")
 region_rect = Rect2(520, 489, 809, 501)
 
 [node name="Dente" type="Sprite2D" parent="StaticBody2D"]
+z_index = 1
 position = Vector2(439, -47)
 texture = ExtResource("7_jsqly")
 
 [node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
 visible = false
-position = Vector2(550, 263)
+position = Vector2(548, 364)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(4.5, 109)
@@ -131,6 +134,16 @@ y_sort_enabled = true
 position = Vector2(-427, 95)
 texture = ExtResource("13_ocfy1")
 offset = Vector2(-35, 90)
+
+[node name="Coda" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1, 117)
+texture = ExtResource("17_w2ayw")
+offset = Vector2(-1, -117)
+
+[node name="Testa" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("18_gkreb")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]

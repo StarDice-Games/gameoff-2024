@@ -56,19 +56,21 @@ func trigger_update(key, value):
 	
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:		
-	if Input.is_action_just_pressed("debug_kev1"):
-		TriggersSystem.update_trigger("second_boss_call", true)
-		TaskSystem.update_task_counter(first_tasks[0].id)
-		TaskSystem.update_task_counter(first_tasks[0].id)
-		TaskSystem.update_task_counter(first_tasks[0].id)
-		TaskSystem.update_task_counter(first_tasks[0].id)
-		#first_tasks[0].current_counter = 4
-	
-	if Input.is_action_just_pressed("debug_kev2"):
-		second_tasks[0].complete = true
-		second_tasks[1].complete = true
-		second_tasks[2].complete = true
+func _process(delta: float) -> void:	
+	pass	
+	#if Input.is_action_just_pressed("debug_kev1"):
+	#	TriggersSystem.update_trigger("stealth", true)
+	#	TriggersSystem.update_trigger("second_boss_call", true)
+	#	TaskSystem.update_task_counter(first_tasks[0].id)
+	#	TaskSystem.update_task_counter(first_tasks[0].id)
+	#	TaskSystem.update_task_counter(first_tasks[0].id)
+	#	TaskSystem.update_task_counter(first_tasks[0].id)
+	#	#first_tasks[0].current_counter = 4
+	#
+	#if Input.is_action_just_pressed("debug_kev2"):
+	#	second_tasks[0].complete = true
+	#	second_tasks[1].complete = true
+	#	second_tasks[2].complete = true
 	
 
 

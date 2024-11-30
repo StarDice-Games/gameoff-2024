@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2dqmrjmohag0"]
+[gd_scene load_steps=18 format=3 uid="uid://b2dqmrjmohag0"]
 
 [ext_resource type="Script" path="res://levels/end_cutscene/scripts/end_cutscene.gd" id="1_d02st"]
 [ext_resource type="Texture2D" uid="uid://ck0iiswmluywo" path="res://resource/assets/title/lampioni-accesi.png" id="2_06ily"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dycink1w47biv" path="res://resource/assets/title/cancelli.png" id="9_d858u"]
 [ext_resource type="Texture2D" uid="uid://6qm5c730ne3k" path="res://resource/assets/title/notte_porta.png" id="10_rqmxp"]
 [ext_resource type="Texture2D" uid="uid://b8m0hvqp8pfk8" path="res://resource/assets/title/ingresso chiuso.png" id="11_c68bn"]
-[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="12_atddq"]
 [ext_resource type="Texture2D" uid="uid://bclf1fok0cmd" path="res://resource/assets/title/fora auto polizia.png" id="13_vs3ma"]
 [ext_resource type="Texture2D" uid="uid://c1x0qqjs7omm1" path="res://resource/assets/title/polizia.png" id="14_ecd4n"]
 [ext_resource type="AudioStream" uid="uid://b3c5ch50sg170" path="res://audio/sfx/various/Police_Siren_01.wav" id="15_qwbnx"]
@@ -187,10 +186,6 @@ offset = Vector2(698.182, -381.818)
 position = Vector2(147, 911)
 texture = ExtResource("11_c68bn")
 
-[node name="Player" parent="." instance=ExtResource("12_atddq")]
-position = Vector2(911, 717)
-scale = Vector2(0.4, 0.4)
-
 [node name="ForaAutoPolizia" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.545098)
 position = Vector2(924, 848)
@@ -223,5 +218,6 @@ autoplay = "intro"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_qwbnx")
+stream_paused = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

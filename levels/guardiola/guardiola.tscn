@@ -36,7 +36,7 @@ text_name = "Angelo"
 triggers = Array[ExtResource("7_xu3vp")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c48ag"]
-size = Vector2(793.5, 104.5)
+size = Vector2(793.5, 114)
 
 [sub_resource type="Resource" id="Resource_5jy0i"]
 script = ExtResource("6_66euh")
@@ -420,7 +420,7 @@ collision_layer = 2
 polygon = PackedVector2Array(220, 136, 88, 135, -51, 134, -59, 77, -56, -207, -191, -209, -180, 81, -196, 96, -213, 192, -233, 290, -286, 294, -340, 291, -396, -189, -283, -235, 283, -234, 265, 295)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stanze/StaticBody2D"]
-position = Vector2(3.25, 341.75)
+position = Vector2(3.25, 337)
 shape = SubResource("RectangleShape2D_c48ag")
 
 [node name="Telephone" parent="." instance=ExtResource("5_t22vn")]
@@ -448,8 +448,8 @@ color = Color(0, 1, 1, 1)
 metadata/_edit_lock_ = true
 
 [node name="Ingresso" parent="." instance=ExtResource("4_c01jj")]
-position = Vector2(845, 201)
-scale = Vector2(2.2, 1.24)
+position = Vector2(851, 191)
+scale = Vector2(1.76, 1.24)
 level_id = "ingresso"
 link_id = "SouthDoor"
 
@@ -531,7 +531,6 @@ unique_name_in_owner = true
 position = Vector2(844, 479)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
-visible = false
 position = Vector2(1172, 666)
 
 [node name="NodeToggle" parent="EndPhone" instance=ExtResource("21_nud1n")]
@@ -565,8 +564,9 @@ texture = ExtResource("25_1qhqn")
 position = Vector2(696, 533)
 
 [node name="DoorLockHall" parent="." instance=ExtResource("24_3hbrg")]
-visible = false
-position = Vector2(797, 321)
+z_index = 1
+position = Vector2(779, 374)
+scale = Vector2(1.24, 1)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
 [connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
