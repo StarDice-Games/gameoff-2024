@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0404i34envyb"
+path="res://.godot/imported/Voce capo-corta04.ogg-90f7922f624856be4cdc08ab3ede3b51.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/dialog/Voce capo-corta04.ogg"
+dest_files=["res://.godot/imported/Voce capo-corta04.ogg-90f7922f624856be4cdc08ab3ede3b51.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

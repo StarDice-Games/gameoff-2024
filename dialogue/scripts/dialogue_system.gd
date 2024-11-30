@@ -6,6 +6,9 @@ extends Node2D
 @onready var name_character = $CanvasLayer/Control/DialogueBoxName/DialogueName
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var voci_vecchietto : Array[AudioStream] = []
+@export var voci_capo : Array[AudioStream] = []
+
 @export var speed_text : float
 var dialogs : Array[DialogText] = []
 
@@ -47,12 +50,14 @@ func start_dialog(dialog : Array[DialogText]):
 	text_label.text = dialogs[dialog_index].dialogue_text[text_index]
 	name_character.text = dialogs[dialog_index].text_name
 	if name_character.text == "Angelo":
+		var my_random_number = randf_range(0, 4)
 		audio_stream_player_2d.stop()
-		audio_stream_player_2d.stream = load("res://audio/sfx/dialog/voce_vecchietto.ogg")
+		audio_stream_player_2d.stream = voci_vecchietto[my_random_number]
 		audio_stream_player_2d.play()
 	elif name_character.text == "The Curator":
+		var my_random_number = randf_range(0, 4)
 		audio_stream_player_2d.stop()
-		audio_stream_player_2d.stream = load("res://audio/sfx/dialog/voce_capo.ogg")
+		audio_stream_player_2d.stream = voci_capo[my_random_number]
 		audio_stream_player_2d.play()
 	image_character.texture = dialogs[dialog_index].character_image
 	text_label.visible_characters = 0
@@ -73,12 +78,14 @@ func next_dialog():
 		text_label.text = dialogs[dialog_index].dialogue_text[text_index]
 		name_character.text = dialogs[dialog_index].text_name
 		if name_character.text == "Angelo":
+			var my_random_number = randf_range(0, 4)
 			audio_stream_player_2d.stop()
-			audio_stream_player_2d.stream = load("res://audio/sfx/dialog/voce_vecchietto.ogg")
+			audio_stream_player_2d.stream = voci_vecchietto[my_random_number]
 			audio_stream_player_2d.play()
 		elif name_character.text == "The Curator":
+			var my_random_number = randf_range(0, 4)
 			audio_stream_player_2d.stop()
-			audio_stream_player_2d.stream = load("res://audio/sfx/dialog/voce_capo.ogg")
+			audio_stream_player_2d.stream = voci_capo[my_random_number]
 			audio_stream_player_2d.play()
 		image_character.texture = dialogs[dialog_index].character_image
 		text_label.visible_characters = 0

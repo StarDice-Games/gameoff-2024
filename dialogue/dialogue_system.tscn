@@ -1,13 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://c84g4refe34fy"]
+[gd_scene load_steps=14 format=3 uid="uid://c84g4refe34fy"]
 
 [ext_resource type="Script" path="res://dialogue/scripts/dialogue_system.gd" id="1_5otb8"]
+[ext_resource type="AudioStream" uid="uid://6qjwfyj0gu3d" path="res://audio/sfx/dialog/Voce vecchietto-corta.ogg" id="2_e5wm4"]
 [ext_resource type="Texture2D" uid="uid://b4vxk71lare8m" path="res://resource/assets/UI/dialoghi.png" id="2_pqylc"]
+[ext_resource type="AudioStream" uid="uid://fxhc6crlao7t" path="res://audio/sfx/dialog/Voce vecchietto-corta04.ogg" id="3_jp055"]
 [ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_wmpg3"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_5wp76"]
+[ext_resource type="AudioStream" uid="uid://eij4pdaj6hni" path="res://audio/sfx/dialog/Voce vecchietto-corta03.ogg" id="4_xweh2"]
+[ext_resource type="AudioStream" uid="uid://bpjhm5nkmqtl0" path="res://audio/sfx/dialog/Voce vecchietto-corta02.ogg" id="5_gvmgp"]
 [ext_resource type="AudioStream" uid="uid://bu86l7cs107df" path="res://audio/sfx/dialog/voce_vecchietto.ogg" id="5_wn1ar"]
+[ext_resource type="AudioStream" uid="uid://b4tue5q7en2em" path="res://audio/sfx/dialog/Voce capo-corta02.ogg" id="6_l3kil"]
+[ext_resource type="AudioStream" uid="uid://wt0oxsh508x5" path="res://audio/sfx/dialog/Voce capo-corta03.ogg" id="7_s2ju1"]
+[ext_resource type="AudioStream" uid="uid://c0404i34envyb" path="res://audio/sfx/dialog/Voce capo-corta04.ogg" id="8_afv0s"]
+[ext_resource type="AudioStream" uid="uid://0pg2lrfok20o" path="res://audio/sfx/dialog/Voce capo-corta.ogg" id="9_wn08f"]
 
 [node name="DialogueSystem" type="Node2D"]
 script = ExtResource("1_5otb8")
+voci_vecchietto = [ExtResource("2_e5wm4"), ExtResource("3_jp055"), ExtResource("4_xweh2"), ExtResource("5_gvmgp")]
+voci_capo = Array[AudioStream]([ExtResource("6_l3kil"), ExtResource("7_s2ju1"), ExtResource("8_afv0s"), ExtResource("9_wn08f")])
 speed_text = 1.0
 metadata/_edit_vertical_guides_ = [610.0, 1304.0, 1265.0, 774.0]
 
