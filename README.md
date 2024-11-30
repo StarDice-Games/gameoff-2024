@@ -23,7 +23,7 @@ If you want to open, edit or see the Godot project:
 💻  **Programmer**
 * Simone Guidi: https://github.com/irafunesta / https://irafunesta.itch.io
 * Samanta Mancini: https://github.com/SamantaMancini / https://mtgmisaki.itch.io/
-* Leonardo Venturoso: / https://leoventuroso.itch.io/
+* Leonardo Venturoso: https://github.com/leoventuroso / https://leoventuroso.itch.io/
 
 📝  **Designers**
 * Kevin Toninelli: https://github.com/spatagherru / https://spatagherru.itch.io
@@ -31,7 +31,7 @@ If you want to open, edit or see the Godot project:
 
 🎨  **2D Artist**
 * Samuele Prosser: https://github.com/PROXcode / https://prox-games.itch.io
-* Caterina Stella: / https://caterinastella.itch.io/
+* Caterina Stella: https://github.com/caterinastella / https://caterinastella.itch.io/
 * Lorenzo Racca: https://github.com/LorenzoRacca97 / https://lorenzo-racca.itch.io/
 
 🎹  **Music Composer**
