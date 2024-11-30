@@ -1,4 +1,4 @@
-# <img src="https://github.com/StarDice-Games/museum-servivit/tree/main/itch/banner.png">
+# <img src="https://github.com/StarDice-Games/museum-servivit/blob/main/itch/banner.png">
 [![Static Badge](https://img.shields.io/badge/Made_with-Godot-grey?logo=godot-engine&logoColor=white&labelColor=grey&color=%2353A5E0)](https://godotengine.org/) [![Static Badge](https://img.shields.io/badge/Published_on-Itch.io-FA5C5C?logo=itchdotio&logoColor=white
 )](https://stardice.itch.io/museum-servivit)
 
@@ -11,7 +11,7 @@ The game was made in one month during the <b>[GitHub Game Off Game Jam 2024](htt
 # Gameplay:
 
 # How to Play
-<img src="https://github.com/StarDice-Games/museum-servivit/tree/main/itch/Controls.png">
+<img src="https://github.com/StarDice-Games/museum-servivit/blob/main/itch/Controls.png">
 
 ## Requirements
 If you want to open, edit or see the Godot project:
