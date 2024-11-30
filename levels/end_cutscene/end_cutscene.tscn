@@ -19,7 +19,7 @@
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -31,7 +31,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -218,5 +218,6 @@ autoplay = "intro"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_qwbnx")
+bus = &"Music"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

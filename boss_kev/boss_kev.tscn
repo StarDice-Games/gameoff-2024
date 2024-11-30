@@ -76,7 +76,7 @@ triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])
 size = Vector2(113, 275.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
-radius = 232.868
+radius = 139.275
 
 [sub_resource type="Animation" id="Animation_5h4s2"]
 length = 0.001
@@ -178,7 +178,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wl1ke"]
-radius = 231.79
+radius = 138.171
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
@@ -212,7 +212,7 @@ position = Vector2(0.374199, 3.3031)
 shape = SubResource("RectangleShape2D_xmc1t")
 
 [node name="Interactable" parent="." instance=ExtResource("9_5niit")]
-position = Vector2(8.8742, 141.553)
+position = Vector2(11, 196)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(-13, -153)
@@ -229,7 +229,7 @@ position = Vector2(8.8742, 141.553)
 stream = ExtResource("10_hutjl")
 
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_7q66l")]
-position = Vector2(-0.125801, -0.446899)
+position = Vector2(2, 54)
 script = ExtResource("11_mplof")
 sprite = NodePath("../Sprite2D")
 shader = SubResource("ShaderMaterial_stvt3")

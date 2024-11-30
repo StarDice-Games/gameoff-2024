@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw17dtk8hgbyn"]
+[gd_scene load_steps=7 format=3 uid="uid://bw17dtk8hgbyn"]
 
 [ext_resource type="Script" path="res://levels/credits/End_Credits.gd" id="1_whf18"]
 [ext_resource type="Texture2D" uid="uid://qkvm3due1ol4" path="res://resource/assets/credits.jpg" id="2_ft2ww"]
 [ext_resource type="Texture2D" uid="uid://d1epgmdlfdngl" path="res://levels/credits/Credits/the_end_StarDice_gameoff.png" id="2_jnjwf"]
-[ext_resource type="AudioStream" uid="uid://db4gu4j0a1ryc" path="res://audio/bgmusic/go2024_briefing.ogg" id="4_bt2d2"]
 
 [sub_resource type="Animation" id="Animation_26meh"]
 length = 0.001
@@ -78,30 +77,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AudioStreamPlayer2D:volume_db")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_4lav8"]
@@ -193,30 +168,6 @@ tracks/6/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("AudioStreamPlayer2D:volume_db")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(12.8),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_alhc3"]
 _data = {
@@ -235,10 +186,8 @@ offset = Vector2(960, 540)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-texture_filter = 1
-offset_top = -194.249
 offset_right = 1920.0
-offset_bottom = 1918.75
+offset_bottom = 2113.0
 texture = ExtResource("2_ft2ww")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -258,8 +207,5 @@ texture = ExtResource("2_jnjwf")
 libraries = {
 "": SubResource("AnimationLibrary_alhc3")
 }
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_bt2d2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

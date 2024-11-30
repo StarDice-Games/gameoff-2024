@@ -9,6 +9,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioSystem.stop_music_event("go2024_title_v1")
+	#EventSystem.play_music.emit("go2024_briefing")
 	%Player/Camera2D.enabled = false
 	
 	EventSystem.trigger_changed.connect(trigger_update)
@@ -40,7 +42,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_music_start_body_entered(body: Node2D) -> void:
-	EventSystem.stop_sound.emit("go2024_briefing")
 	AudioSystem.play_music_event("go2024_phase1_v1")
 
 

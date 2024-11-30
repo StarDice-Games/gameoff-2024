@@ -9,14 +9,14 @@ extends Node2D
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(update_counter_talk)
 	
-	#TriggersSystem.update_trigger("stealth", true)
+	 #TriggersSystem.update_trigger("stealth", true)
 		
 	if TriggersSystem.check_trigger("stealth", true) and TriggersSystem.check_trigger("alarm_started", false):
 		DialogueSystem.start_dialog(dialog_escape)
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
-		AudioSystem.play(alarm_sfx)
-		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
+		EventSystem.play_sound.emit("Alarm_01", "Sfx")
+		EventSystem.play_music.emit("go2024_stealth_v1")
 	
 	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()

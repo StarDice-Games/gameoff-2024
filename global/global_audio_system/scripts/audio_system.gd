@@ -113,6 +113,12 @@ func stop_audio_event(audio_key) -> void:
 				player.stop()
 				break
 
+func stop_music_event(audio_key) -> void:
+	if audio_files.has(audio_key):
+		music_player.stream = audio_files[audio_key]
+		if music_player.playing:
+			music_player.stop()
+
 func play(sound : AudioStream):
 	if sound != null:
 		queue.append(sound)

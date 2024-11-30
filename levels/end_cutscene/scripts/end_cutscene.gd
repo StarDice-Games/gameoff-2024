@@ -5,6 +5,7 @@ var sfx : AudioStream = load("res://audio/sfx/various/Police_Siren_01.wav")
 
 func _ready() -> void:
 	#$Timer.start()
+	EventSystem.play_music.emit("Police_Siren_01")
 	EventSystem.stop_sound.emit("go2024_stealth_v1")
 
 	
