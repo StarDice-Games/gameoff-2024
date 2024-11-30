@@ -217,7 +217,7 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-60, 83)
-polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -576, 187, -585, -206, -439, -208, -439, 187, 432, 187, 431, -211, 595, -212, 589, 182, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
+polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -582, 184, -571, 174, -585, -206, -439, -208, -436, 178, -431, 185, 432, 187, 440, 175, 431, -211, 595, -212, 583, 164, 596, 178, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-52.25, 716.5)
@@ -312,7 +312,7 @@ level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(-2, 530)
+position = Vector2(16, 530)
 
 [node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(338, 361)

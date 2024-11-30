@@ -278,7 +278,7 @@ scale = Vector2(0.39, 0.39)
 
 [node name="Sole" type="Sprite2D" parent="Giorno/Env"]
 z_index = 1
-position = Vector2(1635.9, -1133.33)
+position = Vector2(702.564, -917.949)
 texture = ExtResource("6_ur36d")
 
 [node name="Lampioni-spenti2" type="Sprite2D" parent="Giorno/Env"]
