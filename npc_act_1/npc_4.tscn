@@ -106,6 +106,7 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_xmc1t")
+disabled = true
 
 [node name="Interactable" parent="." instance=ExtResource("8_cd6j6")]
 position = Vector2(0, -56)
@@ -130,9 +131,9 @@ shape = SubResource("CircleShape2D_mdwis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-2, -60.0875)
+position = Vector2(1, -83)
 texture = ExtResource("12_f0bip")
-offset = Vector2(-31, -23.9122)
+offset = Vector2(-34, -0.999702)
 
 [node name="OmbraPiedi" type="Sprite2D" parent="."]
 y_sort_enabled = true

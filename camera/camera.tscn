@@ -11,6 +11,13 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("1_xgjyg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
+position_smoothing_speed = 1.0
+drag_left_margin = 0.16
+drag_top_margin = 0.16
+drag_right_margin = 0.16
+drag_bottom_margin = 0.16
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 16

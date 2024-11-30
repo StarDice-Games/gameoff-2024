@@ -46,11 +46,7 @@ shape = SubResource("RectangleShape2D_3kese")
 position = Vector2(1125, 784)
 shape = SubResource("RectangleShape2D_3kese")
 
-[node name="Player" parent="." instance=ExtResource("11_6o853")]
-position = Vector2(831, 612)
-
-[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("14_ujq8x")]
-player_ref = NodePath("../Player")
+[node name="LinkSystem" parent="." instance=ExtResource("14_ujq8x")]
 
 [node name="South" type="Node2D" parent="LinkSystem"]
 position = Vector2(831, 613)
@@ -78,3 +74,7 @@ offset = Vector2(-5.20508, 48.0896)
 
 [node name="NodeToggle" parent="EasterEgg" instance=ExtResource("6_4enlb")]
 trigger = SubResource("Resource_8ysya")
+
+[node name="Player" parent="." instance=ExtResource("11_6o853")]
+unique_name_in_owner = true
+position = Vector2(853, 597)

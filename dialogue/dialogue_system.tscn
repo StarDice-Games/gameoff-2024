@@ -139,5 +139,5 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_wn1ar")
-volume_db = 15.774
+volume_db = 21.062
 bus = &"Sfx"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://fxf8fytflat8"]
+[gd_scene load_steps=30 format=3 uid="uid://fxf8fytflat8"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
 [ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://urb6mmh3g760" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_-3.png" id="15_ymqb7"]
 [ext_resource type="Texture2D" uid="uid://benn7vml6s17o" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_.png" id="16_v01k8"]
 [ext_resource type="Texture2D" uid="uid://be1yr06pjuh8" path="res://resource/assets/rooms/sala_sacrificio/Lampadario.PNG" id="17_fxu7n"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="18_jent7"]
 [ext_resource type="Texture2D" uid="uid://dhyixhohegg0m" path="res://resource/assets/rooms/sala_sacrificio/Sala rituale porte.png" id="19_y0vbw"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="20_pmicq"]
 
@@ -99,10 +98,6 @@ y_sort_enabled = true
 script = ExtResource("1_445d4")
 dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
 dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
-
-[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("18_jent7")]
-position = Vector2(941, 542)
-player_ref = NodePath("../Player")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = -2166.0

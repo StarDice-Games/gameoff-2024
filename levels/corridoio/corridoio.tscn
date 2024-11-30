@@ -1,7 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
-[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_un85s"]
 [ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_dnq7l"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
@@ -157,9 +156,6 @@ script = ExtResource("1_w2gne")
 dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
 alarm_sfx = ExtResource("6_xu4h3")
 
-[node name="CameraFollow" parent="." instance=ExtResource("1_un85s")]
-position = Vector2(941, 542)
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -2174.0
 offset_top = -1511.0
@@ -220,7 +216,7 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-60, 83)
-polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -581, 200, -585, -206, -439, -208, -443, 200, 438, 200, 431, -211, 595, -212, 590, 200, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
+polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -576, 187, -585, -206, -439, -208, -439, 187, 432, 187, 431, -211, 595, -212, 589, 182, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-52.25, 716.5)
@@ -293,7 +289,7 @@ offset_bottom = 25.0
 color = Color(0.570505, 1, 0.478134, 1)
 
 [node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
-position = Vector2(1927, 379)
+position = Vector2(1924, 474)
 level_id = "ingresso"
 link_id = "WestDoor"
 
@@ -315,7 +311,7 @@ level_id = "sala sacrificio"
 link_id = "East"
 
 [node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
-position = Vector2(-23, 528)
+position = Vector2(-2, 530)
 
 [node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
 position = Vector2(338, 361)
