@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://i5m1yfut0lb0"]
+[gd_scene load_steps=29 format=3 uid="uid://i5m1yfut0lb0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
 [ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="13_e86rr"]
 [ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="16_yixx2"]
 [ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="19_gk30u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jf2ot"]
 size = Vector2(1215.5, 148)
@@ -164,6 +165,7 @@ offset = Vector2(-18, 560)
 region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
 
 [node name="ColorRect" type="ColorRect" parent="Stanze"]
+visible = false
 z_index = -1
 anchors_preset = -1
 anchor_left = -0.769795
@@ -283,6 +285,8 @@ texture = ExtResource("17_5mw4a")
 
 [node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
 position = Vector2(993, 650)
+
+[node name="Fondale" parent="." instance=ExtResource("19_gk30u")]
 
 [connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

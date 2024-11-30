@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dxa6tkkfq7b3q"]
+[gd_scene load_steps=40 format=3 uid="uid://dxa6tkkfq7b3q"]
 
 [ext_resource type="Script" path="res://levels/ingresso/ingresso.gd" id="1_8qsso"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_amsm6"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ddbxb4w0e5i7l" path="res://enemy_patrol/enemy_patrol_2.tscn" id="17_x6xpj"]
 [ext_resource type="PackedScene" uid="uid://bt3dhh7ty8nlq" path="res://enemy_patrol/enemy_patrol_3.tscn" id="18_4h17y"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="19_bg8dd"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="25_fa6ye"]
 
 [sub_resource type="Resource" id="Resource_2k5b1"]
 script = ExtResource("5_twhkk")
@@ -217,10 +218,11 @@ y_sort_enabled = true
 script = ExtResource("1_8qsso")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = -2990.0
-offset_top = -1815.0
-offset_right = 4553.0
-offset_bottom = 3091.0
+visible = false
+offset_left = -1458.0
+offset_top = -997.0
+offset_right = 3126.0
+offset_bottom = 1968.0
 color = Color(0, 0, 0, 1)
 
 [node name="Luci" type="Sprite2D" parent="."]
@@ -304,7 +306,7 @@ collision_layer = 10
 
 [node name="Player" parent="." instance=ExtResource("2_amsm6")]
 unique_name_in_owner = true
-position = Vector2(96, 345)
+position = Vector2(928, 10)
 
 [node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_1w6um")]
 player_ref = NodePath("../Player")
@@ -377,10 +379,6 @@ position = Vector2(-246, 338)
 [node name="DoorLockHall2" parent="." instance=ExtResource("16_b4hsd")]
 position = Vector2(1959, 438)
 scale = Vector2(1, 1.56)
-
-[node name="DoorLockHall3" parent="." instance=ExtResource("16_b4hsd")]
-position = Vector2(973, -138)
-scale = Vector2(1.68, 1)
 
 [node name="FallingToothAnim" type="Node2D" parent="."]
 
@@ -504,6 +502,8 @@ direction = "up"
 position = Vector2(-166.338, -341.947)
 scale = Vector2(0.690198, 0.750351)
 color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="Fondale" parent="." instance=ExtResource("25_fa6ye")]
 
 [connection signal="animation_finished" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="FallingToothAnim/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

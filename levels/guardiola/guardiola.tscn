@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b01tipmutivpw"]
+[gd_scene load_steps=60 format=3 uid="uid://b01tipmutivpw"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_booiy"]
 [ext_resource type="Script" path="res://levels/guardiola/guardiola.gd" id="1_mwtu7"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="21_nud1n"]
 [ext_resource type="PackedScene" uid="uid://b4q1hdxo0i0xe" path="res://door_lock_hall/door_lock_hall.tscn" id="24_3hbrg"]
 [ext_resource type="Texture2D" uid="uid://c5gt8esvdugam" path="res://resource/assets/scene_azione/Telefonata polizia.PNG" id="25_1qhqn"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="28_oxw5n"]
 
 [sub_resource type="Resource" id="Resource_bmfvq"]
 script = ExtResource("6_66euh")
@@ -385,25 +386,14 @@ first_tasks = Array[ExtResource("2_53fam")]([ExtResource("3_dpcsg")])
 second_tasks = Array[ExtResource("2_53fam")]([ExtResource("4_7anjd"), ExtResource("4_2qtxl"), ExtResource("6_atd8t")])
 dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 
+[node name="Fondale" parent="." instance=ExtResource("28_oxw5n")]
+position = Vector2(860, 450)
+
 [node name="Stanze" type="Sprite2D" parent="."]
 position = Vector2(969, 459)
 texture = ExtResource("10_rqxwf")
 offset = Vector2(-22, 70)
 region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
-
-[node name="ColorRect" type="ColorRect" parent="Stanze"]
-z_index = -1
-anchors_preset = -1
-anchor_left = 0.00952381
-anchor_top = -0.016684
-anchor_right = 4.09784
-anchor_bottom = 3.44108
-offset_left = -3287.56
-offset_top = -2212.13
-offset_right = -245.563
-offset_bottom = -522.125
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="LuceLampadina" type="Sprite2D" parent="Stanze"]
 position = Vector2(115, -223)
@@ -483,6 +473,7 @@ offset_top = -75.0
 offset_right = 2176.0
 offset_bottom = 1266.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CloseMuseumCutscene/CanvasLayer"]
 stream = ExtResource("18_is8n0")
@@ -506,6 +497,7 @@ offset_top = -75.0
 offset_right = 2176.0
 offset_bottom = 1266.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene/CanvasLayer"]
 stream = ExtResource("17_rhtdm")
@@ -554,6 +546,7 @@ offset_top = -116.0
 offset_right = 2044.0
 offset_bottom = 1202.0
 color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="ScenaPolice" type="Sprite2D" parent="EndPhone/CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -567,6 +560,13 @@ position = Vector2(696, 533)
 z_index = 1
 position = Vector2(781, 358)
 scale = Vector2(1.24, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 750.0
+offset_top = 218.0
+offset_right = 964.0
+offset_bottom = 633.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
 [connection signal="animation_finished" from="CloseMuseumCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

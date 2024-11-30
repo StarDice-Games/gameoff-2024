@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ce2sb814fdfw0"]
+[gd_scene load_steps=22 format=3 uid="uid://ce2sb814fdfw0"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_i1wci"]
 [ext_resource type="Script" path="res://levels/sala_arte/sala_arte.gd" id="1_t0sdk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bwuwy72u8efuy" path="res://resource/assets/rooms/Sala arte/Busto.png" id="10_xjssa"]
 [ext_resource type="Texture2D" uid="uid://bjxxn48rvh7i3" path="res://resource/assets/rooms/Sala_arte_new/vaso.png" id="13_cu4xh"]
 [ext_resource type="PackedScene" uid="uid://dufkn0f3l1qfb" path="res://puzzle_magic_book/libreria/libreria.tscn" id="16_1axwy"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="16_a7ppt"]
 [ext_resource type="PackedScene" uid="uid://bltkk80sv7ldj" path="res://npc_act_1/npc_2.tscn" id="16_rd3pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67rq6"]
@@ -36,6 +37,7 @@ y_sort_enabled = true
 script = ExtResource("1_t0sdk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -2088.0
 offset_top = -1039.0
 offset_right = 4112.0
@@ -183,3 +185,5 @@ link_id = "North2"
 [node name="Libreria" parent="." instance=ExtResource("16_1axwy")]
 position = Vector2(1455, 611)
 collision_layer = 4
+
+[node name="Fondale" parent="." instance=ExtResource("16_a7ppt")]

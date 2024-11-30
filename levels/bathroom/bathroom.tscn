@@ -1,12 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://beukjp0k4wfpw"]
+[gd_scene load_steps=15 format=3 uid="uid://beukjp0k4wfpw"]
 
+[ext_resource type="Script" path="res://levels/bathroom/script/bathroom.gd" id="1_3wngb"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_7wea4"]
+[ext_resource type="Texture2D" uid="uid://dc57d4gnq8aap" path="res://resource/assets/placeholder/Omino_blu_testa.png" id="3_yhblj"]
 [ext_resource type="Texture2D" uid="uid://jcgcdo30msl" path="res://resource/assets/rooms/Bagno/bagno.png" id="4_c8pgc"]
-[ext_resource type="Texture2D" uid="uid://bnjnwdjkmrpsp" path="res://resource/assets/placeholder/Omino_blu.png" id="5_qm6h2"]
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="6_4enlb"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_7yn4i"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="8_aa41f"]
+[ext_resource type="Texture2D" uid="uid://b810fxbxcpl2n" path="res://resource/assets/placeholder/Omino_blu (1).png" id="8_r4gpd"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="11_6o853"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="14_ujq8x"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="15_ry6fn"]
+
+[sub_resource type="Resource" id="Resource_iabvy"]
+script = ExtResource("2_7wea4")
+dialogue_text = Array[String](["Please, leave me alone !"])
+character_image = ExtResource("3_yhblj")
+text_name = "Pixel"
+triggers = Array[ExtResource("7_7yn4i")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kese"]
 size = Vector2(77.5, 100)
@@ -16,10 +27,13 @@ script = ExtResource("7_7yn4i")
 key = "stealth"
 value = false
 
-[node name="SalaArte" type="Node2D"]
+[node name="Bagno" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_3wngb")
+dialog_pixel = Array[ExtResource("2_7wea4")]([SubResource("Resource_iabvy")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -2088.0
 offset_top = -1039.0
 offset_right = 4112.0
@@ -67,9 +81,9 @@ link_id = "Bath"
 
 [node name="EasterEgg" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(954.795, 551.91)
+position = Vector2(969, 551)
 scale = Vector2(-1, 1)
-texture = ExtResource("5_qm6h2")
+texture = ExtResource("8_r4gpd")
 offset = Vector2(-5.20508, 48.0896)
 
 [node name="NodeToggle" parent="EasterEgg" instance=ExtResource("6_4enlb")]
@@ -78,3 +92,6 @@ trigger = SubResource("Resource_8ysya")
 [node name="Player" parent="." instance=ExtResource("11_6o853")]
 unique_name_in_owner = true
 position = Vector2(853, 597)
+
+[node name="Fondale" parent="." instance=ExtResource("8_aa41f")]
+position = Vector2(928, 531)

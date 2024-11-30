@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvkthgx1b364n"]
+
+[ext_resource type="Texture2D" uid="uid://227yaias3up0" path="res://resource/assets/Fondale gioco.jpg" id="1_i4dsb"]
+
+[sub_resource type="Animation" id="Animation_yc8nb"]
+resource_name = "fondale"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.96667, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ikys6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xy2ne"]
+_data = {
+"RESET": SubResource("Animation_ikys6"),
+"fondale": SubResource("Animation_yc8nb")
+}
+
+[node name="Fondale" type="Sprite2D"]
+z_index = -1
+position = Vector2(956, 471)
+texture = ExtResource("1_i4dsb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xy2ne")
+}
+autoplay = "fondale"

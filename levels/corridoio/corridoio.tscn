@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="26_lmyf7"]
 [ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="27_qp2n0"]
 [ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="29_jnotp"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="29_sibt0"]
 
 [sub_resource type="Resource" id="Resource_tep4b"]
 script = ExtResource("2_dnq7l")
@@ -157,10 +158,10 @@ dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), Su
 alarm_sfx = ExtResource("6_xu4h3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -2174.0
-offset_top = -1511.0
-offset_right = 3834.0
-offset_bottom = 2487.0
+offset_left = -21.0
+offset_top = 124.0
+offset_right = 1933.0
+offset_bottom = 1076.0
 color = Color(0, 0, 0, 1)
 
 [node name="Stanze" type="Sprite2D" parent="."]
@@ -410,6 +411,8 @@ direction = "left"
 [node name="Checkpoint2" parent="Stealth" instance=ExtResource("29_jnotp")]
 position = Vector2(-34.5099, 89.5048)
 direction = "right"
+
+[node name="Fondale" parent="." instance=ExtResource("29_sibt0")]
 
 [connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]
