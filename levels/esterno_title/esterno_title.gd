@@ -4,6 +4,9 @@ extends Node2D
 @export var dialog_2 : Array[DialogText]
 @export var dialog_3 : Array[DialogText]
 
+@export var first_tasks : Array[Task]
+@export var second_tasks : Array[Task]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%Player/Camera2D.enabled = false
@@ -13,6 +16,12 @@ func _ready() -> void:
 	$AudioStreamPlayer2D.play()
 	
 	TriggersSystem.update_trigger("doors_locked", true)
+	
+	first_tasks[0].current_counter = 0
+	first_tasks[0].complete = false
+	second_tasks[0].complete = false
+	second_tasks[1].complete = false
+	second_tasks[2].complete = false
 
 func trigger_update(key: String, value : bool) -> void:
 	if key == "not_in_title" and value == true:

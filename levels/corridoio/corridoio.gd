@@ -16,7 +16,7 @@ func _ready() -> void:
 		TriggersSystem.update_trigger("doors_locked", true)
 		AudioSystem.mute = false
 		AudioSystem.play(alarm_sfx)
-		EventSystem.play_music.emit("go2024_stealth_v1")
+		EventSystem.play_sound.emit("go2024_stealth_v1", "Music")
 	
 	if TriggersSystem.check_trigger("stealth", false):
 		$DoorLock2.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://civgdg6ang6q4"]
+[gd_scene load_steps=41 format=3 uid="uid://civgdg6ang6q4"]
 
 [ext_resource type="Script" path="res://levels/esterno_title/esterno_title.gd" id="1_2y21b"]
 [ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_q5avm"]
@@ -6,14 +6,19 @@
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_x38vt"]
 [ext_resource type="Texture2D" uid="uid://6hbj2cjm3ibi" path="res://resource/assets/title/facciata-giorno.png" id="5_cfbhh"]
 [ext_resource type="Texture2D" uid="uid://vhreabu8kwtq" path="res://resource/assets/title/fondo-giorno.jpg" id="5_gjyax"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="5_p8yr8"]
+[ext_resource type="Resource" uid="uid://bplyxs3ic2kqp" path="res://task_system/tasks/first_tasks.tres" id="6_7muvr"]
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="6_8phnn"]
 [ext_resource type="Texture2D" uid="uid://dhome106wd4ow" path="res://resource/assets/title/sole.png" id="6_ur36d"]
 [ext_resource type="Texture2D" uid="uid://c1765eu750fo5" path="res://resource/assets/title/lampioni-spenti.png" id="7_18xae"]
 [ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="7_c2a2l"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_cem5a"]
+[ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="8_2t30y"]
 [ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="8_hk6ts"]
 [ext_resource type="Texture2D" uid="uid://cpjmkubf8hubb" path="res://resource/assets/title/movimenti.png" id="8_hsd1f"]
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="9_526m0"]
 [ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="9_qs4pb"]
+[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="9_xd03k"]
 [ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="10_cot7y"]
 [ext_resource type="Texture2D" uid="uid://pwrq3lb21vbl" path="res://resource/assets/title/ringhiera-sopra.png" id="10_kkrbm"]
 [ext_resource type="Texture2D" uid="uid://ck4yiohdwq52j" path="res://resource/assets/title/ringhiera-sotto.png" id="11_wedho"]
@@ -260,6 +265,8 @@ _data = {
 y_sort_enabled = true
 script = ExtResource("1_2y21b")
 dialog_1 = Array[ExtResource("2_q5avm")]([SubResource("Resource_pevej")])
+first_tasks = Array[ExtResource("5_p8yr8")]([ExtResource("6_7muvr")])
+second_tasks = Array[ExtResource("5_p8yr8")]([ExtResource("7_cem5a"), ExtResource("8_2t30y"), ExtResource("9_xd03k")])
 
 [node name="Giorno" type="Node2D" parent="."]
 y_sort_enabled = true
