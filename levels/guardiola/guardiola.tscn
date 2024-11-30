@@ -565,7 +565,7 @@ position = Vector2(696, 533)
 
 [node name="DoorLockHall" parent="." instance=ExtResource("24_3hbrg")]
 z_index = 1
-position = Vector2(779, 374)
+position = Vector2(781, 358)
 scale = Vector2(1.24, 1)
 
 [connection signal="timeout" from="CloseMuseumCutscene/DelayAnim" to="." method="_on_delay_anim_timeout"]
