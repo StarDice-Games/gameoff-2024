@@ -143,7 +143,7 @@ value = true
 script = ExtResource("6_66euh")
 dialogue_text = Array[String](["It’s me again. Please bring the items to the locked room."])
 character_image = ExtResource("14_g5154")
-text_name = "Museum Director"
+text_name = "The Curator"
 triggers = Array[ExtResource("7_xu3vp")]([SubResource("Resource_ne5gc")])
 
 [sub_resource type="Resource" id="Resource_6qwgt"]
