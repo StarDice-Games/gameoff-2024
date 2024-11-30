@@ -34,14 +34,14 @@ value = true
 
 [sub_resource type="Resource" id="Resource_5b178"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["My identity right now is irrelevant. ", "What matters is that you obey me.", "Now, Angelo, place what you have on that tableNow, Angelo, place what you have on that table"])
+dialogue_text = Array[String](["My identity right now is irrelevant. ", "What matters is that you obey me.", "Now, Angelo, place what you have on that table."])
 character_image = ExtResource("3_qqduw")
 text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptvd8")])
 
 [sub_resource type="Resource" id="Resource_6xilf"]
 script = ExtResource("2_qes3u")
-dialogue_text = Array[String](["Now, Angelo, place what you have on that tableNow, Angelo, place what you have on that table"])
+dialogue_text = Array[String](["Now, Angelo, place what you have on that table"])
 character_image = ExtResource("3_qqduw")
 text_name = "The Curator"
 triggers = Array[ExtResource("4_a4ro4")]([])
