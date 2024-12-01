@@ -126,7 +126,7 @@ tracks/2/path = NodePath("ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.933333, 2.26667, 6.93333, 8.63333, 10.4333, 12.8, 24.8, 26.5),
+"times": PackedFloat32Array(0.933333, 2.26667, 9.6, 10.7, 11.9, 12.8, 24.8, 26.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -174,7 +174,7 @@ tracks/6/path = NodePath("TextureRect3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 11.1667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -202,8 +202,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
+offset_top = -272.796
 offset_right = 1920.0
-offset_bottom = 2113.0
+offset_bottom = 1840.2
 texture = ExtResource("2_ft2ww")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
