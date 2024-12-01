@@ -72,12 +72,13 @@ func dir_contents(path):
 				dir_contents(dir.get_current_dir() + "/" + file_name)
 			else:
 				print("Found file: " + file_name)
-				file_name = file_name.replace(".import", "")
-				var key = file_name.replace("." + file_name.get_extension(), "")
-				if not audio_files.has(key):
-					var absolute_file_path = dir.get_current_dir() + "/" + file_name
-					#var audio_file : AudioStream  = AudioStream.load()
-					audio_files[key] = ResourceLoader.load(absolute_file_path, "AudioStream")
+				if file_name.find(".import") < 0 and file_name.find(".reapeaks") < 0:
+					#file_name = file_name.replace(".import", "")
+					var key = file_name.replace("." + file_name.get_extension(), "")
+					if not audio_files.has(key):
+						var absolute_file_path = dir.get_current_dir() + "/" + file_name
+						#var audio_file : AudioStream  = AudioStream.load()
+						audio_files[key] = ResourceLoader.load(absolute_file_path, "AudioStream")
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
