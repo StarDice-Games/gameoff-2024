@@ -1,0 +1,222 @@
+[gd_scene load_steps=31 format=3 uid="uid://fxf8fytflat8"]
+
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_68cts"]
+[ext_resource type="Script" path="res://levels/sala_sacrificio/scripts/sala_sacrificio.gd" id="1_445d4"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_2ycaj"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_ylly3"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_ruv8d"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_6u53w"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_vhabn"]
+[ext_resource type="Texture2D" uid="uid://ls5iadoaoffm" path="res://resource/assets/rooms/sala_sacrificio/Sala rituale.PNG" id="5_3g3cf"]
+[ext_resource type="PackedScene" uid="uid://b43hax8kcwef" path="res://boss_kev/boss_kev.tscn" id="5_jbukh"]
+[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_y3iuy"]
+[ext_resource type="PackedScene" uid="uid://0h08en1f6gqc" path="res://altare/altare.tscn" id="8_fh2gt"]
+[ext_resource type="PackedScene" uid="uid://rriaauq8dxpi" path="res://ritual_sign/ritual_sign.tscn" id="9_abqfi"]
+[ext_resource type="Texture2D" uid="uid://cu6pigyl34prn" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_-1.png" id="13_5vk58"]
+[ext_resource type="Texture2D" uid="uid://x58jdvpnxdmv" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_-2.png" id="14_6a3pp"]
+[ext_resource type="Texture2D" uid="uid://urb6mmh3g760" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_-3.png" id="15_ymqb7"]
+[ext_resource type="Texture2D" uid="uid://benn7vml6s17o" path="res://resource/assets/rooms/sala_sacrificio/Candelabro_.png" id="16_v01k8"]
+[ext_resource type="Texture2D" uid="uid://be1yr06pjuh8" path="res://resource/assets/rooms/sala_sacrificio/Lampadario.PNG" id="17_fxu7n"]
+[ext_resource type="Texture2D" uid="uid://dhyixhohegg0m" path="res://resource/assets/rooms/sala_sacrificio/Sala rituale porte.png" id="19_y0vbw"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="20_jopc1"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="20_pmicq"]
+
+[sub_resource type="Resource" id="Resource_3n6nf"]
+script = ExtResource("4_6u53w")
+key = "ritual_sign"
+value = true
+
+[sub_resource type="Resource" id="Resource_82hri"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String](["How absurd, a cult!?", "I don't understand. What do they want from me?", "Why do they need these artifacts?"])
+character_image = ExtResource("3_ruv8d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_3n6nf")])
+
+[sub_resource type="Resource" id="Resource_23jqv"]
+script = ExtResource("4_6u53w")
+key = "stealth"
+value = true
+
+[sub_resource type="Resource" id="Resource_hnpbr"]
+script = ExtResource("2_2ycaj")
+dialogue_text = Array[String](["Wait! What's going on?", "OK this is really bad. I need to get out from here."])
+character_image = ExtResource("3_ruv8d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_6u53w")]([SubResource("Resource_23jqv")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7btqm"]
+size = Vector2(1581.5, 171)
+
+[sub_resource type="Animation" id="Animation_7hb65"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(894, 928)]
+}
+
+[sub_resource type="Animation" id="Animation_s8v40"]
+resource_name = "boss_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(894, 928), Vector2(1540, 673)]
+}
+
+[sub_resource type="Animation" id="Animation_85l4n"]
+resource_name = "light_change"
+length = 9.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqlul"]
+_data = {
+"RESET": SubResource("Animation_7hb65"),
+"boss_walk": SubResource("Animation_s8v40"),
+"light_change": SubResource("Animation_85l4n")
+}
+
+[sub_resource type="Resource" id="Resource_tq7f3"]
+script = ExtResource("4_6u53w")
+key = "ritual_objects_placed"
+value = false
+
+[node name="SalaSacrificio" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_445d4")
+dialog1 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_82hri")])
+dialog2 = Array[ExtResource("2_2ycaj")]([SubResource("Resource_hnpbr")])
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -2166.0
+offset_top = -1486.0
+offset_right = 4128.0
+offset_bottom = 2751.0
+color = Color(0, 0, 0, 1)
+
+[node name="SalaRitualePorte" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1569, 805)
+texture = ExtResource("19_y0vbw")
+offset = Vector2(-622, -273)
+region_rect = Rect2(1462, 348, 221, 824)
+
+[node name="Stanze" type="Sprite2D" parent="."]
+position = Vector2(972, -79)
+texture = ExtResource("5_3g3cf")
+offset = Vector2(-25, 608)
+region_rect = Rect2(226.559, 1446.06, 1871.47, 1400.55)
+
+[node name="RitualSign" parent="Stanze" instance=ExtResource("9_abqfi")]
+position = Vector2(-40, 968)
+
+[node name="Lampadario" type="Sprite2D" parent="Stanze"]
+position = Vector2(0, 147)
+texture = ExtResource("17_fxu7n")
+
+[node name="Candelabro-1" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(175, 555)
+texture = ExtResource("13_5vk58")
+
+[node name="Candelabro-2" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(-339, 964)
+texture = ExtResource("14_6a3pp")
+
+[node name="Candelabro-3" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(286, 1031)
+texture = ExtResource("15_ymqb7")
+offset = Vector2(0, -70)
+
+[node name="Candelabro" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(-196, 559)
+texture = ExtResource("16_v01k8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(972, -79)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(612, 543, 589, 831, 510, 830, 477, 723, 321, 718, 250, 688, -281, 677, -312, 774, -480, 770, -503, 813, -474, 1202, -773, 1210, -811, 259, -469, 144, 519, 135, 748, 255, 681, 1215, 603, 1211, 530, 986, 688, 850, 709, 609)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-36.75, 1285.5)
+shape = SubResource("RectangleShape2D_7btqm")
+
+[node name="Player" parent="." instance=ExtResource("2_ylly3")]
+unique_name_in_owner = true
+position = Vector2(1457, 708)
+
+[node name="Boss" parent="." instance=ExtResource("5_jbukh")]
+position = Vector2(894, 928)
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_68cts")]
+player_ref = NodePath("../Player")
+
+[node name="East" type="Node2D" parent="LinkSystem"]
+position = Vector2(1458, 709)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/East"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.580646, 1, 0.440148, 1)
+
+[node name="Corridoio" parent="." instance=ExtResource("4_vhabn")]
+position = Vector2(1662, 611)
+level_id = "corridoio"
+link_id = "WestDoor"
+
+[node name="DoorLock" parent="." instance=ExtResource("7_y3iuy")]
+position = Vector2(1551, 623)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sqlul")
+}
+
+[node name="DelayAnim" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Altare" parent="." instance=ExtResource("8_fh2gt")]
+position = Vector2(920, 807)
+
+[node name="Stealth" type="Node2D" parent="."]
+visible = false
+position = Vector2(241, 455.716)
+scale = Vector2(1.44886, 1.33271)
+
+[node name="NodeToggle" parent="Stealth" instance=ExtResource("20_pmicq")]
+trigger = SubResource("Resource_tq7f3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
+position = Vector2(-166.338, -341.947)
+scale = Vector2(0.690198, 0.750351)
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Fondale" parent="." instance=ExtResource("20_jopc1")]
+position = Vector2(956, 578)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="DelayAnim" to="." method="_on_delay_anim_timeout"]

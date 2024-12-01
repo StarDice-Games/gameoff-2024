@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr7sec8ntpb4j"]
+
+[ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="2_colt5"]
+[ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="3_qr5sd"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_xlmmy"]
+[ext_resource type="PackedScene" uid="uid://bnk7pf80sm6t3" path="res://enemy_patrol/shadow_zone/shadow_zone.tscn" id="6_ltle0"]
+
+[sub_resource type="Curve2D" id="Curve2D_nxkba"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 68.3296, 77.2861, 0, 0, 0, 0, 68.3296, -285.884)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhsky"]
+radius = 244.72
+
+[node name="MainLevel" type="Node2D"]
+position = Vector2(102, 70)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(157, 208)
+scale = Vector2(1.44886, 1.33271)
+curve = SubResource("Curve2D_nxkba")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(68.3296, 77.2861)
+rotation = -0.00562924
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("2_colt5")]
+speed = 150
+path = NodePath("..")
+
+[node name="Checkpoint1" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(261, 309)
+direction = "up"
+
+[node name="Checkpoint2" parent="." instance=ExtResource("3_qr5sd")]
+position = Vector2(259, -175)
+direction = "down"
+
+[node name="Player" parent="." instance=ExtResource("4_xlmmy")]
+position = Vector2(417, 550)
+
+[node name="ShadowZone" parent="." instance=ExtResource("6_ltle0")]
+position = Vector2(860.492, 498.817)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowZone"]
+shape = SubResource("CircleShape2D_jhsky")
+debug_color = Color(5.41471e-08, 0.0537478, 0.0703505, 0.42)

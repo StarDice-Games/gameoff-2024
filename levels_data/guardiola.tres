@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://br5ob70hx6yha"]
+
+[ext_resource type="PackedScene" uid="uid://b01tipmutivpw" path="res://levels/guardiola/guardiola.tscn" id="1_j6lgu"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_ywe73"]
+
+[resource]
+script = ExtResource("2_ywe73")
+name = "guardiola"
+description = "Description"
+scene = ExtResource("1_j6lgu")

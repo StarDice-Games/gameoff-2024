@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm57cmsjep47j"]
+
+[ext_resource type="Script" path="res://levels/intro_cutscene/scripts/intro_cuscene.gd" id="1_fhl8q"]
+
+[node name="IntroCuscene" type="Node2D"]
+script = ExtResource("1_fhl8q")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 469.0
+offset_top = 388.0
+offset_right = 1353.0
+offset_bottom = 557.0
+theme_override_font_sizes/font_size = 60
+text = "BEAUTIFULL INTRO CUT SCENE
+PRESS E to move on
+"
+horizontal_alignment = 1

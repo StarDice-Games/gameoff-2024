@@ -1,0 +1,95 @@
+[gd_scene load_steps=20 format=3 uid="uid://btpwdekddbacl"]
+
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/painting.gd" id="1_h8pmy"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_lcyvf"]
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="2_ba2bi"]
+[ext_resource type="Texture2D" uid="uid://ckjcq1uog4sk5" path="res://icon.svg" id="2_ey4hm"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_7wpa3"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_rfxo3"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_gdyyu"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_apwyo"]
+[ext_resource type="Texture2D" uid="uid://tqo1nbpn1nq8" path="res://resource/assets/rooms/Corridoio/Asset nuovi/quadro.png" id="8_f0ude"]
+[ext_resource type="Texture2D" uid="uid://8n2qqqa7w0g0" path="res://resource/assets/rooms/Corridoio/Asset nuovi/quadro-girato.png" id="9_lkyg0"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_16yyu"]
+[ext_resource type="PackedScene" uid="uid://d0sqgofooexlq" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice.tscn" id="12_prl61"]
+
+[sub_resource type="Resource" id="Resource_5mtew"]
+script = ExtResource("2_ba2bi")
+id = "Chalice"
+description = "Find a chalice"
+complete = true
+counter_max = -1
+current_counter = -1
+
+[sub_resource type="Resource" id="Resource_k5gwa"]
+script = ExtResource("3_7wpa3")
+dialogue_text = Array[String]([" Is this a chalice!? Fortunately, I’m not an archeologist and this is not the holy grail!", "Where are people when I make such jokes…"])
+character_image = ExtResource("6_apwyo")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_gdyyu")]([])
+
+[sub_resource type="Resource" id="Resource_k74jg"]
+script = ExtResource("3_7wpa3")
+dialogue_text = Array[String](["I think I heard a click somewhere. I should go investigate it."])
+character_image = ExtResource("6_apwyo")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_gdyyu")]([])
+
+[sub_resource type="Resource" id="Resource_0ojl7"]
+script = ExtResource("3_rfxo3")
+id = "Chalice"
+icon = ExtResource("2_ey4hm")
+
+[sub_resource type="Resource" id="Resource_ctjfm"]
+metadata/__load_path__ = "res://audio/sfx/interaction/Interaction_01.ogg"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uipc7"]
+size = Vector2(159, 176)
+
+[sub_resource type="Resource" id="Resource_td2xs"]
+script = ExtResource("5_gdyyu")
+key = "chalice_picked"
+value = true
+
+[node name="Painting" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_h8pmy")
+task_chalice = SubResource("Resource_5mtew")
+dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k5gwa")])
+open_dialog = Array[ExtResource("3_7wpa3")]([SubResource("Resource_k74jg")])
+item_data = SubResource("Resource_0ojl7")
+
+[node name="PaintingClosed" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -104)
+texture = ExtResource("8_f0ude")
+offset = Vector2(0, 104)
+
+[node name="PaintingOpened" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(122, 14)
+texture = ExtResource("9_lkyg0")
+
+[node name="Interactable" parent="." instance=ExtResource("1_lcyvf")]
+audio_sfx = SubResource("Resource_ctjfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_uipc7")
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("10_16yyu")]
+position = Vector2(-4, 0)
+trigger = SubResource("Resource_td2xs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="Chalice" parent="." instance=ExtResource("12_prl61")]
+visible = false
+position = Vector2(0, 45)
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

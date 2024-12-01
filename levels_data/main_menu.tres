@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://dkfwk50w3dv0e"]
+
+[ext_resource type="PackedScene" uid="uid://bn66sogio8l8v" path="res://levels/title_screen/title_screen.tscn" id="1_pg0xu"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="1_pjvgd"]
+
+[resource]
+script = ExtResource("1_pjvgd")
+name = "main menu"
+description = "Description"
+scene = ExtResource("1_pg0xu")

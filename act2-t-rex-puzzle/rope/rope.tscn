@@ -1,0 +1,92 @@
+[gd_scene load_steps=18 format=3 uid="uid://t3cdxwm3ovne"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/rope/scripts/rope.gd" id="1_cbrfo"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="2_5ida8"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_lqtwb"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_qcshn"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oefkw"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_32ndp"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_jvlqr"]
+[ext_resource type="Texture2D" uid="uid://687n7gtcgwck" path="res://resource/assets/rooms/Sala animali/corda-caduta.png" id="7_lbqoa"]
+[ext_resource type="Texture2D" uid="uid://b81nmdn5vf1pu" path="res://resource/assets/items/corda.png" id="7_nqfqw"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="8_lfd5p"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_bekj2"]
+
+[sub_resource type="Resource" id="Resource_j4ugp"]
+script = ExtResource("3_lqtwb")
+id = "Rope"
+icon = ExtResource("7_nqfqw")
+
+[sub_resource type="Resource" id="Resource_6jpcq"]
+script = ExtResource("4_qcshn")
+dialogue_text = Array[String](["Mmmh…this rope will surely help me catch something high."])
+character_image = ExtResource("5_oefkw")
+text_name = "Angelo"
+triggers = Array[ExtResource("6_32ndp")]([])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8a6r7"]
+radius = 73.0274
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8avd"]
+shader = ExtResource("8_lfd5p")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxtts"]
+radius = 72.0278
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4knnd"]
+radius = 128.472
+
+[node name="Rope" type="Node2D"]
+script = ExtResource("1_cbrfo")
+item = SubResource("Resource_j4ugp")
+dialog = Array[ExtResource("4_qcshn")]([SubResource("Resource_6jpcq")])
+
+[node name="RopeSprite" type="Sprite2D" parent="."]
+position = Vector2(-60, -39)
+texture = ExtResource("7_lbqoa")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -190.0
+offset_top = -191.0
+offset_right = 197.0
+offset_bottom = -45.0
+theme = ExtResource("9_bekj2")
+text = "Pick up "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" parent="." instance=ExtResource("2_5ida8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_8a6r7")
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
+position = Vector2(-4, -1)
+sprite = NodePath("../RopeSprite")
+shader = SubResource("ShaderMaterial_p8avd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_vxtts")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_jvlqr")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../RopeSprite")
+shader = SubResource("ShaderMaterial_p8avd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_4knnd")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

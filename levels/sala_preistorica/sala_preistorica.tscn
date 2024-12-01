@@ -1,0 +1,292 @@
+[gd_scene load_steps=29 format=3 uid="uid://i5m1yfut0lb0"]
+
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_7aig2"]
+[ext_resource type="Script" path="res://levels/sala_preistorica/sala_preistorica.gd" id="1_m84jc"]
+[ext_resource type="Texture2D" uid="uid://bnmqco1m4k3l5" path="res://resource/assets/rooms/Sala animali/base.png" id="2_o5trs"]
+[ext_resource type="Texture2D" uid="uid://c1ykgx0rtq2d3" path="res://resource/assets/rooms/Sala animali/alce.png" id="3_71nrj"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="3_x3oc3"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_54ipo"]
+[ext_resource type="Texture2D" uid="uid://4ayojkm2sfk7" path="res://resource/assets/rooms/Sala animali/elementi forntali.png" id="4_op8el"]
+[ext_resource type="Texture2D" uid="uid://bxg2vik1mg2g4" path="res://resource/assets/rooms/Sala animali/pesce schiantato.png" id="6_g1o0m"]
+[ext_resource type="PackedScene" uid="uid://cqegtq37pd18o" path="res://act2-t-rex-puzzle/fish/fish.tscn" id="6_wv4bv"]
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="8_alvi4"]
+[ext_resource type="Texture2D" uid="uid://bqb7361meab4x" path="res://resource/assets/rooms/Sala animali/pesce luna.png" id="9_f1pih"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_n8j22"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_l6ab1"]
+[ext_resource type="PackedScene" uid="uid://bbftqg7gy0x17" path="res://npc_act_1/npc_4.tscn" id="11_lq22p"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="12_ig3nv"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="13_e86rr"]
+[ext_resource type="AudioStream" uid="uid://b0yf4pt06bxqr" path="res://audio/sfx/puzzle_t_rex/Tooth_fall_01.ogg" id="16_yixx2"]
+[ext_resource type="Texture2D" uid="uid://cyqdkwmi2crot" path="res://resource/assets/scene_azione/Corda che si slega.PNG" id="17_5mw4a"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="19_gk30u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf2ot"]
+size = Vector2(1215.5, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xhk8"]
+size = Vector2(322.255, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx7wn"]
+size = Vector2(781, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8k38"]
+size = Vector2(177, 136)
+
+[sub_resource type="Resource" id="Resource_kpamj"]
+script = ExtResource("12_ig3nv")
+dialogue_text = Array[String](["Mmmh…this rope will surely help me catch something high."])
+character_image = ExtResource("13_e86rr")
+text_name = "Angelo"
+triggers = Array[ExtResource("10_l6ab1")]([])
+
+[sub_resource type="Resource" id="Resource_hx5ly"]
+script = ExtResource("10_l6ab1")
+key = "rope_taken"
+value = false
+
+[sub_resource type="Animation" id="Animation_lypc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Rope:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ScenaPesce:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6ydv"]
+resource_name = "falling_fish"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3.5, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Rope:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ScenaPesce:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.46667, 3.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agkou"]
+_data = {
+"RESET": SubResource("Animation_lypc6"),
+"falling_fish": SubResource("Animation_m6ydv")
+}
+
+[node name="SalaPreistorica" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_m84jc")
+
+[node name="Stanze" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(959, -18)
+texture = ExtResource("2_o5trs")
+offset = Vector2(-18, 560)
+region_rect = Rect2(1070.55, 209.254, 2201.73, 1242.93)
+
+[node name="ColorRect" type="ColorRect" parent="Stanze"]
+visible = false
+z_index = -1
+anchors_preset = -1
+anchor_left = -0.769795
+anchor_top = -0.716981
+anchor_right = 0.783429
+anchor_bottom = 0.977359
+offset_left = -1533.0
+offset_top = -272.0
+offset_right = 1509.0
+offset_bottom = 1418.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Alce" type="Sprite2D" parent="Stanze"]
+position = Vector2(-640.001, 277)
+texture = ExtResource("3_71nrj")
+
+[node name="ElementiForntali" type="Sprite2D" parent="Stanze"]
+y_sort_enabled = true
+position = Vector2(-145, 866)
+texture = ExtResource("4_op8el")
+offset = Vector2(223.999, 5)
+
+[node name="PesceLuna" type="Sprite2D" parent="Stanze"]
+position = Vector2(427.999, 310)
+texture = ExtResource("9_f1pih")
+offset = Vector2(-4, 48)
+
+[node name="PesceSchiantato" type="Sprite2D" parent="Stanze"]
+visible = false
+position = Vector2(431, 580)
+texture = ExtResource("6_g1o0m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(691.25, 1069)
+shape = SubResource("RectangleShape2D_jf2ot")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1667.13, 1071)
+shape = SubResource("RectangleShape2D_3xhk8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(817, 955)
+shape = SubResource("RectangleShape2D_tx7wn")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1671.5, 951)
+shape = SubResource("RectangleShape2D_u8k38")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(75, 164, 389, 50, 1560, 48, 1821, 226, 1745, 1023, 1581, 730, 1066, 729, 414, 728, 177, 1017)
+
+[node name="Player" parent="." instance=ExtResource("3_x3oc3")]
+unique_name_in_owner = true
+position = Vector2(1383, 832)
+
+[node name="Npc" parent="." instance=ExtResource("11_lq22p")]
+position = Vector2(439, 788)
+
+[node name="Corridoio" parent="." instance=ExtResource("4_54ipo")]
+position = Vector2(1405, 1228)
+scale = Vector2(2.24, 1)
+level_id = "corridoio"
+link_id = "North1"
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_7aig2")]
+player_ref = NodePath("../Player")
+
+[node name="South" type="Node2D" parent="LinkSystem"]
+position = Vector2(1390, 896)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
+visible = false
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+color = Color(0.582582, 1, 0.432314, 1)
+
+[node name="Rope" parent="." instance=ExtResource("8_alvi4")]
+visible = false
+position = Vector2(1293, 641)
+dialog = Array[ExtResource("12_ig3nv")]([SubResource("Resource_kpamj")])
+
+[node name="NodeToggle2" parent="Rope" instance=ExtResource("9_n8j22")]
+position = Vector2(-96.0701, -182.915)
+trigger = SubResource("Resource_hx5ly")
+
+[node name="FishCutScene" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FishCutScene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FishCutScene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_agkou")
+}
+
+[node name="ColorRect" type="ColorRect" parent="FishCutScene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -590.0
+offset_top = -336.0
+offset_right = 2595.0
+offset_bottom = 1506.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FishCutScene/CanvasLayer"]
+stream = ExtResource("16_yixx2")
+
+[node name="ScenaPesce" type="Sprite2D" parent="FishCutScene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(959, 542)
+texture = ExtResource("17_5mw4a")
+
+[node name="Fish" parent="." instance=ExtResource("6_wv4bv")]
+position = Vector2(993, 650)
+
+[node name="Fondale" parent="." instance=ExtResource("19_gk30u")]
+
+[connection signal="animation_finished" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="FishCutScene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

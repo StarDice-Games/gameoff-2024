@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://eij4pdaj6hni"
+path="res://.godot/imported/Voce vecchietto-corta03.ogg-ee798963a46e1aaba519baca27a5e956.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/dialog/Voce vecchietto-corta03.ogg"
+dest_files=["res://.godot/imported/Voce vecchietto-corta03.ogg-ee798963a46e1aaba519baca27a5e956.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dspufr1rur85m"]
+
+[ext_resource type="Texture2D" uid="uid://r168os8hvrkp" path="res://resource/assets/items/libro.png" id="1_8vcd3"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="2_l1fel"]
+
+[resource]
+script = ExtResource("2_l1fel")
+id = "magic-book"
+icon = ExtResource("1_8vcd3")

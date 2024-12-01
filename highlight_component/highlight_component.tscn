@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxrfji6xsmwwg"]
+
+[ext_resource type="Script" path="res://highlight_component/ItemHighlight.gd" id="1_puuv5"]
+
+[node name="HighlightComponent" type="Area2D"]
+collision_layer = 2
+collision_mask = 2097152
+script = ExtResource("1_puuv5")
+highlight_color = Color(1, 1, 1, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="sprite_changed" from="." to="." method="_on_sprite_changed"]

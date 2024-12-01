@@ -13,5 +13,5 @@ func _on_button_2_pressed() -> void:
 
 
 func _on_test_level_pressed() -> void:
-	LevelSystem.load_level("Test Level")
+	LevelSystem.load_level("Test Level", false)
 	pass # Replace with function body.

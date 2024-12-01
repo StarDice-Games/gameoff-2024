@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://fwd044x6jh2n"]
+
+[ext_resource type="PackedScene" uid="uid://dpvijh4osyp35" path="res://levels/ripostiglio_guardaroba/ripostiglio_guardaroba.tscn" id="1_pm0rt"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_wyg1m"]
+
+[resource]
+script = ExtResource("2_wyg1m")
+name = "guardaroba ripostiglio"
+description = "Description"
+scene = ExtResource("1_pm0rt")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpvijh4osyp35"]
+
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="1_8adjt"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_gk3i8"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qdndy"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_lo1lt"]
+
+[node name="RipostiglioGuardaroba" type="Node2D"]
+
+[node name="LinkSystem" parent="." instance=ExtResource("1_gk3i8")]
+
+[node name="SouthDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(916, 886)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/SouthDoor"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_8adjt")]
+position = Vector2(943, 533)
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_qdndy")]
+unique_name_in_owner = true
+position = Vector2(937, 524)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 273.0
+offset_right = 912.0
+offset_bottom = 328.0
+theme_override_font_sizes/font_size = 40
+text = "Ripostiglio / Guardaroba
+"
+
+[node name="Portal" parent="." instance=ExtResource("4_lo1lt")]
+position = Vector2(936, 1026)
+level_id = "ingresso"
+link_id = "NorthDoor"

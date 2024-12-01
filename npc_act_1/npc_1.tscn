@@ -1,0 +1,133 @@
+[gd_scene load_steps=22 format=3 uid="uid://cxjpn016wk5vr"]
+
+[ext_resource type="Script" path="res://npc_act_1/scripts/npc.gd" id="1_rl6wn"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_151ff"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_t4n3s"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_xttip"]
+[ext_resource type="Texture2D" uid="uid://c1qw536uyg5pv" path="res://resource/assets/npc/npc_1/NPC TESTA BIMBA.png" id="5_4dsow"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_hrxqu"]
+[ext_resource type="Texture2D" uid="uid://0aqcoawtvrlw" path="res://resource/assets/npc/npc_1/NPC bimba fronte.png" id="7_mubu6"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_ul2wj"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_3mhuq"]
+[ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="10_aw8mf"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_wwryi"]
+[ext_resource type="Texture2D" uid="uid://c2s3rhgqos8bl" path="res://resource/assets/npc/NPC Finali/ombra piedi.png" id="12_2udhg"]
+
+[sub_resource type="Resource" id="Resource_m13sm"]
+script = ExtResource("2_151ff")
+dialogue_text = Array[String](["Hey kid, we are closing. I have to ask to leave the museum"])
+character_image = ExtResource("3_t4n3s")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_xttip")]([])
+
+[sub_resource type="Resource" id="Resource_5jobv"]
+script = ExtResource("2_151ff")
+dialogue_text = Array[String](["Ok mister keeper, I call my mum "])
+character_image = ExtResource("5_4dsow")
+text_name = "Visitor"
+triggers = Array[ExtResource("4_xttip")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
+size = Vector2(93, 37)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
+radius = 89.0898
+
+[sub_resource type="Animation" id="Animation_5h4s2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_r3v0m"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.97), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djno7"]
+_data = {
+"RESET": SubResource("Animation_5h4s2"),
+"idle": SubResource("Animation_r3v0m")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br53n"]
+shader = ExtResource("11_wwryi")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdwis"]
+radius = 90.2497
+
+[node name="Npc" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_rl6wn")
+dialog = Array[ExtResource("2_151ff")]([SubResource("Resource_m13sm"), SubResource("Resource_5jobv")])
+trigger_id = "talk4"
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -42.0
+offset_top = -313.0
+offset_right = 44.0
+offset_bottom = -267.0
+theme = ExtResource("6_hrxqu")
+text = "Talk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 6)
+texture = ExtResource("7_mubu6")
+offset = Vector2(21, -114.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_xmc1t")
+
+[node name="Interactable" parent="." instance=ExtResource("7_ul2wj")]
+position = Vector2(9, -133.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-5, 0)
+shape = SubResource("CircleShape2D_ngufx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_djno7")
+}
+autoplay = "idle"
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_3mhuq")]
+position = Vector2(8, -136)
+script = ExtResource("10_aw8mf")
+sprite = NodePath("../Sprite2D")
+shader = SubResource("ShaderMaterial_br53n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-4, 2)
+shape = SubResource("CircleShape2D_mdwis")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-3, -69)
+texture = ExtResource("12_2udhg")
+offset = Vector2(3, 83)
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

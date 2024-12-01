@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://co1xeu6igeowa"]
+
+[ext_resource type="PackedScene" uid="uid://b2dqmrjmohag0" path="res://levels/end_cutscene/end_cutscene.tscn" id="1_yoaqx"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_f75pu"]
+
+[resource]
+script = ExtResource("2_f75pu")
+name = "end scene"
+description = "Description"
+scene = ExtResource("1_yoaqx")

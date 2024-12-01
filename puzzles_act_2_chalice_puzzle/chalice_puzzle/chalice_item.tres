@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://vixehbn46gp2"]
+
+[ext_resource type="Texture2D" uid="uid://br00dq8u017ox" path="res://resource/assets/items/calice.png" id="1_fe66c"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="2_ptg8q"]
+
+[resource]
+script = ExtResource("2_ptg8q")
+id = "Chalice"
+icon = ExtResource("1_fe66c")

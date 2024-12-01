@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://beukjp0k4wfpw"]
+
+[ext_resource type="Script" path="res://levels/bathroom/script/bathroom.gd" id="1_3wngb"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_7wea4"]
+[ext_resource type="Texture2D" uid="uid://dc57d4gnq8aap" path="res://resource/assets/placeholder/Omino_blu_testa.png" id="3_yhblj"]
+[ext_resource type="Texture2D" uid="uid://jcgcdo30msl" path="res://resource/assets/rooms/Bagno/bagno.png" id="4_c8pgc"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="6_4enlb"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="7_7yn4i"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="8_aa41f"]
+[ext_resource type="Texture2D" uid="uid://b810fxbxcpl2n" path="res://resource/assets/placeholder/Omino_blu (1).png" id="8_r4gpd"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="11_6o853"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="14_ujq8x"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="15_ry6fn"]
+
+[sub_resource type="Resource" id="Resource_iabvy"]
+script = ExtResource("2_7wea4")
+dialogue_text = Array[String](["Please, leave me alone !"])
+character_image = ExtResource("3_yhblj")
+text_name = "Pixel"
+triggers = Array[ExtResource("7_7yn4i")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kese"]
+size = Vector2(77.5, 100)
+
+[sub_resource type="Resource" id="Resource_8ysya"]
+script = ExtResource("7_7yn4i")
+key = "stealth"
+value = false
+
+[node name="Bagno" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_3wngb")
+dialog_pixel = Array[ExtResource("2_7wea4")]([SubResource("Resource_iabvy")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -2088.0
+offset_top = -1039.0
+offset_right = 4112.0
+offset_bottom = 2335.0
+color = Color(0, 0, 0, 1)
+
+[node name="Bagno" type="Sprite2D" parent="."]
+position = Vector2(875, 200)
+texture = ExtResource("4_c8pgc")
+offset = Vector2(67, 342)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 65
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(652, 317, 768, 261, 1078, 271, 1165, 322, 1120, 739, 1062, 557, 776, 558, 679, 736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(683.25, 779)
+shape = SubResource("RectangleShape2D_3kese")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1125, 784)
+shape = SubResource("RectangleShape2D_3kese")
+
+[node name="LinkSystem" parent="." instance=ExtResource("14_ujq8x")]
+
+[node name="South" type="Node2D" parent="LinkSystem"]
+position = Vector2(831, 613)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/South"]
+visible = false
+offset_left = -12.0
+offset_top = -19.0
+offset_right = 28.0
+offset_bottom = 21.0
+color = Color(0.586297, 1, 0.416665, 1)
+
+[node name="Portal" parent="." instance=ExtResource("15_ry6fn")]
+position = Vector2(910, 773)
+scale = Vector2(5.5159, 0.2)
+level_id = "ingresso"
+link_id = "Bath"
+
+[node name="EasterEgg" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(969, 551)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_r4gpd")
+offset = Vector2(-5.20508, 48.0896)
+
+[node name="NodeToggle" parent="EasterEgg" instance=ExtResource("6_4enlb")]
+trigger = SubResource("Resource_8ysya")
+
+[node name="Player" parent="." instance=ExtResource("11_6o853")]
+unique_name_in_owner = true
+position = Vector2(853, 597)
+
+[node name="Fondale" parent="." instance=ExtResource("8_aa41f")]
+position = Vector2(928, 531)

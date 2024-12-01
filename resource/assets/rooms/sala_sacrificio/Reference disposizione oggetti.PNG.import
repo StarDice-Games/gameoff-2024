@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cxgnlgx6iwm70"
+path="res://.godot/imported/Reference disposizione oggetti.PNG-6edb55cd5ae78db9bf904bbc349ba44b.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://resource/assets/rooms/sala_sacrificio/Reference disposizione oggetti.PNG"
+dest_files=["res://.godot/imported/Reference disposizione oggetti.PNG-6edb55cd5ae78db9bf904bbc349ba44b.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

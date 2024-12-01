@@ -1,0 +1,204 @@
+[gd_scene load_steps=27 format=3 uid="uid://crs786q6e44hc"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/guardaroba_guardiano/scripts/guardaroba_guardiano.gd" id="1_3qbkv"]
+[ext_resource type="Resource" uid="uid://dj0y6v6u4wbx1" path="res://puzzle_magic_book/post-it-item/data/post-it.tres" id="2_on27d"]
+[ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="3_c1jkd"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_rk0ve"]
+[ext_resource type="Resource" uid="uid://qverclhp08hk" path="res://puzzle_magic_book/dialogs/missing_code.tres" id="3_tvdpf"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="4_3cmhb"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="6_ra7mn"]
+[ext_resource type="AudioStream" uid="uid://beqwsqeysnbfp" path="res://audio/sfx/magic_book/Open_Locker_01.wav" id="8_7x1ur"]
+[ext_resource type="Texture2D" uid="uid://djxhf1p38iads" path="res://resource/assets/rooms/Guardiola/armadietto-aperto.png" id="8_d8yps"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_f6152"]
+[ext_resource type="Texture2D" uid="uid://d15ltam456ilt" path="res://resource/assets/rooms/Guardiola/armadietto-chiuso.png" id="9_3ntj5"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="9_6ffum"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="10_cu0pi"]
+[ext_resource type="PackedScene" uid="uid://dqwdlx6ofhlti" path="res://puzzle_magic_book/key/key.tscn" id="14_47550"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="15_ty1wu"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="16_8sruw"]
+
+[sub_resource type="Resource" id="Resource_s527r"]
+script = ExtResource("3_rk0ve")
+dialogue_text = Array[String](["What’s this!? A key!?", "I better keep it. You never know.", "Wait, what's this? A book?", "Oh! Could it be a journal? Seems ripe with strange drawings and graphs. ", "Future plans, perhaps? Who can say. ", "This journal goes blank after a while... The day before their promotion. That's where it stops.", "And why he left it here? So strange."])
+character_image = ExtResource("6_ra7mn")
+text_name = "Angelo"
+triggers = Array[ExtResource("10_cu0pi")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1qxw"]
+size = Vector2(61, 337)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8ulm"]
+size = Vector2(174.5, 395)
+
+[sub_resource type="Resource" id="Resource_1klwi"]
+script = ExtResource("10_cu0pi")
+key = "second_boss_call"
+value = false
+
+[sub_resource type="Animation" id="Animation_f3441"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5t3om"]
+resource_name = "open_guardaroba"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sehj2"]
+_data = {
+"RESET": SubResource("Animation_f3441"),
+"open_guardaroba": SubResource("Animation_5t3om")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ujci"]
+shader = ExtResource("16_8sruw")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuhtw"]
+size = Vector2(164, 398)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8rfn"]
+radius = 150.053
+
+[node name="GuardarobaGuardiano" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_3qbkv")
+post_it_item = ExtResource("2_on27d")
+key_item = ExtResource("3_c1jkd")
+need_code_dialog = Array[ExtResource("3_rk0ve")]([ExtResource("3_tvdpf")])
+key_collected = Array[ExtResource("3_rk0ve")]([SubResource("Resource_s527r")])
+interact_pickup_text = "Pick up the key"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -40.0
+offset_top = -78.0
+offset_right = 85.0
+offset_bottom = -32.0
+theme = ExtResource("8_f6152")
+text = "Interact
+"
+
+[node name="LockerOpen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -111)
+texture = ExtResource("8_d8yps")
+offset = Vector2(0, 111)
+
+[node name="LockerClosed" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(47, 31)
+texture = ExtResource("9_3ntj5")
+offset = Vector2(-61, -27)
+
+[node name="Key" parent="." instance=ExtResource("14_47550")]
+visible = false
+position = Vector2(4, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_k1qxw")
+
+[node name="Interactable" parent="." instance=ExtResource("4_3cmhb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(5.75, 1)
+shape = SubResource("RectangleShape2D_y8ulm")
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("9_6ffum")]
+position = Vector2(-4, 0)
+trigger = SubResource("Resource_1klwi")
+
+[node name="OpenGuardarobaCutscene" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenGuardarobaCutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_sehj2")
+}
+
+[node name="ColorRect" type="ColorRect" parent="OpenGuardarobaCutscene"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -260.0
+offset_top = -75.0
+offset_right = 2176.0
+offset_bottom = 1266.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenGuardarobaCutscene"]
+stream = ExtResource("8_7x1ur")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_ty1wu")]
+position = Vector2(-4, -1)
+sprite = NodePath("../LockerClosed")
+shader = SubResource("ShaderMaterial_5ujci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(16, 1)
+shape = SubResource("RectangleShape2D_vuhtw")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_ty1wu")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../LockerClosed")
+shader = SubResource("ShaderMaterial_5ujci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(17, -5)
+shape = SubResource("CircleShape2D_a8rfn")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

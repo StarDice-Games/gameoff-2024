@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://7w03ydoa4p8f"]
+
+[ext_resource type="Script" path="res://inventory/scripts/inventory.gd" id="1_k1jwo"]
+[ext_resource type="AudioStream" uid="uid://dfi1ou4iowoyh" path="res://audio/sfx/pickup/Pickup_Object-V2.ogg" id="2_vjm3y"]
+
+[node name="inventory" type="Node2D"]
+script = ExtResource("1_k1jwo")
+audio_sfx = ExtResource("2_vjm3y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 556.0
+offset_bottom = 104.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 208.0
+offset_bottom = 160.0
+theme_override_constants/separation = 25

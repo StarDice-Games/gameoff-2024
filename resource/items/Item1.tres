@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ddxepx7m1r5b0"]
+
+[ext_resource type="Texture2D" uid="uid://x01qfcfa3ev7" path="res://levels/credits/Credits/Simone.png" id="1_nuuxx"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="2_ggl2c"]
+
+[resource]
+script = ExtResource("2_ggl2c")
+id = "Mouse"
+icon = ExtResource("1_nuuxx")

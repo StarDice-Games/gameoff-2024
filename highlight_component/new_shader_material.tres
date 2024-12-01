@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8nsf6sr6vqbg"]
+
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="1_ctfs8"]
+
+[resource]
+shader = ExtResource("1_ctfs8")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 5.0
+shader_parameter/speed = 1.0
+shader_parameter/blockSize = 20.0
+shader_parameter/color = null
+shader_parameter/tolerance = 0.0

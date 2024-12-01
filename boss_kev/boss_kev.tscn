@@ -1,0 +1,243 @@
+[gd_scene load_steps=30 format=3 uid="uid://b43hax8kcwef"]
+
+[ext_resource type="Script" path="res://boss_kev/boss_kev.gd" id="1_inowa"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qes3u"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_0s62d"]
+[ext_resource type="Texture2D" uid="uid://1mx5av2ablnb" path="res://resource/assets/enemy/Boss_Face.png" id="3_qqduw"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_a4ro4"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="6_qhvsw"]
+[ext_resource type="Texture2D" uid="uid://debo6fysx4m0h" path="res://resource/assets/enemy/Incappucciato_1.png" id="8_3ydll"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="9_5niit"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_7q66l"]
+[ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="10_hutjl"]
+[ext_resource type="Script" path="res://highlight_component/NpcHighlight.gd" id="11_mplof"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="12_nuw5o"]
+
+[sub_resource type="Resource" id="Resource_cts7d"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Finally you are here."])
+character_image = ExtResource("3_qqduw")
+text_name = "The Curator"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ixqye"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["And who am I talking to? Identify yourself!"])
+character_image = ExtResource("3_0s62d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ptvd8"]
+script = ExtResource("4_a4ro4")
+key = "talk_boss"
+value = true
+
+[sub_resource type="Resource" id="Resource_5b178"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["My identity right now is irrelevant. ", "What matters is that you obey me.", "Now, Angelo, place what you have on that table."])
+character_image = ExtResource("3_qqduw")
+text_name = "The Curator"
+triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ptvd8")])
+
+[sub_resource type="Resource" id="Resource_6xilf"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Now, Angelo, place what you have on that table"])
+character_image = ExtResource("3_qqduw")
+text_name = "The Curator"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ycf8y"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["Thanks, Angelo. You have been useful… way more than you would ever think. ", "As I told you during the interview, you are the right person to fulfill our goals…", "But I was not talking about the museum."])
+character_image = ExtResource("3_qqduw")
+text_name = "The Curator"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_dwxef"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["What are you talking about!?"])
+character_image = ExtResource("3_0s62d")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_a4ro4")]([])
+
+[sub_resource type="Resource" id="Resource_ov86s"]
+script = ExtResource("4_a4ro4")
+key = "boss_exit"
+value = true
+
+[sub_resource type="Resource" id="Resource_apssx"]
+script = ExtResource("2_qes3u")
+dialogue_text = Array[String](["You are the right person for the cult, this is all part of our plan.", "The contract, the night shift, your predecessor and his promotion…", "Everything is connected…", "Now it’s time to summon the other members.", "They'll be very pleased to meet you.", "Stay here and don’t move. I’ll return shortly", "We will grant you your deserved…", "...Promotion"])
+character_image = ExtResource("3_qqduw")
+text_name = "The Curator"
+triggers = Array[ExtResource("4_a4ro4")]([SubResource("Resource_ov86s")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmc1t"]
+size = Vector2(113, 275.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngufx"]
+radius = 139.275
+
+[sub_resource type="Animation" id="Animation_5h4s2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r3v0m"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.97), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hkecf"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0523599, -0.25, 0, 0.25, 0, 0.0523599, -0.25, 0, 0.25, 0, -0.0523599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.433333, 0.833333)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djno7"]
+_data = {
+"RESET": SubResource("Animation_5h4s2"),
+"idle": SubResource("Animation_r3v0m"),
+"walk": SubResource("Animation_hkecf")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stvt3"]
+shader = ExtResource("12_nuw5o")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wl1ke"]
+radius = 138.171
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+up_direction = Vector2(0, 1)
+script = ExtResource("1_inowa")
+dialog1 = Array[ExtResource("2_qes3u")]([SubResource("Resource_cts7d"), SubResource("Resource_ixqye"), SubResource("Resource_5b178")])
+dialog2 = Array[ExtResource("2_qes3u")]([SubResource("Resource_6xilf")])
+dialog3 = Array[ExtResource("2_qes3u")]([SubResource("Resource_ycf8y"), SubResource("Resource_dwxef"), SubResource("Resource_apssx")])
+trigger_id = "talk_boss"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -211.791
+offset_right = 46.0
+offset_bottom = -165.791
+theme = ExtResource("6_qhvsw")
+text = "Talk E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.8742, -3.4469)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_3ydll")
+offset = Vector2(8.00893, 6.17799)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.374199, 3.3031)
+shape = SubResource("RectangleShape2D_xmc1t")
+
+[node name="Interactable" parent="." instance=ExtResource("9_5niit")]
+position = Vector2(11, 196)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-13, -153)
+shape = SubResource("CircleShape2D_ngufx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_djno7")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(8.8742, 141.553)
+stream = ExtResource("10_hutjl")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_7q66l")]
+position = Vector2(2, 54)
+script = ExtResource("11_mplof")
+sprite = NodePath("../Sprite2D")
+shader = SubResource("ShaderMaterial_stvt3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-3, -12)
+shape = SubResource("CircleShape2D_wl1ke")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

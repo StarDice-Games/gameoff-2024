@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogText" load_steps=5 format=3 uid="uid://blt1lf7r2gamp"]
+
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="1_mmnlh"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="1_oeaiw"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="2_tfh3l"]
+
+[sub_resource type="Resource" id="Resource_qxep8"]
+script = ExtResource("2_tfh3l")
+key = "allarm_ends"
+value = true
+
+[resource]
+script = ExtResource("1_oeaiw")
+dialogue_text = Array[String](["Damn !"])
+character_image = ExtResource("1_mmnlh")
+text_name = "Angelo"
+triggers = Array[ExtResource("2_tfh3l")]([SubResource("Resource_qxep8")])

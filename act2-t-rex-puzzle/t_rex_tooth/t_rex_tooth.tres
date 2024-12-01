@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://5rj628d30ja0"]
+
+[ext_resource type="Texture2D" uid="uid://y3fcd7ohxebx" path="res://resource/assets/items/dente.png" id="1_4hbh6"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="2_vv2ic"]
+
+[resource]
+script = ExtResource("2_vv2ic")
+id = "Tooth"
+icon = ExtResource("1_4hbh6")

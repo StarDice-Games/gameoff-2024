@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://ch5qedq8g1mox"]
+
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="1_i2uin"]
+[ext_resource type="Texture2D" uid="uid://cxx06vetlfmqp" path="res://levels/splash_screen/STAR dice white.png" id="1_jpi2w"]
+
+[resource]
+script = ExtResource("1_i2uin")
+id = "StarDice"
+icon = ExtResource("1_jpi2w")

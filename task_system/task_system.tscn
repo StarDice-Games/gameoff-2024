@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwlyefkomsfa6"]
+
+[ext_resource type="Script" path="res://task_system/scripts/task_system.gd" id="1_xj3qx"]
+[ext_resource type="PackedScene" uid="uid://cxrlpr7aaoasy" path="res://task_system/task_ui.tscn" id="2_pmb02"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_r3hg3"]
+[ext_resource type="Texture2D" uid="uid://cy16538i8gnfq" path="res://resource/assets/UI/task.png" id="4_qbedr"]
+
+[sub_resource type="Theme" id="Theme_anfox"]
+Panel/styles/panel = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppoq2"]
+bg_color = Color(0.890196, 0.521569, 0.0392157, 1)
+border_width_right = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_lqb6i"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ppoq2")
+
+[node name="TaskSystem" type="Node2D"]
+script = ExtResource("1_xj3qx")
+task_ui = ExtResource("2_pmb02")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -520.0
+offset_top = 117.0
+offset_right = -63.0
+offset_bottom = 336.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.395
+offset_right = 4.0
+offset_bottom = 2.395
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_anfox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+offset_left = 100.0
+offset_right = 462.0
+offset_bottom = 344.0
+localize_numeral_system = false
+theme_override_constants/separation = -4
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 209.0
+offset_top = -77.0
+offset_right = 6.0
+offset_bottom = -217.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lqb6i")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel2"]
+custom_minimum_size = Vector2(90, 30)
+layout_mode = 0
+offset_left = 85.0
+offset_top = 5.0
+offset_right = 243.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_r3hg3")
+theme_override_font_sizes/font_size = 40
+text = "Find List
+"
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/Panel2"]
+custom_minimum_size = Vector2(90, 30)
+layout_mode = 0
+offset_left = 145.0
+offset_top = 45.0
+offset_right = 239.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_r3hg3")
+theme_override_font_sizes/font_size = 20
+text = "Tab to close
+"
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Panel2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 94.0
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("4_qbedr")

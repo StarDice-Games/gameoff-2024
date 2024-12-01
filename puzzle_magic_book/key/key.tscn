@@ -1,0 +1,88 @@
+[gd_scene load_steps=16 format=3 uid="uid://dqwdlx6ofhlti"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/key/script/key.gd" id="1_f53d7"]
+[ext_resource type="Resource" uid="uid://b18l514eqk1k1" path="res://puzzle_magic_book/key/data/key.tres" id="2_xqx52"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="3_vj5hh"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_1fa4u"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="5_4pea3"]
+[ext_resource type="Texture2D" uid="uid://c11ufe6v6p6oc" path="res://resource/assets/rooms/Guardiola/chiave.png" id="6_yhm6x"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_di3gg"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_u0quh"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_l5pyt"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="10_7hllm"]
+
+[sub_resource type="Resource" id="Resource_t6ndw"]
+script = ExtResource("3_vj5hh")
+dialogue_text = Array[String](["What’s this!? A key!?", "I better keep it. You never know.", "Wait, what's this? A book?", "Oh! Could it be a journal? Seems ripe with strange drawings and graphs. ", "Future plans, perhaps? Who can say. ", "This journal goes blank after a while... The day before their promotion. That's where it stops.", "And why he left it here? So strange."])
+character_image = ExtResource("4_1fa4u")
+text_name = "Angelo"
+triggers = Array[ExtResource("5_4pea3")]([])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k27q5"]
+radius = 148.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vevg2"]
+shader = ExtResource("10_7hllm")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0jva"]
+radius = 150.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfrcr"]
+radius = 197.57
+
+[node name="Key" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_f53d7")
+item = ExtResource("2_xqx52")
+dialog = Array[ExtResource("3_vj5hh")]([SubResource("Resource_t6ndw")])
+
+[node name="Key" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("6_yhm6x")
+
+[node name="Interactable" parent="." instance=ExtResource("7_di3gg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_k27q5")
+disabled = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -72.0
+offset_top = -100.0
+offset_right = 79.0
+offset_bottom = -23.0
+theme = ExtResource("8_u0quh")
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_l5pyt")]
+position = Vector2(-4, -1)
+sprite = NodePath("../Key")
+shader = SubResource("ShaderMaterial_vevg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_f0jva")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_l5pyt")]
+position = Vector2(-4, -1)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Key")
+shader = SubResource("ShaderMaterial_vevg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(6, 2)
+shape = SubResource("CircleShape2D_tfrcr")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

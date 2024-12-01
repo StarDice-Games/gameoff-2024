@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5udu7ucyu3av"]
+
+[ext_resource type="PackedScene" uid="uid://t3cdxwm3ovne" path="res://act2-t-rex-puzzle/rope/rope.tscn" id="1_c1ftu"]
+[ext_resource type="PackedScene" uid="uid://cebw0e58m5xj5" path="res://camera/camera.tscn" id="3_upibb"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_mj7qy"]
+
+[node name="TestLevelHighLight" type="Node2D"]
+
+[node name="Rope" parent="." instance=ExtResource("1_c1ftu")]
+
+[node name="CameraFollow" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("3_upibb")]
+player_ref = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_mj7qy")]
+position = Vector2(664, 195)

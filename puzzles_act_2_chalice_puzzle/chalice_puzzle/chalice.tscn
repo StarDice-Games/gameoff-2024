@@ -1,0 +1,88 @@
+[gd_scene load_steps=19 format=3 uid="uid://d0sqgofooexlq"]
+
+[ext_resource type="Script" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/scripts/chalice.gd" id="2_8ctfc"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="3_7ulld"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_vwnw6"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_oxxmq"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="6_spr2k"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_0tgel"]
+[ext_resource type="Texture2D" uid="uid://bg0qx4ujfnj1e" path="res://resource/assets/rooms/Corridoio/calice-removibile.png" id="8_drcgr"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="8_i43vx"]
+[ext_resource type="Texture2D" uid="uid://br00dq8u017ox" path="res://resource/assets/items/calice.png" id="8_r1n8a"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_8ghax"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="10_joi7m"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="11_hxixy"]
+
+[sub_resource type="Resource" id="Resource_uto1y"]
+script = ExtResource("3_7ulld")
+id = "Chalice"
+icon = ExtResource("8_r1n8a")
+
+[sub_resource type="Resource" id="Resource_keucj"]
+script = ExtResource("4_vwnw6")
+dialogue_text = Array[String](["A goblet!? I’m lucky this is not the Holy Grail or else…", "...That's not funny."])
+character_image = ExtResource("5_oxxmq")
+text_name = "Angelo"
+triggers = Array[ExtResource("6_spr2k")]([])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o34eg"]
+radius = 75.0067
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yw6kq"]
+shader = ExtResource("11_hxixy")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awkyr"]
+radius = 74.8131
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dtaj"]
+radius = 119.419
+
+[node name="Chalice" type="Node2D"]
+script = ExtResource("2_8ctfc")
+item = SubResource("Resource_uto1y")
+dialog = Array[ExtResource("4_vwnw6")]([SubResource("Resource_keucj")])
+task = ExtResource("7_0tgel")
+
+[node name="Chalice" type="Sprite2D" parent="."]
+texture = ExtResource("8_drcgr")
+
+[node name="Interactable" parent="." instance=ExtResource("8_i43vx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_o34eg")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -76.0
+offset_top = -128.0
+offset_right = 75.0
+offset_bottom = -51.0
+theme = ExtResource("9_8ghax")
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_joi7m")]
+sprite = NodePath("../Chalice")
+shader = SubResource("ShaderMaterial_yw6kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+shape = SubResource("CircleShape2D_awkyr")
+
+[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_joi7m")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Chalice")
+shader = SubResource("ShaderMaterial_yw6kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
+shape = SubResource("CircleShape2D_1dtaj")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

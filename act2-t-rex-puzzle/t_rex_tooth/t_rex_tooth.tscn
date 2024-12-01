@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqdeu1mk0x22h"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/t_rex_tooth/scripts/t_rex_tooth.gd" id="1_hgy0r"]
+[ext_resource type="Resource" uid="uid://5rj628d30ja0" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tres" id="2_w7eb4"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_pxbun"]
+[ext_resource type="Resource" uid="uid://dq18md17nmpg1" path="res://act2-t-rex-puzzle/dialogs/player_monolog.tres" id="5_03qiv"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="5_yg3y7"]
+[ext_resource type="Resource" uid="uid://gxh21t62pnig" path="res://task_system/tasks/t_rex_task.tres" id="6_4m1ev"]
+[ext_resource type="Texture2D" uid="uid://blx4twhxb5g78" path="res://resource/assets/rooms/Hall/dente.png" id="7_5dkm5"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_11r73"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_176xo"]
+[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="10_vskab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odl8j"]
+radius = 67.0298
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxkwp"]
+radius = 67.6018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhg7l"]
+radius = 110.368
+
+[node name="TRexTooth" type="Node2D"]
+script = ExtResource("1_hgy0r")
+item = ExtResource("2_w7eb4")
+dialog = Array[ExtResource("4_pxbun")]([ExtResource("5_03qiv")])
+task = ExtResource("6_4m1ev")
+
+[node name="Tooth" type="Sprite2D" parent="."]
+texture = ExtResource("7_5dkm5")
+
+[node name="Interactable" parent="." instance=ExtResource("5_yg3y7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_odl8j")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -72.0
+offset_top = -114.0
+offset_right = 79.0
+offset_bottom = -37.0
+theme = ExtResource("8_11r73")
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_176xo")]
+sprite = NodePath("../Tooth")
+shader = ExtResource("10_vskab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+shape = SubResource("CircleShape2D_cxkwp")
+
+[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_176xo")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Tooth")
+shader = ExtResource("10_vskab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
+shape = SubResource("CircleShape2D_jhg7l")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

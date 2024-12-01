@@ -1,10 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://b84wg6i277bjj"]
+[gd_scene load_steps=26 format=3 uid="uid://b84wg6i277bjj"]
 
 [ext_resource type="Script" path="res://global/global_level_system/scripts/level_system.gd" id="1_ud8ko"]
 [ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_si5r1"]
 [ext_resource type="Resource" uid="uid://dh4fbmqjw5xj5" path="res://levels_data/test_level.tres" id="3_5ipcx"]
-[ext_resource type="Resource" uid="uid://dtb7kx8syqpy7" path="res://levels_data/test_simo.tres" id="4_7g71s"]
+[ext_resource type="Resource" uid="uid://ch82hje8hdlew" path="res://levels_data/corridoio.tres" id="5_yjcb5"]
+[ext_resource type="Resource" uid="uid://bq6objaucfcok" path="res://levels_data/credits.tres" id="6_aj6ys"]
+[ext_resource type="Resource" uid="uid://co1xeu6igeowa" path="res://levels_data/end_scene.tres" id="7_7kd8w"]
+[ext_resource type="Resource" uid="uid://brta8lg3n48fk" path="res://levels_data/first_day_cutscene.tres" id="8_m1mtw"]
+[ext_resource type="Resource" uid="uid://fwd044x6jh2n" path="res://levels_data/guardaroba_ripostiglio.tres" id="9_j0err"]
+[ext_resource type="Resource" uid="uid://br5ob70hx6yha" path="res://levels_data/guardiola.tres" id="10_02omp"]
+[ext_resource type="Resource" uid="uid://cp805f2oc0eq6" path="res://levels_data/intro_cutscene.tres" id="11_byuka"]
+[ext_resource type="Resource" uid="uid://dkfwk50w3dv0e" path="res://levels_data/main_menu.tres" id="12_8uaex"]
+[ext_resource type="Resource" uid="uid://blhsn0kr7bfx0" path="res://levels_data/sala_arte.tres" id="13_18dg3"]
+[ext_resource type="Resource" uid="uid://ddpynhui63sjq" path="res://levels_data/sala_preistorica.tres" id="14_j1q4p"]
+[ext_resource type="Resource" uid="uid://tr6awgmea2cc" path="res://levels_data/sala_sacrificio.tres" id="15_k6ii7"]
+[ext_resource type="Resource" uid="uid://c0lrv1sp0m3ih" path="res://levels_data/ingresso.tres" id="16_3tjnc"]
+[ext_resource type="PackedScene" uid="uid://dtg6inbafw5go" path="res://levels/esterno/esterno.tscn" id="16_8sm8g"]
+[ext_resource type="PackedScene" uid="uid://buyj77nddcaam" path="res://levels/close_museum_cutscene/close_museum_cutscene.tscn" id="17_e3pt8"]
+[ext_resource type="PackedScene" uid="uid://cfhqw0ju5ocyf" path="res://cutscene_day_night/cutscene_day_night.tscn" id="18_hv5so"]
+[ext_resource type="PackedScene" uid="uid://civgdg6ang6q4" path="res://levels/esterno_title/esterno_title.tscn" id="19_eoqgy"]
+[ext_resource type="PackedScene" uid="uid://beukjp0k4wfpw" path="res://levels/bathroom/bathroom.tscn" id="20_pgw11"]
+
+[sub_resource type="Resource" id="Resource_0wohg"]
+script = ExtResource("2_si5r1")
+name = "esterno"
+description = "Description"
+scene = ExtResource("16_8sm8g")
+
+[sub_resource type="Resource" id="Resource_2aihr"]
+script = ExtResource("2_si5r1")
+name = "close_museum_cutscene"
+description = "cutscene museum close"
+scene = ExtResource("17_e3pt8")
+
+[sub_resource type="Resource" id="Resource_hpuoo"]
+script = ExtResource("2_si5r1")
+name = "cutscene_day_night"
+description = "Description"
+scene = ExtResource("18_hv5so")
+
+[sub_resource type="Resource" id="Resource_dsget"]
+script = ExtResource("2_si5r1")
+name = "esterno_title"
+description = "Description"
+scene = ExtResource("19_eoqgy")
+
+[sub_resource type="Resource" id="Resource_lh1hm"]
+script = ExtResource("2_si5r1")
+name = "bathroom"
+description = "bathroom"
+scene = ExtResource("20_pgw11")
 
 [node name="LevelSystem" type="Node2D"]
 script = ExtResource("1_ud8ko")
-levels_resources = Array[ExtResource("2_si5r1")]([ExtResource("3_5ipcx"), ExtResource("4_7g71s")])
+levels_resources = Array[ExtResource("2_si5r1")]([ExtResource("3_5ipcx"), ExtResource("5_yjcb5"), ExtResource("6_aj6ys"), ExtResource("7_7kd8w"), ExtResource("8_m1mtw"), ExtResource("9_j0err"), ExtResource("10_02omp"), ExtResource("11_byuka"), ExtResource("12_8uaex"), ExtResource("13_18dg3"), ExtResource("14_j1q4p"), ExtResource("15_k6ii7"), ExtResource("16_3tjnc"), SubResource("Resource_0wohg"), SubResource("Resource_2aihr"), SubResource("Resource_hpuoo"), SubResource("Resource_dsget"), SubResource("Resource_lh1hm")])

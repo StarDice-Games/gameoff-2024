@@ -1,0 +1,297 @@
+[gd_scene load_steps=36 format=3 uid="uid://dtg6inbafw5go"]
+
+[ext_resource type="Script" path="res://levels/esterno/esterno.gd" id="1_ll6ia"]
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="2_fn1id"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_qv2lt"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="3_q1ygh"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_un5ie"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="4_x6rer"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="5_8nwid"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="10_2m52d"]
+[ext_resource type="Texture2D" uid="uid://vhreabu8kwtq" path="res://resource/assets/title/fondo-giorno.jpg" id="10_23qio"]
+[ext_resource type="Texture2D" uid="uid://6hbj2cjm3ibi" path="res://resource/assets/title/facciata-giorno.png" id="11_xo1tc"]
+[ext_resource type="Texture2D" uid="uid://cpjmkubf8hubb" path="res://resource/assets/title/movimenti.png" id="12_w7dr2"]
+[ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="13_qtdt8"]
+[ext_resource type="Texture2D" uid="uid://pwrq3lb21vbl" path="res://resource/assets/title/ringhiera-sopra.png" id="14_38yyi"]
+[ext_resource type="Texture2D" uid="uid://578ktanofgxi" path="res://resource/assets/title/ingresso-aperto.png" id="15_7jdho"]
+[ext_resource type="Texture2D" uid="uid://ck4yiohdwq52j" path="res://resource/assets/title/ringhiera-sotto.png" id="15_duuq2"]
+[ext_resource type="Texture2D" uid="uid://dycink1w47biv" path="res://resource/assets/title/cancelli.png" id="16_1w8gp"]
+[ext_resource type="Texture2D" uid="uid://c1765eu750fo5" path="res://resource/assets/title/lampioni-spenti.png" id="17_jfbqv"]
+[ext_resource type="Texture2D" uid="uid://d0abk5cbol38a" path="res://resource/assets/title/giorno_porta.png" id="18_jlixt"]
+[ext_resource type="Texture2D" uid="uid://cwh2ehc0ogkja" path="res://resource/assets/title/fondo-notte.jpg" id="19_8usn8"]
+[ext_resource type="Texture2D" uid="uid://byq4iit0jw1if" path="res://resource/assets/title/facciata-notte.png" id="20_kummy"]
+[ext_resource type="Texture2D" uid="uid://b8m0hvqp8pfk8" path="res://resource/assets/title/ingresso chiuso.png" id="21_1uowl"]
+[ext_resource type="Texture2D" uid="uid://ck0iiswmluywo" path="res://resource/assets/title/lampioni-accesi.png" id="21_8mh2y"]
+[ext_resource type="Texture2D" uid="uid://bnb5yjrf2n4c5" path="res://resource/assets/title/luna.png" id="22_oa7ec"]
+[ext_resource type="Texture2D" uid="uid://6qm5c730ne3k" path="res://resource/assets/title/notte_porta.png" id="23_toal3"]
+
+[sub_resource type="Resource" id="Resource_vfy75"]
+script = ExtResource("4_un5ie")
+key = "start"
+value = true
+
+[sub_resource type="Resource" id="Resource_pevej"]
+script = ExtResource("2_qv2lt")
+dialogue_text = Array[String](["That's it, everything's locked up"])
+character_image = ExtResource("3_q1ygh")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_un5ie")]([SubResource("Resource_vfy75")])
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e0ovi"]
+load_path = "res://.godot/imported/lampioni-spenti.png-7f505827b5fa0f60d5aaa741a33b3fc8.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ghm0"]
+size = Vector2(2601.5, 275)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3or1"]
+radius = 56.0089
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncvf4"]
+radius = 77.8857
+height = 169.878
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51w63"]
+size = Vector2(297.727, 469.909)
+
+[sub_resource type="Animation" id="Animation_2pu1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseMuseumAnimation/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h8uvp"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloseMuseumAnimation/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4qo00"]
+_data = {
+"RESET": SubResource("Animation_2pu1e"),
+"fade_out": SubResource("Animation_h8uvp")
+}
+
+[sub_resource type="Resource" id="Resource_rqwq0"]
+script = ExtResource("4_un5ie")
+key = "close_museum"
+value = false
+
+[node name="Esterno" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ll6ia")
+dialog_1 = Array[ExtResource("2_qv2lt")]([SubResource("Resource_pevej")])
+
+[node name="Giorno" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Fondo" type="Node2D" parent="Giorno"]
+scale = Vector2(1.17209, 1.17209)
+
+[node name="Fondo-giorno" type="Sprite2D" parent="Giorno/Fondo"]
+texture = ExtResource("10_23qio")
+
+[node name="Env" type="Node2D" parent="Giorno"]
+y_sort_enabled = true
+
+[node name="Lampioni-spenti2" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(807, 68)
+texture = SubResource("CompressedTexture2D_e0ovi")
+offset = Vector2(19.3636, -132.727)
+region_enabled = true
+region_rect = Rect2(13, 1, 272, 573)
+
+[node name="Facciata-giorno" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(0, 9)
+texture = ExtResource("11_xo1tc")
+
+[node name="Movimenti" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(395, 9)
+texture = ExtResource("12_w7dr2")
+offset = Vector2(-16.818, 289.182)
+
+[node name="Nuvole" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(-309.091, -992.727)
+texture = ExtResource("13_qtdt8")
+
+[node name="Ringhiera-sopra" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(-433, 164)
+texture = ExtResource("14_38yyi")
+offset = Vector2(222.091, 137.818)
+
+[node name="Ringhiera-sotto" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(-176, 647)
+texture = ExtResource("15_duuq2")
+offset = Vector2(-227.636, -203.364)
+
+[node name="Cancelli" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(139, 1070)
+texture = ExtResource("16_1w8gp")
+offset = Vector2(2.81812, -215.455)
+
+[node name="Lampioni-spenti" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(870, 813)
+texture = ExtResource("17_jfbqv")
+offset = Vector2(-23.6364, -157.727)
+region_enabled = true
+region_rect = Rect2(0, 677, 302, 673)
+
+[node name="GiornoPorta" type="Sprite2D" parent="Giorno/Env"]
+y_sort_enabled = true
+position = Vector2(-636.364, 592.727)
+texture = ExtResource("18_jlixt")
+offset = Vector2(636.364, -592.727)
+
+[node name="Ingresso-aperto" type="Sprite2D" parent="Giorno/Env"]
+position = Vector2(134, 911)
+texture = ExtResource("15_7jdho")
+
+[node name="Notte" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Fondo-notte" type="Sprite2D" parent="Notte"]
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("19_8usn8")
+
+[node name="Facciata-notte" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+texture = ExtResource("20_kummy")
+
+[node name="Lampioni-accesi" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(803, 41)
+texture = ExtResource("21_8mh2y")
+offset = Vector2(20.364, -120.727)
+region_enabled = true
+region_rect = Rect2(23, 10, 466, 596)
+
+[node name="Lampioni-accesi2" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(860, 802)
+texture = ExtResource("21_8mh2y")
+offset = Vector2(20.364, -120.727)
+region_enabled = true
+region_rect = Rect2(23, 10, 466, 596)
+
+[node name="Luna" type="Sprite2D" parent="Notte"]
+position = Vector2(1469.09, -1032.73)
+texture = ExtResource("22_oa7ec")
+
+[node name="Nuvole" type="Sprite2D" parent="Notte"]
+position = Vector2(-309.091, -992.727)
+texture = ExtResource("13_qtdt8")
+
+[node name="Ringhiera-sopra" type="Sprite2D" parent="Notte"]
+position = Vector2(-462, 187)
+texture = ExtResource("14_38yyi")
+offset = Vector2(251.091, 114.818)
+
+[node name="Ringhiera-sotto" type="Sprite2D" parent="Notte"]
+position = Vector2(-168, 619)
+texture = ExtResource("15_duuq2")
+offset = Vector2(-235.636, -175.364)
+
+[node name="Cancelli" type="Sprite2D" parent="Notte"]
+y_sort_enabled = true
+position = Vector2(140, 1093)
+texture = ExtResource("16_1w8gp")
+offset = Vector2(1.81799, -238.455)
+
+[node name="NottePorta" type="Sprite2D" parent="Notte"]
+position = Vector2(-698.182, 381.818)
+texture = ExtResource("23_toal3")
+offset = Vector2(698.182, -381.818)
+
+[node name="IngressoChiuso" type="Sprite2D" parent="Notte"]
+position = Vector2(147, 930)
+texture = ExtResource("21_1uowl")
+offset = Vector2(0, -19)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 9)
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1222, 1071, 915, 118, 163, 125, -11, 503, -510, 197, -649, 197, -657, -208, -880, -210, -862, 226, -648, 319, -172, 702, -360, 1060, -953, 1044, -995, -243, 931, -436, 934, 47, 1283, 1076)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22.25, 1120.5)
+shape = SubResource("RectangleShape2D_5ghm0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(814, 166)
+shape = SubResource("CircleShape2D_m3or1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(860, 934)
+rotation = -1.54287
+shape = SubResource("CapsuleShape2D_ncvf4")
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("2_fn1id")]
+player_ref = NodePath("../Player")
+
+[node name="WestDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(-570, 168)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.435294, 0.580392, 0.34902, 1)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("4_x6rer")]
+unique_name_in_owner = true
+position = Vector2(126, 938)
+
+[node name="MusicStart" type="Area2D" parent="."]
+position = Vector2(322, -107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MusicStart"]
+z_index = 1
+position = Vector2(-1143, 141)
+shape = SubResource("RectangleShape2D_51w63")
+
+[node name="Entrance" parent="." instance=ExtResource("5_8nwid")]
+position = Vector2(-730, 46)
+level_id = "ingresso"
+link_id = "ExitDoor"
+
+[node name="CloseMuseumAnimation" type="Node2D" parent="."]
+visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CloseMuseumAnimation"]
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CloseMuseumAnimation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_4qo00")
+}
+
+[node name="NodeToggle" parent="CloseMuseumAnimation" instance=ExtResource("10_2m52d")]
+trigger = SubResource("Resource_rqwq0")
+
+[node name="Marker2D" type="Marker2D" parent="CloseMuseumAnimation"]
+position = Vector2(140, 880)
+
+[connection signal="animation_finished" from="CloseMuseumAnimation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="CloseMuseumAnimation/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

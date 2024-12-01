@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://tr6awgmea2cc"]
+
+[ext_resource type="PackedScene" uid="uid://fxf8fytflat8" path="res://levels/sala_sacrificio/sala_sacrificio.tscn" id="1_8o5oy"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_xuq65"]
+
+[resource]
+script = ExtResource("2_xuq65")
+name = "sala sacrificio"
+description = "Description"
+scene = ExtResource("1_8o5oy")

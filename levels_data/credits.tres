@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://bq6objaucfcok"]
+
+[ext_resource type="PackedScene" uid="uid://bw17dtk8hgbyn" path="res://levels/credits/End_Credits.tscn" id="1_of83t"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_tikpf"]
+
+[resource]
+script = ExtResource("2_tikpf")
+name = "credits"
+description = "Description"
+scene = ExtResource("1_of83t")

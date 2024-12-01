@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://bjqkp1ld57q6i"]
+
+[ext_resource type="PackedScene" uid="uid://buyj77nddcaam" path="res://levels/close_museum_cutscene/close_museum_cutscene.tscn" id="1_hird5"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_ift0r"]
+
+[resource]
+script = ExtResource("2_ift0r")
+name = "close_museum_cutscene"
+description = "Description"
+scene = ExtResource("1_hird5")
