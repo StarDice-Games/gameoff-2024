@@ -16,7 +16,7 @@ func _ready() -> void:
 	EventSystem.trigger_changed.connect(trigger_update)
 	
 	$AudioStreamPlayer2D.play()
-	
+
 	TriggersSystem.update_trigger("doors_locked", true)
 	
 	first_tasks[0].current_counter = 0
@@ -46,7 +46,7 @@ func _on_music_start_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	pass
+	TriggersSystem.update_trigger("doors_locked", true)
 
 
 func _on_timer_timeout() -> void:

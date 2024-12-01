@@ -189,12 +189,6 @@ _data = {
 [node name="TestBasic" type="Node2D"]
 script = ExtResource("1_whf18")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(960, 540)
-
-[node name="Camera2D" type="Camera2D" parent="Camera2D"]
-offset = Vector2(960, 540)
-
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_right = 1918.0
 offset_bottom = 1075.0
@@ -202,9 +196,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_top = -272.796
 offset_right = 1920.0
-offset_bottom = 1840.2
+offset_bottom = 2113.0
 texture = ExtResource("2_ft2ww")
 
 [node name="TextureRect3" type="TextureRect" parent="."]

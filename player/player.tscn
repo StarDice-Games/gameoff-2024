@@ -3645,7 +3645,6 @@ visible = false
 [node name="GambaDx" type="Sprite2D" parent="Front"]
 position = Vector2(-9.27598, 43.6401)
 rotation = -0.222424
-scale = Vector2(1, 1)
 texture = ExtResource("3_uo86d")
 offset = Vector2(-2, 15.9994)
 region_rect = Rect2(200, 377, 44, 66)
@@ -3671,7 +3670,6 @@ region_rect = Rect2(199, 422, 46, 49)
 [node name="GambaSx" type="Sprite2D" parent="Front"]
 position = Vector2(17.0316, 43.0462)
 rotation = 0.0270703
-scale = Vector2(1, 1)
 texture = ExtResource("6_cnvsj")
 offset = Vector2(-1.95477, 11.5259)
 region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)
@@ -4617,7 +4615,6 @@ region_rect = Rect2(287, 340, 46, 82)
 [node name="GambaSx" type="Sprite2D" parent="Back"]
 position = Vector2(-7.30141, 46.611)
 rotation = 0.270832
-scale = Vector2(1, 1)
 texture = ExtResource("43_vpxx7")
 offset = Vector2(-1.95477, 11.5259)
 region_rect = Rect2(251.091, 376.637, 39.0917, 63.6348)

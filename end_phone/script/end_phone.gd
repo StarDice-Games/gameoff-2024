@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _on_interactable_interacted() -> void:
+	$Label.hide()
 	$Agganciato.hide()
 	$NonAgganciato.show()
 	$AnimationPlayer.play("dial")
