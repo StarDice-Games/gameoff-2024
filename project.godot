@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Gameoff2024"
+config/name="Museum Servivit"
 run/main_scene="res://levels/splash_screen/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://resource/assets/icons/icon_png/icon_256.png"
