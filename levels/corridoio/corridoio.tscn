@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bqkf3k4ab5ac4"]
+[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
 
 [ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
 [ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
 [ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_wk1te"]
 [ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_qul02"]
-[ext_resource type="AudioStream" uid="uid://y73pv85x1hq1" path="res://audio/sfx/various/Alarm_01.wav" id="6_xu4h3"]
 [ext_resource type="Texture2D" uid="uid://y0iraahv5ke5" path="res://resource/assets/rooms/Corridoio/CORRIDOIO.png" id="7_ikpv2"]
 [ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
 [ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
@@ -155,7 +154,6 @@ point_count = 3
 y_sort_enabled = true
 script = ExtResource("1_w2gne")
 dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
-alarm_sfx = ExtResource("6_xu4h3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -21.0

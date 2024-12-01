@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var dialog_escape : Array[DialogText]
-@export var alarm_sfx : AudioStream
+#@export var alarm_sfx : AudioStream
 
 @onready var animation_player: AnimationPlayer = $OpenPaintingCutscene/CanvasLayer/AnimationPlayer
 

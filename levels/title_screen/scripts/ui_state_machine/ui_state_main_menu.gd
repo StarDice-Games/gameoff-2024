@@ -2,7 +2,7 @@ class_name MainMenu
 extends UIState
 
 @onready var main_panel = $MainPanel
-@onready var load_button :Button = $MainPanel/VBoxContainer/LoadGame
+#@onready var load_button :Button = $MainPanel/VBoxContainer/LoadGame
 @onready var new_game_button : Button = $MainPanel/VBoxContainer/NewGame
 @onready var exit_button : Button = $MainPanel/VBoxContainer/Exit
 #@export var menu_music : String

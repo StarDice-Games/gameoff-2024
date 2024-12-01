@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
 [ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
-[ext_resource type="AudioStream" uid="uid://5gml5kqrh8jb" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.wav" id="4_4xn2y"]
+[ext_resource type="AudioStream" uid="uid://dceceqovc7vbp" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.ogg" id="4_182pn"]
 [ext_resource type="Texture2D" uid="uid://cwjw2v42jf885" path="res://resource/assets/rooms/Hall/T Rex senza dente.PNG" id="5_tuoj4"]
 [ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
 [ext_resource type="Texture2D" uid="uid://bfpwahn54x8a5" path="res://resource/assets/rooms/Hall/corda con dente.png" id="5_y87wl"]
@@ -50,7 +50,7 @@ radius = 345.117
 [node name="TRexTrigger" type="Node2D"]
 script = ExtResource("1_4gv0c")
 item = SubResource("Resource_m12fb")
-audio_sfx = ExtResource("4_4xn2y")
+audio_sfx = ExtResource("4_182pn")
 
 [node name="TRexConDente" type="Sprite2D" parent="."]
 position = Vector2(400, 183)
