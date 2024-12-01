@@ -36,6 +36,9 @@ func _ready() -> void:
 	if TriggersSystem.check_trigger("key_picked", false) and open:
 		$Key.show()
 	
+	if TriggersSystem.check_trigger("key_picked", true):
+		$Key.queue_free()
+	
 	EventSystem.picked_up_item.connect(postit_picked)
 
 func postit_picked(item_id : String):

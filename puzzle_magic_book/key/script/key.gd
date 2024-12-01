@@ -6,6 +6,8 @@ extends Node2D
 
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(trigger_update)
+	if TriggersSystem.check_trigger("guardian_locker_open", true):
+		$Interactable/CollisionShape2D.disabled = false
 
 func trigger_update(key, value):	
 	if key == "guardian_locker_open" and value == true:
@@ -23,5 +25,5 @@ func _on_interactable_interacted() -> void:
 	if visible:
 		InventorySystem.pick_up(item)
 		DialogueSystem.start_dialog(dialog)
-		TriggersSystem.toggle_trigger("key_picked")
+		TriggersSystem.update_trigger("key_picked", true)
 		queue_free()

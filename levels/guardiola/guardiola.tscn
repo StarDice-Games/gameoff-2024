@@ -390,9 +390,9 @@ dialog_player = Array[ExtResource("6_66euh")]([SubResource("Resource_bmfvq")])
 position = Vector2(860, 450)
 
 [node name="Stanze" type="Sprite2D" parent="."]
-position = Vector2(969, 459)
+position = Vector2(966, 416)
 texture = ExtResource("10_rqxwf")
-offset = Vector2(-22, 70)
+offset = Vector2(-19, 113)
 region_rect = Rect2(5056.74, 2825.8, 1155.52, 959.725)
 
 [node name="LuceLampadina" type="Sprite2D" parent="Stanze"]
@@ -404,6 +404,7 @@ position = Vector2(119, -355)
 texture = ExtResource("12_px1fs")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Stanze"]
+position = Vector2(5, 49)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stanze/StaticBody2D"]
@@ -520,7 +521,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_1mvgn")]
 unique_name_in_owner = true
-position = Vector2(844, 479)
+position = Vector2(823, 571)
 
 [node name="EndPhone" parent="." instance=ExtResource("20_hvcx5")]
 position = Vector2(1172, 666)

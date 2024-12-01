@@ -12,13 +12,13 @@
 [ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="10_vskab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_odl8j"]
-radius = 44.0114
+radius = 67.0298
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxkwp"]
-radius = 44.0114
+radius = 67.6018
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhg7l"]
-radius = 83.0963
+radius = 110.368
 
 [node name="TRexTooth" type="Node2D"]
 script = ExtResource("1_hgy0r")
@@ -36,11 +36,10 @@ shape = SubResource("CircleShape2D_odl8j")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-z_index = 1
-offset_left = -69.0
-offset_top = -161.0
-offset_right = 82.0
-offset_bottom = -84.0
+offset_left = -72.0
+offset_top = -114.0
+offset_right = 79.0
+offset_bottom = -37.0
 theme = ExtResource("8_11r73")
 text = "Pick up"
 horizontal_alignment = 1
