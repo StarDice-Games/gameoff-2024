@@ -9,7 +9,8 @@ signal player_exit
 
 func interact() :
 	interacted.emit()
-	AudioSystem.play(audio_sfx)
+	if !EventSystem.cutscene_started:
+		AudioSystem.play(audio_sfx)
 
 func player_enter_trigger() :
 	player_enter.emit()
