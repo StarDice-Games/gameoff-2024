@@ -29,6 +29,7 @@ func _on_interactable_interacted() -> void:
 	if TriggersSystem.check_trigger("ritual_objects_placed", true):
 		DialogueSystem.start_dialog(dialog3)
 		$HighlightComponent/CollisionShape2D.disabled = true
+		$Interactable.queue_free()
 
 func trigger_update(key, value):	
 	if key == "boss_exit" and value == true:
