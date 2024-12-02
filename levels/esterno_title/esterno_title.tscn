@@ -276,6 +276,7 @@ position = Vector2(853, 449)
 scale = Vector2(1.17209, 1.17209)
 
 [node name="Fondo-giorno" type="Sprite2D" parent="Giorno/Fondo"]
+position = Vector2(5.11906, 373.691)
 texture = ExtResource("5_gjyax")
 
 [node name="Env" type="Node2D" parent="Giorno"]
