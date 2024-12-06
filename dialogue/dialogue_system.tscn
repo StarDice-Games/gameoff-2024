@@ -142,7 +142,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_wmpg3")
-text = "Press E to continue"
+text = "Press E/A to continue"
 horizontal_alignment = 2
 vertical_alignment = 1
 
