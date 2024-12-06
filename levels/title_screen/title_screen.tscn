@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bn66sogio8l8v"]
+[gd_scene load_steps=35 format=3 uid="uid://bn66sogio8l8v"]
 
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
 [ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dbw4xyiy2as06" path="res://resource/assets/UI/Volume on.PNG" id="8_wcncs"]
 [ext_resource type="Texture2D" uid="uid://bsadrk7e5hqfy" path="res://resource/assets/UI/Musica on.PNG" id="8_xa8mr"]
 [ext_resource type="Texture2D" uid="uid://c2uvf28tbsw1s" path="res://resource/assets/UI/Volume off.PNG" id="10_4y6ak"]
+[ext_resource type="Texture2D" uid="uid://bgpqtddbnysxy" path="res://resource/assets/UI/follow.png" id="11_kr4uh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ueym0"]
 load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
@@ -109,6 +110,30 @@ Button/styles/hover = SubResource("StyleBoxTexture_durta")
 Button/styles/normal = SubResource("StyleBoxTexture_1dm2w")
 Button/styles/pressed = SubResource("StyleBoxTexture_lartd")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wl7s"]
+texture = ExtResource("11_kr4uh")
+modulate_color = Color(0.909804, 0.913725, 0.854902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a2djk"]
+texture = ExtResource("11_kr4uh")
+modulate_color = Color(0.801105, 0.80752, 0.695235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2je3"]
+texture = ExtResource("11_kr4uh")
+
+[sub_resource type="Theme" id="Theme_x85bt"]
+default_font_size = 50
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 0
+Button/styles/focus = SubResource("StyleBoxTexture_4wl7s")
+Button/styles/hover = SubResource("StyleBoxTexture_a2djk")
+Button/styles/normal = SubResource("StyleBoxTexture_4wl7s")
+Button/styles/pressed = SubResource("StyleBoxTexture_d2je3")
+
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -174,6 +199,14 @@ theme = SubResource("Theme_y1vjg")
 text = "New Game"
 icon_alignment = 1
 
+[node name="Credits" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Exit")
+theme = SubResource("Theme_y1vjg")
+text = "Credits"
+icon_alignment = 1
+
 [node name="Exit" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
@@ -230,9 +263,9 @@ region_rect = Rect2(2186, 231, 336, 109)
 [node name="Music" type="Button" parent="StateMenu/MainMenu"]
 layout_mode = 0
 offset_left = 1365.0
-offset_top = 684.0
+offset_top = 763.0
 offset_right = 1423.0
-offset_bottom = 742.0
+offset_bottom = 821.0
 theme = SubResource("Theme_dr7ky")
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.160784)
 theme_override_fonts/font = ExtResource("4_n3ecd")
@@ -242,20 +275,46 @@ action_mode = 0
 [node name="Sfx" type="Button" parent="StateMenu/MainMenu"]
 layout_mode = 0
 offset_left = 1469.0
-offset_top = 684.0
+offset_top = 763.0
 offset_right = 1527.0
-offset_bottom = 742.0
+offset_bottom = 821.0
 theme = SubResource("Theme_n7cr2")
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.160784)
 theme_override_fonts/font = ExtResource("4_n3ecd")
 toggle_mode = true
 action_mode = 0
 
+[node name="ColorRect" type="ColorRect" parent="StateMenu/MainMenu"]
+z_index = -1
+layout_mode = 0
+offset_left = 1373.0
+offset_top = 933.0
+offset_right = 1499.0
+offset_bottom = 966.0
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Follow" type="Button" parent="StateMenu/MainMenu"]
+custom_minimum_size = Vector2(466, 40.79)
+layout_mode = 2
+offset_left = 1200.0
+offset_top = 929.0
+offset_right = 1666.0
+offset_bottom = 970.0
+focus_neighbor_top = NodePath("../MainPanel/VBoxContainer/NewGame")
+focus_neighbor_bottom = NodePath("../Music")
+focus_next = NodePath("../Music")
+focus_previous = NodePath("../MainPanel/VBoxContainer/NewGame")
+theme = SubResource("Theme_x85bt")
+
 [node name="Settings" type="Control" parent="StateMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 253.0
+offset_top = -1.0
+offset_right = 253.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -337,9 +396,13 @@ texture = ExtResource("4_3sqsw")
 [connection signal="focus_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_mouse_entered"]
 [connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Credits" to="StateMenu/MainMenu" method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Credits" to="StateMenu/MainMenu" method="_on_credits_pressed"]
 [connection signal="focus_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_mouse_entered"]
 [connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_pressed"]
 [connection signal="pressed" from="StateMenu/MainMenu/Music" to="StateMenu/MainMenu" method="_on_music_pressed"]
 [connection signal="pressed" from="StateMenu/MainMenu/Sfx" to="StateMenu/MainMenu" method="_on_sfx_pressed"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/Follow" to="StateMenu/MainMenu" method="_on_follow_mouse_entered"]
+[connection signal="pressed" from="StateMenu/MainMenu/Follow" to="StateMenu/MainMenu" method="_on_follow_pressed"]
 [connection signal="pressed" from="StateMenu/Settings/MainPanel/Back" to="StateMenu/Settings" method="_on_back_pressed"]

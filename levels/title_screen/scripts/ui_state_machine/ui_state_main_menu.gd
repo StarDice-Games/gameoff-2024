@@ -85,3 +85,20 @@ func _on_sfx_pressed() -> void:
 	else:
 		sfx_off = false
 		AudioSystem.set_volumes_value("Sfx", 0)
+
+
+func _on_credits_pressed() -> void:
+	TriggersSystem.toggle_trigger("show_credits")
+	LevelSystem.load_level("credits", true)
+
+
+func _on_credits_mouse_entered() -> void:
+	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")
+
+
+func _on_follow_mouse_entered() -> void:
+	AudioSystem.play_audio_event("UI_Highlight_Selection_04", "Sfx")
+
+
+func _on_follow_pressed() -> void:
+	OS.shell_open("https://linktr.ee/StarDiceGames?ltsid=0c43fcc4-ddd3-45b3-827c-345c752023ee")

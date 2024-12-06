@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw17dtk8hgbyn"]
+[gd_scene load_steps=9 format=3 uid="uid://bw17dtk8hgbyn"]
 
 [ext_resource type="Script" path="res://levels/credits/End_Credits.gd" id="1_whf18"]
 [ext_resource type="Texture2D" uid="uid://qkvm3due1ol4" path="res://resource/assets/credits.jpg" id="2_ft2ww"]
 [ext_resource type="Texture2D" uid="uid://d1epgmdlfdngl" path="res://levels/credits/Credits/the_end_StarDice_gameoff.png" id="2_jnjwf"]
 [ext_resource type="Texture2D" uid="uid://dkfaox35ovr2a" path="res://resource/assets/fine. giornale.jpg" id="3_2gvk7"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="5_7cy3u"]
 
 [sub_resource type="Animation" id="Animation_26meh"]
 length = 0.001
@@ -222,5 +223,22 @@ texture = ExtResource("2_jnjwf")
 libraries = {
 "": SubResource("AnimationLibrary_alhc3")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -93.0
+offset_right = -72.0
+offset_bottom = -47.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_7cy3u")
+text = "Press E/A to skip"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
