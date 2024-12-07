@@ -91,6 +91,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_ki6xu")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_durta"]
 texture = ExtResource("8_wcncs")
+modulate_color = Color(1, 1, 1, 0.729412)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dm2w"]
 texture = ExtResource("8_wcncs")

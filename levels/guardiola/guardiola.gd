@@ -14,7 +14,10 @@ var second_task_loaded = false
 func _ready() -> void:
 	EventSystem.trigger_changed.connect(trigger_update)
 	
-	TriggersSystem.update_trigger("doors_locked", true)
+	if TriggersSystem.check_trigger("dialog_player", false):
+		TriggersSystem.update_trigger("doors_locked", true)
+		
+	#TriggersSystem.update_trigger("stealth", true)
 	
 	# Prima chiamata con il boss e task NPC
 	# ora quando si completano le task è il player che controlla,

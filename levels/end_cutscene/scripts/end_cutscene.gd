@@ -10,7 +10,6 @@ func _ready() -> void:
 
 	
 func move_to_credits():
-	TriggersSystem.toggle_trigger("show_credits")
 	LevelSystem.load_level("credits", true)
 	
 #func _on_timer_timeout() -> void:

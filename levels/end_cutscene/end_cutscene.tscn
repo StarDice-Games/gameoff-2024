@@ -158,6 +158,7 @@ position = Vector2(1469.09, -1032.73)
 texture = ExtResource("5_wnkgy")
 
 [node name="Nuvole" type="Sprite2D" parent="Notte"]
+visible = false
 position = Vector2(-309.091, -992.727)
 texture = ExtResource("6_8cvki")
 
