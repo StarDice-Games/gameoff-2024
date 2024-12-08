@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://bdsfmqfnh3l25"]
+
+[ext_resource type="Script" path="res://puzzle_magic_book/magic_book/scripts/magic_book.gd" id="1_wt5bb"]
+[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="2_cnfls"]
+[ext_resource type="Resource" uid="uid://f0gm0n7j0l15" path="res://puzzle_magic_book/dialogs/player_monolog_book.tres" id="4_6gw1u"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="4_rh0rr"]
+[ext_resource type="Resource" uid="uid://cbce47vyksti4" path="res://puzzle_magic_book/task_get_magic_book/get_magic_book.tres" id="5_tbsil"]
+[ext_resource type="Texture2D" uid="uid://qc1nwdwg5gbb" path="res://resource/assets/rooms/Sala_arte_new/libro-cassetto.png" id="6_4yqfy"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="7_is7y2"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="8_4lil6"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="9_pu538"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="10_ufwkb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0v5r"]
+radius = 87.023
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qtsd"]
+shader = ExtResource("10_ufwkb")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w06ri"]
+radius = 87.023
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsaji"]
+radius = 153.003
+
+[node name="MagicBook" type="Node2D"]
+script = ExtResource("1_wt5bb")
+item = ExtResource("2_cnfls")
+dialog = Array[ExtResource("4_rh0rr")]([ExtResource("4_6gw1u")])
+task = ExtResource("5_tbsil")
+
+[node name="MagicBook" type="Sprite2D" parent="."]
+texture = ExtResource("6_4yqfy")
+
+[node name="Interactable" parent="." instance=ExtResource("7_is7y2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_f0v5r")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -76.0
+offset_top = -129.0
+offset_right = 75.0
+offset_bottom = -52.0
+theme = ExtResource("8_4lil6")
+text = "Pick up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_pu538")]
+sprite = NodePath("../MagicBook")
+shader = SubResource("ShaderMaterial_6qtsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+shape = SubResource("CircleShape2D_w06ri")
+
+[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_pu538")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../MagicBook")
+shader = SubResource("ShaderMaterial_6qtsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
+shape = SubResource("CircleShape2D_nsaji")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

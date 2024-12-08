@@ -62,6 +62,7 @@ offset_bottom = 40.0
 script = ExtResource("1_e2hf3")
 
 [node name="Button" type="Button" parent="CanvasLayer/Testing"]
+layout_mode = 0
 offset_left = 462.0
 offset_top = 207.0
 offset_right = 568.0
@@ -70,6 +71,7 @@ text = "Play a sound
 "
 
 [node name="Button2" type="Button" parent="CanvasLayer/Testing"]
+layout_mode = 0
 offset_left = 462.0
 offset_top = 275.0
 offset_right = 568.0
@@ -78,6 +80,7 @@ text = "Play BGM
 "
 
 [node name="TestLevel" type="Button" parent="CanvasLayer/Testing"]
+layout_mode = 0
 offset_left = 459.0
 offset_top = 331.0
 offset_right = 570.0

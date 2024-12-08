@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjnweyhuaw0k"]
+
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="1_imgj7"]
+
+[resource]
+default_font = ExtResource("1_imgj7")
+default_font_size = 0
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 1
+Label/font_sizes/font_size = 40

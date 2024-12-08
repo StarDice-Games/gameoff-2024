@@ -1,0 +1,150 @@
+[gd_scene load_steps=25 format=3 uid="uid://ymmamvc2fsqp"]
+
+[ext_resource type="Script" path="res://act2-t-rex-puzzle/t-rex-trigger/script/t_rex_trigger.gd" id="1_4gv0c"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="1_l5sr8"]
+[ext_resource type="AudioStream" uid="uid://dceceqovc7vbp" path="res://audio/sfx/puzzle_t_rex/Rope_Hooks_01.ogg" id="4_182pn"]
+[ext_resource type="Texture2D" uid="uid://cwjw2v42jf885" path="res://resource/assets/rooms/Hall/T Rex senza dente.PNG" id="5_tuoj4"]
+[ext_resource type="Texture2D" uid="uid://cvevodjibvejg" path="res://levels/credits/Credits/Samuele.png" id="5_x8aad"]
+[ext_resource type="Texture2D" uid="uid://bfpwahn54x8a5" path="res://resource/assets/rooms/Hall/corda con dente.png" id="5_y87wl"]
+[ext_resource type="Texture2D" uid="uid://c0gtv7rvctfe2" path="res://resource/assets/rooms/Hall/trex sopra.png" id="6_3qbpc"]
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="6_s7f21"]
+[ext_resource type="Texture2D" uid="uid://blx4twhxb5g78" path="res://resource/assets/rooms/Hall/dente.png" id="7_jsqly"]
+[ext_resource type="PackedScene" uid="uid://cqdeu1mk0x22h" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tscn" id="8_i8kpf"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="8_w17g1"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="9_iwa3e"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="9_v0kll"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="13_o2yoa"]
+[ext_resource type="Texture2D" uid="uid://bvc237scomqyo" path="res://resource/assets/rooms/Hall/trex sotto.png" id="13_ocfy1"]
+[ext_resource type="Shader" path="res://highlight_component/object_highlight.gdshader" id="14_05qwv"]
+[ext_resource type="Texture2D" uid="uid://d3gl8mjd8ahc7" path="res://resource/assets/rooms/Hall/coda.png" id="17_w2ayw"]
+[ext_resource type="Texture2D" uid="uid://dnhaloo720scq" path="res://resource/assets/rooms/Hall/testa.png" id="18_gkreb"]
+
+[sub_resource type="Resource" id="Resource_m12fb"]
+script = ExtResource("6_s7f21")
+id = "Rope"
+icon = ExtResource("5_x8aad")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6s8d"]
+radius = 159.255
+
+[sub_resource type="Resource" id="Resource_74vpo"]
+script = ExtResource("9_v0kll")
+key = "second_boss_call"
+value = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35c4c"]
+shader = ExtResource("14_05qwv")
+shader_parameter/maxLineWidth = 10.0
+shader_parameter/minLineWidth = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/blockSize = 5.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g2tl"]
+radius = 159.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7q4j"]
+radius = 345.117
+
+[node name="TRexTrigger" type="Node2D"]
+script = ExtResource("1_4gv0c")
+item = SubResource("Resource_m12fb")
+audio_sfx = ExtResource("4_182pn")
+
+[node name="TRexConDente" type="Sprite2D" parent="."]
+position = Vector2(400, 183)
+scale = Vector2(1.265, 1.265)
+texture = ExtResource("5_tuoj4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="TrexToothRope" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(436, 113)
+texture = ExtResource("5_y87wl")
+
+[node name="TrexToothSprite" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1, 1)
+texture = ExtResource("6_3qbpc")
+region_rect = Rect2(520, 489, 809, 501)
+
+[node name="Dente" type="Sprite2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(439, -47)
+texture = ExtResource("7_jsqly")
+
+[node name="TRexTooth" parent="StaticBody2D" instance=ExtResource("8_i8kpf")]
+visible = false
+position = Vector2(548, 364)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(4.5, 109)
+polygon = PackedVector2Array(445.5, 295, -468.5, 300, -495.5, 319, -530.5, 320, -524.5, 195, -453.5, 79, -396.5, -51, -354.5, -67, -2.5, -56, 390.5, -61, 464.5, 206)
+
+[node name="Label" type="Label" parent="StaticBody2D"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 306.0
+offset_top = -252.0
+offset_right = 541.0
+offset_bottom = -197.0
+grow_horizontal = 2
+theme = ExtResource("9_iwa3e")
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable" parent="." instance=ExtResource("1_l5sr8")]
+position = Vector2(69, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(254, 89)
+shape = SubResource("CircleShape2D_n6s8d")
+debug_color = Color(0.657455, 0.516008, 1.92523e-07, 0.42)
+
+[node name="NodeToggle" parent="Interactable" instance=ExtResource("8_w17g1")]
+trigger = SubResource("Resource_74vpo")
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_o2yoa")]
+position = Vector2(427, 104)
+sprite = NodePath("../TRexConDente")
+shader = SubResource("ShaderMaterial_35c4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent"]
+position = Vector2(-103, -12)
+shape = SubResource("CircleShape2D_0g2tl")
+
+[node name="PreArea" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("13_o2yoa")]
+position = Vector2(427, 104)
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../TRexConDente")
+shader = SubResource("ShaderMaterial_35c4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreArea"]
+position = Vector2(15, -4)
+shape = SubResource("CircleShape2D_p7q4j")
+
+[node name="TrexSotto" type="Sprite2D" parent="PreArea"]
+y_sort_enabled = true
+position = Vector2(-427, 95)
+texture = ExtResource("13_ocfy1")
+offset = Vector2(-35, 90)
+
+[node name="Coda" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1, 117)
+texture = ExtResource("17_w2ayw")
+offset = Vector2(-1, -117)
+
+[node name="Testa" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("18_gkreb")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://boubjpsibsosa"]
+
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="1_n8hrs"]
+
+[resource]
+script = ExtResource("1_n8hrs")
+id = "task3"
+description = "Terzo task della lista "
+complete = false

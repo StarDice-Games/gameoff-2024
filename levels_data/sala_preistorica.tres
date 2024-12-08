@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://ddpynhui63sjq"]
+
+[ext_resource type="PackedScene" uid="uid://i5m1yfut0lb0" path="res://levels/sala_preistorica/sala_preistorica.tscn" id="1_7i0qe"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_5qd0u"]
+
+[resource]
+script = ExtResource("2_5qd0u")
+name = "sala preistorica"
+description = "Description"
+scene = ExtResource("1_7i0qe")

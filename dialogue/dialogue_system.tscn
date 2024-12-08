@@ -1,0 +1,154 @@
+[gd_scene load_steps=14 format=3 uid="uid://c84g4refe34fy"]
+
+[ext_resource type="Script" path="res://dialogue/scripts/dialogue_system.gd" id="1_5otb8"]
+[ext_resource type="AudioStream" uid="uid://6qjwfyj0gu3d" path="res://audio/sfx/dialog/Voce vecchietto-corta.ogg" id="2_e5wm4"]
+[ext_resource type="Texture2D" uid="uid://b4vxk71lare8m" path="res://resource/assets/UI/dialoghi.png" id="2_pqylc"]
+[ext_resource type="AudioStream" uid="uid://fxhc6crlao7t" path="res://audio/sfx/dialog/Voce vecchietto-corta04.ogg" id="3_jp055"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="3_wmpg3"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="4_5wp76"]
+[ext_resource type="AudioStream" uid="uid://eij4pdaj6hni" path="res://audio/sfx/dialog/Voce vecchietto-corta03.ogg" id="4_xweh2"]
+[ext_resource type="AudioStream" uid="uid://bpjhm5nkmqtl0" path="res://audio/sfx/dialog/Voce vecchietto-corta02.ogg" id="5_gvmgp"]
+[ext_resource type="AudioStream" uid="uid://bu86l7cs107df" path="res://audio/sfx/dialog/voce_vecchietto.ogg" id="5_wn1ar"]
+[ext_resource type="AudioStream" uid="uid://b4tue5q7en2em" path="res://audio/sfx/dialog/Voce capo-corta02.ogg" id="6_l3kil"]
+[ext_resource type="AudioStream" uid="uid://wt0oxsh508x5" path="res://audio/sfx/dialog/Voce capo-corta03.ogg" id="7_s2ju1"]
+[ext_resource type="AudioStream" uid="uid://c0404i34envyb" path="res://audio/sfx/dialog/Voce capo-corta04.ogg" id="8_afv0s"]
+[ext_resource type="AudioStream" uid="uid://0pg2lrfok20o" path="res://audio/sfx/dialog/Voce capo-corta.ogg" id="9_wn08f"]
+
+[node name="DialogueSystem" type="Node2D"]
+script = ExtResource("1_5otb8")
+voci_vecchietto = Array[AudioStream]([ExtResource("2_e5wm4"), ExtResource("3_jp055"), ExtResource("4_xweh2"), ExtResource("5_gvmgp")])
+voci_capo = Array[AudioStream]([ExtResource("6_l3kil"), ExtResource("7_s2ju1"), ExtResource("8_afv0s"), ExtResource("9_wn08f")])
+speed_text = 1.0
+metadata/_edit_vertical_guides_ = [610.0, 1304.0, 1265.0, 774.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -238.0
+offset_right = 342.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_pqylc")
+
+[node name="DialogueBoxName" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -220.0
+offset_right = -36.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.847059, 0.988235, 0.94902, 0)
+
+[node name="DialogueName" type="Label" parent="CanvasLayer/Control/DialogueBoxName"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -19.0
+offset_right = 161.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wmpg3")
+theme_override_font_sizes/font_size = 35
+text = "Name"
+vertical_alignment = 1
+
+[node name="DialogueBox" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -164.0
+offset_right = 312.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.266667, 0.247059, 0.231373, 0)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/DialogueBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -125.0
+offset_top = -25.0
+offset_right = -46.0
+offset_bottom = 73.0
+
+[node name="Character" type="TextureRect" parent="CanvasLayer/Control/DialogueBox/Panel"]
+layout_mode = 1
+offset_left = -25.0
+offset_top = -17.0
+offset_right = 96.0
+offset_bottom = 104.0
+texture = ExtResource("4_5wp76")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="DialogueText" type="RichTextLabel" parent="CanvasLayer/Control/DialogueBox"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 496.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_wmpg3")
+theme_override_font_sizes/normal_font_size = 25
+text = "jjjjjjjjjjjjjjjjjjj"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 444.0
+offset_right = 305.0
+offset_bottom = 467.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wmpg3")
+text = "Press E to continue"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wn1ar")
+volume_db = 15.0
+bus = &"Sfx"

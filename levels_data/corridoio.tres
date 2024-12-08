@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://ch82hje8hdlew"]
+
+[ext_resource type="PackedScene" uid="uid://bqkf3k4ab5ac4" path="res://levels/corridoio/corridoio.tscn" id="1_pos3a"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_4h3bf"]
+
+[resource]
+script = ExtResource("2_4h3bf")
+name = "corridoio"
+description = "Description"
+scene = ExtResource("1_pos3a")

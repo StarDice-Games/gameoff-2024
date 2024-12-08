@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b1trqyk37yi0f"]
+
+[ext_resource type="Script" path="res://resource/items/script/item_data.gd" id="1_60me2"]
+[ext_resource type="Texture2D" uid="uid://dajgyvjefmeg4" path="res://credits/Credits/Kevin.png" id="1_nw71t"]
+
+[resource]
+script = ExtResource("1_60me2")
+id = "pen"
+icon = ExtResource("1_nw71t")

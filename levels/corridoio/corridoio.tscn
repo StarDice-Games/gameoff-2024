@@ -1,0 +1,416 @@
+[gd_scene load_steps=39 format=3 uid="uid://bqkf3k4ab5ac4"]
+
+[ext_resource type="PackedScene" uid="uid://x1in8gvchlxv" path="res://link_system/link_system.tscn" id="1_fksk1"]
+[ext_resource type="Script" path="res://levels/corridoio/corridoio.gd" id="1_w2gne"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_dnq7l"]
+[ext_resource type="PackedScene" uid="uid://b1124l3cpps2k" path="res://player/player.tscn" id="2_qa672"]
+[ext_resource type="Texture2D" uid="uid://1mx5av2ablnb" path="res://resource/assets/enemy/Boss_Face.png" id="3_gsdmn"]
+[ext_resource type="PackedScene" uid="uid://0hi4ih83soya" path="res://link_system/portal.tscn" id="4_mxoqe"]
+[ext_resource type="Script" path="res://requirement/scripts/requirement.gd" id="4_wk1te"]
+[ext_resource type="Texture2D" uid="uid://bulqj4cqluj" path="res://resource/assets/dialogueIMG/Testa .png" id="5_qul02"]
+[ext_resource type="Texture2D" uid="uid://y0iraahv5ke5" path="res://resource/assets/rooms/Corridoio/CORRIDOIO.png" id="7_ikpv2"]
+[ext_resource type="Resource" uid="uid://bc6w8xsyxpufe" path="res://task_system/tasks/chalice_task.tres" id="7_m5sq3"]
+[ext_resource type="PackedScene" uid="uid://qn7dtneyrwg" path="res://door_lock/door_lock.tscn" id="7_trp2b"]
+[ext_resource type="Texture2D" uid="uid://dkl13yf37dqkn" path="res://resource/assets/rooms/Corridoio/Asset nuovi/balena.png" id="8_epekt"]
+[ext_resource type="Texture2D" uid="uid://dho4dr84grq7e" path="res://resource/assets/rooms/Corridoio/porte.png" id="9_ikfpq"]
+[ext_resource type="PackedScene" uid="uid://dhy01qy7khi6" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_1.tscn" id="10_esjjd"]
+[ext_resource type="Texture2D" uid="uid://m1rcxilbigqy" path="res://resource/assets/rooms/Corridoio/POLTRONA.png" id="10_y3aqg"]
+[ext_resource type="PackedScene" uid="uid://btpwdekddbacl" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/painting.tscn" id="11_fnqc4"]
+[ext_resource type="Texture2D" uid="uid://dcjax5e0wbsdu" path="res://resource/assets/rooms/Corridoio/Asset nuovi/sedie-statua.png" id="11_in8sk"]
+[ext_resource type="AudioStream" uid="uid://b6hol2yma14oq" path="res://audio/sfx/magic_book/Open_Library_01.wav" id="11_tm84c"]
+[ext_resource type="Texture2D" uid="uid://vthicuq0fe75" path="res://resource/assets/rooms/Corridoio/Luci.png" id="13_ao4pd"]
+[ext_resource type="Texture2D" uid="uid://cchfe6wrakdx0" path="res://resource/assets/scene_azione/Apertura quadro.PNG" id="19_jrd7r"]
+[ext_resource type="PackedScene" uid="uid://dfdw54qhrvqhy" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_2.tscn" id="19_y4mm1"]
+[ext_resource type="PackedScene" uid="uid://dtgi8mhp76d54" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_3.tscn" id="20_ms3ha"]
+[ext_resource type="PackedScene" uid="uid://1uo4spegx35o" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/statue_4.tscn" id="21_j0h8a"]
+[ext_resource type="PackedScene" uid="uid://bwgjq1cqqnp4" path="res://npc_act_1/npc_5.tscn" id="25_7xsap"]
+[ext_resource type="PackedScene" uid="uid://boxt3d6gkh840" path="res://global/global_trigger_system/node_toggle/node_toggle.tscn" id="26_lmyf7"]
+[ext_resource type="PackedScene" uid="uid://8il3mjn3x70q" path="res://enemy_patrol/enemy_patrol.tscn" id="27_qp2n0"]
+[ext_resource type="PackedScene" uid="uid://bi6dr6imf2xbx" path="res://enemy_patrol/checkpoints/checkpoint.tscn" id="29_jnotp"]
+[ext_resource type="PackedScene" uid="uid://cvkthgx1b364n" path="res://fondale/fondale.tscn" id="29_sibt0"]
+
+[sub_resource type="Resource" id="Resource_tep4b"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["HE ESCAPED! FIND HIM!"])
+character_image = ExtResource("3_gsdmn")
+text_name = "Boss"
+triggers = Array[ExtResource("4_wk1te")]([])
+
+[sub_resource type="Resource" id="Resource_g0c14"]
+script = ExtResource("4_wk1te")
+key = "alarm_started"
+value = true
+
+[sub_resource type="Resource" id="Resource_327ia"]
+script = ExtResource("2_dnq7l")
+dialogue_text = Array[String](["It’s better to hide in the dark and ask for help!"])
+character_image = ExtResource("5_qul02")
+text_name = "Angelo"
+triggers = Array[ExtResource("4_wk1te")]([SubResource("Resource_g0c14")])
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pj42f"]
+load_path = "res://.godot/imported/porte.png-e0c780b14b680c41924bab1dde6292f7.ctex"
+
+[sub_resource type="Resource" id="Resource_uuwsy"]
+script = ExtResource("4_wk1te")
+key = "stealth"
+value = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_683vc"]
+size = Vector2(2076.5, 195)
+
+[sub_resource type="Animation" id="Animation_fg1h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaQuadro:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6vtbb"]
+resource_name = "open_painting"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.56667, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ScenaQuadro:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.76667, 4, 4.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21xjm"]
+_data = {
+"RESET": SubResource("Animation_fg1h2"),
+"open_painting": SubResource("Animation_6vtbb")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_dluho"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 79, 0, 0, 0, 0, 583.216, 79.7549, 0, 0, 0, 0, 1007, 79.5372)
+}
+point_count = 3
+
+[node name="Corridoio" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_w2gne")
+dialog_escape = Array[ExtResource("2_dnq7l")]([SubResource("Resource_tep4b"), SubResource("Resource_327ia")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -21.0
+offset_top = 124.0
+offset_right = 1933.0
+offset_bottom = 1076.0
+color = Color(0, 0, 0, 1)
+
+[node name="Stanze" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1001, 292)
+texture = ExtResource("7_ikpv2")
+offset = Vector2(-54, 237)
+region_rect = Rect2(2186.73, 1490.61, 2216.14, 1365.98)
+
+[node name="Balenozza" type="Sprite2D" parent="Stanze"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-87.5, -468)
+texture = ExtResource("8_epekt")
+
+[node name="Porte" type="Sprite2D" parent="Stanze"]
+position = Vector2(831.5, 370)
+texture = ExtResource("9_ikfpq")
+offset = Vector2(91, -56)
+region_enabled = true
+region_rect = Rect2(1977, 488, 158.41, 928)
+
+[node name="Porte2" type="Sprite2D" parent="Stanze"]
+position = Vector2(-933.5, 360)
+texture = SubResource("CompressedTexture2D_pj42f")
+offset = Vector2(-101, -115)
+region_enabled = true
+region_rect = Rect2(0, 413, 201, 942)
+
+[node name="Poltrona" type="Sprite2D" parent="Stanze"]
+position = Vector2(-110, 118)
+texture = ExtResource("10_y3aqg")
+offset = Vector2(8, 103.5)
+
+[node name="Sedie" type="Sprite2D" parent="Stanze"]
+light_mask = 0
+y_sort_enabled = true
+position = Vector2(-74, 446.5)
+texture = ExtResource("11_in8sk")
+offset = Vector2(57, -53)
+
+[node name="Luci" type="Sprite2D" parent="Stanze"]
+position = Vector2(-69, 43)
+texture = ExtResource("13_ao4pd")
+offset = Vector2(4, -33)
+
+[node name="NodeToggle" parent="Stanze/Luci" instance=ExtResource("26_lmyf7")]
+trigger = SubResource("Resource_uuwsy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1001, 292)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-60, 83)
+polygon = PackedVector2Array(-978, 536, -876, 361, -900, 253, -933, -44, -856, -98, -861, 262, -809, 261, -767, 200, -582, 184, -571, 174, -585, -206, -439, -208, -436, 178, -431, 185, 432, 187, 440, 175, 431, -211, 595, -212, 583, 164, 596, 178, 801, 200, 846, 261, 867, 262, 902, -70, 1008, 16, 927, 427, 987, 553, 1032, -171, 839, -394, -749, -396, -1011, -224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-52.25, 716.5)
+shape = SubResource("RectangleShape2D_683vc")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-13, 395.5)
+polygon = PackedVector2Array(-718, 223, -600, 224, -594, 187, -587, 122, -591, 110, -611, 102, -644, 101, -671, 102, -698, 106, -713, 112, -722, 119, -721, 162, -720, 183)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-74, 446.5)
+polygon = PackedVector2Array(-345, 8, -347, 168, 207, 178, 197, 8)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-74, 446.5)
+polygon = PackedVector2Array(449, 62, 764, 59, 767, 174, 453, 174)
+
+[node name="Player" parent="." instance=ExtResource("2_qa672")]
+unique_name_in_owner = true
+position = Vector2(199, 595)
+
+[node name="Npc" parent="." instance=ExtResource("25_7xsap")]
+position = Vector2(889, 597)
+
+[node name="LinkSystem" parent="." node_paths=PackedStringArray("player_ref") instance=ExtResource("1_fksk1")]
+player_ref = NodePath("../Player")
+
+[node name="EastDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(1720, 597)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/EastDoor"]
+visible = false
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+color = Color(0.352941, 0.952941, 0.439216, 1)
+
+[node name="WestDoor" type="Node2D" parent="LinkSystem"]
+position = Vector2(198, 595)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/WestDoor"]
+visible = false
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 23.0
+offset_bottom = 22.0
+color = Color(0.567675, 1, 0.487942, 1)
+
+[node name="North1" type="Node2D" parent="LinkSystem"]
+position = Vector2(423, 500)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/North1"]
+visible = false
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 24.0
+offset_bottom = 23.0
+color = Color(0.533841, 1, 0.586211, 1)
+
+[node name="North2" type="Node2D" parent="LinkSystem"]
+position = Vector2(1455, 470)
+
+[node name="ColorRect" type="ColorRect" parent="LinkSystem/North2"]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 22.0
+offset_bottom = 25.0
+color = Color(0.570505, 1, 0.478134, 1)
+
+[node name="Ingresso" parent="." instance=ExtResource("4_mxoqe")]
+position = Vector2(1924, 474)
+level_id = "ingresso"
+link_id = "WestDoor"
+
+[node name="SalaArte" parent="." instance=ExtResource("4_mxoqe")]
+position = Vector2(1453, 277)
+scale = Vector2(1.4, 0.8)
+level_id = "sala arte"
+link_id = "South"
+
+[node name="SalaPreistorica" parent="." instance=ExtResource("4_mxoqe")]
+position = Vector2(427, 280)
+scale = Vector2(1.368, 0.8)
+level_id = "sala preistorica"
+link_id = "South"
+
+[node name="SalaSacrificio" parent="." instance=ExtResource("4_mxoqe")]
+position = Vector2(10, 385)
+level_id = "sala sacrificio"
+link_id = "East"
+
+[node name="DoorLock" parent="." instance=ExtResource("7_trp2b")]
+position = Vector2(16, 530)
+
+[node name="DoorLock2" parent="." instance=ExtResource("7_trp2b")]
+position = Vector2(338, 361)
+scale = Vector2(1.70083, 1)
+
+[node name="DoorLock3" parent="." instance=ExtResource("7_trp2b")]
+position = Vector2(1372, 351)
+scale = Vector2(1.52, 1)
+
+[node name="OpenPaintingCutscene" type="Node2D" parent="."]
+z_index = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="OpenPaintingCutscene"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OpenPaintingCutscene/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_21xjm")
+}
+
+[node name="ScenaQuadro" type="Sprite2D" parent="OpenPaintingCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(962, 543)
+texture = ExtResource("19_jrd7r")
+
+[node name="ColorRect" type="ColorRect" parent="OpenPaintingCutscene/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 1
+offset_left = -4034.0
+offset_top = -2413.0
+offset_right = 5547.0
+offset_bottom = 3529.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="OpenPaintingCutscene/CanvasLayer"]
+stream = ExtResource("11_tm84c")
+volume_db = -10.0
+
+[node name="PuzzleChalice" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1546, 569)
+
+[node name="Painting" parent="PuzzleChalice" node_paths=PackedStringArray("statues") instance=ExtResource("11_fnqc4")]
+y_sort_enabled = false
+position = Vector2(-618, -255)
+statues = [NodePath("../Statue"), NodePath("../Statue2"), NodePath("../Statue3"), NodePath("../Statue4")]
+task_chalice = ExtResource("7_m5sq3")
+combination = ["Back", "Right", "Left", "Front"]
+
+[node name="Statue" parent="PuzzleChalice" instance=ExtResource("10_esjjd")]
+position = Vector2(-1318, -234)
+
+[node name="Statue2" parent="PuzzleChalice" instance=ExtResource("19_y4mm1")]
+position = Vector2(-868, -236)
+
+[node name="Statue3" parent="PuzzleChalice" instance=ExtResource("20_ms3ha")]
+position = Vector2(125, -236)
+
+[node name="Statue4" parent="PuzzleChalice" instance=ExtResource("21_j0h8a")]
+position = Vector2(-331, -232)
+
+[node name="Stealth" type="Node2D" parent="."]
+visible = false
+position = Vector2(241, 455.716)
+scale = Vector2(1.44886, 1.33271)
+
+[node name="Path2D" type="Path2D" parent="Stealth"]
+position = Vector2(-13.1138, -8.04076)
+curve = SubResource("Curve2D_dluho")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stealth/Path2D"]
+position = Vector2(1007, 79.5372)
+rotation = 0.00130556
+progress = 1002.0
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="EnemyPatrol" parent="Stealth/Path2D/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("27_qp2n0")]
+position = Vector2(2.76237, 2.24744)
+speed = 150
+path = NodePath("..")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Stealth"]
+position = Vector2(-166.338, -341.947)
+scale = Vector2(0.690198, 0.750351)
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="Checkpoint" parent="Stealth" instance=ExtResource("29_jnotp")]
+position = Vector2(1013.9, 94.0069)
+direction = "left"
+
+[node name="Checkpoint2" parent="Stealth" instance=ExtResource("29_jnotp")]
+position = Vector2(-34.5099, 89.5048)
+direction = "right"
+
+[node name="Fondale" parent="." instance=ExtResource("29_sibt0")]
+
+[connection signal="animation_finished" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="OpenPaintingCutscene/CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_started"]

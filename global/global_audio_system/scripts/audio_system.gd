@@ -37,6 +37,7 @@ func _ready():
 		print("Audio name:", key, ",file:", audio_files[key])
 	
 	EventSystem.play_sound.connect(play_audio_event)
+	EventSystem.stop_sound.connect(stop_audio_event)
 	EventSystem.play_music.connect(play_music_event)
 	
 	#Volume management -60 dB and 0 dB.
@@ -104,8 +105,19 @@ func play_music_event(audio_key) -> void:
 			music_player.stop()
 		music_player.play()
 
-#func play(sound_path):
-#	queue.append(sound_path)
+func stop_audio_event(audio_key) -> void:
+	if audio_files.has(audio_key):
+		var stream : AudioStream = audio_files[audio_key]
+		for player in available:
+			if player.stream == stream:
+				player.stop()
+				break
+
+func stop_music_event(audio_key) -> void:
+	if audio_files.has(audio_key):
+		music_player.stream = audio_files[audio_key]
+		if music_player.playing:
+			music_player.stop()
 
 func play(sound : AudioStream):
 	if sound != null:

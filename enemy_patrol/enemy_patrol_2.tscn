@@ -1,0 +1,307 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddbxb4w0e5i7l"]
+
+[ext_resource type="Script" path="res://enemy_patrol/scripts/enemy_patrol.gd" id="1_tbwhe"]
+[ext_resource type="Texture2D" uid="uid://cmk20rwjktpml" path="res://resource/assets/enemy/Incappucciato_3.png" id="2_6suqn"]
+[ext_resource type="Script" path="res://dialogue/data/dialog_data.gd" id="2_7ddah"]
+[ext_resource type="Resource" uid="uid://blt1lf7r2gamp" path="res://enemy_patrol/monologue/test_monologue.tres" id="3_0fm5w"]
+[ext_resource type="Texture2D" uid="uid://c2d64qxa8oamk" path="res://resource/assets/enemy/Retro.png" id="3_170li"]
+[ext_resource type="Texture2D" uid="uid://dh8qf2ypf8xtk" path="res://resource/assets/enemy/fascio luce guardiano.png" id="4_ca6pv"]
+[ext_resource type="Texture2D" uid="uid://cjkqnjimgrcdv" path="res://resource/assets/enemy/mano enemy.png" id="5_24cpf"]
+[ext_resource type="AudioStream" uid="uid://cu0l7j4qts5ll" path="res://audio/sfx/footstep/Footsteps_01.wav" id="6_kioje"]
+[ext_resource type="Texture2D" uid="uid://l2d0fsl3gg0v" path="res://resource/assets/UI/Punto esclamativo nemici.PNG" id="8_ys7tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6gaj"]
+size = Vector2(38.625, 37.125)
+
+[sub_resource type="Animation" id="Animation_bw7gc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteFront:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0174533]
+}
+
+[sub_resource type="Animation" id="Animation_sjaql"]
+resource_name = "spotted"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caught:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Caught:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lqm57"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteFront:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteBack:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftFov:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightFov:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.00406511, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpFov:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DownFov:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwjga"]
+_data = {
+"RESET": SubResource("Animation_bw7gc"),
+"spotted": SubResource("Animation_sjaql"),
+"walk": SubResource("Animation_lqm57")
+}
+
+[node name="EnemyPatrol" type="CharacterBody2D"]
+y_sort_enabled = true
+position = Vector2(6, 2)
+collision_layer = 512
+collision_mask = 129
+script = ExtResource("1_tbwhe")
+monolog = Array[ExtResource("2_7ddah")]([ExtResource("3_0fm5w")])
+
+[node name="SpriteFront" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-6.5, 10.5)
+rotation = 0.0174533
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_6suqn")
+offset = Vector2(10.4972, -19.3528)
+
+[node name="ManoDx" type="Sprite2D" parent="SpriteFront"]
+position = Vector2(-65.6384, 25.7899)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_24cpf")
+offset = Vector2(-36.4988, 3.48479)
+region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
+
+[node name="ManoSx" type="Sprite2D" parent="SpriteFront"]
+visible = false
+position = Vector2(115.913, 17.6201)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_24cpf")
+offset = Vector2(-36.4988, 3.48479)
+flip_h = true
+region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
+
+[node name="ManoDown" type="Sprite2D" parent="SpriteFront"]
+visible = false
+position = Vector2(13.5556, 74.4152)
+rotation = 1.58825
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_24cpf")
+offset = Vector2(-36.4988, 3.48479)
+flip_h = true
+region_rect = Rect2(-136.636, -1.08127, 480.992, 267.769)
+
+[node name="SpriteBack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+rotation = 0.0150349
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_170li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[node name="LeftFov" type="Area2D" parent="."]
+position = Vector2(-15, 26)
+rotation = 0.0150349
+collision_layer = 256
+
+[node name="PointLight2D2" type="PointLight2D" parent="LeftFov"]
+light_mask = 8
+visibility_layer = 8
+position = Vector2(-159, -10)
+texture = ExtResource("4_ca6pv")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LeftFov"]
+rotation = 1.5708
+polygon = PackedVector2Array(0, 1, -109, 274, -90, 298, -65, 308, -9.99999, 314, 52, 308, 75, 297, 90, 278)
+
+[node name="RightFov" type="Area2D" parent="."]
+position = Vector2(5, 21)
+rotation = 0.0150349
+collision_layer = 256
+
+[node name="PointLight2D2" type="PointLight2D" parent="RightFov"]
+light_mask = 8
+position = Vector2(151, 11)
+rotation = 3.14159
+texture = ExtResource("4_ca6pv")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RightFov"]
+rotation = 4.71239
+polygon = PackedVector2Array(0, 1, -113, 262, -89, 295, -17, 306, 66, 298, 89, 261)
+
+[node name="UpFov" type="Area2D" parent="."]
+position = Vector2(-2, 4)
+rotation = 0.0150349
+collision_layer = 256
+
+[node name="PointLight2D2" type="PointLight2D" parent="UpFov"]
+light_mask = 8
+position = Vector2(10, -150)
+rotation = 1.5708
+texture = ExtResource("4_ca6pv")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="UpFov"]
+rotation = 3.14159
+polygon = PackedVector2Array(-3, 3.57628e-07, -107, 273, -72, 299, -3.99997, 304, 55, 300, 92, 270)
+
+[node name="DownFov" type="Area2D" parent="."]
+rotation = 0.0150349
+collision_layer = 256
+
+[node name="PointLight2D" type="PointLight2D" parent="DownFov"]
+light_mask = 8
+position = Vector2(-9, 142)
+rotation = -1.5708
+texture = ExtResource("4_ca6pv")
+texture_scale = 0.7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DownFov"]
+polygon = PackedVector2Array(0, 1, -106, 258, -76, 289, -6, 301, 68, 290, 93, 255)
+
+[node name="EnemyArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+position = Vector2(-7, -2)
+shape = SubResource("RectangleShape2D_f6gaj")
+
+[node name="Caught" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -148)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_ys7tn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nwjga")
+}
+autoplay = "walk"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -327.0
+offset_top = -457.0
+offset_right = 476.0
+offset_bottom = 461.0
+color = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kioje")
+volume_db = -15.0
+
+[connection signal="area_entered" from="LeftFov" to="." method="detect_player"]
+[connection signal="area_entered" from="RightFov" to="." method="detect_player"]
+[connection signal="area_entered" from="UpFov" to="." method="detect_player"]
+[connection signal="area_entered" from="DownFov" to="." method="detect_player"]
+[connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]

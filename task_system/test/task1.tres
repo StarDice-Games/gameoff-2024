@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://b5pkh5857i4ho"]
+
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="1_tq4ds"]
+
+[resource]
+script = ExtResource("1_tq4ds")
+id = "first_tasks"
+description = "avvisa i visitatori"
+complete = false
+counter_max = 4
+current_counter = 0

@@ -1,0 +1,345 @@
+[gd_scene load_steps=30 format=3 uid="uid://bn66sogio8l8v"]
+
+[ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_machine.gd" id="1_i8mlm"]
+[ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_main_menu.gd" id="1_ya0a1"]
+[ext_resource type="Script" path="res://levels/title_screen/scripts/ui_state_machine/ui_state_settings.gd" id="2_ovesd"]
+[ext_resource type="Texture2D" uid="uid://dsfbhwg48rbt8" path="res://resource/assets/title/titolo new.png" id="4_3sqsw"]
+[ext_resource type="Texture2D" uid="uid://ddjp3ifnq8kju" path="res://resource/assets/title/pulsante.png" id="4_cmoi4"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="4_n3ecd"]
+[ext_resource type="PackedScene" uid="uid://r6wtux0ghoss" path="res://settings_screen/volume_slider.tscn" id="4_nqphs"]
+[ext_resource type="Texture2D" uid="uid://b4dgj0gn7uaxx" path="res://resource/assets/title/nuvole.png" id="5_l6pcx"]
+[ext_resource type="Texture2D" uid="uid://beywrvmivqw81" path="res://resource/assets/UI/Musica off.PNG" id="5_nl78p"]
+[ext_resource type="Texture2D" uid="uid://dbw4xyiy2as06" path="res://resource/assets/UI/Volume on.PNG" id="8_wcncs"]
+[ext_resource type="Texture2D" uid="uid://bsadrk7e5hqfy" path="res://resource/assets/UI/Musica on.PNG" id="8_xa8mr"]
+[ext_resource type="Texture2D" uid="uid://c2uvf28tbsw1s" path="res://resource/assets/UI/Volume off.PNG" id="10_4y6ak"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ueym0"]
+load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
+
+[sub_resource type="Theme" id="Theme_4t44a"]
+default_font = ExtResource("4_n3ecd")
+default_font_size = 25
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0.94902, 0.513726)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.564706)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0.52549)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0.564706)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("4_n3ecd")
+Label/colors/font_shadow_color = Color(0.835294, 0.87451, 0, 1)
+Label/constants/shadow_offset_x = 16
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 31
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4gj7"]
+texture = ExtResource("4_cmoi4")
+modulate_color = Color(1, 1, 0.694118, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfkf5"]
+texture = ExtResource("4_cmoi4")
+modulate_color = Color(1, 1, 0.694118, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4rqi"]
+load_path = "res://.godot/imported/pulsante.png-258663f6d3f5b3e2987d02f65c15313e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7fjyp"]
+texture = SubResource("CompressedTexture2D_c4rqi")
+
+[sub_resource type="Theme" id="Theme_y1vjg"]
+default_font_size = 50
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 0
+Button/styles/focus = SubResource("StyleBoxTexture_l4gj7")
+Button/styles/hover = SubResource("StyleBoxTexture_nfkf5")
+Button/styles/normal = SubResource("StyleBoxTexture_7fjyp")
+Button/styles/pressed = SubResource("StyleBoxTexture_7fjyp")
+
+[sub_resource type="Theme" id="Theme_1crtr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i8fmm"]
+load_path = "res://.godot/imported/nuvole.png-71b5931775f2018f6a2f15461c5facab.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m53ex"]
+texture = ExtResource("8_xa8mr")
+modulate_color = Color(1, 1, 1, 0.729412)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sffi"]
+texture = ExtResource("8_xa8mr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ki6xu"]
+texture = ExtResource("5_nl78p")
+
+[sub_resource type="Theme" id="Theme_dr7ky"]
+default_font_size = 0
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 0
+Button/styles/hover = SubResource("StyleBoxTexture_m53ex")
+Button/styles/normal = SubResource("StyleBoxTexture_1sffi")
+Button/styles/pressed = SubResource("StyleBoxTexture_ki6xu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_durta"]
+texture = ExtResource("8_wcncs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dm2w"]
+texture = ExtResource("8_wcncs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lartd"]
+texture = ExtResource("10_4y6ak")
+
+[sub_resource type="Theme" id="Theme_n7cr2"]
+default_font_size = 0
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 0
+Button/styles/hover = SubResource("StyleBoxTexture_durta")
+Button/styles/normal = SubResource("StyleBoxTexture_1dm2w")
+Button/styles/pressed = SubResource("StyleBoxTexture_lartd")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StateMenu" type="Control" parent="." node_paths=PackedStringArray("states")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i8mlm")
+states = [NodePath("MainMenu"), NodePath("Settings")]
+
+[node name="MainMenu" type="Control" parent="StateMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ya0a1")
+
+[node name="MainPanel" type="ColorRect" parent="StateMenu/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1599, 734)
+rotation = -0.111701
+scale = Vector2(0.555, 0.555)
+skew = -0.139626
+texture = SubResource("CompressedTexture2D_ueym0")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 109)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/MainMenu/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1322.0
+offset_top = 462.0
+offset_right = 1504.0
+offset_bottom = 667.0
+theme = SubResource("Theme_4t44a")
+theme_override_constants/separation = 15
+
+[node name="NewGame" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Exit")
+theme = SubResource("Theme_y1vjg")
+text = "New Game"
+icon_alignment = 1
+
+[node name="Exit" type="Button" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../../../Music")
+focus_next = NodePath("../../../Music")
+focus_previous = NodePath("../NewGame")
+theme = SubResource("Theme_y1vjg")
+text = "Exit"
+
+[node name="Sprite2D" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel/VBoxContainer"]
+position = Vector2(-227, -101)
+scale = Vector2(0.405, 0.405)
+texture = ExtResource("5_l6pcx")
+region_enabled = true
+region_rect = Rect2(2658, 575, 541, 170)
+
+[node name="TextureRect2" type="TextureRect" parent="StateMenu/MainMenu/MainPanel"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.0
+offset_top = 44.0
+offset_right = 1419.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+scale = Vector2(0.405, 0.405)
+pivot_offset = Vector2(801, 0)
+theme = SubResource("Theme_1crtr")
+texture = ExtResource("4_3sqsw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1728, 470)
+rotation = -0.0139626
+scale = Vector2(0.29, 0.29)
+skew = 0.0450061
+texture = ExtResource("5_l6pcx")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(2658, 575, 541, 170)
+
+[node name="Sprite2D3" type="Sprite2D" parent="StateMenu/MainMenu/MainPanel"]
+position = Vector2(1252, 860)
+rotation = -0.111701
+scale = Vector2(0.46, 0.46)
+skew = -0.139626
+texture = SubResource("CompressedTexture2D_i8fmm")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(2186, 231, 336, 109)
+
+[node name="Music" type="Button" parent="StateMenu/MainMenu"]
+layout_mode = 0
+offset_left = 1365.0
+offset_top = 684.0
+offset_right = 1423.0
+offset_bottom = 742.0
+theme = SubResource("Theme_dr7ky")
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.160784)
+theme_override_fonts/font = ExtResource("4_n3ecd")
+toggle_mode = true
+action_mode = 0
+
+[node name="Sfx" type="Button" parent="StateMenu/MainMenu"]
+layout_mode = 0
+offset_left = 1469.0
+offset_top = 684.0
+offset_right = 1527.0
+offset_bottom = 742.0
+theme = SubResource("Theme_n7cr2")
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0.160784)
+theme_override_fonts/font = ExtResource("4_n3ecd")
+toggle_mode = true
+action_mode = 0
+
+[node name="Settings" type="Control" parent="StateMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_ovesd")
+
+[node name="MainPanel" type="ColorRect" parent="StateMenu/Settings"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3024.0
+offset_bottom = 1701.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TitleBackground" type="ColorRect" parent="StateMenu/Settings/MainPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 140.03
+offset_right = 250.0
+offset_bottom = 253.73
+grow_horizontal = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Back" type="Button" parent="StateMenu/Settings/MainPanel"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 781.0
+offset_right = 1580.0
+offset_bottom = 861.0
+theme = SubResource("Theme_y1vjg")
+theme_override_fonts/font = ExtResource("4_n3ecd")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StateMenu/Settings/MainPanel"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 0
+offset_left = 1658.0
+offset_top = 647.0
+offset_right = 2483.0
+offset_bottom = 1020.0
+theme_override_constants/separation = 100
+
+[node name="MasterVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+label_name = "Master Volume"
+
+[node name="MusicVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+audio_channel = "Music"
+label_name = "Music Volume"
+
+[node name="SfxVolume" parent="StateMenu/Settings/MainPanel/VBoxContainer" instance=ExtResource("4_nqphs")]
+layout_mode = 2
+audio_channel = "Sfx"
+label_name = "SFX Volume"
+
+[node name="TextureRect3" type="TextureRect" parent="StateMenu/Settings/MainPanel"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1854.0
+offset_top = 44.0
+offset_right = -93.0
+offset_bottom = 1006.0
+grow_horizontal = 2
+scale = Vector2(0.405, 0.405)
+pivot_offset = Vector2(801, 0)
+texture = ExtResource("4_3sqsw")
+
+[connection signal="focus_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_mouse_entered"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/NewGame" to="StateMenu/MainMenu" method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_mouse_entered"]
+[connection signal="mouse_entered" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="StateMenu/MainMenu/MainPanel/VBoxContainer/Exit" to="StateMenu/MainMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="StateMenu/MainMenu/Music" to="StateMenu/MainMenu" method="_on_music_pressed"]
+[connection signal="pressed" from="StateMenu/MainMenu/Sfx" to="StateMenu/MainMenu" method="_on_sfx_pressed"]
+[connection signal="pressed" from="StateMenu/Settings/MainPanel/Back" to="StateMenu/Settings" method="_on_back_pressed"]

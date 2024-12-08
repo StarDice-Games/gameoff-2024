@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=3 format=3 uid="uid://ffdov8jqeufa"]
+
+[ext_resource type="PackedScene" uid="uid://1dtl451uouxy" path="res://levels/test_samanta/test_samanta.tscn" id="1_qhp4s"]
+[ext_resource type="Script" path="res://global/global_level_system/scripts/level_data.gd" id="2_dsxwp"]
+
+[resource]
+script = ExtResource("2_dsxwp")
+name = "test_samanta"
+description = "Description"
+scene = ExtResource("1_qhp4s")

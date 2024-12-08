@@ -1,0 +1,205 @@
+[gd_scene load_steps=20 format=3 uid="uid://0h08en1f6gqc"]
+
+[ext_resource type="Script" path="res://altare/script/altare.gd" id="1_a5ybs"]
+[ext_resource type="Texture2D" uid="uid://bhns6n15oi56m" path="res://resource/assets/rooms/sala_sacrificio/Altare.png" id="2_x3xy3"]
+[ext_resource type="Resource" uid="uid://5rj628d30ja0" path="res://act2-t-rex-puzzle/t_rex_tooth/t_rex_tooth.tres" id="2_ydgfb"]
+[ext_resource type="Texture2D" uid="uid://bvs3r22e81v6g" path="res://resource/assets/rooms/sala_sacrificio/Oggetti.PNG" id="3_2l30n"]
+[ext_resource type="Resource" uid="uid://dspufr1rur85m" path="res://puzzle_magic_book/magic_book/data/magic_book.tres" id="3_h1fab"]
+[ext_resource type="PackedScene" uid="uid://bp55k82sv4ufj" path="res://interactable/interactable.tscn" id="3_h4y86"]
+[ext_resource type="Resource" uid="uid://vixehbn46gp2" path="res://puzzles_act_2_chalice_puzzle/chalice_puzzle/chalice_item.tres" id="4_kcren"]
+[ext_resource type="Theme" uid="uid://cjnweyhuaw0k" path="res://themes/prompt_theme.tres" id="5_3546t"]
+[ext_resource type="AudioStream" uid="uid://c2xy14ppklklp" path="res://audio/sfx/various/sfx_thunder.ogg" id="6_i0vui"]
+[ext_resource type="PackedScene" uid="uid://cxrfji6xsmwwg" path="res://highlight_component/highlight_component.tscn" id="7_6gipo"]
+[ext_resource type="Material" uid="uid://ddcloj184m4dm" path="res://shaders/shader_outline_aura.tres" id="8_w2prh"]
+[ext_resource type="Texture2D" uid="uid://ymu1su6c5d7l" path="res://resource/assets/scene_azione/Oggetti posizionamento.PNG" id="12_58y7o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvnnh"]
+radius = 179.07
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35pxy"]
+radius = 140.071
+
+[sub_resource type="Animation" id="Animation_mknb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/ScenaOggetti:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vg5m2"]
+resource_name = "thunder"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.86667, 6.63333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/ScenaOggetti:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.633333, 1.23333, 5.26667, 5.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y5is"]
+_data = {
+"RESET": SubResource("Animation_mknb1"),
+"thunder": SubResource("Animation_vg5m2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7v04"]
+radius = 178.869
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysh62"]
+radius = 245.033
+
+[node name="Altare" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_a5ybs")
+thoot_item = ExtResource("2_ydgfb")
+magic_book_item = ExtResource("3_h1fab")
+chalice_item = ExtResource("4_kcren")
+
+[node name="Sprite_empty" type="Sprite2D" parent="."]
+position = Vector2(146, -70)
+texture = ExtResource("2_x3xy3")
+offset = Vector2(-146, 70)
+
+[node name="Sprite_object" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -61)
+texture = ExtResource("3_2l30n")
+
+[node name="Interactable" parent="." instance=ExtResource("3_h4y86")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_kvnnh")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -66.0
+offset_top = -222.0
+offset_right = 124.0
+offset_bottom = -176.0
+theme = ExtResource("5_3546t")
+text = "Place objects"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(12, -13)
+shape = SubResource("CircleShape2D_35pxy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CutsceneLightChange")
+libraries = {
+"": SubResource("AnimationLibrary_5y5is")
+}
+
+[node name="CutsceneLightChange" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CutsceneLightChange"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CutsceneLightChange"]
+stream = ExtResource("6_i0vui")
+volume_db = -10.0
+
+[node name="HighlightComponent2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_6gipo")]
+sprite = NodePath("../Sprite_empty")
+shader = ExtResource("8_w2prh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent2"]
+shape = SubResource("CircleShape2D_h7v04")
+
+[node name="HighlightComponent3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_6gipo")]
+highlight_color = Color(1, 1, 1, 0.364706)
+sprite = NodePath("../Sprite_empty")
+shader = ExtResource("8_w2prh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighlightComponent3"]
+shape = SubResource("CircleShape2D_ysh62")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = -1
+anchor_right = 0.00810682
+anchor_bottom = 0.0706215
+offset_left = -570.0
+offset_top = -302.0
+offset_right = 2472.0
+offset_bottom = 1388.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="ScenaOggetti" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(959, 538)
+texture = ExtResource("12_58y7o")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_enter" from="Interactable" to="." method="_on_interactable_player_enter"]
+[connection signal="player_exit" from="Interactable" to="." method="_on_interactable_player_exit"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Task" load_steps=2 format=3 uid="uid://gxh21t62pnig"]
+
+[ext_resource type="Script" path="res://task_system/data/task.gd" id="1_5wwip"]
+
+[resource]
+script = ExtResource("1_5wwip")
+id = "t_rex_tooth"
+description = "T-rex tooth"
+complete = false
+counter_max = -1
+current_counter = -1

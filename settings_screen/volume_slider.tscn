@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://r6wtux0ghoss"]
+
+[ext_resource type="Script" path="res://settings_screen/scripts/volume_slider.gd" id="1_jnp1e"]
+[ext_resource type="FontFile" uid="uid://j1vfrfh8ab2q" path="res://resource/fonts/KGMidnightMemories.ttf" id="2_ws5vb"]
+
+[node name="MasterVolume" type="Control"]
+auto_translate_mode = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnp1e")
+audio_channel = "Master"
+
+[node name="Label" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = -460.0
+offset_top = -184.0
+offset_right = -235.0
+offset_bottom = -126.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ws5vb")
+theme_override_font_sizes/font_size = 50
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = -158.0
+offset_top = -161.0
+offset_right = 94.0
+offset_bottom = -135.0
+min_value = -60.0
+max_value = 0.0
+tick_count = 10
+
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
